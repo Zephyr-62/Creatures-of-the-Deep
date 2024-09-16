@@ -35,6 +35,15 @@ public partial class @SubmarineControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Grab"",
+                    ""type"": ""Button"",
+                    ""id"": ""aec3e12d-b0f3-4630-8c0b-33d925f81b9a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -48,6 +57,17 @@ public partial class @SubmarineControls: IInputActionCollection2, IDisposable
                     ""action"": ""FirstPersonCamera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e4801bc4-7e8b-4482-abe1-58faec05cb9e"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Grab"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -57,6 +77,7 @@ public partial class @SubmarineControls: IInputActionCollection2, IDisposable
         // InGame
         m_InGame = asset.FindActionMap("InGame", throwIfNotFound: true);
         m_InGame_FirstPersonCamera = m_InGame.FindAction("FirstPersonCamera", throwIfNotFound: true);
+        m_InGame_Grab = m_InGame.FindAction("Grab", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -119,11 +140,13 @@ public partial class @SubmarineControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_InGame;
     private List<IInGameActions> m_InGameActionsCallbackInterfaces = new List<IInGameActions>();
     private readonly InputAction m_InGame_FirstPersonCamera;
+    private readonly InputAction m_InGame_Grab;
     public struct InGameActions
     {
         private @SubmarineControls m_Wrapper;
         public InGameActions(@SubmarineControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @FirstPersonCamera => m_Wrapper.m_InGame_FirstPersonCamera;
+        public InputAction @Grab => m_Wrapper.m_InGame_Grab;
         public InputActionMap Get() { return m_Wrapper.m_InGame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -136,6 +159,9 @@ public partial class @SubmarineControls: IInputActionCollection2, IDisposable
             @FirstPersonCamera.started += instance.OnFirstPersonCamera;
             @FirstPersonCamera.performed += instance.OnFirstPersonCamera;
             @FirstPersonCamera.canceled += instance.OnFirstPersonCamera;
+            @Grab.started += instance.OnGrab;
+            @Grab.performed += instance.OnGrab;
+            @Grab.canceled += instance.OnGrab;
         }
 
         private void UnregisterCallbacks(IInGameActions instance)
@@ -143,6 +169,9 @@ public partial class @SubmarineControls: IInputActionCollection2, IDisposable
             @FirstPersonCamera.started -= instance.OnFirstPersonCamera;
             @FirstPersonCamera.performed -= instance.OnFirstPersonCamera;
             @FirstPersonCamera.canceled -= instance.OnFirstPersonCamera;
+            @Grab.started -= instance.OnGrab;
+            @Grab.performed -= instance.OnGrab;
+            @Grab.canceled -= instance.OnGrab;
         }
 
         public void RemoveCallbacks(IInGameActions instance)
@@ -163,5 +192,6 @@ public partial class @SubmarineControls: IInputActionCollection2, IDisposable
     public interface IInGameActions
     {
         void OnFirstPersonCamera(InputAction.CallbackContext context);
+        void OnGrab(InputAction.CallbackContext context);
     }
 }
