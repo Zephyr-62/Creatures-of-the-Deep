@@ -7,6 +7,7 @@ using UnityEngine.Events;
 
 public abstract class PhysicalControlSurface : MonoBehaviour
 {
+    [Header("Core PCS events")]
     [SerializeField] protected UnityEvent onValueChanged;
     [SerializeField] private UnityEvent onGrabbed;
     [SerializeField] private UnityEvent onReleased;
@@ -29,15 +30,16 @@ public abstract class PhysicalControlSurface : MonoBehaviour
 
     internal Vector3 UpdateSurface(Vector3 input)
     {
-        if (HandleInput())
-        {
-            onValueChanged.Invoke();
-        }
+        HandleInput();
         return input;
     }
 
-    public abstract bool HandleInput();
+    public abstract void HandleInput();
     public abstract float GetFloatValue();
     public abstract bool GetBoolValue();
     public abstract int GetIntValue();
+    public abstract void SetFloatValue(float value);
+    public abstract void SetBoolValue(bool value);
+    public abstract void SetIntValue(int value);
+
 }
