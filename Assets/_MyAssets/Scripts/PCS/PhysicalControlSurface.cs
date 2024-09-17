@@ -27,11 +27,17 @@ public abstract class PhysicalControlSurface : MonoBehaviour
         onReleased.Invoke();
     }
 
-    public Vector3 UpdateSurface(Vector3 input)
+    internal Vector3 UpdateSurface(Vector3 input)
     {
-        HandleInput();
+        if (HandleInput())
+        {
+            onValueChanged.Invoke();
+        }
         return input;
     }
 
-    public abstract void HandleInput();
+    public abstract bool HandleInput();
+    public abstract float GetFloatValue();
+    public abstract bool GetBoolValue();
+    public abstract int GetIntValue();
 }

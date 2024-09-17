@@ -64,7 +64,7 @@ public class FirstPersonCamera : MonoBehaviour
     {
         if (pcs) 
         {
-            pcs.UpdateSurface(transform.TransformDirection(input));
+            input = transform.InverseTransformDirection(pcs.UpdateSurface(transform.TransformDirection(input)));
         }
         transform.Rotate(new Vector3(0, input.x * sensitivity.x, 0) * Time.deltaTime, Space.World);
         transform.Rotate(new Vector3(-input.y * sensitivity.y, 0, 0) * Time.deltaTime, Space.Self);
