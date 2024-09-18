@@ -34,13 +34,13 @@ public class Lever : PhysicalControlSurface
         {
             var old = _value;
             _value = Mathf.Clamp(value, min, max);
-            if (old != value)
+            if (old != _value)
             {
-                if (value == max)
+                if (_value == max)
                 {
                     onValueChangedToMax.Invoke();
                 }
-                if (value == min)
+                if (_value == min)
                 {
                     onValueChangedToMin.Invoke();
                 }

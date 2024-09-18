@@ -1,6 +1,8 @@
 using DG.Tweening;
+using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -17,11 +19,14 @@ public class Pulley : PhysicalControlSurface
     [SerializeField] private float maxLength;
     [Header("Extra events")]
     [SerializeField] private UnityEvent<float> onReleasedValue;
+    [SerializeField] private UnityEvent onValueChangedToMax;
+    [SerializeField] private UnityEvent onReset;
 
     private Vector3 point;
     private float targetLength;
     private float clampedLength;
-    private float velocity;
+    [SerializeField] private float velocity;
+    private float last;
 
     public float value
     {
@@ -33,12 +38,14 @@ public class Pulley : PhysicalControlSurface
         {
             var old = _value;
             _value = Mathf.Clamp(value, 0, max);
-
-            velocity = SMOOTHING_FACTOR * (value - old) / Time.deltaTime + 1 - SMOOTHING_FACTOR * velocity;
             
-            if (old != value)
+            if (old != _value)
             {
                 onValueChanged.Invoke();
+                if(_value == max)
+                {
+                    onValueChangedToMax.Invoke();
+                }
             }
         }
     }
@@ -46,8 +53,13 @@ public class Pulley : PhysicalControlSurface
     internal override void Release()
     {
         base.Release();
-        handle.DOLocalMove(Vector3.zero, 0.05f).SetEase(Ease.InSine);
-        onReleasedValue.Invoke(value);
+
+        if(value != 0)
+        {
+            handle.DOLocalMove(Vector3.zero, 0.05f).SetEase(Ease.InSine).onComplete += () => onReset.Invoke();
+            DOTween.To(() => value, (x) => value = x, 0, 0.05f);
+            onReleasedValue.Invoke(value);
+        }
     }
 
     public override void HandleInput()
@@ -119,5 +131,12 @@ public class Pulley : PhysicalControlSurface
     private void OnValidate()
     {
         AdjustToValue(value);
+    }
+
+    private void Update()
+    {
+        velocity = SMOOTHING_FACTOR * (value - last) / Time.deltaTime + (1 - SMOOTHING_FACTOR) * velocity;
+        if (velocity < 0.01f) velocity = 0;
+        last = value;
     }
 }
