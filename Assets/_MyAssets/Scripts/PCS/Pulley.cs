@@ -17,6 +17,8 @@ public class Pulley : PhysicalControlSurface
     [Header("Moving parts")]
     [SerializeField] private Transform handle;
     [SerializeField] private float maxLength;
+    [SerializeField] private float animationDuration = 0.05f;
+    [SerializeField] private Ease animationEase = Ease.InSine;
     [Header("Extra events")]
     [SerializeField] private UnityEvent<float> onReleasedValue;
     [SerializeField] private UnityEvent onValueChangedToMax;
@@ -58,8 +60,8 @@ public class Pulley : PhysicalControlSurface
 
         if(value != 0)
         {
-            handle.DOLocalMove(Vector3.zero, 0.05f).SetEase(Ease.InSine).onComplete += () => onReset.Invoke();
-            DOTween.To(() => value, (x) => value = x, 0, 0.05f);
+            handle.DOLocalMove(Vector3.zero, animationDuration).SetEase(animationEase).onComplete += () => onReset.Invoke();
+            DOTween.To(() => value, (x) => value = x, 0, animationDuration).SetEase(animationEase);
             onReleasedValue.Invoke(value);
         }
     }

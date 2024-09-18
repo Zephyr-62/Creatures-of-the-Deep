@@ -14,6 +14,8 @@ public class ClickySwitch : PhysicalControlSurface
     [Header("Moving parts")]
     [SerializeField] private Transform rotatePoint;
     [SerializeField] private float minAngle, maxAngle;
+    [SerializeField] private float animationDuration = 0.1f;
+    [SerializeField] private Ease animationEase = Ease.Linear;
 
     private Vector3 point;
     private Vector3 dir;
@@ -29,11 +31,14 @@ public class ClickySwitch : PhysicalControlSurface
         }
         private set
         {
-            old = _value;
-            _value = value;
-            if (old != _value)
+            if(_value != value)
             {
-                onValueChanged.Invoke();
+                old = _value;
+                _value = value;
+                if (old != _value)
+                {
+                    onValueChanged.Invoke();
+                }
             }
         }
     }
@@ -48,32 +53,45 @@ public class ClickySwitch : PhysicalControlSurface
             point = ray.GetPoint(e);
             dir = point - rotatePoint.position;
 
-            AdjustToAngle(Vector3.SignedAngle(Vector3.up, transform.InverseTransformDirection(dir), Vector3.right));
-
             this.value = clampedAngle >= 0;
+
+            AdjustToAngle(Vector3.SignedAngle(Vector3.up, transform.InverseTransformDirection(dir), Vector3.right));
         }
     }
 
-    private void AdjustToAngle(float angle)
+    private void AdjustToAngle(float angle, bool skipAnimation = false)
     {
         targetAngle = angle;
         clampedAngle = Mathf.Clamp(targetAngle, minAngle, maxAngle);
 
         if(clampedAngle > 0 && value != old)
         {
-            rotatePoint.DOKill();
-            rotatePoint.DOLocalRotate(new Vector3(maxAngle, 0, 0), 0.1f);
-        } else if (clampedAngle < 0 && value != old)
+            Rotate(maxAngle, skipAnimation);
+        }
+        else if (clampedAngle < 0 && value != old)
         {
-            rotatePoint.DOKill();
-            rotatePoint.DOLocalRotate(new Vector3(minAngle, 0, 0), 0.1f);
+            Rotate(minAngle, skipAnimation);
         }
     }
 
-    private void AdjustToValue(bool value)
+    private void Rotate(float angle, bool skipAnimation = false)
     {
+        if (skipAnimation)
+        {
+            rotatePoint.localRotation = Quaternion.AngleAxis(angle, Vector3.right);
+        }
+        else
+        {
+            rotatePoint.DOKill();
+            rotatePoint.DOLocalRotate(new Vector3(angle, 0, 0), animationDuration).SetEase(animationEase);
+        }
+    }
+
+    private void AdjustToValue(bool value, bool skipAnimation = false)
+    {
+        Debug.Log(value);
         this.value = value;
-        AdjustToAngle(value ? maxAngle : minAngle);
+        AdjustToAngle(this.value ? maxAngle : minAngle, skipAnimation);
     }
 
     public override float GetFloatValue()
@@ -108,12 +126,14 @@ public class ClickySwitch : PhysicalControlSurface
 
     private void OnValidate()
     {
-        AdjustToValue(value);
+        old = !value;
+        AdjustToValue(value, true);
     }
 
     private void Awake()
     {
-        AdjustToValue(value);
+        old = !value;
+        AdjustToValue(value, true);
     }
 
     private void OnDrawGizmosSelected()
