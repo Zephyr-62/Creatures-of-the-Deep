@@ -111,6 +111,11 @@ public class ClickySwitch : PhysicalControlSurface
         AdjustToValue(value);
     }
 
+    private void Awake()
+    {
+        AdjustToValue(value);
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
