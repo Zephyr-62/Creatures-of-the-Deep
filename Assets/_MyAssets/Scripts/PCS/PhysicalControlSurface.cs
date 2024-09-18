@@ -17,13 +17,13 @@ public abstract class PhysicalControlSurface : MonoBehaviour
     private FirstPersonCamera firstPersonCamera;
     protected FirstPersonCamera FirstPersonCamera => firstPersonCamera;
 
-    internal void Grab(FirstPersonCamera firstPersonCamera)
+    internal virtual void Grab(FirstPersonCamera firstPersonCamera)
     {
         this.firstPersonCamera = firstPersonCamera;
         onGrabbed.Invoke();
     }
 
-    internal void Release()
+    internal virtual void Release()
     {
         this.firstPersonCamera = null;
         onReleased.Invoke();

@@ -60,7 +60,6 @@ public class Reticle : MonoBehaviour
             case Mode.Grabbed:
                 HideGrabSprites(false);
                 MoveGrabSprites(true);
-
                 break;
             default:
                 break;

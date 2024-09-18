@@ -14,7 +14,6 @@ public class Lever : PhysicalControlSurface
     [SerializeField] private float min, max;
     [Header("Moving parts")]
     [SerializeField] private Transform rotatePoint;
-    [SerializeField] private float step;
     [SerializeField] private float minAngle, maxAngle;
     [Header("Extra events")]
     [SerializeField] private UnityEvent onValueChangedToMax;
@@ -25,13 +24,13 @@ public class Lever : PhysicalControlSurface
     private float targetAngle;
     private float clampedAngle;
 
-    private float value
+    public float value
     {
         get
         {
             return _value;
         }
-        set
+        private set
         {
             var old = _value;
             _value = Mathf.Clamp(value, min, max);
