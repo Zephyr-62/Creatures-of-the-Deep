@@ -25,8 +25,10 @@ public class Pulley : PhysicalControlSurface
     private Vector3 point;
     private float targetLength;
     private float clampedLength;
-    [SerializeField] private float velocity;
+    private float velocity;
     private float last;
+
+    public float Velocity => velocity;
 
     public float value
     {
