@@ -12,8 +12,9 @@ public abstract class PhysicalControlSurface : MonoBehaviour
     [SerializeField] private UnityEvent onGrabbed;
     [SerializeField] private UnityEvent onReleased;
 
-    private FirstPersonCamera firstPersonCamera;
+    public bool grabbed => firstPersonCamera != null;
 
+    private FirstPersonCamera firstPersonCamera;
     protected FirstPersonCamera FirstPersonCamera => firstPersonCamera;
 
     internal void Grab(FirstPersonCamera firstPersonCamera)

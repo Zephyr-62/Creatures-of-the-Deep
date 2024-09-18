@@ -4,11 +4,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class FirstPersonCamera : MonoBehaviour
 {
     [SerializeField] private Vector2 sensitivity;
     [SerializeField] private LayerMask mask;
+    [SerializeField] private Reticle reticle;
 
     private SubmarineControls controls;
     private Vector2 input;
@@ -42,16 +44,9 @@ public class FirstPersonCamera : MonoBehaviour
     {
         if (context.performed)
         {
-            Ray ray = new(attachedCamera.transform.position, attachedCamera.transform.forward);
-
-            if (Physics.Raycast(ray, out RaycastHit hit, 200f, mask))
+            if (pcs)
             {
-                pcs = hit.transform.GetComponentInParent<PhysicalControlSurface>();
-
-                if (pcs)
-                {
-                    pcs.Grab(this);
-                }
+                pcs.Grab(this);   
             }
         } else if (pcs)
         {
@@ -62,16 +57,44 @@ public class FirstPersonCamera : MonoBehaviour
 
     private void Update()
     {
-        if (pcs) 
+        CheckForPCS();
+
+        if (pcs)
         {
-            input = transform.InverseTransformDirection(pcs.UpdateSurface(transform.TransformDirection(input)));
+            if(pcs.grabbed)
+            {
+                reticle.Set(Reticle.Mode.Grabbed);
+                input = transform.InverseTransformDirection(pcs.UpdateSurface(transform.TransformDirection(input)));
+            } else
+            {
+                reticle.Set(Reticle.Mode.Hover);
+            }
+        } else
+        {
+            reticle.Set(Reticle.Mode.Normal);
         }
+
         transform.Rotate(new Vector3(0, input.x * sensitivity.x, 0) * Time.deltaTime, Space.World);
         transform.Rotate(new Vector3(-input.y * sensitivity.y, 0, 0) * Time.deltaTime, Space.Self);
     }
 
+    public bool CheckForPCS()
+    {
+        if (pcs && pcs.grabbed) return true;
+
+        Ray ray = GetRay();
+
+        if (Physics.Raycast(ray, out RaycastHit hit, 200f, mask))
+        {
+            pcs = hit.transform.GetComponentInParent<PhysicalControlSurface>();
+            return true;
+        }
+        pcs = null;
+        return false;
+    }
+
     public Ray GetRay()
     {
-        return new Ray(transform.position, transform.forward);
+        return new Ray(attachedCamera.transform.position, attachedCamera.transform.forward);
     }
 }
