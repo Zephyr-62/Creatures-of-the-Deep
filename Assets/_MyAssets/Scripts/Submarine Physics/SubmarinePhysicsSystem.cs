@@ -2,6 +2,7 @@ using AdvancedEditorTools.Attributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class SubmarinePhysicsSystem : MonoBehaviour
@@ -13,10 +14,11 @@ public class SubmarinePhysicsSystem : MonoBehaviour
     public float SteerInput = 0;
     [Range(-1f, 1f)]
     public float PitchInput = 0;
-    [Range(-1f, 1f)]
+    [Tooltip("Positive => Submarine floats")]
     public float BuoyancyInput = 0;
     [EndColumnArea]
 
+    [SerializeField] private float BuoyancyStrength = 75;
 
     [BeginColumnArea(.5f, columnStyle = LayoutStyle.Bevel)]
     [Header("Thrust")]
@@ -90,6 +92,10 @@ public class SubmarinePhysicsSystem : MonoBehaviour
 
         // Roll
         RollStabilization();
+
+        // Buoyancy
+        if (BuoyancyInput != 0)
+            rb.AddForce(BuoyancyStrength * BuoyancyInput * Vector3.up, ForceMode.Force);
     }
 
     private void PitchStabilization()
@@ -104,7 +110,7 @@ public class SubmarinePhysicsSystem : MonoBehaviour
         // Integral term (accumulate error over time)
         pitchIntegrarErrAcc += pitchErr * Time.fixedDeltaTime;
 
-        // Calculate the PID output (correction to apply)
+        // Calculate the PID output
         float pitchPIDOut = pitchPGain * pitchErr + pitchIGain * pitchIntegrarErrAcc + pitchDGain * pitchErrDiff / Time.fixedDeltaTime;
         rb.AddTorque(pitchPIDOut * transform.right, ForceMode.Acceleration);
     }
@@ -121,7 +127,7 @@ public class SubmarinePhysicsSystem : MonoBehaviour
         // Integral term (accumulate error over time)
         rollIntegrarErrAcc += rollErr * Time.fixedDeltaTime;
 
-        // Calculate the PID output (correction to apply)
+        // Calculate the PID output
         float rollPIDOut = rollPGain * rollErr + rollIGain * rollIntegrarErrAcc + rollDGain * rollErrDiff / Time.fixedDeltaTime;
         rb.AddTorque(transform.forward * rollPIDOut, ForceMode.Acceleration);
     }

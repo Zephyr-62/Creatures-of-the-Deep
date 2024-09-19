@@ -4907,6 +4907,7 @@ MonoBehaviour:
   SteerInput: 0
   PitchInput: 0
   BuoyancyInput: 0
+  BuoyancyStrength: 150
   maxThrustSpeed: 4
   thrustAccelerationForce: 350
   thrustDeadzone: 0.05
@@ -5780,19 +5781,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseInspectorFoldout: 0
   layoutInfos:
-  - rid: 6932593855741821263
-  - rid: 6932593855741821264
-  - rid: 6932593855741821265
-  - rid: 6932593855741821266
-  - rid: 6932593855741821267
-  - rid: 6932593855741821268
-  - rid: 6932593855741821269
-  - rid: 6932593855741821270
+  - rid: 6932593877993390165
+  - rid: 6932593877993390166
+  - rid: 6932593877993390167
+  - rid: 6932593877993390168
+  - rid: 6932593877993390169
+  - rid: 6932593877993390170
+  - rid: 6932593877993390171
+  - rid: 6932593877993390172
   buttonMethods: []
   references:
     version: 2
     RefIds:
-    - rid: 6932593855741821263
+    - rid: 6932593877993390165
       type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: ThrustInput
@@ -5800,14 +5801,14 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         windowStyle: 13
         columnStyle: 1
-    - rid: 6932593855741821264
+    - rid: 6932593877993390166
       type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
-        fieldName: maxThrustSpeed
+        fieldName: BuoyancyStrength
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
         includeLast: 0
-    - rid: 6932593855741821265
+    - rid: 6932593877993390167
       type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: maxThrustSpeed
@@ -5815,20 +5816,20 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         windowStyle: 0
         columnStyle: 3
-    - rid: 6932593855741821266
+    - rid: 6932593877993390168
       type: {class: NewColumnInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: maxAngularVelocity
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-    - rid: 6932593855741821267
+    - rid: 6932593877993390169
       type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: pitchInputDelay
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
         includeLast: 0
-    - rid: 6932593855741821268
+    - rid: 6932593877993390170
       type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: pitchInputDelay
@@ -5836,13 +5837,13 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         windowStyle: 0
         columnStyle: 3
-    - rid: 6932593855741821269
+    - rid: 6932593877993390171
       type: {class: NewColumnInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: TargetRoll
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-    - rid: 6932593855741821270
+    - rid: 6932593877993390172
       type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: minRelativeCollisionVelocityForThrustShutdown
