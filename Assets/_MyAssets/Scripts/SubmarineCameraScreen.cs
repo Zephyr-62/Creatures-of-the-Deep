@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.Events;
 
 public class SubmarineCameraScreen : MonoBehaviour
 {
@@ -7,13 +7,15 @@ public class SubmarineCameraScreen : MonoBehaviour
     [SerializeField] private GameObject buttonL;
     [SerializeField] private GameObject buttonR;
     [SerializeField] private Material[] cameraViewports;
-    [SerializeField] private int cameraIndex = 0;
+    [SerializeField] private int cameraIndex;
 
-    private Renderer m_screenRenderer;
+    private Renderer _screenRenderer;
+    
+    public UnityEvent buttonClicked;
 
     private void Start()
     {
-        m_screenRenderer = screen.GetComponent<MeshRenderer>();
+        _screenRenderer = screen.GetComponent<MeshRenderer>();
         SetScreenCameraView();
     }
 
@@ -29,12 +31,14 @@ public class SubmarineCameraScreen : MonoBehaviour
                 {
                     DecreaseCameraIndex();
                     SetScreenCameraView();
+                    buttonClicked.Invoke();
                 }
                 
                 if (hit.transform == buttonR.transform)
                 {
                     IncreaseCameraIndex();
                     SetScreenCameraView();
+                    buttonClicked.Invoke();
                 }
             }
         }
@@ -53,6 +57,6 @@ public class SubmarineCameraScreen : MonoBehaviour
 
     private void SetScreenCameraView()
     {
-        m_screenRenderer.material = cameraViewports[cameraIndex];
+        _screenRenderer.material = cameraViewports[cameraIndex];
     }
 }
