@@ -350,7 +350,7 @@ PrefabInstance:
     - target: {fileID: 3376468795150934983, guid: a450bd8d1b71e9f4998d09cc6232af8c,
         type: 3}
       propertyPath: m_Name
-      value: Artefact
+      value: RS-01
       objectReference: {fileID: 0}
     - target: {fileID: 5693173231159700429, guid: a450bd8d1b71e9f4998d09cc6232af8c,
         type: 3}
@@ -454,6 +454,7 @@ MonoBehaviour:
     - {fileID: 1314997101}
     - {fileID: 5693173231159700429, guid: a450bd8d1b71e9f4998d09cc6232af8c, type: 3}
     - {fileID: 6593101090344125314}
+    - {fileID: 2715884633181203984, guid: 4d0a58204cc360b41b111d40a33c719e, type: 3}
     m_values:
     - {fileID: 501638430}
     - {fileID: 1698265294}
@@ -461,6 +462,7 @@ MonoBehaviour:
     - {fileID: 387044744}
     - {fileID: 1590025834}
     - {fileID: 1905440546}
+    - {fileID: 947193772}
   extensionEnabled: 1
   debugMode: 0
 --- !u!4 &912081733
@@ -478,6 +480,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &947193772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseInspectorFoldout: 0
+  layoutInfos: []
+  buttonMethods: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1121941738
 GameObject:
   m_ObjectHideFlags: 0
@@ -948,6 +968,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2715884633181203984, guid: 4d0a58204cc360b41b111d40a33c719e,
+        type: 3}
+      propertyPath: onButtonPressed.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2715884633181203984, guid: 4d0a58204cc360b41b111d40a33c719e,
+        type: 3}
+      propertyPath: onButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2715884633181203984, guid: 4d0a58204cc360b41b111d40a33c719e,
+        type: 3}
+      propertyPath: onButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1314997101}
+    - target: {fileID: 2715884633181203984, guid: 4d0a58204cc360b41b111d40a33c719e,
+        type: 3}
+      propertyPath: onButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2715884633181203984, guid: 4d0a58204cc360b41b111d40a33c719e,
+        type: 3}
+      propertyPath: onButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PickUpArtefact
+      objectReference: {fileID: 0}
+    - target: {fileID: 2715884633181203984, guid: 4d0a58204cc360b41b111d40a33c719e,
+        type: 3}
+      propertyPath: onButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ArtefactPickupSensor, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2715884633181203984, guid: 4d0a58204cc360b41b111d40a33c719e,
+        type: 3}
+      propertyPath: onButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8262313802434118089, guid: 4d0a58204cc360b41b111d40a33c719e,
         type: 3}
