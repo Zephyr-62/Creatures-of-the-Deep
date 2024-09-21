@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
 
+[SelectionBase]
 public class Lever : PhysicalControlSurface
 {
     [Header("Values")]
