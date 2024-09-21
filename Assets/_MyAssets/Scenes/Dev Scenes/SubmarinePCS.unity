@@ -1150,6 +1150,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &738640052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseInspectorFoldout: 0
+  layoutInfos: []
+  buttonMethods: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &801790621
 GameObject:
   m_ObjectHideFlags: 0
@@ -1318,15 +1336,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseInspectorFoldout: 0
   layoutInfos:
-  - rid: 1681360434372018505
-  - rid: 1681360434372018506
-  - rid: 1681360434372018507
-  - rid: 1681360434372018508
+  - rid: 1681360434372018541
+  - rid: 1681360434372018542
+  - rid: 1681360434372018543
+  - rid: 1681360434372018544
   buttonMethods: []
   references:
     version: 2
     RefIds:
-    - rid: 1681360434372018505
+    - rid: 1681360434372018541
       type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: physicsSystem
@@ -1334,14 +1352,14 @@ MonoBehaviour:
           Culture=neutral, PublicKeyToken=null
         windowStyle: 13
         columnStyle: 1
-    - rid: 1681360434372018506
+    - rid: 1681360434372018542
       type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: throttle
         fieldTypeName: PhysicalControlSurface, Assembly-CSharp, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
         includeLast: 0
-    - rid: 1681360434372018507
+    - rid: 1681360434372018543
       type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: throttle
@@ -1349,7 +1367,7 @@ MonoBehaviour:
           Culture=neutral, PublicKeyToken=null
         windowStyle: 13
         columnStyle: 1
-    - rid: 1681360434372018508
+    - rid: 1681360434372018544
       type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: test
@@ -2005,6 +2023,7 @@ MonoBehaviour:
     - {fileID: 81801502}
     - {fileID: 801790622}
     - {fileID: 172908544}
+    - {fileID: 0}
     m_values:
     - {fileID: 1527797610}
     - {fileID: 281111281}
@@ -2014,6 +2033,7 @@ MonoBehaviour:
     - {fileID: 1530631888}
     - {fileID: 1255604787}
     - {fileID: 1398407798}
+    - {fileID: 738640052}
   extensionEnabled: 1
   debugMode: 0
 --- !u!4 &1865439083

@@ -1,8 +1,9 @@
 using DG.Tweening;
-using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -17,6 +18,7 @@ public class Pulley : PhysicalControlSurface
     [Header("Moving parts")]
     [SerializeField] private Transform handle;
     [SerializeField] private float maxLength;
+    [SerializeField] private float range = 1f;
     [SerializeField] private float animationDuration = 0.05f;
     [SerializeField] private Ease animationEase = Ease.InSine;
     [Header("Extra events")]
@@ -76,6 +78,12 @@ public class Pulley : PhysicalControlSurface
             point = ray.GetPoint(e);
 
             targetLength = transform.InverseTransformPoint(point).y;
+
+            if (targetLength >= maxLength + range)
+            {
+                FirstPersonCamera.ForceRelease();
+                return;
+            }
 
             AdjustToLength(targetLength);
 
@@ -142,5 +150,16 @@ public class Pulley : PhysicalControlSurface
         velocity = SMOOTHING_FACTOR * (value - last) / Time.deltaTime + (1 - SMOOTHING_FACTOR) * velocity;
         if (velocity < 0.01f) velocity = 0;
         last = value;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (!grabbed) return;
+        Gizmos.color = Color.green;
+        Gizmos.DrawSphere(point, 0.05f);
+#if UNITY_EDITOR
+        Handles.color = Color.blue;
+        Handles.DrawWireDisc(handle.position, transform.forward, range);
+#endif
     }
 }

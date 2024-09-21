@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class SubmarineSwitchboard : MonoBehaviour
 {
-
     [BeginColumnArea(areaStyle = LayoutStyle.BoxRound)]
     [Header("Core systems")]
     [SerializeField] private SubmarinePhysicsSystem physicsSystem;

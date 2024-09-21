@@ -55,6 +55,15 @@ public class FirstPersonCamera : MonoBehaviour
         }
     }
 
+    public void ForceRelease()
+    {
+        if (pcs != null)
+        {
+            pcs.Release();
+            pcs = null;
+        }
+    }
+
     private void Update()
     {
         CheckForPCS();
