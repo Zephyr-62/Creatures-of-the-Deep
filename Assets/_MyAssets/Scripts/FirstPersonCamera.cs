@@ -86,7 +86,7 @@ public class FirstPersonCamera : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, 200f, mask))
         {
-            pcs = hit.transform.GetComponentInParent<PhysicalControlSurface>();
+            pcs = hit.collider.GetComponentInParent<PhysicalControlSurface>();
             return true;
         }
         pcs = null;

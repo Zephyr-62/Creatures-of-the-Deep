@@ -20,9 +20,9 @@ public class Pulley : PhysicalControlSurface
     [SerializeField] private float animationDuration = 0.05f;
     [SerializeField] private Ease animationEase = Ease.InSine;
     [Header("Extra events")]
-    [SerializeField] private UnityEvent<float> onReleasedValue;
-    [SerializeField] private UnityEvent onValueChangedToMax;
-    [SerializeField] private UnityEvent onReset;
+    [SerializeField] public UnityEvent<float> onReleasedValue;
+    [SerializeField] public UnityEvent onValueChangedToMax;
+    [SerializeField] public UnityEvent onReset;
 
     private Vector3 point;
     private float targetLength;
