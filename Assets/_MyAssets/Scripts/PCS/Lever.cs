@@ -17,8 +17,8 @@ public class Lever : PhysicalControlSurface
     [SerializeField] private Transform rotatePoint;
     [SerializeField] private float minAngle, maxAngle;
     [Header("Extra events")]
-    [SerializeField] private UnityEvent onValueChangedToMax;
-    [SerializeField] private UnityEvent onValueChangedToMin;
+    [SerializeField] public UnityEvent onValueChangedToMax;
+    [SerializeField] public UnityEvent onValueChangedToMin;
 
     private Vector3 point;
     private Vector3 dir;

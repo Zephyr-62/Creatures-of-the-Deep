@@ -1,3 +1,4 @@
+using AdvancedEditorTools.Attributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,13 +9,13 @@ using UnityEngine.Events;
 public abstract class PhysicalControlSurface : MonoBehaviour
 {
     [Header("Core PCS events")]
-    [SerializeField] protected UnityEvent onValueChanged;
-    [SerializeField] private UnityEvent onGrabbed;
-    [SerializeField] private UnityEvent onReleased;
-
-    public bool grabbed => firstPersonCamera != null;
-
+    [SerializeField] public UnityEvent onValueChanged;
+    [SerializeField] public UnityEvent onGrabbed;
+    [SerializeField] public UnityEvent onReleased;
+    
     private FirstPersonCamera firstPersonCamera;
+    public bool grabbed => firstPersonCamera != null;
+    
     protected FirstPersonCamera FirstPersonCamera => firstPersonCamera;
 
     internal virtual void Grab(FirstPersonCamera firstPersonCamera)
