@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class PhysicalControlSurface : MonoBehaviour
+public abstract class PhysicalControlSurface : MonoBehaviour, MalfunctionSymptom
 {
     [Header("Core PCS events")]
     [SerializeField] public UnityEvent onValueChanged;
@@ -44,4 +44,13 @@ public abstract class PhysicalControlSurface : MonoBehaviour
     public abstract void SetBoolValue(bool value);
     public abstract void SetIntValue(int value);
 
+    public void ApplySymptom()
+    {
+        
+    }
+
+    public void RemoveSymptom()
+    {
+        
+    }
 }
