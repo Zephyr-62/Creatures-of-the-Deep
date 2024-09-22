@@ -6,13 +6,11 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Malfunction : ScriptableObject
 {
-    [SerializeField] private ErrorIndicator errorIndicator;
-    [SerializeField] private List<MalfunctionSymptom> symptoms;
-
-    [SerializeField] private GameObject test;
+    [SerializeField] private ErrorMask errors;
+    [SerializeField] private SymptomMask symptoms;
 
     [Flags]
-    public enum ErrorIndicator
+    public enum ErrorMask
     {
         None = 0,
         A1 = 1,
@@ -23,5 +21,35 @@ public class Malfunction : ScriptableObject
         B2 = 32,
         B3 = 64,
         B4 = 128,
+        C1 = 256,
+        C2 = 512,
+        C3 = 1024,
+        C4 = 2048,
+        D1 = 4096,
+        D2 = 8192,
+        D3 = 16384,
+        D4 = 32768,
+    }
+
+    [Flags]
+    public enum SymptomMask
+    {
+        None = 0,
+        LockThrottle = 1,
+        LockSteering = 2,
+        LockPitch = 4,
+        LockElevation = 8,
+        B1 = 16,
+        B2 = 32,
+        B3 = 64,
+        B4 = 128,
+        C1 = 256,
+        C2 = 512,
+        C3 = 1024,
+        C4 = 2048,
+        D1 = 4096,
+        D2 = 8192,
+        D3 = 16384,
+        D4 = 32768,
     }
 }

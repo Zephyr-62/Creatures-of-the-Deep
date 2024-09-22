@@ -18,6 +18,7 @@ public class Pulley : PhysicalControlSurface
     [Header("Moving parts")]
     [SerializeField] private Transform handle;
     [SerializeField] private float maxLength;
+    [SerializeField] private float blockedLength;
     [SerializeField] private float range = 1f;
     [SerializeField] private float animationDuration = 0.05f;
     [SerializeField] private Ease animationEase = Ease.InSine;
@@ -79,7 +80,7 @@ public class Pulley : PhysicalControlSurface
 
             targetLength = transform.InverseTransformPoint(point).y;
 
-            if (targetLength >= maxLength + range)
+            if (Vector3.Distance(handle.transform.position, point) > range)
             {
                 FirstPersonCamera.ForceRelease();
                 return;
@@ -93,7 +94,7 @@ public class Pulley : PhysicalControlSurface
 
     private void AdjustToLength(float length)
     {
-        clampedLength = Mathf.Clamp(length, 0, maxLength);
+        clampedLength = Mathf.Clamp(length, 0, blocked ? blockedLength : maxLength);
         
         handle.localPosition = Vector3.up * clampedLength;
     }
@@ -160,6 +161,7 @@ public class Pulley : PhysicalControlSurface
 #if UNITY_EDITOR
         Handles.color = Color.blue;
         Handles.DrawWireDisc(handle.position, transform.forward, range);
+                Handles.Label(transform.position, value.ToString());
 #endif
     }
 }

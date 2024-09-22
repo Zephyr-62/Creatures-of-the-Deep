@@ -68,6 +68,8 @@ public class ClickySwitch : PhysicalControlSurface
 
     private void AdjustToAngle(float angle, bool skipAnimation = false)
     {
+        if (blocked) return;
+
         targetAngle = angle;
         clampedAngle = Mathf.Clamp(targetAngle, minAngle, maxAngle);
 
@@ -151,6 +153,7 @@ public class ClickySwitch : PhysicalControlSurface
 #if UNITY_EDITOR
         Handles.color = Color.blue;
         Handles.DrawWireDisc(rotatePoint.position, transform.right, range);
+        Handles.Label(transform.position, value.ToString());
 #endif
     }
 }

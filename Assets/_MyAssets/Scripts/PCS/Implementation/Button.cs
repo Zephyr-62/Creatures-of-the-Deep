@@ -1,3 +1,4 @@
+using AdvancedEditorTools.Attributes;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,21 +9,20 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 public class Button : PhysicalControlSurface
-{
-    [Header("Values")]
-    [FormerlySerializedAs("value"), SerializeField] private bool _value;
+{    
     [Header("Moving parts")]
     [SerializeField] private Transform movePoint;
     [SerializeField] private float depth;
     [SerializeField] private float range = 1f;
     [SerializeField] private float animationDuration = 0.1f;
     [SerializeField] private Ease animationEase = Ease.Linear;
-    
-    private Vector3 point;
 
-    internal override void Grab(FirstPersonCamera firstPersonCamera)
+    private Vector3 point;
+    private bool value;
+
+    internal override void Grab(FirstPersonCamera firstPersonCamera, Vector3 grabPoint)
     {
-        base.Grab(firstPersonCamera);
+        base.Grab(firstPersonCamera, grabPoint);
         AdjustToValue(true);
     }
 
@@ -51,6 +51,10 @@ public class Button : PhysicalControlSurface
 
     private void AdjustToValue(bool value, bool skipAnimation = false)
     {
+        if(blocked) return;
+
+        this.value = value;
+
         var delta = Vector3.down * (value ? depth : 0);
 
         if (skipAnimation)
@@ -66,17 +70,17 @@ public class Button : PhysicalControlSurface
 
     public override float GetFloatValue()
     {
-        return _value ? 1f : 0f;
+        return value ? 1f : 0f;
     }
 
     public override bool GetBoolValue()
     {
-        return _value;
+        return value;
     }
 
     public override int GetIntValue()
     {
-        return _value ? 1 : 0;
+        return value ? 1 : 0;
     }
 
     public override void SetFloatValue(float value)
@@ -96,12 +100,12 @@ public class Button : PhysicalControlSurface
 
     private void OnValidate()
     {
-        AdjustToValue(_value, true);
+        AdjustToValue(value, true);
     }
 
     private void Awake()
     {
-        AdjustToValue(_value, true);
+        AdjustToValue(value, true);
     }
 
     private void OnDrawGizmos()
@@ -111,8 +115,9 @@ public class Button : PhysicalControlSurface
         Gizmos.DrawSphere(point, 0.05f);
         Gizmos.DrawRay(movePoint.position, point - movePoint.position);
 #if UNITY_EDITOR
-        Handles.color = Color.blue;
+        Handles.color = Color.red;
         Handles.DrawWireDisc(movePoint.position, FirstPersonCamera.transform.position - movePoint.position, range);
+        Handles.Label(transform.position, value.ToString());
 #endif
     }
 }
