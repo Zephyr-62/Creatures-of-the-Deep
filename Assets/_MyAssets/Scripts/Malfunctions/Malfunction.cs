@@ -6,8 +6,11 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Malfunction : ScriptableObject
 {
-    [SerializeField] private ErrorMask errors;
+    [SerializeField] private ErrorMask errorCode;
     [SerializeField] private SymptomMask symptoms;
+
+    public ErrorMask ErrorCode => errorCode;
+    public SymptomMask Symptoms => symptoms;
 
     [Flags]
     public enum ErrorMask
