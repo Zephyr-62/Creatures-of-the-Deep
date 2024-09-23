@@ -359,6 +359,11 @@ PrefabInstance:
       propertyPath: xWidth
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 3486116337272314472, guid: c54bcda43c3e52e4ea57165e4513a664,
+        type: 3}
+      propertyPath: hazardScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7453374201455574346, guid: c54bcda43c3e52e4ea57165e4513a664,
         type: 3}
       propertyPath: m_Name
@@ -501,12 +506,10 @@ MonoBehaviour:
     - {fileID: 1427851565479440910, guid: f3022271edfedad4084e66802f71dedc, type: 3}
     - {fileID: 929479353}
     - {fileID: 3486116337272314472, guid: c54bcda43c3e52e4ea57165e4513a664, type: 3}
-    - {fileID: 0}
     m_values:
     - {fileID: 1553178942}
     - {fileID: 1353785640}
     - {fileID: 123473536}
-    - {fileID: 2094402886}
   extensionEnabled: 1
   debugMode: 0
 --- !u!4 &1879465430
@@ -524,24 +527,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2094402886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseInspectorFoldout: 0
-  layoutInfos: []
-  buttonMethods: []
-  references:
-    version: 2
-    RefIds: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

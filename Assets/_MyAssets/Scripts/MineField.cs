@@ -4,6 +4,7 @@ using UnityEngine;
 public class MineField : MonoBehaviour
 {
     [SerializeField] private GameObject hazardObject;
+    [SerializeField] private float hazardScale = 1f;
     [SerializeField] [Range(2f, 10f)] public float radius = 5;
     [SerializeField] private float yStartPosition = 5f;
     [SerializeField] private float xWidth = 100f;
@@ -39,6 +40,8 @@ public class MineField : MonoBehaviour
             point.x - xWidth / 2,
             Random.Range(transform.position.y, transform.position.y + yHeight),
             point.y - zDepth / 2);
-        Instantiate(hazardObject, position, Quaternion.identity, transform);
+
+        GameObject go = Instantiate(hazardObject, position, Random.rotationUniform, transform);
+        go.transform.localScale *= hazardScale;
     }
 }
