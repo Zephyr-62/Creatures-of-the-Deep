@@ -19,9 +19,13 @@ public abstract class PhysicalControlSurface : MonoBehaviour
     
     protected FirstPersonCamera FirstPersonCamera => firstPersonCamera;
 
-    internal virtual void Grab(FirstPersonCamera firstPersonCamera)
+    protected bool blocked;
+    protected Vector3 grabPoint;
+
+    internal virtual void Grab(FirstPersonCamera firstPersonCamera, Vector3 grabPoint)
     {
         this.firstPersonCamera = firstPersonCamera;
+        this.grabPoint = grabPoint;
         onGrabbed.Invoke();
     }
 
@@ -44,5 +48,26 @@ public abstract class PhysicalControlSurface : MonoBehaviour
     public abstract void SetFloatValue(float value);
     public abstract void SetBoolValue(bool value);
     public abstract void SetIntValue(int value);
+    
+    public virtual void Block()
+    {
+        blocked = true;
+    }
 
+    public virtual void Unblock()
+    {
+        blocked = false;
+    }
+
+    [Button("Toggle block")]
+    public void ToggleBlock()
+    {
+        if(blocked)
+        {
+            Unblock();
+        } else
+        {
+            Block();
+        }
+    }
 }
