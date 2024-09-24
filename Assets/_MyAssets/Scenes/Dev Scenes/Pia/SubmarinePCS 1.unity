@@ -352,13 +352,13 @@ GameObject:
   - component: {fileID: 115930610}
   - component: {fileID: 115930609}
   - component: {fileID: 115930608}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Capsule (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &115930608
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -648,6 +648,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUDCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5963598442502383239, guid: a9bb0960c1092f14a8a4f20eca586443,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -689,13 +694,13 @@ GameObject:
   - component: {fileID: 182587921}
   - component: {fileID: 182587920}
   - component: {fileID: 182587919}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Capsule (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &182587919
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -926,13 +931,13 @@ GameObject:
   - component: {fileID: 332295186}
   - component: {fileID: 332295185}
   - component: {fileID: 332295184}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &332295184
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1053,13 +1058,13 @@ GameObject:
   - component: {fileID: 379708042}
   - component: {fileID: 379708041}
   - component: {fileID: 379708040}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Capsule (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &379708040
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1150,6 +1155,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &578944093 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8187326259835016978, guid: 4ca5b7537e1857243aa2354112d9284c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1602301047}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &801790621
 GameObject:
   m_ObjectHideFlags: 0
@@ -1201,6 +1212,24 @@ Transform:
   m_Father: {fileID: 1602301050}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &911285809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseInspectorFoldout: 0
+  layoutInfos: []
+  buttonMethods: []
+  references:
+    version: 2
+    RefIds: []
+--- !u!114 &965930790
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1318,15 +1347,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseInspectorFoldout: 0
   layoutInfos:
-  - rid: 1681360434372018505
-  - rid: 1681360434372018506
-  - rid: 1681360434372018507
-  - rid: 1681360434372018508
+  - rid: 4015644597530132556
+  - rid: 4015644597530132557
+  - rid: 4015644597530132558
+  - rid: 4015644597530132559
   buttonMethods: []
   references:
     version: 2
     RefIds:
-    - rid: 1681360434372018505
+    - rid: 4015644597530132556
       type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: physicsSystem
@@ -1334,14 +1363,14 @@ MonoBehaviour:
           Culture=neutral, PublicKeyToken=null
         windowStyle: 13
         columnStyle: 1
-    - rid: 1681360434372018506
+    - rid: 4015644597530132557
       type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: throttle
         fieldTypeName: PhysicalControlSurface, Assembly-CSharp, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
         includeLast: 0
-    - rid: 1681360434372018507
+    - rid: 4015644597530132558
       type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: throttle
@@ -1349,7 +1378,7 @@ MonoBehaviour:
           Culture=neutral, PublicKeyToken=null
         windowStyle: 13
         columnStyle: 1
-    - rid: 1681360434372018508
+    - rid: 4015644597530132559
       type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: test
@@ -1368,13 +1397,13 @@ GameObject:
   - component: {fileID: 1319379258}
   - component: {fileID: 1319379257}
   - component: {fileID: 1319379256}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Capsule (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &1319379256
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1483,6 +1512,113 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!1 &1418788686
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1418788690}
+  - component: {fileID: 1418788689}
+  - component: {fileID: 1418788688}
+  - component: {fileID: 1418788687}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1418788687
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418788686}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1418788688
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418788686}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a5771349505e31bf19a2972c9f6cfbe0, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1418788689
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418788686}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1418788690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418788686}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.0452652, y: -0.6800003, z: 2.403}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1527797610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1497,19 +1633,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseInspectorFoldout: 0
   layoutInfos:
-  - rid: 1681360434372018509
-  - rid: 1681360434372018510
-  - rid: 1681360434372018511
-  - rid: 1681360434372018512
-  - rid: 1681360434372018513
-  - rid: 1681360434372018514
-  - rid: 1681360434372018515
-  - rid: 1681360434372018516
+  - rid: 4015644598070935740
+  - rid: 4015644598070935741
+  - rid: 4015644598070935742
+  - rid: 4015644598070935743
+  - rid: 4015644598070935744
+  - rid: 4015644598070935745
+  - rid: 4015644598070935746
+  - rid: 4015644598070935747
   buttonMethods: []
   references:
     version: 2
     RefIds:
-    - rid: 1681360434372018509
+    - rid: 4015644598070935740
       type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: ThrustInput
@@ -1517,14 +1653,14 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         windowStyle: 13
         columnStyle: 1
-    - rid: 1681360434372018510
+    - rid: 4015644598070935741
       type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: BuoyancyStrength
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
         includeLast: 0
-    - rid: 1681360434372018511
+    - rid: 4015644598070935742
       type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: maxThrustSpeed
@@ -1532,20 +1668,20 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         windowStyle: 0
         columnStyle: 3
-    - rid: 1681360434372018512
+    - rid: 4015644598070935743
       type: {class: NewColumnInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: maxAngularVelocity
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-    - rid: 1681360434372018513
+    - rid: 4015644598070935744
       type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: pitchInputDelay
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
         includeLast: 0
-    - rid: 1681360434372018514
+    - rid: 4015644598070935745
       type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: pitchInputDelay
@@ -1553,13 +1689,13 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         windowStyle: 0
         columnStyle: 3
-    - rid: 1681360434372018515
+    - rid: 4015644598070935746
       type: {class: NewColumnInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: TargetRoll
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-    - rid: 1681360434372018516
+    - rid: 4015644598070935747
       type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: minRelativeCollisionVelocityForThrustShutdown
@@ -1682,6 +1818,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dummy Submarine
       objectReference: {fileID: 0}
+    - target: {fileID: 8187326259835016978, guid: 4ca5b7537e1857243aa2354112d9284c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -1693,7 +1834,11 @@ PrefabInstance:
         type: 3}
       insertIndex: 2
       addedObject: {fileID: 1817938849}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8187326259835016978, guid: 4ca5b7537e1857243aa2354112d9284c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1602301052}
   m_SourcePrefab: {fileID: 100100000, guid: 4ca5b7537e1857243aa2354112d9284c, type: 3}
 --- !u!114 &1602301048 stripped
 MonoBehaviour:
@@ -1701,7 +1846,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1602301047}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 578944093}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9904771256ffeed418c70bc391225c61, type: 3}
@@ -1713,6 +1858,32 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1602301047}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1602301052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578944093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 967280426462e86fcb1d1efe582c6855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _submarine: {fileID: 578944093}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  _distance: 20
+  _angle: 5
+  sonar1: {fileID: 8400000, guid: cfea381c46a29c8769b16023d6ebf756, type: 2}
+  sonar2: {fileID: 8400000, guid: 64457358a2539f58dacf5df9ac1b5c25, type: 2}
+  blitMat: {fileID: 2100000, guid: d705f737144081709962ab6a961c5ec9, type: 2}
+  outMat: {fileID: 2100000, guid: a5771349505e31bf19a2972c9f6cfbe0, type: 2}
+  startingTex: {fileID: 2800000, guid: d4edf3351771bef44860ff085ee3d5c1, type: 3}
+  startingTex2: {fileID: 2800000, guid: 98a6dcd027b121c45aa1cbba90831069, type: 3}
+  renderer: {fileID: 1418788688}
+  delay: 0
 --- !u!1 &1758234973
 GameObject:
   m_ObjectHideFlags: 0
@@ -1725,13 +1896,13 @@ GameObject:
   - component: {fileID: 1758234976}
   - component: {fileID: 1758234975}
   - component: {fileID: 1758234974}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Capsule (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &1758234974
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1834,13 +2005,13 @@ GameObject:
   - component: {fileID: 1772805239}
   - component: {fileID: 1772805238}
   - component: {fileID: 1772805237}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Capsule (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &1772805237
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2005,6 +2176,7 @@ MonoBehaviour:
     - {fileID: 81801502}
     - {fileID: 801790622}
     - {fileID: 172908544}
+    - {fileID: 1602301052}
     m_values:
     - {fileID: 1527797610}
     - {fileID: 281111281}
@@ -2014,6 +2186,7 @@ MonoBehaviour:
     - {fileID: 1530631888}
     - {fileID: 1255604787}
     - {fileID: 1398407798}
+    - {fileID: 965930790}
   extensionEnabled: 1
   debugMode: 0
 --- !u!4 &1865439083
@@ -2058,3 +2231,4 @@ SceneRoots:
   - {fileID: 379708043}
   - {fileID: 1758234977}
   - {fileID: 1319379259}
+  - {fileID: 1418788690}

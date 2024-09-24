@@ -10,15 +10,25 @@ public class RaycastingSubmarine : MonoBehaviour
     [SerializeField] private float _distance;
     [SerializeField] private int _angle;
 
-	public ComputeShader computeShader;
-	public RenderTexture renderTexture;
+	//public ComputeShader computeShader;
+	public RenderTexture sonar1;
+    public RenderTexture sonar2;
 
     private List<Vector3> _hitPoints;
     private Vector3 _dir;
-
+    public Material blitMat;
+    public Material outMat;
+    public Texture startingTex;
+    public Texture startingTex2;
+    public Renderer renderer;
+    
+    public float delay = 0f;
+    
     void Start()
     {
         _hitPoints = new List<Vector3>();
+        Graphics.Blit(startingTex,sonar1);
+        Graphics.Blit(startingTex2,sonar2);
     }
     
     
@@ -44,8 +54,20 @@ public class RaycastingSubmarine : MonoBehaviour
             }
             
         }
-    }
 
+        //if (Time.time >= delay + 0.5f)
+        //{
+            delay = Time.time;
+            blitMat.SetVector("_Point", new Vector2(Random.Range(0f,1f), Random.Range(0f,1f)));
+            RenderTexture tempRend = RenderTexture.GetTemporary(sonar1.width, sonar1.height, 0, sonar1.format);
+            Graphics.Blit(sonar1, tempRend, blitMat, 0);
+            Graphics.Blit(tempRend, sonar2);
+            (sonar1, sonar2) = (sonar2, sonar1);
+            renderer.material.SetTexture("_BaseMap", sonar1);
+        //}
+        
+    }
+/*
 	private void OnRenderImage(RenderTexture src, RenderTexture dest)
 	{
         if (renderTexture == null)
@@ -63,5 +85,5 @@ public class RaycastingSubmarine : MonoBehaviour
         
         Graphics.Blit(renderTexture, dest);
 	}
-
+*/
 }
