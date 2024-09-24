@@ -4,8 +4,8 @@ using UnityEngine.Events;
 public class SubmarineCameraScreen : MonoBehaviour
 {
     [SerializeField] private GameObject screen;
-    [SerializeField] private GameObject buttonL;
-    [SerializeField] private GameObject buttonR;
+    [SerializeField] private Button buttonL;
+    [SerializeField] private Button buttonR;
     [SerializeField] private Material[] cameraViewports;
     [SerializeField] private int cameraIndex;
 
@@ -17,42 +17,45 @@ public class SubmarineCameraScreen : MonoBehaviour
     {
         _screenRenderer = screen.GetComponent<MeshRenderer>();
         SetScreenCameraView();
+
+        buttonL.onGrabbed.AddListener(() =>
+        {
+            DecreaseCameraIndex();
+            SetScreenCameraView();
+        });
+
+        buttonR.onGrabbed.AddListener(() =>
+        {
+            IncreaseCameraIndex();
+            SetScreenCameraView();
+        });
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        buttonL.onGrabbed.AddListener(DecreaseCameraIndex);
 
-            if (Physics.Raycast(ray, out var hit))
-            {
-                if (hit.transform == buttonL.transform)
-                {
-                    DecreaseCameraIndex();
-                    SetScreenCameraView();
-                    buttonClicked.Invoke();
-                }
-                
-                if (hit.transform == buttonR.transform)
-                {
-                    IncreaseCameraIndex();
-                    SetScreenCameraView();
-                    buttonClicked.Invoke();
-                }
-            }
-        }
+        buttonR.onGrabbed.AddListener(IncreaseCameraIndex);
+    }
+
+    private void OnDisable()
+    {
+        buttonL.onGrabbed.RemoveListener(DecreaseCameraIndex);
+
+        buttonR.onGrabbed.RemoveListener(IncreaseCameraIndex);
     }
 
     private void DecreaseCameraIndex()
     {
         cameraIndex--;
         if (cameraIndex < 0) cameraIndex = cameraViewports.Length - 1;
+        SetScreenCameraView();
     }
     
     private void IncreaseCameraIndex()
     {
         cameraIndex = (cameraIndex + 1) % cameraViewports.Length;
+        SetScreenCameraView();
     }
 
     private void SetScreenCameraView()
