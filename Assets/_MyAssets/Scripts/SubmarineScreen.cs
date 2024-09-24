@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class SubmarineScreen : MonoBehaviour
 {
     [SerializeField] private GameObject screen;
     [SerializeField] private Button buttonL;
     [SerializeField] private Button buttonR;
-    [SerializeField] private Material[] cameraViewports;
+    [SerializeField] private SubmarineCamera[] cameras;
     [SerializeField] private int cameraIndex;
 
     private Renderer _screenRenderer;
@@ -33,18 +34,18 @@ public class SubmarineScreen : MonoBehaviour
     private void DecreaseCameraIndex()
     {
         cameraIndex--;
-        if (cameraIndex < 0) cameraIndex = cameraViewports.Length - 1;
+        if (cameraIndex < 0) cameraIndex = cameras.Length - 1;
         SetScreenCameraView();
     }
 
     private void IncreaseCameraIndex()
     {
-        cameraIndex = (cameraIndex + 1) % cameraViewports.Length;
+        cameraIndex = (cameraIndex + 1) % cameras.Length;
         SetScreenCameraView();
     }
 
     private void SetScreenCameraView()
     {
-        _screenRenderer.material = cameraViewports[cameraIndex];
+        _screenRenderer.material.mainTexture = cameras[cameraIndex].GetRenderTexture();
     }
 }

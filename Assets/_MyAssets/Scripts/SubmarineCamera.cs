@@ -1,18 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class SubmarineCamera : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private int textureResolution = 256;
+    private Camera _cameraComponent;
+
+    private void Awake()
     {
-        
+        _cameraComponent = GetComponent<Camera>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        RenderTexture renderTexture = new RenderTexture(textureResolution, textureResolution, 16, RenderTextureFormat.ARGB32);
+        renderTexture.Create();
+        _cameraComponent.targetTexture = renderTexture;
+    }
+
+    public RenderTexture GetRenderTexture()
+    {
+        return _cameraComponent.targetTexture;
+    }
+
+    public void Toggle()
+    {
+        _cameraComponent.enabled = !_cameraComponent.enabled;
+    }
+    
+    public void Toggle(bool value)
+    {
+        _cameraComponent.enabled = value;
     }
 }
