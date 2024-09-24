@@ -1,8 +1,9 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -15,6 +16,9 @@ public class Lever : PhysicalControlSurface
     [Header("Moving parts")]
     [SerializeField] private Transform rotatePoint;
     [SerializeField] private float minAngle, maxAngle;
+    [SerializeField] private float blockedRange;
+    [SerializeField] private float range = 1f;
+    [SerializeField] private float speed = 360f;
     [Header("Extra events")]
     [SerializeField] public UnityEvent onValueChangedToMax;
     [SerializeField] public UnityEvent onValueChangedToMin;
@@ -23,6 +27,13 @@ public class Lever : PhysicalControlSurface
     private Vector3 dir;
     private float targetAngle;
     private float clampedAngle;
+    private float currentMinAngle, currentMaxAngle;
+
+    private void Awake()
+    {
+        currentMinAngle = minAngle;
+        currentMaxAngle = maxAngle;
+    }
 
     public float value
     {
@@ -59,6 +70,12 @@ public class Lever : PhysicalControlSurface
             point = ray.GetPoint(e);
             dir = point - rotatePoint.position;
 
+            if(dir.magnitude > range)
+            {
+                FirstPersonCamera.ForceRelease();
+                return;
+            }
+
             AdjustToAngle(Vector3.SignedAngle(Vector3.up, transform.InverseTransformDirection(dir), Vector3.right));
 
             value = Mathf.Lerp(min, max, Mathf.InverseLerp(minAngle, maxAngle, clampedAngle));
@@ -67,8 +84,11 @@ public class Lever : PhysicalControlSurface
 
     private void AdjustToAngle(float angle)
     {
-        targetAngle = angle;
-        clampedAngle = Mathf.Clamp(targetAngle, minAngle, maxAngle);
+        var delta = Mathf.DeltaAngle(targetAngle, angle);
+
+        targetAngle = targetAngle + Mathf.Clamp(delta, -speed * Time.deltaTime, speed * Time.deltaTime);
+
+        clampedAngle = Mathf.Clamp(targetAngle, currentMinAngle, currentMaxAngle);
         rotatePoint.localRotation = Quaternion.AngleAxis(clampedAngle, Vector3.right);
     }
 
@@ -113,15 +133,30 @@ public class Lever : PhysicalControlSurface
         AdjustToValue(value);
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawSphere(point, 0.1f);
-        Gizmos.DrawRay(rotatePoint.position, dir);
-    }
-
     private void OnDrawGizmos()
     {
-        Handles.Label(transform.position, $"[{targetAngle} : {clampedAngle} : {value}]");
+        if (!grabbed) return;
+        Gizmos.color = Color.green;
+        Gizmos.DrawSphere(point, 0.05f);
+        Gizmos.DrawRay(rotatePoint.position, dir);
+#if UNITY_EDITOR
+        Handles.color = Color.blue;
+        Handles.DrawWireDisc(rotatePoint.position, transform.right, range);
+        Handles.Label(transform.position, value.ToString());
+#endif
+    }
+
+    public override void Block()
+    {
+        base.Block();
+        currentMaxAngle = Mathf.Min(clampedAngle + blockedRange, maxAngle);
+        currentMinAngle = Mathf.Max(clampedAngle - blockedRange, minAngle);
+    }
+
+    public override void Unblock()
+    {
+        base.Unblock();
+        currentMinAngle = minAngle;
+        currentMaxAngle = maxAngle;
     }
 }

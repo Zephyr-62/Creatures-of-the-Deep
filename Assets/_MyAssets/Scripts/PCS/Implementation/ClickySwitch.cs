@@ -1,10 +1,10 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.Serialization;
 
 public class ClickySwitch : PhysicalControlSurface
@@ -14,6 +14,7 @@ public class ClickySwitch : PhysicalControlSurface
     [Header("Moving parts")]
     [SerializeField] private Transform rotatePoint;
     [SerializeField] private float minAngle, maxAngle;
+    [SerializeField] private float range = 1f;
     [SerializeField] private float animationDuration = 0.1f;
     [SerializeField] private Ease animationEase = Ease.Linear;
 
@@ -53,6 +54,12 @@ public class ClickySwitch : PhysicalControlSurface
             point = ray.GetPoint(e);
             dir = point - rotatePoint.position;
 
+            if (dir.magnitude > range)
+            {
+                FirstPersonCamera.ForceRelease();
+                return;
+            }
+
             this.value = clampedAngle >= 0;
 
             AdjustToAngle(Vector3.SignedAngle(Vector3.up, transform.InverseTransformDirection(dir), Vector3.right));
@@ -61,6 +68,8 @@ public class ClickySwitch : PhysicalControlSurface
 
     private void AdjustToAngle(float angle, bool skipAnimation = false)
     {
+        if (blocked) return;
+
         targetAngle = angle;
         clampedAngle = Mathf.Clamp(targetAngle, minAngle, maxAngle);
 
@@ -89,7 +98,6 @@ public class ClickySwitch : PhysicalControlSurface
 
     private void AdjustToValue(bool value, bool skipAnimation = false)
     {
-        Debug.Log(value);
         this.value = value;
         AdjustToAngle(this.value ? maxAngle : minAngle, skipAnimation);
     }
@@ -136,15 +144,16 @@ public class ClickySwitch : PhysicalControlSurface
         AdjustToValue(value, true);
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawSphere(point, 0.1f);
-        Gizmos.DrawRay(rotatePoint.position, dir);
-    }
-
     private void OnDrawGizmos()
     {
-        Handles.Label(transform.position, $"[{targetAngle} : {clampedAngle} : {value}]");
+        if (!grabbed) return;
+        Gizmos.color = Color.green;
+        Gizmos.DrawSphere(point, 0.05f);
+        Gizmos.DrawRay(rotatePoint.position, dir);
+#if UNITY_EDITOR
+        Handles.color = Color.blue;
+        Handles.DrawWireDisc(rotatePoint.position, transform.right, range);
+        Handles.Label(transform.position, value.ToString());
+#endif
     }
 }

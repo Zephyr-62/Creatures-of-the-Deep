@@ -1,8 +1,9 @@
 using DG.Tweening;
-using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -17,6 +18,8 @@ public class Pulley : PhysicalControlSurface
     [Header("Moving parts")]
     [SerializeField] private Transform handle;
     [SerializeField] private float maxLength;
+    [SerializeField] private float blockedLength;
+    [SerializeField] private float range = 1f;
     [SerializeField] private float animationDuration = 0.05f;
     [SerializeField] private Ease animationEase = Ease.InSine;
     [Header("Extra events")]
@@ -77,6 +80,12 @@ public class Pulley : PhysicalControlSurface
 
             targetLength = transform.InverseTransformPoint(point).y;
 
+            if (Vector3.Distance(handle.transform.position, point) > range)
+            {
+                FirstPersonCamera.ForceRelease();
+                return;
+            }
+
             AdjustToLength(targetLength);
 
             value = Mathf.Lerp(0, max, Mathf.InverseLerp(0, maxLength, clampedLength));
@@ -85,7 +94,7 @@ public class Pulley : PhysicalControlSurface
 
     private void AdjustToLength(float length)
     {
-        clampedLength = Mathf.Clamp(length, 0, maxLength);
+        clampedLength = Mathf.Clamp(length, 0, blocked ? blockedLength : maxLength);
         
         handle.localPosition = Vector3.up * clampedLength;
     }
@@ -142,5 +151,17 @@ public class Pulley : PhysicalControlSurface
         velocity = SMOOTHING_FACTOR * (value - last) / Time.deltaTime + (1 - SMOOTHING_FACTOR) * velocity;
         if (velocity < 0.01f) velocity = 0;
         last = value;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (!grabbed) return;
+        Gizmos.color = Color.green;
+        Gizmos.DrawSphere(point, 0.05f);
+#if UNITY_EDITOR
+        Handles.color = Color.blue;
+        Handles.DrawWireDisc(handle.position, transform.forward, range);
+                Handles.Label(transform.position, value.ToString());
+#endif
     }
 }
