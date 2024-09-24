@@ -10,6 +10,7 @@ public class BookholderConstraints : MonoBehaviour
     [SerializeField] private Transform IK_target;
     [SerializeField] private Transform PivotBase;
     [SerializeField] private Transform PivotArm1;
+    [SerializeField] private Transform PivotArm2;
 
 
 
