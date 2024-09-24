@@ -358,7 +358,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!136 &115930608
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -700,7 +700,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!136 &182587919
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -937,7 +937,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!136 &332295184
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1064,7 +1064,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!136 &379708040
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1403,7 +1403,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!136 &1319379256
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1574,7 +1574,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a5771349505e31bf19a2972c9f6cfbe0, type: 2}
+  - {fileID: 2100000, guid: 7b1b60b9ef7e8b47496ee2c83db21fa9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1633,19 +1633,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseInspectorFoldout: 0
   layoutInfos:
-  - rid: 4015644598070935740
-  - rid: 4015644598070935741
-  - rid: 4015644598070935742
-  - rid: 4015644598070935743
-  - rid: 4015644598070935744
-  - rid: 4015644598070935745
-  - rid: 4015644598070935746
-  - rid: 4015644598070935747
+  - rid: 8716196461846725212
+  - rid: 8716196461846725213
+  - rid: 8716196461846725214
+  - rid: 8716196461846725215
+  - rid: 8716196461846725216
+  - rid: 8716196461846725217
+  - rid: 8716196461846725218
+  - rid: 8716196461846725219
   buttonMethods: []
   references:
     version: 2
     RefIds:
-    - rid: 4015644598070935740
+    - rid: 8716196461846725212
       type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: ThrustInput
@@ -1653,14 +1653,14 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         windowStyle: 13
         columnStyle: 1
-    - rid: 4015644598070935741
+    - rid: 8716196461846725213
       type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: BuoyancyStrength
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
         includeLast: 0
-    - rid: 4015644598070935742
+    - rid: 8716196461846725214
       type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: maxThrustSpeed
@@ -1668,20 +1668,20 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         windowStyle: 0
         columnStyle: 3
-    - rid: 4015644598070935743
+    - rid: 8716196461846725215
       type: {class: NewColumnInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: maxAngularVelocity
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-    - rid: 4015644598070935744
+    - rid: 8716196461846725216
       type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: pitchInputDelay
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
         includeLast: 0
-    - rid: 4015644598070935745
+    - rid: 8716196461846725217
       type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: pitchInputDelay
@@ -1689,13 +1689,13 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         windowStyle: 0
         columnStyle: 3
-    - rid: 4015644598070935746
+    - rid: 8716196461846725218
       type: {class: NewColumnInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: TargetRoll
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-    - rid: 4015644598070935747
+    - rid: 8716196461846725219
       type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: minRelativeCollisionVelocityForThrustShutdown
@@ -1875,13 +1875,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _distance: 20
-  _angle: 5
+  _angleStep: 5
   sonar1: {fileID: 8400000, guid: cfea381c46a29c8769b16023d6ebf756, type: 2}
   sonar2: {fileID: 8400000, guid: 64457358a2539f58dacf5df9ac1b5c25, type: 2}
   blitMat: {fileID: 2100000, guid: d705f737144081709962ab6a961c5ec9, type: 2}
-  outMat: {fileID: 2100000, guid: a5771349505e31bf19a2972c9f6cfbe0, type: 2}
-  startingTex: {fileID: 2800000, guid: d4edf3351771bef44860ff085ee3d5c1, type: 3}
-  startingTex2: {fileID: 2800000, guid: 98a6dcd027b121c45aa1cbba90831069, type: 3}
+  startingTex: {fileID: 2800000, guid: 1004d06b4b28f5943abdf2313a22790a, type: 3}
   renderer: {fileID: 1418788688}
   delay: 0
 --- !u!1 &1758234973
@@ -1902,7 +1900,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!136 &1758234974
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2011,7 +2009,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!136 &1772805237
 CapsuleCollider:
   m_ObjectHideFlags: 0
