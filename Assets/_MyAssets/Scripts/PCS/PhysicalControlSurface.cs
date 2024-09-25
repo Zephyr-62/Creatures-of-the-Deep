@@ -6,6 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
+[SelectionBase]
 public abstract class PhysicalControlSurface : MonoBehaviour
 {
     [Header("Core PCS events")]
