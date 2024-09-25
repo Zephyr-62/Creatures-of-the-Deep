@@ -10,10 +10,14 @@ public class SubmarineScreen : MonoBehaviour
     [SerializeField] private int cameraIndex;
 
     private Renderer _screenRenderer;
+    
+    private void Awake()
+    {
+        _screenRenderer = screen.GetComponent<MeshRenderer>();
+    }
 
     private void Start()
     {
-        _screenRenderer = screen.GetComponent<MeshRenderer>();
         SetScreenCameraView();
     }
 

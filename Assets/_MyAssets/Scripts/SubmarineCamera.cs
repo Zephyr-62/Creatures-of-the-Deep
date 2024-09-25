@@ -10,10 +10,6 @@ public class SubmarineCamera : MonoBehaviour
     private void Awake()
     {
         _cameraComponent = GetComponent<Camera>();
-    }
-
-    private void Start()
-    {
         RenderTexture renderTexture = new RenderTexture(textureResolution, textureResolution, 16, RenderTextureFormat.ARGB32);
         renderTexture.Create();
         _cameraComponent.targetTexture = renderTexture;
