@@ -1,11 +1,13 @@
 
 # TODO
 
-- Bookholder IK
-		- Program PCS
+- Program PCS
+		- Bookholder
+		- Book pages		
 
 - Bookshelf book picker
-		- Animation + Book selected tracker + reparenting
+		- Button triggers
+		- Animation
 
 - Finish interior greyboxing --> Error control panel, LEDs, Random panel of buttons to control other random systems 
 		- Barometer/Height/buoyancy meter
@@ -15,6 +17,7 @@
 		- Fuse Panel
 		- Error lights Panel
 		- Pipes + valves
-- Merge with PCS
-- Merge screens with cameras
-- Program interaction of buttons
+		
+- Merge interior with PCS
+		- Merge screens with cameras
+		- Program interaction of buttons
