@@ -13,7 +13,9 @@ public abstract class PhysicalControlSurface : MonoBehaviour
     [SerializeField] public UnityEvent onValueChanged;
     [SerializeField] public UnityEvent onGrabbed;
     [SerializeField] public UnityEvent onReleased;
-    
+    [SerializeField] public UnityEvent onBlocked;
+    [SerializeField] public UnityEvent onUnblocked;
+
     private FirstPersonCamera firstPersonCamera;
     public bool grabbed => firstPersonCamera != null;
     
@@ -52,11 +54,13 @@ public abstract class PhysicalControlSurface : MonoBehaviour
     public virtual void Block()
     {
         blocked = true;
+        onBlocked.Invoke();
     }
 
     public virtual void Unblock()
     {
         blocked = false;
+        onUnblocked.Invoke();
     }
 
     [Button("Toggle block")]

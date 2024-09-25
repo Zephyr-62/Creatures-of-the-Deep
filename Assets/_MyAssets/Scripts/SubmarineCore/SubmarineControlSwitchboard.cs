@@ -15,7 +15,7 @@ public class SubmarineControlSwitchboard : MonoBehaviour
     [SerializeField] private PhysicalControlSurface throttle;
     [SerializeField] private PhysicalControlSurface steering;
     [SerializeField] private PhysicalControlSurface pitch;
-    [SerializeField] private PhysicalControlSurface vertical;
+    [SerializeField] private PhysicalControlSurface elevation;
     [EndColumnArea]
 
     [SerializeField] private float test;
@@ -25,7 +25,7 @@ public class SubmarineControlSwitchboard : MonoBehaviour
         if (throttle) throttle.onValueChanged.AddListener(SetThrottle);
         if (steering) steering.onValueChanged.AddListener(SetSteering);
         if (pitch) pitch.onValueChanged.AddListener(SetPitch);
-        if (vertical) vertical.onValueChanged.AddListener(SetVertical);
+        if (elevation) elevation.onValueChanged.AddListener(SetVertical);
     }
 
     private void OnDisable()
@@ -33,7 +33,7 @@ public class SubmarineControlSwitchboard : MonoBehaviour
         if (throttle) throttle.onValueChanged.RemoveListener(SetThrottle);
         if (steering) steering.onValueChanged.RemoveListener(SetSteering);
         if (pitch) pitch.onValueChanged.RemoveListener(SetPitch);
-        if (vertical) vertical.onValueChanged.RemoveListener(SetVertical);
+        if (elevation) elevation.onValueChanged.RemoveListener(SetVertical);
     }
 
     private void SetThrottle()
@@ -53,6 +53,46 @@ public class SubmarineControlSwitchboard : MonoBehaviour
 
     private void SetVertical()
     {
-        physicsSystem.BuoyancyInput = vertical.GetFloatValue();
+        physicsSystem.BuoyancyInput = elevation.GetFloatValue();
+    }
+
+    public void BlockThrottle()
+    {
+        throttle.Block();
+    }
+
+    public void BlockSteering()
+    {
+        steering.Block();
+    }
+
+    public void BlockPitch()
+    {
+        pitch.Block();
+    }
+
+    public void BlockElevation()
+    {
+        elevation.Block();
+    }
+
+    public void UnblockThrottle()
+    {
+        throttle.Unblock();
+    }
+
+    public void UnblockSteering()
+    {
+        steering.Unblock();
+    }
+
+    public void UnblockPitch()
+    {
+        pitch.Unblock();
+    }
+
+    public void UnblockElevation()
+    {
+        elevation.Unblock();
     }
 }
