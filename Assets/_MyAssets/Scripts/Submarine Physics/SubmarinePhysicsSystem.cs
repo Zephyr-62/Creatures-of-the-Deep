@@ -132,12 +132,13 @@ public class SubmarinePhysicsSystem : MonoBehaviour
         rb.AddTorque(transform.forward * rollPIDOut, ForceMode.Acceleration);
     }
 
-
-    private void OnCollisionEnter(Collision collision)
+    public void Shutdown()
     {
-        if(collision.relativeVelocity.magnitude >= minRelativeCollisionVelocityForThrustShutdown)
-            // OnStrongCollision --> trigger system failure/sounds?
-            ThrustInput = 0;
+
     }
 
+    public void Startup()
+    {
+
+    }
 }
