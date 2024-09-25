@@ -8,27 +8,10 @@ using static Malfunction;
 public class LightBoard : MonoBehaviour
 {
     [SerializeField] private Lightbulb lightBulbPrefab;
-    [SerializeField] private Malfunction malfunction;
 
-    private List<Lightbulb> lightBulbs = new List<Lightbulb>();
-
-    private void Start()
-    {
-        for (int y = 0; y < 4; y++)
-        {
-            for (int x = 0; x < 4; x++)
-            {
-                var instance = Instantiate(lightBulbPrefab, transform);
-                instance.transform.localPosition = new Vector3(x * 0.1f, 0, y * 0.1f);
-                lightBulbs.Add(instance);
-            }
-        }
-    }
-
-    private void Update()
-    {
-        SetLights(malfunction.ErrorCode);
-    }
+    [SerializeField] private List<Lightbulb> lightBulbs = new List<Lightbulb>();
+    
+    [SerializeField] private float margin = 0.1f;
 
     public void SetLights(ErrorMask mask)
     {
@@ -42,5 +25,26 @@ public class LightBoard : MonoBehaviour
     private void SetLight(Lightbulb bulb, ErrorMask error, ErrorMask mask)
     {
         bulb.Set((mask & error) == error);
+    }
+
+    [Button("Spawn bulbs")]
+    private void SpawnLights()
+    {
+        foreach (var bulb in lightBulbs)
+        {
+            DestroyImmediate(bulb.gameObject);
+        }
+
+        lightBulbs.Clear();
+
+        for (int y = 0; y < 4; y++)
+        {
+            for (int x = 0; x < 4; x++)
+            {
+                var instance = Instantiate(lightBulbPrefab, transform);
+                instance.transform.localPosition = new Vector3(x * margin - margin * 1.5f, 0, y * margin - margin * 1.5f);
+                lightBulbs.Add(instance);
+            }
+        }
     }
 }

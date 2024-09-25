@@ -44,6 +44,15 @@ public partial class @SubmarineControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Zoom"",
+                    ""type"": ""Button"",
+                    ""id"": ""80763796-b261-4145-bf8e-05ae20a878e2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -68,6 +77,17 @@ public partial class @SubmarineControls: IInputActionCollection2, IDisposable
                     ""action"": ""Grab"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""55baa2c6-3024-4550-9679-0ae2f8daa158"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Zoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -78,6 +98,7 @@ public partial class @SubmarineControls: IInputActionCollection2, IDisposable
         m_InGame = asset.FindActionMap("InGame", throwIfNotFound: true);
         m_InGame_FirstPersonCamera = m_InGame.FindAction("FirstPersonCamera", throwIfNotFound: true);
         m_InGame_Grab = m_InGame.FindAction("Grab", throwIfNotFound: true);
+        m_InGame_Zoom = m_InGame.FindAction("Zoom", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -141,12 +162,14 @@ public partial class @SubmarineControls: IInputActionCollection2, IDisposable
     private List<IInGameActions> m_InGameActionsCallbackInterfaces = new List<IInGameActions>();
     private readonly InputAction m_InGame_FirstPersonCamera;
     private readonly InputAction m_InGame_Grab;
+    private readonly InputAction m_InGame_Zoom;
     public struct InGameActions
     {
         private @SubmarineControls m_Wrapper;
         public InGameActions(@SubmarineControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @FirstPersonCamera => m_Wrapper.m_InGame_FirstPersonCamera;
         public InputAction @Grab => m_Wrapper.m_InGame_Grab;
+        public InputAction @Zoom => m_Wrapper.m_InGame_Zoom;
         public InputActionMap Get() { return m_Wrapper.m_InGame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -162,6 +185,9 @@ public partial class @SubmarineControls: IInputActionCollection2, IDisposable
             @Grab.started += instance.OnGrab;
             @Grab.performed += instance.OnGrab;
             @Grab.canceled += instance.OnGrab;
+            @Zoom.started += instance.OnZoom;
+            @Zoom.performed += instance.OnZoom;
+            @Zoom.canceled += instance.OnZoom;
         }
 
         private void UnregisterCallbacks(IInGameActions instance)
@@ -172,6 +198,9 @@ public partial class @SubmarineControls: IInputActionCollection2, IDisposable
             @Grab.started -= instance.OnGrab;
             @Grab.performed -= instance.OnGrab;
             @Grab.canceled -= instance.OnGrab;
+            @Zoom.started -= instance.OnZoom;
+            @Zoom.performed -= instance.OnZoom;
+            @Zoom.canceled -= instance.OnZoom;
         }
 
         public void RemoveCallbacks(IInGameActions instance)
@@ -193,5 +222,6 @@ public partial class @SubmarineControls: IInputActionCollection2, IDisposable
     {
         void OnFirstPersonCamera(InputAction.CallbackContext context);
         void OnGrab(InputAction.CallbackContext context);
+        void OnZoom(InputAction.CallbackContext context);
     }
 }

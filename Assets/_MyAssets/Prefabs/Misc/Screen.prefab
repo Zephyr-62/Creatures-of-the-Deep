@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1947820803755722400}
   - component: {fileID: 7848121935798158805}
   - component: {fileID: 7738872762541355740}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HandleL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 4347367689402754297}
   - component: {fileID: 6160122759448281665}
   - component: {fileID: 7922164363038020748}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HandleR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +277,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a5ae6fe60e57e334e8bef7393fd93aeb, type: 2}
+  - {fileID: 2100000, guid: 48d8fc4760a9993408899b9b69b9fec6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -360,7 +360,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   movePoint: {fileID: 131461104823985564}
-  depth: 0.2
+  depth: 0.01
   range: 1
   animationDuration: 0.1
   animationEase: 1
@@ -427,7 +427,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5756179570322058980, guid: cfca66e5a06800a4086081e5ab18aeab, type: 3}
+  - {fileID: 2100000, guid: e29a766315335de4caadabcc06b48666, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -460,7 +460,6 @@ GameObject:
   - component: {fileID: 7407698913594735702}
   - component: {fileID: 3551449421414204787}
   - component: {fileID: 4368095274611536523}
-  - component: {fileID: 3438861516559007821}
   m_Layer: 0
   m_Name: Display
   m_TagString: Untagged
@@ -535,28 +534,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3438861516559007821
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6106267952740844303}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &7391013760085921173
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,7 +595,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   movePoint: {fileID: 6150333305100896397}
-  depth: 0.2
+  depth: 0.01
   range: 1
   animationDuration: 0.1
   animationEase: 1
