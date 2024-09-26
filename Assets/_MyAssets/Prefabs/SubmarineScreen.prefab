@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 4832928675319497177}
   - component: {fileID: 5713018930274795558}
   m_Layer: 0
-  m_Name: SubmarineCameraScreen
+  m_Name: SubmarineScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -264,19 +264,8 @@ MonoBehaviour:
   screen: {fileID: 8205402738671925752}
   buttonL: {fileID: 1868154509794949231}
   buttonR: {fileID: 4305257950877731758}
-  cameraViewports:
-  - {fileID: 2100000, guid: 9a66cbc5d3697634180fec626a1006d7, type: 2}
-  - {fileID: 2100000, guid: c163b79bc51fac446a8b17279d810e8c, type: 2}
-  - {fileID: 2100000, guid: cf932322f25bf7c46b1bc6cb0e51723f, type: 2}
-  - {fileID: 2100000, guid: 6d2d2e5a018b986478056fef6ece6357, type: 2}
-  - {fileID: 2100000, guid: 4262bd2aec4b96043ba8dca3a9e5d4ae, type: 2}
-  - {fileID: 2100000, guid: bbf4558f50822394d815654fad08f07c, type: 2}
-  - {fileID: 2100000, guid: e01cb74028c72844c83529db80aa8ab5, type: 2}
-  - {fileID: 2100000, guid: 1f629825b2d7c5e499fa3f56435fba5e, type: 2}
-  cameraIndex: 2
-  buttonClicked:
-    m_PersistentCalls:
-      m_Calls: []
+  cameras: []
+  cameraIndex: 0
 --- !u!1 &3060671795877933452
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,7 +720,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cf932322f25bf7c46b1bc6cb0e51723f, type: 2}
+  - {fileID: 2100000, guid: b484f8d38934e5a4993f98549bdbf3f8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -786,27 +775,27 @@ PrefabInstance:
     - target: {fileID: 3856232214697111672, guid: 3230d38f85e26ee498cc69047d14e134,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.246
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3856232214697111672, guid: 3230d38f85e26ee498cc69047d14e134,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.575
+      value: -0.6
       objectReference: {fileID: 0}
     - target: {fileID: 3856232214697111672, guid: 3230d38f85e26ee498cc69047d14e134,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.258
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3856232214697111672, guid: 3230d38f85e26ee498cc69047d14e134,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 3856232214697111672, guid: 3230d38f85e26ee498cc69047d14e134,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 3856232214697111672, guid: 3230d38f85e26ee498cc69047d14e134,
         type: 3}
@@ -821,7 +810,7 @@ PrefabInstance:
     - target: {fileID: 3856232214697111672, guid: 3230d38f85e26ee498cc69047d14e134,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 3856232214697111672, guid: 3230d38f85e26ee498cc69047d14e134,
         type: 3}
@@ -836,7 +825,7 @@ PrefabInstance:
     - target: {fileID: 6057094866832302768, guid: 3230d38f85e26ee498cc69047d14e134,
         type: 3}
       propertyPath: m_Name
-      value: Button
+      value: ButtonL
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -872,37 +861,37 @@ PrefabInstance:
     - target: {fileID: 3856232214697111672, guid: 3230d38f85e26ee498cc69047d14e134,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.229
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3856232214697111672, guid: 3230d38f85e26ee498cc69047d14e134,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.575
+      value: -0.6
       objectReference: {fileID: 0}
     - target: {fileID: 3856232214697111672, guid: 3230d38f85e26ee498cc69047d14e134,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.258
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3856232214697111672, guid: 3230d38f85e26ee498cc69047d14e134,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 3856232214697111672, guid: 3230d38f85e26ee498cc69047d14e134,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 3856232214697111672, guid: 3230d38f85e26ee498cc69047d14e134,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3856232214697111672, guid: 3230d38f85e26ee498cc69047d14e134,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3856232214697111672, guid: 3230d38f85e26ee498cc69047d14e134,
         type: 3}
@@ -922,7 +911,7 @@ PrefabInstance:
     - target: {fileID: 6057094866832302768, guid: 3230d38f85e26ee498cc69047d14e134,
         type: 3}
       propertyPath: m_Name
-      value: Button (1)
+      value: ButtonR
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
