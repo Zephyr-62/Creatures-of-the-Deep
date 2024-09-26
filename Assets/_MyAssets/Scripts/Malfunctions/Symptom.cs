@@ -2,19 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static Malfunction;
 
-public abstract class MalfunctionSymptom
+public abstract class Symptom
 {
-    private SymptomMask id;
     private int count;
-
-    public SymptomMask Id => id;
-
-    protected MalfunctionSymptom(SymptomMask id)
-    {
-        this.id = id;
-    }
 
     public void Do(SubmarineControlSwitchboard system)
     {

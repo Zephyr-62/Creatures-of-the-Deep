@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static MalfunctionSymptom;
+using static Symptom;
 
 [CreateAssetMenu]
 public class Malfunction : ScriptableObject

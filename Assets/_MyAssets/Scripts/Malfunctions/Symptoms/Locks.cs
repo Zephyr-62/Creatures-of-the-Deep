@@ -2,34 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LockThrottle : MalfunctionSymptom
+public class LockThrottle : Symptom
 {
-    public LockThrottle(SymptomMask id) : base(id)
-    {
-
-    }
-
     protected override void Cure(SubmarineControlSwitchboard system)
-    {
-        system.BlockThrottle();
-    }
-
-    protected override void Fail(SubmarineControlSwitchboard system)
     {
         system.UnblockThrottle();
     }
+
+    protected override void Fail(SubmarineControlSwitchboard system)
+    {
+        system.BlockThrottle();
+    }
 }
 
-public class LockSteering : MalfunctionSymptom
+public class LockSteering : Symptom
 {
-    public LockSteering(SymptomMask id) : base(id)
-    {
-
-    }
-
     protected override void Cure(SubmarineControlSwitchboard system)
     {
-        system.BlockSteering();
+        system.UnblockSteering();
     }
 
     protected override void Fail(SubmarineControlSwitchboard system)
@@ -38,16 +28,11 @@ public class LockSteering : MalfunctionSymptom
     }
 }
 
-public class LockPitch : MalfunctionSymptom
+public class LockPitch : Symptom
 {
-    public LockPitch(SymptomMask id) : base(id)
-    {
-
-    }
-
     protected override void Cure(SubmarineControlSwitchboard system)
     {
-        system.BlockSteering();
+        system.UnblockSteering();
     }
 
     protected override void Fail(SubmarineControlSwitchboard system)
@@ -56,16 +41,11 @@ public class LockPitch : MalfunctionSymptom
     }
 }
 
-public class LockElevation : MalfunctionSymptom
+public class LockElevation : Symptom
 {
-    public LockElevation(SymptomMask id) : base(id)
-    {
-
-    }
-
     protected override void Cure(SubmarineControlSwitchboard system)
     {
-        system.BlockSteering();
+        system.UnblockSteering();
     }
 
     protected override void Fail(SubmarineControlSwitchboard system)

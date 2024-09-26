@@ -12,6 +12,11 @@ public class LightBoard : MonoBehaviour
 
     private Dictionary<Lightbulb, ErrorMask> lightBulbs = new Dictionary<Lightbulb, ErrorMask>();
 
+    private void Start()
+    {
+        SpawnLights();
+    }
+
     public void SetLights(ErrorMask mask)
     {
         foreach (var bulb in lightBulbs)

@@ -2,7 +2,7 @@ using AdvancedEditorTools.Attributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static MalfunctionSymptom;
+using static Symptom;
 
 public class MalfunctionSystem : MonoBehaviour
 {
@@ -12,18 +12,21 @@ public class MalfunctionSystem : MonoBehaviour
 
     [SerializeField] private SubmarineControlSwitchboard submarineControlSwitchboard;
 
-    private List<MalfunctionSymptom> symptoms = new List<MalfunctionSymptom>();
-    private List<Malfunction> currentMalfunctions = new List<Malfunction>();
+    private Dictionary<SymptomMask, Symptom> symptoms;
+    private List<Malfunction> currentMalfunctions;
 
     private void Awake()
     {
-        symptoms.Add(new EngineCutOff(SymptomMask.EngineCutOff));
-        symptoms.Add(new LockThrottle(SymptomMask.LockThrottle));
-        symptoms.Add(new LockSteering(SymptomMask.LockSteering));
-        symptoms.Add(new LockPitch(SymptomMask.LockPitch));
-        symptoms.Add(new LockElevation(SymptomMask.LockElevation));
+        currentMalfunctions = new List<Malfunction>();
+        symptoms = new Dictionary<SymptomMask, Symptom>
+        {
+            { SymptomMask.EngineCutOff,     new EngineCutOff()  },
+            { SymptomMask.LockThrottle,     new LockThrottle()  },
+            { SymptomMask.LockSteering,     new LockSteering()  },
+            { SymptomMask.LockPitch,        new LockPitch()     },
+            { SymptomMask.LockElevation,    new LockElevation() }
+        };
     }
-
 
     public void Collision(Collision collision)
     {
@@ -32,16 +35,13 @@ public class MalfunctionSystem : MonoBehaviour
 
     private void Start()
     {
-        foreach (var item in malfunctions)
-        {
-            Failure(item);
-        }
         StartCoroutine(ErrorCodeLoop());
     }
 
     private void Failure(Malfunction malfunction)
     {
         if (!malfunction) return;
+        if (currentMalfunctions.Contains(malfunction)) return;
 
         currentMalfunctions.Add(malfunction);
 
@@ -52,9 +52,9 @@ public class MalfunctionSystem : MonoBehaviour
     {
         foreach (var symptom in symptoms)
         {
-            if((malfunction.Symptoms & symptom.Id) == symptom.Id)
+            if((malfunction.Symptoms & symptom.Key) == symptom.Key)
             {
-                symptom.Do(submarineControlSwitchboard);
+                symptom.Value.Do(submarineControlSwitchboard);
             }
         }
     }
@@ -63,9 +63,9 @@ public class MalfunctionSystem : MonoBehaviour
     {
         foreach (var symptom in symptoms)
         {
-            if ((malfunction.Symptoms & symptom.Id) == symptom.Id)
+            if ((malfunction.Symptoms & symptom.Key) == symptom.Key)
             {
-                symptom.Undo(submarineControlSwitchboard);
+                symptom.Value.Undo(submarineControlSwitchboard);
             }
         }
     }
@@ -74,6 +74,8 @@ public class MalfunctionSystem : MonoBehaviour
     {
         while (true)
         {
+            yield return new WaitUntil(() => currentMalfunctions.Count > 0);
+
             lightBoard.SetLights(currentMalfunctions[0].ErrorCode);
             currentMalfunctions.Add(currentMalfunctions[0]);
             currentMalfunctions.RemoveAt(0);
@@ -84,5 +86,11 @@ public class MalfunctionSystem : MonoBehaviour
             
             yield return new WaitForSeconds(1f);
         }
+    }
+
+    [Button("Test")]
+    public void Test()
+    {
+        Failure(malfunctions[0]);
     }
 }

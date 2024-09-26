@@ -2,13 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EngineCutOff : MalfunctionSymptom
+public class EngineCutOff : Symptom
 {
-    public EngineCutOff(SymptomMask id) : base(id)
-    {
-
-    }
-
     protected override void Cure(SubmarineControlSwitchboard system)
     {
         system.StartEngine();
