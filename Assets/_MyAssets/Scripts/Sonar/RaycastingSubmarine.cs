@@ -14,23 +14,20 @@ public class RaycastingSubmarine : MonoBehaviour
 	public RenderTexture sonar1;
     public RenderTexture sonar2;
 	private float _angle;
-    private List<Vector3> _hitPoints;
     private Vector3 _dir;
     public Material blitMat;
 
-    public Texture startingTex;
     public Renderer renderer;
     
-    public float delay = 0f;
 
     private Vector2 _hitpoint;
     private Vector2 _currentHitPoint;
     private bool _raycasting = false;
+
+    private Vector2 _linePoint;
+    private Vector2 _currentLinePoint;
     void Start()
     {
-        _hitPoints = new List<Vector3>();
-        Graphics.Blit(startingTex,sonar1);
-        Graphics.Blit(startingTex,sonar2);
     }
     
     
@@ -44,10 +41,17 @@ public class RaycastingSubmarine : MonoBehaviour
             StartCoroutine(Raycasting());
         }
 
-        if (_currentHitPoint == null || _currentHitPoint != _hitpoint)
+       
+        if(_currentLinePoint == null || _currentLinePoint != _linePoint)
         {
-            _currentHitPoint = _hitpoint;
-            blitMat.SetVector("_Point", _currentHitPoint);
+            _currentLinePoint = _linePoint;
+            blitMat.SetVector("_PointB", _currentLinePoint);
+            
+            if (_currentHitPoint == null || _currentHitPoint != _hitpoint)
+            {
+                _currentHitPoint = _hitpoint;
+                blitMat.SetVector("_Point", _currentHitPoint);
+            }
             RenderTexture tempRend = RenderTexture.GetTemporary(sonar1.width, sonar1.height, 0, sonar1.format);
             Graphics.Blit(sonar1, tempRend, blitMat, 0);
             Graphics.Blit(tempRend, sonar2);
@@ -62,31 +66,39 @@ public class RaycastingSubmarine : MonoBehaviour
         _angle += _angleStep;
         if(_angle >= 360) _angle = 0;
         _dir = Quaternion.AngleAxis(_angle, _submarine.transform.up) * _submarine.transform.forward;
-        if (Physics.Raycast(transform.position, _dir, out RaycastHit hitInfo,
+        if (Physics.Raycast(_submarine.transform.position, _dir, out RaycastHit hitInfo,
                 _distance, _layerMask))
         {
-            _hitpoint = transformHitpoint(hitInfo.distance);
-			Debug.Log("Point: " +_hitpoint + ", distance: " + hitInfo.distance);
+            _hitpoint = TransformHitpoint(hitInfo.distance);
             Debug.DrawRay(transform.position, _dir * hitInfo.distance, Color.red);
         }
         else
         {
             Debug.DrawRay(transform.position, _dir * _distance, Color.blue);
         }
+        _linePoint = CalculateLinePoint();
 
-        yield return new WaitForSeconds(0.35f);
+        yield return new WaitForSeconds(0.15f);
         _raycasting = false;
     }
 
-    private Vector2 transformHitpoint(float dis)
+    private Vector2 TransformHitpoint(float dis)
     { 	
-		float scaledDis = (dis / (_distance * 1.5f));
+		float scaledDis = (dis / (_distance + (_distance / 10)));
 		Vector2 rotVec = (Vector2.up * scaledDis);
         float angleRad = Mathf.Deg2Rad * (-_angle);
         
-        return new Vector2(rotVec.x * Mathf.Cos(angleRad) - rotVec.y * Mathf.Sin(angleRad), rotVec.x * Mathf.Sin(angleRad) + rotVec.y * Mathf.Cos(angleRad))  + new Vector2(0.5f, 0.5f);
+        return new Vector2(rotVec.x * Mathf.Cos(angleRad) - rotVec.y * Mathf.Sin(angleRad), rotVec.x * Mathf.Sin(angleRad) + rotVec.y * Mathf.Cos(angleRad));
 
-		//Vector2 rotationVec = Quaternion.Euler(_angle,0, 0) * (Vector2.up * scaledDis);
-		//return rotationVec + new Vector2(0.5f, 0.5f);
     }
+
+    private Vector2 CalculateLinePoint()
+    {
+        Vector2 rotVec = (Vector2.up);
+        float angleRad = Mathf.Deg2Rad * (-_angle);
+        
+        return new Vector2(rotVec.x * Mathf.Cos(angleRad) - rotVec.y * Mathf.Sin(angleRad), rotVec.x * Mathf.Sin(angleRad) + rotVec.y * Mathf.Cos(angleRad));
+
+    }
+    
 }
