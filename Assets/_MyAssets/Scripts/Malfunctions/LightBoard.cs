@@ -7,18 +7,16 @@ using static Malfunction;
 
 public class LightBoard : MonoBehaviour
 {
-    [SerializeField] private Lightbulb lightBulbPrefab;
-
-    [SerializeField] private List<Lightbulb> lightBulbs = new List<Lightbulb>();
-    
+    [SerializeField] private Lightbulb lightBulbPrefab;    
     [SerializeField] private float margin = 0.1f;
+
+    private Dictionary<Lightbulb, ErrorMask> lightBulbs = new Dictionary<Lightbulb, ErrorMask>();
 
     public void SetLights(ErrorMask mask)
     {
-        IList list = Enum.GetValues(typeof(ErrorMask));
-        for (int i = 1; i < list.Count; i++)
+        foreach (var bulb in lightBulbs)
         {
-            SetLight(lightBulbs[i-1], (ErrorMask)list[i], mask);
+            SetLight(bulb.Key, bulb.Value, mask);
         }
     }
 
@@ -32,10 +30,12 @@ public class LightBoard : MonoBehaviour
     {
         foreach (var bulb in lightBulbs)
         {
-            DestroyImmediate(bulb.gameObject);
+            DestroyImmediate(bulb.Key.gameObject);
         }
 
         lightBulbs.Clear();
+
+        IList list = Enum.GetValues(typeof(ErrorMask));
 
         for (int y = 0; y < 4; y++)
         {
@@ -43,7 +43,7 @@ public class LightBoard : MonoBehaviour
             {
                 var instance = Instantiate(lightBulbPrefab, transform);
                 instance.transform.localPosition = new Vector3(x * margin - margin * 1.5f, 0, y * margin - margin * 1.5f);
-                lightBulbs.Add(instance);
+                lightBulbs.Add(instance, (ErrorMask)list[y*x + 1]);
             }
         }
     }

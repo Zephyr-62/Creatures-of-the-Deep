@@ -1,16 +1,29 @@
+using AdvancedEditorTools.Attributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static MalfunctionSymptom;
 
 public class MalfunctionSystem : MonoBehaviour
 {
-    [SerializeField] private SubmarineControlSwitchboard submarineControlSwitchboard;
     [SerializeField] private LightBoard lightBoard;
 
     [SerializeField] private List<Malfunction> malfunctions;
-    
+
+    [SerializeField] private SubmarineControlSwitchboard submarineControlSwitchboard;
+
     private List<MalfunctionSymptom> symptoms = new List<MalfunctionSymptom>();
-    [SerializeField] private List<Malfunction> currentMalfunctions = new List<Malfunction>();
+    private List<Malfunction> currentMalfunctions = new List<Malfunction>();
+
+    private void Awake()
+    {
+        symptoms.Add(new EngineCutOff(SymptomMask.EngineCutOff));
+        symptoms.Add(new LockThrottle(SymptomMask.LockThrottle));
+        symptoms.Add(new LockSteering(SymptomMask.LockSteering));
+        symptoms.Add(new LockPitch(SymptomMask.LockPitch));
+        symptoms.Add(new LockElevation(SymptomMask.LockElevation));
+    }
+
 
     public void Collision(Collision collision)
     {
@@ -41,7 +54,7 @@ public class MalfunctionSystem : MonoBehaviour
         {
             if((malfunction.Symptoms & symptom.Id) == symptom.Id)
             {
-                symptom.Apply();
+                symptom.Do(submarineControlSwitchboard);
             }
         }
     }
@@ -52,7 +65,7 @@ public class MalfunctionSystem : MonoBehaviour
         {
             if ((malfunction.Symptoms & symptom.Id) == symptom.Id)
             {
-                symptom.Remove();
+                symptom.Undo(submarineControlSwitchboard);
             }
         }
     }

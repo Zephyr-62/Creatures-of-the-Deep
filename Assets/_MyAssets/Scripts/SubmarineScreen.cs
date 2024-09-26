@@ -37,6 +37,7 @@ public class SubmarineScreen : MonoBehaviour
 
     private void DecreaseCameraIndex()
     {
+        Debug.Log("HI!");
         cameraIndex--;
         if (cameraIndex < 0) cameraIndex = cameras.Length - 1;
         SetScreenCameraView();

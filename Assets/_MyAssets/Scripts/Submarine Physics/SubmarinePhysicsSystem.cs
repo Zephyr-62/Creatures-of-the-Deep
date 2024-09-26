@@ -65,6 +65,8 @@ public class SubmarinePhysicsSystem : MonoBehaviour
     private float pitchIntegrarErrAcc = 0.0f;
 
     private Rigidbody rb;
+    private bool engineEnabled;
+
 
     private void Start()
     {
@@ -132,13 +134,13 @@ public class SubmarinePhysicsSystem : MonoBehaviour
         rb.AddTorque(transform.forward * rollPIDOut, ForceMode.Acceleration);
     }
 
-    public void Shutdown()
+    public void StopEngine()
     {
-
+        engineEnabled = false;
     }
 
-    public void Startup()
+    public void StartEngine()
     {
-
+        engineEnabled = true;
     }
 }

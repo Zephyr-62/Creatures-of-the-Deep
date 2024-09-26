@@ -95,4 +95,14 @@ public class SubmarineControlSwitchboard : MonoBehaviour
     {
         elevation.Unblock();
     }
+
+    public void StartEngine()
+    {
+        physicsSystem.StartEngine();
+    }
+
+    public void StopEngine()
+    {
+        physicsSystem.StopEngine();
+    }
 }

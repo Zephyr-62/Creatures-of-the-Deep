@@ -1,31 +1,52 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Malfunction;
 
-public class MalfunctionSymptom : MonoBehaviour
+public abstract class MalfunctionSymptom
 {
-    [SerializeField] private SymptomMask id;
+    private SymptomMask id;
     private int count;
 
     public SymptomMask Id => id;
 
-    public void Apply()
+    protected MalfunctionSymptom(SymptomMask id)
+    {
+        this.id = id;
+    }
+
+    public void Do(SubmarineControlSwitchboard system)
     {
         count++;
         if(count == 1)
         {
-            SendMessage("OnStopFunctioning");
+            Fail(system);
         }
     }
 
-    public void Remove()
+    public void Undo(SubmarineControlSwitchboard system)
     {
         count--;
         count = Mathf.Max(count, 0);
         if(count == 0)
         {
-            SendMessage("OnResumeFunctioning");
+            Cure(system);
         }
+    }
+
+    protected abstract void Fail(SubmarineControlSwitchboard system);
+    protected abstract void Cure(SubmarineControlSwitchboard system);
+
+    [Flags]
+    public enum SymptomMask
+    {
+        None = 0,
+        LockThrottle = 1,
+        LockSteering = 2,
+        LockPitch = 4,
+        LockElevation = 8,
+        EngineCutOff = 16,
+        PowerFailure = 32,
     }
 }

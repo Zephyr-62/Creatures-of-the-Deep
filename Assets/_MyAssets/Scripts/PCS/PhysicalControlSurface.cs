@@ -74,4 +74,14 @@ public abstract class PhysicalControlSurface : MonoBehaviour
             Block();
         }
     }
+
+    public void OnStopFunctioning()
+    {
+        Block();
+    }
+
+    public void OnResumeFunctioning()
+    {
+        Unblock();
+    }
 }
