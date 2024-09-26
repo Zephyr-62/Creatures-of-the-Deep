@@ -3,9 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SubmarineSwitchboard : MonoBehaviour
+public class SubmarineControlSwitchboard : MonoBehaviour
 {
-
     [BeginColumnArea(areaStyle = LayoutStyle.BoxRound)]
     [Header("Core systems")]
     [SerializeField] private SubmarinePhysicsSystem physicsSystem;

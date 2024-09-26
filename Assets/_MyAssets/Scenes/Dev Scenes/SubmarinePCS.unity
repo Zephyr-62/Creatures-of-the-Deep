@@ -535,24 +535,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 121255972}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &154117949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseInspectorFoldout: 0
-  layoutInfos: []
-  buttonMethods: []
-  references:
-    version: 2
-    RefIds: []
 --- !u!1001 &172908542
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1168,6 +1150,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &738640052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseInspectorFoldout: 0
+  layoutInfos: []
+  buttonMethods: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &801790621
 GameObject:
   m_ObjectHideFlags: 0
@@ -1336,15 +1336,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseInspectorFoldout: 0
   layoutInfos:
-  - rid: 8716196420289298708
-  - rid: 8716196420289298709
-  - rid: 8716196420289298710
-  - rid: 8716196420289298711
+  - rid: 1681360434372018541
+  - rid: 1681360434372018542
+  - rid: 1681360434372018543
+  - rid: 1681360434372018544
   buttonMethods: []
   references:
     version: 2
     RefIds:
-    - rid: 8716196420289298708
+    - rid: 1681360434372018541
       type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: physicsSystem
@@ -1352,14 +1352,14 @@ MonoBehaviour:
           Culture=neutral, PublicKeyToken=null
         windowStyle: 13
         columnStyle: 1
-    - rid: 8716196420289298709
+    - rid: 1681360434372018542
       type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: throttle
         fieldTypeName: PhysicalControlSurface, Assembly-CSharp, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
         includeLast: 0
-    - rid: 8716196420289298710
+    - rid: 1681360434372018543
       type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: throttle
@@ -1367,7 +1367,7 @@ MonoBehaviour:
           Culture=neutral, PublicKeyToken=null
         windowStyle: 13
         columnStyle: 1
-    - rid: 8716196420289298711
+    - rid: 1681360434372018544
       type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: test
@@ -1515,19 +1515,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseInspectorFoldout: 0
   layoutInfos:
-  - rid: 4015644659869810852
-  - rid: 4015644659869810853
-  - rid: 4015644659869810854
-  - rid: 4015644659869810855
-  - rid: 4015644659869810856
-  - rid: 4015644659869810857
-  - rid: 4015644659869810858
-  - rid: 4015644659869810859
+  - rid: 1681360434372018509
+  - rid: 1681360434372018510
+  - rid: 1681360434372018511
+  - rid: 1681360434372018512
+  - rid: 1681360434372018513
+  - rid: 1681360434372018514
+  - rid: 1681360434372018515
+  - rid: 1681360434372018516
   buttonMethods: []
   references:
     version: 2
     RefIds:
-    - rid: 4015644659869810852
+    - rid: 1681360434372018509
       type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: ThrustInput
@@ -1535,14 +1535,14 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         windowStyle: 13
         columnStyle: 1
-    - rid: 4015644659869810853
+    - rid: 1681360434372018510
       type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: BuoyancyStrength
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
         includeLast: 0
-    - rid: 4015644659869810854
+    - rid: 1681360434372018511
       type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: maxThrustSpeed
@@ -1550,20 +1550,20 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         windowStyle: 0
         columnStyle: 3
-    - rid: 4015644659869810855
+    - rid: 1681360434372018512
       type: {class: NewColumnInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: maxAngularVelocity
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-    - rid: 4015644659869810856
+    - rid: 1681360434372018513
       type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: pitchInputDelay
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
         includeLast: 0
-    - rid: 4015644659869810857
+    - rid: 1681360434372018514
       type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: pitchInputDelay
@@ -1571,13 +1571,13 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         windowStyle: 0
         columnStyle: 3
-    - rid: 4015644659869810858
+    - rid: 1681360434372018515
       type: {class: NewColumnInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: TargetRoll
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-    - rid: 4015644659869810859
+    - rid: 1681360434372018516
       type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: minRelativeCollisionVelocityForThrustShutdown
@@ -2033,7 +2033,7 @@ MonoBehaviour:
     - {fileID: 1530631888}
     - {fileID: 1255604787}
     - {fileID: 1398407798}
-    - {fileID: 154117949}
+    - {fileID: 738640052}
   extensionEnabled: 1
   debugMode: 0
 --- !u!4 &1865439083

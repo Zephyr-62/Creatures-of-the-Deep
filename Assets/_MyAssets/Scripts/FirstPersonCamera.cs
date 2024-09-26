@@ -16,6 +16,7 @@ public class FirstPersonCamera : MonoBehaviour
     private Vector2 input;
     private Camera attachedCamera;
     private PhysicalControlSurface pcs;
+    private Vector3 point;
 
     private void Awake()
     {
@@ -46,9 +47,18 @@ public class FirstPersonCamera : MonoBehaviour
         {
             if (pcs)
             {
-                pcs.Grab(this);   
+                pcs.Grab(this, point);   
             }
         } else if (pcs)
+        {
+            pcs.Release();
+            pcs = null;
+        }
+    }
+
+    public void ForceRelease()
+    {
+        if (pcs != null)
         {
             pcs.Release();
             pcs = null;
@@ -87,6 +97,7 @@ public class FirstPersonCamera : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, 200f, mask))
         {
             pcs = hit.collider.GetComponentInParent<PhysicalControlSurface>();
+            point = hit.point;
             return true;
         }
         pcs = null;
