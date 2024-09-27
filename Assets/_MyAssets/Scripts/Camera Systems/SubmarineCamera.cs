@@ -1,9 +1,11 @@
 using System.Threading;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class SubmarineCamera : MonoBehaviour
 {
     [SerializeField] private int textureResolution = 256;
+    [SerializeField] private int watchers;
     private Camera _cameraComponent;
 
     private void Awake()
@@ -14,7 +16,7 @@ public class SubmarineCamera : MonoBehaviour
         _cameraComponent.targetTexture = renderTexture;
     }
 
-    public RenderTexture GetRenderTexture()
+    private RenderTexture GetRenderTexture()
     {
         return _cameraComponent.targetTexture;
     }
@@ -23,9 +25,21 @@ public class SubmarineCamera : MonoBehaviour
     {
         _cameraComponent.enabled = !_cameraComponent.enabled;
     }
-    
+
     public void Toggle(bool value)
     {
         _cameraComponent.enabled = value;
+    }
+
+    public RenderTexture Watch()
+    {
+        if (watchers++ == 0) Toggle();
+
+        return GetRenderTexture();
+    }
+
+    public void Unwatch()
+    {
+        if (--watchers == 0) Toggle();
     }
 }
