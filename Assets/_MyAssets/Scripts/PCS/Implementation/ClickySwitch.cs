@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEditor;
 #endif
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 
 public class ClickySwitch : PhysicalControlSurface
@@ -17,6 +18,9 @@ public class ClickySwitch : PhysicalControlSurface
     [SerializeField] private float range = 1f;
     [SerializeField] private float animationDuration = 0.1f;
     [SerializeField] private Ease animationEase = Ease.Linear;
+    [Header("Extra events")]
+    [SerializeField] private UnityEvent onSwitchedOn;
+    [SerializeField] private UnityEvent onSwitchedOff;
 
     private Vector3 point;
     private Vector3 dir;
@@ -39,6 +43,8 @@ public class ClickySwitch : PhysicalControlSurface
                 if (old != _value)
                 {
                     onValueChanged.Invoke();
+                    if(_value) onSwitchedOn.Invoke();
+                    else onSwitchedOff.Invoke();
                 }
             }
         }

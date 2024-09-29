@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SubmarinePhysicsSystem : MonoBehaviour
 {
@@ -57,6 +58,10 @@ public class SubmarinePhysicsSystem : MonoBehaviour
     [Header("Other settings")]
     [SerializeField] private float minRelativeCollisionVelocityForThrustShutdown = 0.5f;
 
+    [SerializeField] private UnityEvent onStartEngine;
+    [SerializeField] private UnityEvent onStopEngine;
+
+
     // Private variables for PID control
     private float prevRollErr = 0.0f;
     private float rollIntegrarErrAcc = 0.0f;
@@ -65,31 +70,35 @@ public class SubmarinePhysicsSystem : MonoBehaviour
     private float pitchIntegrarErrAcc = 0.0f;
 
     private Rigidbody rb;
-    private bool engineEnabled;
-
+    private bool engineEnabled = false;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        //StartEngine();
     }
 
     void FixedUpdate()
     {
         rb.maxAngularVelocity = maxAngularVelocity;
-
-        // Thrust
-        if ((ThrustInput >= thrustDeadzone || ThrustInput <= -thrustDeadzone) && 
-            rb.velocity.magnitude < maxThrustSpeed)
+        
+        if (engineEnabled)
+        {
+            // Thrust
+            if ((ThrustInput >= thrustDeadzone || ThrustInput <= -thrustDeadzone) &&
+                rb.velocity.magnitude < maxThrustSpeed)
                 rb.AddForce(thrustAccelerationForce * ThrustInput * this.gameObject.transform.forward, ForceMode.Force);
-                // TODO: OnStartEngine, OnEngineSpeedNotch  ?? Does this belong to the PCL or the PS
+            // TODO: OnStartEngine, OnEngineSpeedNotch  ?? Does this belong to the PCL or the PS
 
-        // Yaw - Steering
-        if (SteerInput >= steeringDeadzone || SteerInput <= -steeringDeadzone)
-            rb.AddTorque(steeringAccelerationForce * SteerInput * Vector3.up, ForceMode.Acceleration);
+            // Yaw - Steering
+            if (SteerInput >= steeringDeadzone || SteerInput <= -steeringDeadzone)
+                rb.AddTorque(steeringAccelerationForce * SteerInput * Vector3.up, ForceMode.Acceleration);
 
-        // Pitch
-        prevPitchInput = Mathf.Lerp(prevPitchInput, PitchInput, Time.deltaTime / pitchInputDelay);
-        TargetPitch = -prevPitchInput * MaxPitch;
+            // Pitch
+            prevPitchInput = Mathf.Lerp(prevPitchInput, PitchInput, Time.deltaTime / pitchInputDelay);
+            TargetPitch = -prevPitchInput * MaxPitch;
+        }
+        
         PitchStabilization();
 
         // Roll
@@ -137,10 +146,12 @@ public class SubmarinePhysicsSystem : MonoBehaviour
     public void StopEngine()
     {
         engineEnabled = false;
+        onStopEngine.Invoke();
     }
 
     public void StartEngine()
     {
         engineEnabled = true;
+        onStartEngine.Invoke();
     }
 }
