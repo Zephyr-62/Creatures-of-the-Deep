@@ -650,6 +650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screen: {fileID: 6106267952740844303}
+  clickySwitch: {fileID: 5007155889743922808}
   buttonL: {fileID: 620527877742008813}
   buttonR: {fileID: 8702691942173962858}
   cameras: []
@@ -662,6 +663,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8939329483956012479}
     m_Modifications:
+    - target: {fileID: 848186163083819142, guid: 80c8739c53b86864e821a0d0956ced34,
+        type: 3}
+      propertyPath: _value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1366578561739688306, guid: 80c8739c53b86864e821a0d0956ced34,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -712,6 +718,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6796334720923647104, guid: 80c8739c53b86864e821a0d0956ced34,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.18223552
+      objectReference: {fileID: 0}
+    - target: {fileID: 6796334720923647104, guid: 80c8739c53b86864e821a0d0956ced34,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6796334720923647104, guid: 80c8739c53b86864e821a0d0956ced34,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8461021186410779342, guid: 80c8739c53b86864e821a0d0956ced34,
         type: 3}
       propertyPath: m_Name
@@ -722,6 +743,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80c8739c53b86864e821a0d0956ced34, type: 3}
+--- !u!114 &5007155889743922808 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 848186163083819142, guid: 80c8739c53b86864e821a0d0956ced34,
+    type: 3}
+  m_PrefabInstance: {fileID: 5672742308176609022}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d72fd1845cdcf24c840406f249621e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6651445997288994700 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1366578561739688306, guid: 80c8739c53b86864e821a0d0956ced34,
