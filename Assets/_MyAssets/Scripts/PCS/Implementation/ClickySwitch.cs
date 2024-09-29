@@ -18,6 +18,8 @@ public class ClickySwitch : PhysicalControlSurface
     [SerializeField] private float range = 1f;
     [SerializeField] private float animationDuration = 0.1f;
     [SerializeField] private Ease animationEase = Ease.Linear;
+    [SerializeField] private float switchAngle = 0f;
+
     [Header("Extra events")]
     [SerializeField] private UnityEvent onSwitchedOn;
     [SerializeField] private UnityEvent onSwitchedOff;
@@ -50,6 +52,11 @@ public class ClickySwitch : PhysicalControlSurface
         }
     }
 
+    internal override void Release()
+    {
+        base.Release();
+    }
+
     public override void HandleInput()
     {
         var plane = new Plane(transform.right, transform.position);
@@ -66,9 +73,12 @@ public class ClickySwitch : PhysicalControlSurface
                 return;
             }
 
-            this.value = clampedAngle >= 0;
+            var angle = Vector3.SignedAngle(Vector3.up, transform.InverseTransformDirection(dir), Vector3.right);
 
-            AdjustToAngle(Vector3.SignedAngle(Vector3.up, transform.InverseTransformDirection(dir), Vector3.right));
+            this.value = angle >= switchAngle;
+
+            AdjustToAngle(angle);
+
         }
     }
 
@@ -79,11 +89,11 @@ public class ClickySwitch : PhysicalControlSurface
         targetAngle = angle;
         clampedAngle = Mathf.Clamp(targetAngle, minAngle, maxAngle);
 
-        if(clampedAngle > 0 && value != old)
+        if(clampedAngle > switchAngle && value != old)
         {
             Rotate(maxAngle, skipAnimation);
         }
-        else if (clampedAngle < 0 && value != old)
+        else if (clampedAngle < switchAngle && value != old)
         {
             Rotate(minAngle, skipAnimation);
         }

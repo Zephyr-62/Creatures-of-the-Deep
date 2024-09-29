@@ -58,8 +58,8 @@ public class SubmarinePhysicsSystem : MonoBehaviour
     [Header("Other settings")]
     [SerializeField] private float minRelativeCollisionVelocityForThrustShutdown = 0.5f;
 
-    [SerializeField] private UnityEvent onStartEngine;
-    [SerializeField] private UnityEvent onStopEngine;
+    [SerializeField] public UnityEvent onStartEngine;
+    [SerializeField] public UnityEvent onStopEngine;
 
 
     // Private variables for PID control
