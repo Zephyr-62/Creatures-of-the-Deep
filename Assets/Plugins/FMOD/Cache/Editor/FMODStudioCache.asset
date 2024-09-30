@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-4880305598354938843
+--- !u!114 &-8650874348767067818
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,24 +9,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/PCS/Pulley/Max
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Engine/Power
   m_EditorClassIdentifier: 
-  Path: event:/PCS/Pulley/Max
-  Guid:
-    Data1: -868531028
-    Data2: 1143918975
-    Data3: -592780102
-    Data4: 1960414293
-  Banks:
-  - {fileID: -3412374948495567671}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
+  Name: Power
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1848510520
+    data2: 1731051347
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-3412374948495567671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42,11 +39,38 @@ MonoBehaviour:
   Path: Assets/_MyAssets/Audio/main_fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638623787403982618
+  lastModified: 638632432128067463
   FileSizes:
   - Name: Desktop
-    Value: 3582
+    Value: 70560
   Exists: 1
+--- !u!114 &-3170323082403319442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Submarine/PCS/Pulley/Change
+  m_EditorClassIdentifier: 
+  Path: event:/Submarine/PCS/Pulley/Change
+  Guid:
+    Data1: -415855349
+    Data2: 1334521075
+    Data3: 1340364705
+    Data4: 242773159
+  Banks:
+  - {fileID: -3412374948495567671}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,19 +87,20 @@ MonoBehaviour:
   - {fileID: 3561581469223207880}
   - {fileID: -3412374948495567671}
   EditorEvents:
-  - {fileID: 1904857336136605280}
-  - {fileID: 7908332063416532014}
-  - {fileID: 5269375810718914627}
-  - {fileID: 8031731479517014620}
-  - {fileID: -4880305598354938843}
+  - {fileID: 4343465578908552630}
+  - {fileID: -3170323082403319442}
+  - {fileID: 5489827043073744014}
+  - {fileID: 7357747826562069064}
+  - {fileID: 595240047088548061}
+  - {fileID: 4732592975428542728}
   EditorParameters: []
   MasterBanks:
   - {fileID: -3412374948495567671}
   StringsBanks:
   - {fileID: 3561581469223207880}
-  cacheTime: 638623787403997892
+  cacheTime: 638632432128097464
   cacheVersion: 131619
---- !u!114 &1904857336136605280
+--- !u!114 &595240047088548061
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,14 +110,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/PCS/Lever/Min
+  m_Name: event:/Submarine/PCS/Pulley/Max
   m_EditorClassIdentifier: 
-  Path: event:/PCS/Lever/Min
+  Path: event:/Submarine/PCS/Pulley/Max
   Guid:
-    Data1: 1033380864
-    Data2: 1133643737
-    Data3: -76631636
-    Data4: 2125363671
+    Data1: -868531028
+    Data2: 1143918975
+    Data3: -592780102
+    Data4: 1960414293
   Banks:
   - {fileID: -3412374948495567671}
   IsStream: 0
@@ -117,12 +142,12 @@ MonoBehaviour:
   Path: Assets/_MyAssets/Audio/main_fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638623787403997892
+  lastModified: 638632432128097464
   FileSizes:
   - Name: Desktop
-    Value: 958
+    Value: 1072
   Exists: 1
---- !u!114 &5269375810718914627
+--- !u!114 &4343465578908552630
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,9 +157,64 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/PCS/Lever/Change
+  m_Name: event:/Submarine/PCS/Lever/Min
   m_EditorClassIdentifier: 
-  Path: event:/PCS/Lever/Change
+  Path: event:/Submarine/PCS/Lever/Min
+  Guid:
+    Data1: 1033380864
+    Data2: 1133643737
+    Data3: -76631636
+    Data4: 2125363671
+  Banks:
+  - {fileID: -3412374948495567671}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &4732592975428542728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Submarine/Engine/Engine
+  m_EditorClassIdentifier: 
+  Path: event:/Submarine/Engine/Engine
+  Guid:
+    Data1: 591774172
+    Data2: 1336632948
+    Data3: -497708143
+    Data4: 2117688090
+  Banks:
+  - {fileID: -3412374948495567671}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -8650874348767067818}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 7551
+--- !u!114 &5489827043073744014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Submarine/PCS/Lever/Change
+  m_EditorClassIdentifier: 
+  Path: event:/Submarine/PCS/Lever/Change
   Guid:
     Data1: 930446205
     Data2: 1336988734
@@ -149,7 +229,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &7908332063416532014
+--- !u!114 &7357747826562069064
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,36 +239,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/PCS/Pulley/Change
+  m_Name: event:/Submarine/PCS/Lever/Max
   m_EditorClassIdentifier: 
-  Path: event:/PCS/Pulley/Change
-  Guid:
-    Data1: -415855349
-    Data2: 1334521075
-    Data3: 1340364705
-    Data4: 242773159
-  Banks:
-  - {fileID: -3412374948495567671}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &8031731479517014620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/PCS/Lever/Max
-  m_EditorClassIdentifier: 
-  Path: event:/PCS/Lever/Max
+  Path: event:/Submarine/PCS/Lever/Max
   Guid:
     Data1: 427193475
     Data2: 1170664573
