@@ -93,11 +93,11 @@ public class FirstPersonCamera : MonoBehaviour
             {
                 reticle.Set(Reticle.Mode.Grabbed);
                 input = transform.InverseTransformDirection(pcs.UpdateSurface(transform.TransformDirection(input)));
-            } else
+            } else if(reticle)
             {
                 reticle.Set(Reticle.Mode.Hover);
             }
-        } else
+        } else if (reticle)
         {
             reticle.Set(Reticle.Mode.Normal);
         }
