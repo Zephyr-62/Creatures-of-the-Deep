@@ -9,7 +9,8 @@ public class LightBoard : MonoBehaviour
 {
     [SerializeField] private Lightbulb lightBulbPrefab;    
     [SerializeField] private float margin = 0.1f;
-
+    
+    private Vector2Int grid = new Vector2Int(4, 4);
     private Dictionary<Lightbulb, ErrorMask> lightBulbs = new Dictionary<Lightbulb, ErrorMask>();
 
     private void Start()
@@ -42,9 +43,9 @@ public class LightBoard : MonoBehaviour
 
         IList list = Enum.GetValues(typeof(ErrorMask));
 
-        for (int y = 0; y < 4; y++)
+        for (int y = 0; y < grid.y; y++)
         {
-            for (int x = 0; x < 4; x++)
+            for (int x = 0; x < grid.x; x++)
             {
                 var instance = Instantiate(lightBulbPrefab, transform);
                 instance.transform.localPosition = new Vector3(x * margin - margin * 1.5f, 0, y * margin - margin * 1.5f);
