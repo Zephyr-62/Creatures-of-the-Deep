@@ -18,8 +18,6 @@ public class FirstPersonCamera : MonoBehaviour
     private Camera attachedCamera;
     private PhysicalControlSurface pcs;
     private Vector3 point;
-    private float topAngle;
-    private float downAngle;
     private Vector2 rotation;
 
     private void Awake()
@@ -102,11 +100,6 @@ public class FirstPersonCamera : MonoBehaviour
         {
             reticle.Set(Reticle.Mode.Normal);
         }
-
-        //transform.localRotation = Quaternion.A
-
-        //transform.Rotate(new Vector3(0, input.x * sensitivity.x, 0) * Time.deltaTime, Space.Self);
-        //transform.Rotate(new Vector3(-input.y * sensitivity.y, 0, 0) * Time.deltaTime, Space.Self);
 
         rotation.x += input.x * sensitivity.x * Time.deltaTime;
         rotation.y += input.y * sensitivity.y * Time.deltaTime;
