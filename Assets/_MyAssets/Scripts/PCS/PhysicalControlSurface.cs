@@ -6,13 +6,16 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
+[SelectionBase]
 public abstract class PhysicalControlSurface : MonoBehaviour
 {
     [Header("Core PCS events")]
     [SerializeField] public UnityEvent onValueChanged;
     [SerializeField] public UnityEvent onGrabbed;
     [SerializeField] public UnityEvent onReleased;
-    
+    [SerializeField] public UnityEvent onBlocked;
+    [SerializeField] public UnityEvent onUnblocked;
+
     private FirstPersonCamera firstPersonCamera;
     public bool grabbed => firstPersonCamera != null;
     
@@ -51,11 +54,13 @@ public abstract class PhysicalControlSurface : MonoBehaviour
     public virtual void Block()
     {
         blocked = true;
+        onBlocked.Invoke();
     }
 
     public virtual void Unblock()
     {
         blocked = false;
+        onUnblocked.Invoke();
     }
 
     [Button("Toggle block")]
@@ -68,5 +73,15 @@ public abstract class PhysicalControlSurface : MonoBehaviour
         {
             Block();
         }
+    }
+
+    public void OnStopFunctioning()
+    {
+        Block();
+    }
+
+    public void OnResumeFunctioning()
+    {
+        Unblock();
     }
 }

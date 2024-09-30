@@ -11,12 +11,15 @@ public class FirstPersonCamera : MonoBehaviour
     [SerializeField] private Vector2 sensitivity;
     [SerializeField] private LayerMask mask;
     [SerializeField] private Reticle reticle;
+    [SerializeField] private float defaultFOV, zoomFOV;
 
     private SubmarineControls controls;
     private Vector2 input;
     private Camera attachedCamera;
     private PhysicalControlSurface pcs;
     private Vector3 point;
+    private float topAngle;
+    private float downAngle;
 
     private void Awake()
     {
@@ -27,6 +30,9 @@ public class FirstPersonCamera : MonoBehaviour
 
         controls.InGame.Grab.performed += HandleGrabInput;
         controls.InGame.Grab.canceled += HandleGrabInput;
+
+        controls.InGame.Zoom.performed += HandleZoomInput;
+        controls.InGame.Zoom.canceled += HandleZoomInput;
 
         controls.Enable();
 
@@ -53,6 +59,18 @@ public class FirstPersonCamera : MonoBehaviour
         {
             pcs.Release();
             pcs = null;
+        }
+    }
+
+    private void HandleZoomInput(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            attachedCamera.DOFieldOfView(zoomFOV, 0.1f);
+        }
+        else
+        {
+            attachedCamera.DOFieldOfView(defaultFOV, 0.1f);
         }
     }
 

@@ -43,15 +43,21 @@ public class Lightbulb : MonoBehaviour
     {
         renderer.material.DOKill();
         renderer.material.DOFloat(1f, COLOR_KEYWORD, 0.1f);
-        light.DOKill();
-        light.DOIntensity(intensity, 0.1f);
+        if (light)
+        {
+            light.DOKill();
+            light.DOIntensity(intensity, 0.1f);
+        }
     }
 
     public void Off()
     {
         renderer.material.DOKill();
         renderer.material.DOFloat(0f, COLOR_KEYWORD, 0.5f).SetEase(Ease.OutCubic);
-        light.DOKill();
-        light.DOIntensity(0f, 0.1f);
+        if (light)
+        {
+            light.DOKill();
+            light.DOIntensity(0f, 0.1f);
+        }
     }
 }
