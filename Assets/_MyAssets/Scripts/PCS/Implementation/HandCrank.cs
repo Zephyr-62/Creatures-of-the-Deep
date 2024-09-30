@@ -68,20 +68,6 @@ public class HandCrank : PhysicalControlSurface
             point = ray.GetPoint(e);
             dir = point - rotatePoint.position;
 
-            //plane = new Plane(FirstPersonCamera.transform.position - handle.position, handle.position);
-            //ray = FirstPersonCamera.GetRay();
-
-            //if (plane.Raycast(ray, out e))
-            //{
-            //    var distance = Vector3.Distance(handle.position, ray.GetPoint(e));
-
-            //    if (distance > range)
-            //    {
-            //        FirstPersonCamera.ForceRelease();
-            //        return;
-            //    }
-            //}
-
             AdjustToAngle(Vector3.SignedAngle(Vector3.forward, transform.InverseTransformDirection(dir), Vector3.up));
 
             value = Mathf.Lerp(min, max, Mathf.InverseLerp(minAngle, maxAngle, clampedAngle));

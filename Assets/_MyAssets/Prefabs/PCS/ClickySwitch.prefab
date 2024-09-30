@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 08387e9a384036144a92e1f65c5c850d, type: 2}
+  - {fileID: 2100000, guid: 422275cceddf9524aaf75447a71b98ff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -202,7 +202,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8816e1b60f63f0b4ea2a61a6cb56f0ed, type: 2}
+  - {fileID: 2100000, guid: 1d65010542f920f4aad3ca5df4fc6999, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -279,6 +279,12 @@ MonoBehaviour:
   onReleased:
     m_PersistentCalls:
       m_Calls: []
+  onBlocked:
+    m_PersistentCalls:
+      m_Calls: []
+  onUnblocked:
+    m_PersistentCalls:
+      m_Calls: []
   _value: 0
   rotatePoint: {fileID: 6796334720923647104}
   minAngle: -21
@@ -286,3 +292,10 @@ MonoBehaviour:
   range: 0.2
   animationDuration: 0.1
   animationEase: 1
+  switchAngle: 0
+  onSwitchedOn:
+    m_PersistentCalls:
+      m_Calls: []
+  onSwitchedOff:
+    m_PersistentCalls:
+      m_Calls: []
