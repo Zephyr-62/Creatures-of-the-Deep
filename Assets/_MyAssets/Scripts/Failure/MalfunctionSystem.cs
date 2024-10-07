@@ -12,9 +12,17 @@ public class MalfunctionSystem : MonoBehaviour
     [SerializeField] private List<Malfunction> malfunctions;
 
     [SerializeField] private SubmarineControlSwitchboard submarineControlSwitchboard;
+    [SerializeField] private SubmarineUtilitySwitchboard submarineUtilitySwitchboard;
+
+    public SubmarineControlSwitchboard controls => submarineControlSwitchboard;
+    public SubmarineUtilitySwitchboard utilities => submarineUtilitySwitchboard;
 
     private Dictionary<SymptomMask, Symptom> symptoms;
     private List<Malfunction> currentMalfunctions;
+
+    [Header("Malfunctions")]
+    [SerializeField] private EngineFailure engineFailure;
+    [SerializeField] private HydrolicFailure hydrolicFailure;
 
     private void Awake()
     {
@@ -29,23 +37,29 @@ public class MalfunctionSystem : MonoBehaviour
         };
     }
 
-    public void Collision(Collision collision)
-    {
-
-    }
-
     private void Start()
     {
         StartCoroutine(ErrorCodeLoop());
     }
 
+    private void Update()
+    {
+        foreach (var malfunction in currentMalfunctions)
+        {
+            if (malfunction.IsFixed(this))
+            {
+                RemoveSymptoms(malfunction);
+                currentMalfunctions.Remove(malfunction);
+                malfunction.Exit(this);
+            }
+        }
+    }
+
     private void Failure(Malfunction malfunction)
     {
-        if (!malfunction) return;
-        if (currentMalfunctions.Contains(malfunction)) return;
-
+        if (malfunction == null) return;
         currentMalfunctions.Add(malfunction);
-
+        malfunction.Enter(this);
         ApplySymptoms(malfunction);
     }
 
@@ -55,7 +69,7 @@ public class MalfunctionSystem : MonoBehaviour
         {
             if((malfunction.Symptoms & symptom.Key) == symptom.Key)
             {
-                symptom.Value.Do(submarineControlSwitchboard);
+                symptom.Value.Do(this);
             }
         }
     }
@@ -66,7 +80,7 @@ public class MalfunctionSystem : MonoBehaviour
         {
             if ((malfunction.Symptoms & symptom.Key) == symptom.Key)
             {
-                symptom.Value.Undo(submarineControlSwitchboard);
+                symptom.Value.Undo(this);
             }
         }
     }
@@ -92,6 +106,6 @@ public class MalfunctionSystem : MonoBehaviour
     [Button("Test")]
     public void Test()
     {
-        Failure(malfunctions[0]);
+        Failure(engineFailure);
     }
 }

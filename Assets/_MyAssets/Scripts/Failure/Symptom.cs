@@ -7,7 +7,7 @@ public abstract class Symptom
 {
     private int count;
 
-    public void Do(SubmarineControlSwitchboard system)
+    public void Do(MalfunctionSystem system)
     {
         count++;
         if(count == 1)
@@ -16,7 +16,7 @@ public abstract class Symptom
         }
     }
 
-    public void Undo(SubmarineControlSwitchboard system)
+    public void Undo(MalfunctionSystem system)
     {
         count--;
         count = Mathf.Max(count, 0);
@@ -26,8 +26,8 @@ public abstract class Symptom
         }
     }
 
-    protected abstract void Fail(SubmarineControlSwitchboard system);
-    protected abstract void Cure(SubmarineControlSwitchboard system);
+    protected abstract void Fail(MalfunctionSystem system);
+    protected abstract void Cure(MalfunctionSystem system);
 
     [Flags]
     public enum SymptomMask

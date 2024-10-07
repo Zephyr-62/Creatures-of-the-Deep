@@ -4,11 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Symptom;
 
-[CreateAssetMenu]
-public class Malfunction : ScriptableObject
+public abstract class Malfunction
 {
-    [SerializeField] private ErrorMask errorCode;
-    [SerializeField] private SymptomMask symptoms;
+    [SerializeField] protected ErrorMask errorCode;
+    [SerializeField] protected SymptomMask symptoms;
 
     public ErrorMask ErrorCode => errorCode;
     public SymptomMask Symptoms => symptoms;
@@ -33,5 +32,17 @@ public class Malfunction : ScriptableObject
         D2 = 8192,
         D3 = 16384,
         D4 = 32768,
+    }
+
+    public abstract void Enter(MalfunctionSystem system);
+    public abstract void Exit(MalfunctionSystem system);
+    public abstract bool IsFixed(MalfunctionSystem system);
+
+    private bool enabled;
+    public bool Enabled => enabled;
+
+    public void Enable(bool enabled)
+    {
+        this.enabled = enabled;
     }
 }

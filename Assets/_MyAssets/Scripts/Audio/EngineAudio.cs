@@ -15,7 +15,7 @@ public class EngineAudio : MonoBehaviour
     void Start()
     {
         instance = FMODUnity.RuntimeManager.CreateInstance(baseEngine);
-        FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, transform, physicsSystem.GetComponent<Rigidbody>());
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, transform);
     }
 
     private void OnEnable()

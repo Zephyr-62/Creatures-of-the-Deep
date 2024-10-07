@@ -32,6 +32,7 @@ public class RaycastingSubmarine : MonoBehaviour
 
     void Start()
     {
+        
     }
 
 
@@ -78,9 +79,6 @@ public class RaycastingSubmarine : MonoBehaviour
 
         blitMat.SetVector("_Point", _hitpoint);
         blitMat.SetVector("_PointB", _linePoint);
-        blitMat.SetVector("_PositionalDelta", new Vector2());
-        blitMat.SetFloat("_AngularDelta", Quaternion.Angle(transform.rotation, lastRotation));
-
 
         RenderTexture tempRend = RenderTexture.GetTemporary(sonar1.width, sonar1.height, 0, sonar1.format);
         Graphics.Blit(sonar1, tempRend, blitMat, 0);
@@ -89,6 +87,7 @@ public class RaycastingSubmarine : MonoBehaviour
 
 
         (sonar1, sonar2) = (sonar2, sonar1);
+        
         renderer.material.SetTexture("_BaseMap", sonar1);
         //}
 

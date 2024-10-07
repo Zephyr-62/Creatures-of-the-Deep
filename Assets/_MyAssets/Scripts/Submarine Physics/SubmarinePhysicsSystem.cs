@@ -74,7 +74,7 @@ public class SubmarinePhysicsSystem : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        //StartEngine();
+        StartEngine();
     }
 
     void FixedUpdate()
