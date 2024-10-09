@@ -18,8 +18,7 @@ public class FirstPersonCamera : MonoBehaviour
     private Camera attachedCamera;
     private PhysicalControlSurface pcs;
     private Vector3 point;
-    private float topAngle;
-    private float downAngle;
+    private Vector2 rotation;
 
     private void Awake()
     {
@@ -93,17 +92,22 @@ public class FirstPersonCamera : MonoBehaviour
             {
                 reticle.Set(Reticle.Mode.Grabbed);
                 input = transform.InverseTransformDirection(pcs.UpdateSurface(transform.TransformDirection(input)));
-            } else
+            } else if(reticle)
             {
                 reticle.Set(Reticle.Mode.Hover);
             }
-        } else
+        } else if (reticle)
         {
             reticle.Set(Reticle.Mode.Normal);
         }
 
-        transform.Rotate(new Vector3(0, input.x * sensitivity.x, 0) * Time.deltaTime, Space.World);
-        transform.Rotate(new Vector3(-input.y * sensitivity.y, 0, 0) * Time.deltaTime, Space.Self);
+        rotation.x += input.x * sensitivity.x * Time.deltaTime;
+        rotation.y += input.y * sensitivity.y * Time.deltaTime;
+        rotation.y = Mathf.Clamp(rotation.y, -80, 80);
+        var xQuat = Quaternion.AngleAxis(rotation.x, Vector3.up);
+        var yQuat = Quaternion.AngleAxis(rotation.y, Vector3.left);
+
+        transform.localRotation = xQuat * yQuat;
     }
 
     public bool CheckForPCS()

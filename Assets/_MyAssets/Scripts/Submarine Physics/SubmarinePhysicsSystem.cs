@@ -2,7 +2,6 @@ using AdvancedEditorTools.Attributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -75,7 +74,7 @@ public class SubmarinePhysicsSystem : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        //StartEngine();
+        StartEngine();
     }
 
     void FixedUpdate()
