@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SubmarineScreen : MonoBehaviour
+public class SubmarineScreen : ElectricalDevice
 {
     [SerializeField] private GameObject screen;
     [SerializeField] private ClickySwitch clickySwitch;
@@ -89,5 +89,20 @@ public class SubmarineScreen : MonoBehaviour
     private void RemoveScreenCameraView()
     {
         _screenRenderer.material.mainTexture = null;
+    }
+
+    protected override void OnPowerOn()
+    {
+        
+    }
+
+    protected override void OnPowerOff()
+    {
+        
+    }
+
+    protected override void OnSurge(float intensity)
+    {
+        _screenRenderer.material.SetFloat("_Interference", intensity);
     }
 }

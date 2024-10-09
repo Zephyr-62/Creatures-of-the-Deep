@@ -32,7 +32,7 @@ public class EngineAudio : MonoBehaviour
 
     private void Update()
     {
-        instance.setParameterByName(parameter, Mathf.Abs(physicsSystem.ThrustInput));
+        instance.setParameterByName(parameter, Mathf.Abs(physicsSystem.thrust));
     }
 
     private void StartEngine()

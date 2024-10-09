@@ -1,14 +1,21 @@
 using AdvancedEditorTools.Attributes;
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using static Malfunction;
 
 public class Lightbulb : MonoBehaviour
 {
+    private static List<Lightbulb> all = new List<Lightbulb>();
+
     [SerializeField] private Renderer renderer;
     [SerializeField] private Light light;
     [SerializeField] private float intensity;
+    [SerializeField] private TMP_Text label;
+    [SerializeField] private ErrorMask errorMask;
 
     private string COLOR_KEYWORD = "_Intensity";
     private bool state;
@@ -59,5 +66,39 @@ public class Lightbulb : MonoBehaviour
             light.DOKill();
             light.DOIntensity(0f, 0.1f);
         }
+    }
+
+    public void SetLabel(string label)
+    {
+        if (!this.label) return;
+        this.label.text = label;
+    }
+
+    public void Set(ErrorMask mask)
+    {
+        Set((mask & errorMask) == errorMask);
+    }
+
+    public static void SetAll(ErrorMask mask)
+    {
+        foreach (var light in all)
+        {
+            light.Set(mask);
+        }
+    }
+
+    private void OnEnable()
+    {
+        all.Add(this);
+    }
+
+    private void OnDisable()
+    {
+        all.Remove(this);
+    }
+
+    private void OnValidate()
+    {
+        SetLabel(Enum.GetName(typeof(ErrorMask), errorMask));
     }
 }

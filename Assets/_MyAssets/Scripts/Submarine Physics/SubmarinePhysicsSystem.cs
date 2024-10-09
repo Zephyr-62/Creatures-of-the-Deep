@@ -8,16 +8,18 @@ using UnityEngine.Events;
 public class SubmarinePhysicsSystem : MonoBehaviour
 {
     [BeginColumnArea(areaStyle = LayoutStyle.BoxRound)]
-    [Range(-1f, 1f)]
-    public float ThrustInput = 0;
-    [Range(-1f, 1f)]
-    public float SteerInput = 0;
-    [Range(-1f, 1f)]
-    public float PitchInput = 0;
-    [Tooltip("Positive => Submarine floats")]
-    public float BuoyancyInput = 0;
-    [EndColumnArea]
 
+    [SerializeField] private PhysicalControlSurface throttleControl;
+    [SerializeField] private PhysicalControlSurface steeringControl;
+    [SerializeField] private PhysicalControlSurface pitchControl;
+    [SerializeField] private PhysicalControlSurface elevationControl;
+
+    public float thrust => Mathf.Clamp(throttleControl.GetFloatValue(), -limit, limit);
+    public float steering => Mathf.Clamp(steeringControl.GetFloatValue(), -limit, limit);
+    public float pitch => Mathf.Clamp(pitchControl.GetFloatValue(), -limit, limit);
+    public float elevation => Mathf.Clamp(elevationControl.GetFloatValue(), -limit, limit);
+    
+    [EndColumnArea]
     [SerializeField] private float BuoyancyStrength = 75;
 
     [BeginColumnArea(.5f, columnStyle = LayoutStyle.Bevel)]
@@ -69,12 +71,13 @@ public class SubmarinePhysicsSystem : MonoBehaviour
     private float pitchIntegrarErrAcc = 0.0f;
 
     private Rigidbody rb;
-    private bool engineEnabled = false;
+    private bool engineEnabled;
+    private float limit = 1f;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        StartEngine();
+        TurnOn();
     }
 
     void FixedUpdate()
@@ -84,18 +87,21 @@ public class SubmarinePhysicsSystem : MonoBehaviour
         if (engineEnabled)
         {
             // Thrust
-            if ((ThrustInput >= thrustDeadzone || ThrustInput <= -thrustDeadzone) &&
+            if ((thrust >= thrustDeadzone || thrust <= -thrustDeadzone) &&
                 rb.velocity.magnitude < maxThrustSpeed)
-                rb.AddForce(thrustAccelerationForce * ThrustInput * this.gameObject.transform.forward, ForceMode.Force);
+                rb.AddForce(thrustAccelerationForce * thrust * this.gameObject.transform.forward, ForceMode.Force);
             // TODO: OnStartEngine, OnEngineSpeedNotch  ?? Does this belong to the PCL or the PS
 
             // Yaw - Steering
-            if (SteerInput >= steeringDeadzone || SteerInput <= -steeringDeadzone)
-                rb.AddTorque(steeringAccelerationForce * SteerInput * Vector3.up, ForceMode.Acceleration);
+            if (steering >= steeringDeadzone || steering <= -steeringDeadzone)
+                rb.AddTorque(steeringAccelerationForce * steering * Vector3.up, ForceMode.Acceleration);
 
             // Pitch
-            prevPitchInput = Mathf.Lerp(prevPitchInput, PitchInput, Time.deltaTime / pitchInputDelay);
+            prevPitchInput = Mathf.Lerp(prevPitchInput, pitch, Time.deltaTime / pitchInputDelay);
             TargetPitch = -prevPitchInput * MaxPitch;
+
+            if (elevation != 0)
+                rb.AddForce(BuoyancyStrength * elevation * Vector3.up, ForceMode.Force);
         }
         
         PitchStabilization();
@@ -104,8 +110,7 @@ public class SubmarinePhysicsSystem : MonoBehaviour
         RollStabilization();
 
         // Buoyancy
-        if (BuoyancyInput != 0)
-            rb.AddForce(BuoyancyStrength * BuoyancyInput * Vector3.up, ForceMode.Force);
+        
     }
 
     private void PitchStabilization()
@@ -142,15 +147,20 @@ public class SubmarinePhysicsSystem : MonoBehaviour
         rb.AddTorque(transform.forward * rollPIDOut, ForceMode.Acceleration);
     }
 
-    public void StopEngine()
+    public void TurnOff()
     {
         engineEnabled = false;
         onStopEngine.Invoke();
     }
 
-    public void StartEngine()
+    public void TurnOn()
     {
         engineEnabled = true;
         onStartEngine.Invoke();
+    }
+
+    public void SetMaxPower(float max)
+    {
+        limit = Mathf.Clamp01(max);
     }
 }

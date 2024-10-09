@@ -35,7 +35,6 @@ public class LeverClick : MonoBehaviour
 
         if (current != last)
         {
-            Debug.Log(current);
             instance.start();
             last = current;
         }

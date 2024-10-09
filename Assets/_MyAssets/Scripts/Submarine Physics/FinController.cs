@@ -10,6 +10,6 @@ public class FinController : MonoBehaviour
 
     private void Update()
     {
-        fin.localRotation = Quaternion.Euler(0f, Mathf.Lerp(min, max, physicsSystem.SteerInput), 0f);
+        fin.localRotation = Quaternion.Euler(0f, Mathf.Lerp(min, max, physicsSystem.steering), 0f);
     }
 }

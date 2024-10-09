@@ -7,5 +7,9 @@ public class SubmarineUtilitySwitchboard : MonoBehaviour
     [Header("Engine")]
     public PhysicalControlSurface power;
     public PhysicalControlSurface ignition;
-    public PhysicalControlSurface starter;
+    public Pulley starter;
+
+    [Header("Hydraulics")]
+    public PhysicalControlSurface compressorReset;
+    public PhysicalControlSurface powerReset;
 }

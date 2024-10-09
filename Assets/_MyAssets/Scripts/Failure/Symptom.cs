@@ -33,11 +33,11 @@ public abstract class Symptom
     public enum SymptomMask
     {
         None = 0,
-        LockThrottle = 1,
-        LockSteering = 2,
-        LockPitch = 4,
-        LockElevation = 8,
-        EngineCutOff = 16,
-        PowerFailure = 32,
+        Shake = 1,
+        B = 2,
+        C = 4,
+        D = 8,
+        E = 16,
+        F = 32,
     }
 }

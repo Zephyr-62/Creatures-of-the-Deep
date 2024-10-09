@@ -1,40 +1,38 @@
 using AdvancedEditorTools.Attributes;
-using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static Symptom;
 
 public class MalfunctionSystem : MonoBehaviour
 {
-    [SerializeField] private LightBoard lightBoard;
-
-    [SerializeField] private List<Malfunction> malfunctions;
-
-    [SerializeField] private SubmarineControlSwitchboard submarineControlSwitchboard;
-    [SerializeField] private SubmarineUtilitySwitchboard submarineUtilitySwitchboard;
-
-    public SubmarineControlSwitchboard controls => submarineControlSwitchboard;
-    public SubmarineUtilitySwitchboard utilities => submarineUtilitySwitchboard;
-
-    private Dictionary<SymptomMask, Symptom> symptoms;
-    private List<Malfunction> currentMalfunctions;
+    [SerializeField] private SubmarineUtilitySwitchboard _utilities;
+    [SerializeField] private SubmarinePhysicsSystem _engine;
 
     [Header("Malfunctions")]
     [SerializeField] private EngineFailure engineFailure;
-    [SerializeField] private HydrolicFailure hydrolicFailure;
+    [SerializeField] private MissfireFailure missfireFailure;
+    [SerializeField] private HydraulicFailure throttleHydraulicFailure;
+    [SerializeField] private HydraulicFailure steeringHydraulicFailure;
+    [SerializeField] private HydraulicFailure pitchHydraulicFailure;
+    [SerializeField] private HydraulicFailure elevationHydraulicFailure;
+    [SerializeField] private LocalVoltageSurge sonarVoltageSurge;
+    [SerializeField] private LocalVoltageSurge screenVoltageSurge;
+    [SerializeField] private LocalVoltageSurge lightsVoltageSurge;
+
+    public SubmarineUtilitySwitchboard utilities => _utilities;
+    public SubmarinePhysicsSystem engine => _engine;
+
+    private List<Malfunction> currentMalfunctions;
 
     private void Awake()
     {
         currentMalfunctions = new List<Malfunction>();
-        symptoms = new Dictionary<SymptomMask, Symptom>
-        {
-            { SymptomMask.EngineCutOff,     new EngineCutOff()  },
-            { SymptomMask.LockThrottle,     new LockThrottle()  },
-            { SymptomMask.LockSteering,     new LockSteering()  },
-            { SymptomMask.LockPitch,        new LockPitch()     },
-            { SymptomMask.LockElevation,    new LockElevation() }
-        };
+        engineFailure.AttachSystem(this);
+        throttleHydraulicFailure.AttachSystem(this);
+        steeringHydraulicFailure.AttachSystem(this);
+        pitchHydraulicFailure.AttachSystem(this);
+        elevationHydraulicFailure.AttachSystem(this);
+        sonarVoltageSurge.AttachSystem(this);
     }
 
     private void Start()
@@ -46,43 +44,45 @@ public class MalfunctionSystem : MonoBehaviour
     {
         foreach (var malfunction in currentMalfunctions)
         {
-            if (malfunction.IsFixed(this))
+            malfunction.Update();
+            if (malfunction.IsFixed())
             {
                 RemoveSymptoms(malfunction);
                 currentMalfunctions.Remove(malfunction);
-                malfunction.Exit(this);
+                malfunction.Exit();
             }
         }
     }
 
-    private void Failure(Malfunction malfunction)
+    public void Failure(Malfunction malfunction)
     {
         if (malfunction == null) return;
+        malfunction.AttachSystem(this);
         currentMalfunctions.Add(malfunction);
-        malfunction.Enter(this);
+        malfunction.Enter();
         ApplySymptoms(malfunction);
     }
 
     private void ApplySymptoms(Malfunction malfunction)
     {
-        foreach (var symptom in symptoms)
-        {
-            if((malfunction.Symptoms & symptom.Key) == symptom.Key)
-            {
-                symptom.Value.Do(this);
-            }
-        }
+        //foreach (var symptom in symptoms)
+        //{
+        //    if((malfunction.Symptoms & symptom.Key) == symptom.Key)
+        //    {
+        //        symptom.Value.Do(this);
+        //    }
+        //}
     }
 
     private void RemoveSymptoms(Malfunction malfunction)
     {
-        foreach (var symptom in symptoms)
-        {
-            if ((malfunction.Symptoms & symptom.Key) == symptom.Key)
-            {
-                symptom.Value.Undo(this);
-            }
-        }
+        //foreach (var symptom in symptoms)
+        //{
+        //    if ((malfunction.Symptoms & symptom.Key) == symptom.Key)
+        //    {
+        //        symptom.Value.Undo(this);
+        //    }
+        //}
     }
 
     IEnumerator ErrorCodeLoop()
@@ -91,14 +91,15 @@ public class MalfunctionSystem : MonoBehaviour
         {
             yield return new WaitUntil(() => currentMalfunctions.Count > 0);
 
-            lightBoard.SetLights(currentMalfunctions[0].ErrorCode);
+            Lightbulb.SetAll(currentMalfunctions[0].ErrorCode);
+
             currentMalfunctions.Add(currentMalfunctions[0]);
             currentMalfunctions.RemoveAt(0);
 
             yield return new WaitForSeconds(2f);
-            
-            lightBoard.SetLights(Malfunction.ErrorMask.None);
-            
+
+            Lightbulb.SetAll(Malfunction.ErrorMask.None);
+
             yield return new WaitForSeconds(1f);
         }
     }
@@ -106,6 +107,6 @@ public class MalfunctionSystem : MonoBehaviour
     [Button("Test")]
     public void Test()
     {
-        Failure(engineFailure);
+        Failure(screenVoltageSurge);
     }
 }
