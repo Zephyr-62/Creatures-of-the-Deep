@@ -28,12 +28,12 @@ public class ArtefactPickupSensor : MonoBehaviour
 
     private void OnEnable()
     {
-        pickupButton.onGrabbed.AddListener(PickUpArtefact);
+        pickupButton.onValueChanged.AddListener(PickUpArtefact);
     }
 
     private void OnDisable()
     {
-        pickupButton.onGrabbed.RemoveListener(PickUpArtefact);
+        pickupButton.onValueChanged.RemoveListener(PickUpArtefact);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -56,16 +56,17 @@ public class ArtefactPickupSensor : MonoBehaviour
 
     public void PickUpArtefact()
     {
+        if (!pickupButton.GetBoolValue()) return;
         if (_artefacts.Count == 0) return;
         
         Artefact artefact = _artefacts[0];
         _artefacts.Clear();
         pickupButton.Block();
+        
+        artefact.pickedUp.Invoke();
 
-        ScriptableArtefact artefactInfo = artefact.GetInfo();
-
-        print(artefactInfo.artName);
-        print(artefactInfo.artDescription);
+        print(artefact.artName);
+        print(artefact.artDescription);
 
         Destroy(artefact.gameObject);
     }

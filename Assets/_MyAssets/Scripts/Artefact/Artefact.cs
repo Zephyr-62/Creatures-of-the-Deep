@@ -1,11 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class Artefact : MonoBehaviour
 {
-    [SerializeField] private ScriptableArtefact artefactInfo;
-
-    public ScriptableArtefact GetInfo()
-    {
-        return artefactInfo;
-    }
+    public string artName;
+    [TextArea] public string artDescription;
+    
+    [SerializeField] public UnityEvent pickedUp;
 }
