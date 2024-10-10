@@ -46,15 +46,19 @@ public abstract class ElectricalDevice : MonoBehaviour
     public static void SurgeAll(float intensity)
     {
         globalSurge = intensity;
+        foreach (var device in all)
+        {
+            device.OnSurge();
+        }
     }
 
     public void SetSurge(float intensity)
     {
         localSurge = intensity;
-        OnSurge(localSurge);
+        OnSurge();
     }
 
     protected abstract void OnPowerOn();
     protected abstract void OnPowerOff();
-    protected abstract void OnSurge(float intensity);
+    protected abstract void OnSurge();
 }

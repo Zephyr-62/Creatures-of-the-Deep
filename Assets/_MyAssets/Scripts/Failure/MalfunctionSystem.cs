@@ -33,6 +33,9 @@ public class MalfunctionSystem : MonoBehaviour
         RegisterMalfunction(pitchHydraulicFailure);
         RegisterMalfunction(elevationHydraulicFailure);
         RegisterMalfunction(sonarVoltageSurge);
+        RegisterMalfunction(screenVoltageSurge);
+        RegisterMalfunction(lightsVoltageSurge);
+
     }
 
     private void Start()
@@ -45,8 +48,7 @@ public class MalfunctionSystem : MonoBehaviour
         foreach (var malfunction in allMalfunctions)
         {
             malfunction.Update();
-            Debug.Log(malfunction.enabled);
-            if (malfunction.enabled && malfunction.IsFixed())
+            if (malfunction.Enabled && malfunction.IsFixed())
             {
                 malfunction.Exit();
             }
@@ -71,20 +73,25 @@ public class MalfunctionSystem : MonoBehaviour
         {
             for (var i = 0; i < allMalfunctions.Count; i++)
             {
-                index = (index + 1) % allMalfunctions.Count - 1;
+                index++;
+                if(index >= allMalfunctions.Count)
+                {
+                    index = 0;
+                }
                 if (allMalfunctions[index].Enabled)
                 {
+                    Debug.Log("Enabled!");
                     break;
                 }
             }
 
             if (allMalfunctions[index].Enabled)
             {
-                Lightbulb.SetAll(allMalfunctions[index].ErrorCode);
+                ErrorBulb.SetAll(allMalfunctions[index].ErrorCode);
 
                 yield return new WaitForSeconds(2f);
 
-                Lightbulb.SetAll(Malfunction.ErrorMask.None);
+                ErrorBulb.SetAll(Malfunction.ErrorMask.None);
 
                 yield return new WaitForSeconds(.5f);
             } else

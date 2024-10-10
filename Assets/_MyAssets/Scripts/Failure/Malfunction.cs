@@ -47,7 +47,7 @@ public abstract class Malfunction
         return false;
     }
 
-    public bool enabled;
+    private bool enabled;
     public bool Enabled => enabled;
 
     public void AttachSystem(MalfunctionSystem system)

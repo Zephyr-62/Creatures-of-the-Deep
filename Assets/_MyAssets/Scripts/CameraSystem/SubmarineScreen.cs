@@ -101,8 +101,8 @@ public class SubmarineScreen : ElectricalDevice
         
     }
 
-    protected override void OnSurge(float intensity)
+    protected override void OnSurge()
     {
-        _screenRenderer.material.SetFloat("_Interference", intensity);
+        _screenRenderer.material.SetFloat("_Interference", surge);
     }
 }

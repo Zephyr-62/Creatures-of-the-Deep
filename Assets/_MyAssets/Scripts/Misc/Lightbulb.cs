@@ -1,104 +1,88 @@
 using AdvancedEditorTools.Attributes;
 using DG.Tweening;
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using static Malfunction;
 
-public class Lightbulb : MonoBehaviour
+public class Lightbulb : ElectricalDevice
 {
-    private static List<Lightbulb> all = new List<Lightbulb>();
-
     [SerializeField] private Renderer renderer;
     [SerializeField] private Light light;
-    [SerializeField] private float intensity;
-    [SerializeField] private TMP_Text label;
-    [SerializeField] private ErrorMask errorMask;
-
+    
     private string COLOR_KEYWORD = "_Intensity";
+    private string SURGE_KEYWORD = "_Interference";
+
     private bool state;
+    private float intensity;
+    private float initialIntensity;
+    private Tween tween;
+
+    private void Start()
+    {
+        initialIntensity = light.intensity;
+        intensity = initialIntensity;
+    }
 
     [Button("Toggle On/Off")]
     public void Toggle()
     {
-        if(state)
+        if (state)
         {
-            Off();
-        } else
+            OnPowerOff();
+        }
+        else
         {
-            On();
+            OnPowerOn();
         }
         state = !state;
     }
 
-    public void Set(bool state)
+    public void TurnOn()
     {
-        if (state)
-        {
-            On();
-        }
-        else
-        {
-            Off();
-        }
-        this.state = state;
+        this.state = true;
+        OnPowerOn();
     }
 
-    public void On()
+    public void TurnOff()
+    {
+        this.state = false;
+        OnPowerOff();
+    }
+
+    protected override void OnPowerOn()
     {
         renderer.material.DOKill();
         renderer.material.DOFloat(1f, COLOR_KEYWORD, 0.1f);
         if (light)
         {
-            light.DOKill();
-            light.DOIntensity(intensity, 0.1f);
+            if (tween != null) tween.Kill();
+            tween = DOTween.To(() => intensity, x => intensity = x, initialIntensity, 0.1f);
+            //light.DOKill();
+            //light.DOIntensity(intensity, 0.1f);
         }
     }
 
-    public void Off()
+    protected override void OnPowerOff()
     {
         renderer.material.DOKill();
         renderer.material.DOFloat(0f, COLOR_KEYWORD, 0.5f).SetEase(Ease.OutCubic);
         if (light)
         {
-            light.DOKill();
-            light.DOIntensity(0f, 0.1f);
+
+            if (tween != null) tween.Kill();
+            tween = DOTween.To(() => intensity, x => intensity = x, 0f, 0.1f);
+            //light.DOKill();
+            //light.DOIntensity(0f, 0.1f);
         }
     }
 
-    public void SetLabel(string label)
+    private void Update()
     {
-        if (!this.label) return;
-        this.label.text = label;
+        light.intensity = intensity * Mathf.Clamp01(1 - Mathf.PerlinNoise1D(Time.time) * surge);
     }
 
-    public void Set(ErrorMask mask)
+    protected override void OnSurge()
     {
-        Set((mask & errorMask) == errorMask);
-    }
-
-    public static void SetAll(ErrorMask mask)
-    {
-        foreach (var light in all)
-        {
-            light.Set(mask);
-        }
-    }
-
-    private void OnEnable()
-    {
-        all.Add(this);
-    }
-
-    private void OnDisable()
-    {
-        all.Remove(this);
-    }
-
-    private void OnValidate()
-    {
-        SetLabel(Enum.GetName(typeof(ErrorMask), errorMask));
+        renderer.material.SetFloat(SURGE_KEYWORD, surge);
     }
 }

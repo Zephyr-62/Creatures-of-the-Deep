@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [Serializable]
@@ -9,8 +8,8 @@ public class LocalVoltageSurge : Malfunction
 {
     static int count = 0;
     public Lever dial;
-    public ElectricalDevice device;
-    public float tolerance = 0.1f;
+    public List<ElectricalDevice> devices;
+    public float tolerance = 0.2f;
     float target;
 
     public override void Enter()
@@ -23,20 +22,23 @@ public class LocalVoltageSurge : Malfunction
     public override void Exit()
     {
         base.Exit();
-        device.SetSurge(0);
         count--;
     }
 
     public override bool IsFixed()
     {
-        Debug.Log("Check if fixed");
         return Mathf.Abs(dial.GetFloatValue() - target) < tolerance;
     }
 
     public override void Update()
     {
         base.Update();
-        Debug.Log(typeof(This));
-        if(device && dial) device.SetSurge(Mathf.Abs(dial.GetFloatValue() - target));
+        if (dial)
+        {
+            foreach (var device in devices)
+            {
+                device.SetSurge(Mathf.Clamp01(Mathf.Abs(dial.GetFloatValue() - target) - tolerance));
+            }
+        }
     }
 }
