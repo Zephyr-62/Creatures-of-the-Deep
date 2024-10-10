@@ -13,4 +13,6 @@ public abstract class Quest : ScriptableObject
     public abstract void StartQuest(QuestSystem qs);
 
     public abstract bool IsCompleted(QuestSystem qs);
+
+    public abstract Vector3 Debug();
 }

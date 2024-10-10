@@ -6,17 +6,11 @@ public class ArtefactSystem : MonoBehaviour
 {
     [SerializeField] private Button pickupButton;
 
-    private BoxCollider _sensorCollider;
     private readonly List<int> _collectedArtefactIDs = new();
 
     public Artefact CurrentTargetArtefact { get; private set; }
 
     [SerializeField] public UnityEvent artefactCollected;
-
-    private void OnValidate()
-    {
-        _sensorCollider = GetComponent<BoxCollider>();
-    }
 
     private void Start()
     {
@@ -49,6 +43,14 @@ public class ArtefactSystem : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.TryGetComponent(out Artefact artefact) && artefact == CurrentTargetArtefact)
+        {
+            pickupButton.Unblock();
+        }
+    }
+
     private void CollectArtefact()
     {
         if (!pickupButton.GetBoolValue()) return;
@@ -58,8 +60,9 @@ public class ArtefactSystem : MonoBehaviour
 
         _collectedArtefactIDs.Add(CurrentTargetArtefact.artID);
 
-        print(CurrentTargetArtefact.artName);
-        print(CurrentTargetArtefact.artDescription);
+        Debug.Log("====== Artefact Collected! ======");
+        Debug.Log(CurrentTargetArtefact.artName);
+        Debug.Log(CurrentTargetArtefact.artDescription);
 
         Destroy(CurrentTargetArtefact.gameObject);
     }

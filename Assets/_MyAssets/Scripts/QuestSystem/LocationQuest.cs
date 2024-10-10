@@ -14,4 +14,12 @@ public class LocationQuest : Quest
     {
         return Vector3.Distance(targetCoords, qs.submarineTransform.position) <= range;
     }
+
+    public override Vector3 Debug()
+    {
+        Gizmos.DrawSphere(targetCoords, 1);
+        Gizmos.DrawWireSphere(targetCoords, range);
+
+        return targetCoords;
+    }
 }

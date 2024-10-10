@@ -29,7 +29,7 @@ public class QuestSystem : MonoBehaviour
         if (currentQuest && currentQuest.IsCompleted(this))
         {
             questCompleted.Invoke();
-            Debug.Log("Quest was completed!");
+            Debug.Log("====== Quest was completed! ======");
 
             currentQuest = null;
             newQuestButton.Unblock();
@@ -43,17 +43,34 @@ public class QuestSystem : MonoBehaviour
             currentQuest = quests[0];
             quests.RemoveAt(0);
             newQuestButton.Block();
-            PrintQuestInfo();
-
+            
             currentQuest.StartQuest(this);
-            Debug.Log("Quest was started!");
             questStarted.Invoke();
+            
+            Debug.Log("====== Quest was started! ======");
+            Debug.Log("Quest Name: " + currentQuest.GetQuestName());
+            Debug.Log("Description " + currentQuest.GetDescription());
         }
     }
 
-    private void PrintQuestInfo()
+    private void OnDrawGizmosSelected()
     {
-        print("Quest Name: " + currentQuest.GetQuestName());
-        print("Description " + currentQuest.GetDescription());
+        var previous = transform.position;
+
+        if (currentQuest)
+        {
+            Gizmos.color = Color.green;
+            var temp = currentQuest.Debug();
+            Gizmos.DrawLine(previous, temp);
+            previous = temp;
+        }
+
+        Gizmos.color = Color.cyan;
+        foreach (Quest quest in quests)
+        {
+            var temp = quest.Debug();
+            Gizmos.DrawLine(previous, temp);
+            previous = temp;
+        }
     }
 }
