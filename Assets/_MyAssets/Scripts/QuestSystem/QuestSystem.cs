@@ -1,15 +1,18 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 
-public class QuestManager : MonoBehaviour
+public class QuestSystem : MonoBehaviour
 {
     [SerializeField] private List<Quest> quests = new();
     [SerializeField] private Quest currentQuest;
     [SerializeField] private Button newQuestButton;
+
+    [SerializeField] public Transform submarineTransform;
+    [SerializeField] public ArtefactSystem artefactSystem;
+
+    [SerializeField] public UnityEvent questStarted;
+    [SerializeField] public UnityEvent questCompleted;
 
     private void OnEnable()
     {
@@ -20,33 +23,32 @@ public class QuestManager : MonoBehaviour
     {
         newQuestButton.onValueChanged.RemoveListener(StartNewQuest);
     }
-    
-    private void StartNewQuest()
-    {
-        if (!newQuestButton.GetBoolValue()) return;
-        if (currentQuest == null && quests.Count > 0)
-        {
-            currentQuest = quests[0];
-            quests.RemoveAt(0);
-            
-            currentQuest.questFinished.AddListener(FinishCurrentQuest);
-            // turn button red
-            newQuestButton.Block();
-            PrintQuestInfo();
 
-        }
-        else if (currentQuest != null)
+    private void Update()
+    {
+        if (currentQuest && currentQuest.IsCompleted(this))
         {
-            print("You already have a quest");
-            PrintQuestInfo();
+            questCompleted.Invoke();
+            Debug.Log("Quest was completed!");
+
+            currentQuest = null;
+            newQuestButton.Unblock();
         }
     }
 
-    private void FinishCurrentQuest()
+    private void StartNewQuest()
     {
-        currentQuest = null;
-        // turn button green
-        newQuestButton.Unblock();
+        if (newQuestButton.GetBoolValue() && currentQuest == null && quests.Count > 0)
+        {
+            currentQuest = quests[0];
+            quests.RemoveAt(0);
+            newQuestButton.Block();
+            PrintQuestInfo();
+
+            currentQuest.StartQuest(this);
+            Debug.Log("Quest was started!");
+            questStarted.Invoke();
+        }
     }
 
     private void PrintQuestInfo()
