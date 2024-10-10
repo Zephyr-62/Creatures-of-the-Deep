@@ -9,12 +9,14 @@ public class EngineFailure : Malfunction
 {
     public override void Enter()
     {
+        base.Enter();
         system.engine.TurnOff();
         system.utilities.ignition.SetBoolValue(false);
     }
 
     public override void Exit()
     {
+        base.Exit();
         system.engine.TurnOn();
         system.utilities.ignition.SetBoolValue(false);
     }

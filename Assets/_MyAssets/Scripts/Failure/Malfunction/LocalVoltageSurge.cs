@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [Serializable]
@@ -14,23 +15,28 @@ public class LocalVoltageSurge : Malfunction
 
     public override void Enter()
     {
+        base.Enter();
         count++;
         target = UnityEngine.Random.Range(dial.Min, dial.Max);
     }
 
     public override void Exit()
     {
+        base.Exit();
         device.SetSurge(0);
         count--;
     }
 
     public override bool IsFixed()
     {
+        Debug.Log("Check if fixed");
         return Mathf.Abs(dial.GetFloatValue() - target) < tolerance;
     }
 
     public override void Update()
     {
-        device.SetSurge(Mathf.Abs(dial.GetFloatValue() - target));
+        base.Update();
+        Debug.Log(typeof(This));
+        if(device && dial) device.SetSurge(Mathf.Abs(dial.GetFloatValue() - target));
     }
 }

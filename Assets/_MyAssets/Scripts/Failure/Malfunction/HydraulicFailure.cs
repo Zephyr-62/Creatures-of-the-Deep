@@ -10,11 +10,13 @@ public class HydraulicFailure : Malfunction
     
     public override void Enter()
     {
+        base.Enter();
         affectedControl.Block();
     }
 
     public override void Exit()
     {
+        base.Exit();
         affectedControl.Unblock();
     }
 

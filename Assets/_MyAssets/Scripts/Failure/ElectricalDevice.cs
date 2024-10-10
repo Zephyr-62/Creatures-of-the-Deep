@@ -8,7 +8,7 @@ public abstract class ElectricalDevice : MonoBehaviour
     private static float globalSurge;
     
     private float localSurge;
-    protected float surge => localSurge + globalSurge;
+    public float surge => localSurge + globalSurge;
 
     protected virtual void OnEnable()
     {

@@ -37,23 +37,18 @@ public abstract class Malfunction
         BAR = 65536 // Pressure issue 
     }
 
-    public abstract void Enter();
-    public abstract void Exit();
+    public virtual void Enter() { enabled = true; }
+    public virtual void Exit() { enabled = false; }
     public abstract bool IsFixed();
-    public abstract void Update();
+    public virtual void Update() { }
 
     public virtual bool OnCollision(Collision collision)
     {
         return false;
     }
 
-    private bool enabled;
+    public bool enabled;
     public bool Enabled => enabled;
-
-    public void Enable(bool enabled)
-    {
-        this.enabled = enabled;
-    }
 
     public void AttachSystem(MalfunctionSystem system)
     {
