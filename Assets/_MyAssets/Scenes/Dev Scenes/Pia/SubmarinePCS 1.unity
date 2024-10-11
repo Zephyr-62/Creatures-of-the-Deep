@@ -12766,19 +12766,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseInspectorFoldout: 0
   layoutInfos:
-  - rid: 4015644659869810844
-  - rid: 4015644659869810845
-  - rid: 4015644659869810846
-  - rid: 4015644659869810847
-  - rid: 4015644659869810848
-  - rid: 4015644659869810849
-  - rid: 4015644659869810850
-  - rid: 4015644659869810851
+  - rid: 2722950702857191520
+  - rid: 2722950702857191521
+  - rid: 2722950702857191522
+  - rid: 2722950702857191523
+  - rid: 2722950702857191524
+  - rid: 2722950702857191525
+  - rid: 2722950702857191526
+  - rid: 2722950702857191527
   buttonMethods: []
   references:
     version: 2
     RefIds:
-    - rid: 4015644659869810844
+    - rid: 2722950702857191520
       type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: ThrustInput
@@ -12786,14 +12786,14 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         windowStyle: 13
         columnStyle: 1
-    - rid: 4015644659869810845
+    - rid: 2722950702857191521
       type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: BuoyancyStrength
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
         includeLast: 0
-    - rid: 4015644659869810846
+    - rid: 2722950702857191522
       type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: maxThrustSpeed
@@ -12801,20 +12801,20 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         windowStyle: 0
         columnStyle: 3
-    - rid: 4015644659869810847
+    - rid: 2722950702857191523
       type: {class: NewColumnInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: maxAngularVelocity
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-    - rid: 4015644659869810848
+    - rid: 2722950702857191524
       type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: pitchInputDelay
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
         includeLast: 0
-    - rid: 4015644659869810849
+    - rid: 2722950702857191525
       type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: pitchInputDelay
@@ -12822,13 +12822,13 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         windowStyle: 0
         columnStyle: 3
-    - rid: 4015644659869810850
+    - rid: 2722950702857191526
       type: {class: NewColumnInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: TargetRoll
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-    - rid: 4015644659869810851
+    - rid: 2722950702857191527
       type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: minRelativeCollisionVelocityForThrustShutdown
@@ -15902,6 +15902,7 @@ MonoBehaviour:
     - {fileID: 4274351103119178108, guid: 45704a62aede7916891eeb2f30b44d5a, type: 3}
     - {fileID: 2120858836}
     - {fileID: 1243045928}
+    - {fileID: 0}
     m_values:
     - {fileID: 1527797610}
     - {fileID: 281111281}
@@ -15914,6 +15915,7 @@ MonoBehaviour:
     - {fileID: 448665637}
     - {fileID: 1219110583}
     - {fileID: 128514088}
+    - {fileID: 1879552993}
   extensionEnabled: 1
   debugMode: 0
 --- !u!4 &1865439083
@@ -15931,6 +15933,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1879552993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseInspectorFoldout: 0
+  layoutInfos: []
+  buttonMethods: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!43 &1902403939
 Mesh:
   m_ObjectHideFlags: 0
@@ -18172,7 +18192,7 @@ PrefabInstance:
     - target: {fileID: 4274351103119178108, guid: 45704a62aede7916891eeb2f30b44d5a,
         type: 3}
       propertyPath: _angleStep
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4274351103119178108, guid: 45704a62aede7916891eeb2f30b44d5a,
         type: 3}

@@ -40,15 +40,14 @@ public class RaycastingSubmarine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //_angle += _angleStep * Time.deltaTime;
         if (!_raycasting)
         {
             _raycasting = true;
-            StartCoroutine(Raycasting());
+            //StartCoroutine(Raycasting());
         }
 
-/*
-        _angle += _angleStep * Time.deltaTime;
+
+        _angle += _angleStep * Time.deltaTime * 14f;
         if (_angle >= 360) _angle = 0;
 
         _dir = Quaternion.AngleAxis(_angle, _submarine.transform.up) * _submarine.transform.forward;
@@ -61,7 +60,7 @@ public class RaycastingSubmarine : MonoBehaviour
         {
             _hitpoint = TransformHitpoint(_distance);
         }
-        _linePoint = CalculateLinePoint();*/
+        _linePoint = CalculateLinePoint();
 
 
 
@@ -111,7 +110,7 @@ public class RaycastingSubmarine : MonoBehaviour
         }
         _linePoint = CalculateLinePoint();
 
-        yield return new WaitForSeconds(0.02f);
+        yield return new WaitForSeconds(0.001f);
         _raycasting = false;
     }
 
