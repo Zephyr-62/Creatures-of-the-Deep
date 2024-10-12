@@ -71,10 +71,16 @@ public class SubmarinePhysicsSystem : MonoBehaviour
     private Rigidbody rb;
     private bool engineEnabled = false;
 
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         StartEngine();
+    }
+
+    private void Update()
+    {
+        Shader.SetGlobalVector("_Player", transform.position);
     }
 
     void FixedUpdate()
