@@ -13,6 +13,6 @@ public class MissfireFailure : Malfunction
 
     public override void Update()
     {
-        system.engine.SetMaxPower(Mathf.Round(Mathf.PerlinNoise1D(Time.time * 10f)));
+        system.physicsSystem.SetMaxPower(Mathf.Round(Mathf.PerlinNoise1D(Time.time * 10f)));
     }
 }

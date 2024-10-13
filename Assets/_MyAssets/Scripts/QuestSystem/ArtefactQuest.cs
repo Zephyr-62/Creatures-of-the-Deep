@@ -18,8 +18,9 @@ public class ArtefactQuest : Quest
 
     public override Vector3 Debug()
     {
-        Vector3 artefactPosition = FindObjectsByType<Artefact>(FindObjectsSortMode.None).ToList().Find(a => a.artID == targetArtefactID)
-            .transform.position;
+        var artefact = FindObjectsByType<Artefact>(FindObjectsSortMode.None).ToList().Find(a => a.artID == targetArtefactID);
+        if (!artefact) return Vector3.zero;
+        Vector3 artefactPosition = artefact.transform.position;
 
         Gizmos.DrawWireSphere(artefactPosition, 1);
 

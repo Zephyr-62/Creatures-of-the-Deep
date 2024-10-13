@@ -7,29 +7,41 @@ using UnityEngine;
 [Serializable]
 public class EngineFailure : Malfunction
 {
+    private bool isFixed;
+
     public override void Enter()
     {
         base.Enter();
-        system.engine.TurnOff();
-        system.utilities.ignition.SetBoolValue(false);
+        isFixed = false;
+        system.physicsSystem.TurnOff();
+        system.engine.onSuccessfullStart.AddListener(OnSuccessfullStart);
+        system.engine.ignition.SetBoolValue(false);
     }
 
     public override void Exit()
     {
         base.Exit();
-        system.engine.TurnOn();
-        system.utilities.ignition.SetBoolValue(false);
+        system.physicsSystem.TurnOn();
+        system.engine.ignition.SetBoolValue(false);
     }
 
     public override bool IsFixed()
     {
-        return system.utilities.power.GetBoolValue()
-            && system.utilities.ignition.GetBoolValue()
-            && system.utilities.starter.GetBoolValue();
+        return isFixed;
+    }
+
+    private void OnSuccessfullStart()
+    {
+        isFixed = true;
     }
 
     public override void Update()
     {
+        base.Update();
         
+        if(!Enabled && !system.engine.power.GetBoolValue()) 
+        {
+            system.Failure(this);
+        }
     }
 }

@@ -25,7 +25,7 @@ public class Lightbulb : ElectricalDevice
 
     public void TurnOn()
     {
-        if (!HasPower) return;
+        if (!isPowered) return;
         this.state = true;
         renderer.material.DOKill();
         renderer.material.DOFloat(1f, COLOR_KEYWORD, 0.1f);

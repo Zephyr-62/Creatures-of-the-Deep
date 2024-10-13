@@ -26,7 +26,7 @@ public class Voltmeter : Meter
         else
         {
             var t = Mathf.InverseLerp(-1, 1, Mathf.Sin((Time.time + seed) * idleSpeed));
-            var v = value + (HasPower ? flux : 0f);
+            var v = value + (isPowered ? flux : 0f);
             return Mathf.Lerp(minAngle * v, maxAngle * v, t);
         }
     }

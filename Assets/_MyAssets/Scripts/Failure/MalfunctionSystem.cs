@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class MalfunctionSystem : MonoBehaviour
 {
-    [SerializeField] private SubmarineUtilitySwitchboard _utilities;
-    [SerializeField] private SubmarinePhysicsSystem _engine;
+    [SerializeField] private Engine _engine;
+    [SerializeField] private HydraulicPump _pump;
+    [SerializeField] private SubmarinePhysicsSystem _physicsSystem;
 
     [Header("Malfunctions")]
     [SerializeField] private EngineFailure engineFailure;
@@ -19,8 +20,9 @@ public class MalfunctionSystem : MonoBehaviour
     [SerializeField] private LocalVoltageSurge screenVoltageSurge;
     [SerializeField] private LocalVoltageSurge lightsVoltageSurge;
 
-    public SubmarineUtilitySwitchboard utilities => _utilities;
-    public SubmarinePhysicsSystem engine => _engine;
+    public Engine engine => _engine;
+    public HydraulicPump pump => _pump;
+    public SubmarinePhysicsSystem physicsSystem => _physicsSystem;
 
     private List<Malfunction> allMalfunctions;
 
@@ -36,6 +38,10 @@ public class MalfunctionSystem : MonoBehaviour
         RegisterMalfunction(screenVoltageSurge);
         RegisterMalfunction(lightsVoltageSurge);
 
+        throttleHydraulicFailure.affectedControl = physicsSystem.throttleControl;
+        steeringHydraulicFailure.affectedControl = physicsSystem.steeringControl;
+        pitchHydraulicFailure.affectedControl = physicsSystem.pitchControl;
+        elevationHydraulicFailure.affectedControl = physicsSystem.elevationControl;
     }
 
     private void Start()
@@ -80,7 +86,6 @@ public class MalfunctionSystem : MonoBehaviour
                 }
                 if (allMalfunctions[index].Enabled)
                 {
-                    Debug.Log("Enabled!");
                     break;
                 }
             }

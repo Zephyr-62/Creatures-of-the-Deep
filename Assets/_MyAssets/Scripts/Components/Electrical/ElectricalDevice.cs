@@ -5,14 +5,15 @@ using UnityEngine;
 public abstract class ElectricalDevice : Measureable 
 {
     private static List<ElectricalDevice> all = new List<ElectricalDevice>();
-    private static float globalSurge;
-    
-    private float localSurge;
-    private bool hasPower;
+    private static float _globalSurge;
+    public static float globalSurge => _globalSurge;
 
-    public bool HasPower => hasPower;
+    private float _localSurge;
+    private bool _isPowered;
 
-    public float surge => localSurge + globalSurge;
+    public bool isPowered => _isPowered;
+
+    public float surge => _localSurge + _globalSurge;
 
     protected virtual void OnEnable()
     {
@@ -31,8 +32,8 @@ public abstract class ElectricalDevice : Measureable
 
     public void Power(bool power)
     {
-        hasPower = power;
-        if(hasPower)
+        _isPowered = power;
+        if(_isPowered)
         {
             OnPowerGained();
         }
@@ -44,16 +45,26 @@ public abstract class ElectricalDevice : Measureable
 
     public static void SurgeAll(float intensity)
     {
-        globalSurge = intensity;
+        _globalSurge = intensity;
         foreach (var device in all)
         {
             device.OnSurge();
         }
     }
 
+    public static float TotalSurge()
+    {
+        var x = _globalSurge;
+        foreach (var device in all)
+        {
+            x += device._localSurge;
+        }
+        return x;
+    }
+
     public void SetSurge(float intensity)
     {
-        localSurge = intensity;
+        _localSurge = intensity;
         OnSurge();
     }
 

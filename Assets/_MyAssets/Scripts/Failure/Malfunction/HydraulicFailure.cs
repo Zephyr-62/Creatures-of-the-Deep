@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public class HydraulicFailure : Malfunction
 {
-    [SerializeField] private PhysicalControlSurface affectedControl;
+    [HideInInspector] public PhysicalControlSurface affectedControl;
     
     public override void Enter()
     {

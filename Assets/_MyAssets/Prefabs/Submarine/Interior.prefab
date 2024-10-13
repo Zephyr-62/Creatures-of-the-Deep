@@ -325,6 +325,115 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1314041174780782754
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5041732545630699592}
+  - component: {fileID: 5467064172083545735}
+  - component: {fileID: 7992418993376477551}
+  - component: {fileID: 2947355103414733436}
+  m_Layer: 0
+  m_Name: AirTank
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5041732545630699592
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314041174780782754}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.056, y: -0.113, z: 0.151}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 8087525764392116407}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &5467064172083545735
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314041174780782754}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &7992418993376477551
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314041174780782754}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 68635997607d49544b274082f854c131, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &2947355103414733436
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314041174780782754}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1572673063777740159
 GameObject:
   m_ObjectHideFlags: 0
@@ -2127,6 +2236,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2270336384870801902}
+  - {fileID: 5041732545630699592}
   m_Father: {fileID: 4451022866145267498}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9172752179077124949
@@ -2177,21 +2287,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScreenRight
       objectReference: {fileID: 0}
-    - target: {fileID: 2131128627020033005, guid: 81e87017d50769140b5d75576ce6cc22,
-        type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 0cda390637dfa7f47965a70288fbf20c, type: 2}
     - target: {fileID: 2637988646162320463, guid: 81e87017d50769140b5d75576ce6cc22,
         type: 3}
       propertyPath: m_Name
       value: ScreenCenter
       objectReference: {fileID: 0}
-    - target: {fileID: 2663964131930724607, guid: 81e87017d50769140b5d75576ce6cc22,
-        type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 0cda390637dfa7f47965a70288fbf20c, type: 2}
     - target: {fileID: 4537866862086070382, guid: 81e87017d50769140b5d75576ce6cc22,
         type: 3}
       propertyPath: m_Name
@@ -2749,6 +2849,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 182956549586757826, guid: 6f74aea698ecc4b4e94f38dc669ccc23,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 182956549586757826, guid: 6f74aea698ecc4b4e94f38dc669ccc23,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 182956549586757826, guid: 6f74aea698ecc4b4e94f38dc669ccc23,
+        type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
@@ -2775,27 +2885,7 @@ PrefabInstance:
     - target: {fileID: 4473284503323550180, guid: 6f74aea698ecc4b4e94f38dc669ccc23,
         type: 3}
       propertyPath: m_Name
-      value: RepairPanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 4522083600450668484, guid: 6f74aea698ecc4b4e94f38dc669ccc23,
-        type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 0cda390637dfa7f47965a70288fbf20c, type: 2}
-    - target: {fileID: 7861021618977027757, guid: 6f74aea698ecc4b4e94f38dc669ccc23,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.375
-      objectReference: {fileID: 0}
-    - target: {fileID: 7861021618977027757, guid: 6f74aea698ecc4b4e94f38dc669ccc23,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.222
-      objectReference: {fileID: 0}
-    - target: {fileID: 7861021618977027757, guid: 6f74aea698ecc4b4e94f38dc669ccc23,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0
+      value: MechanicalPanel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3595,7 +3685,7 @@ PrefabInstance:
     - target: {fileID: 3184368211004276401, guid: d0ea4a791cccd6f4891dfa719d56cc60,
         type: 3}
       propertyPath: m_Name
-      value: MalfunctionPanel
+      value: PatchPanel
       objectReference: {fileID: 0}
     - target: {fileID: 8980074969809731477, guid: d0ea4a791cccd6f4891dfa719d56cc60,
         type: 3}
@@ -3801,7 +3891,7 @@ PrefabInstance:
     - target: {fileID: 1444398033954038953, guid: 5e2923a075ed7f144b7eab1281e65511,
         type: 3}
       propertyPath: m_Name
-      value: BookPanel
+      value: InformationPanel
       objectReference: {fileID: 0}
     - target: {fileID: 2720384724253457031, guid: 5e2923a075ed7f144b7eab1281e65511,
         type: 3}

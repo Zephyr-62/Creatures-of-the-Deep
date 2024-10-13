@@ -41,7 +41,7 @@ public class Meter : ElectricalDevice
     private float Value()
     {
         var value = 0f;
-        if (device && HasPower)
+        if (device && isPowered)
         {
             var edges = device.GetRange();
             value = Mathf.Clamp01(Mathf.InverseLerp(edges.x, edges.y, Mathf.Clamp(device.Measure(), edges.x, edges.y)));

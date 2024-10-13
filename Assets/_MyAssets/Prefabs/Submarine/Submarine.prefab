@@ -29,8 +29,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3758584711796696764}
-  - {fileID: 3652831216363417242}
   - {fileID: 3862524507850882799}
   - {fileID: 5623856197084037369}
   - {fileID: 2625487551809550936}
@@ -286,8 +284,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24cdb322bea50b843906399cb71e09e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _utilities: {fileID: 2412073538784126254}
-  _engine: {fileID: 7702717458789281797}
+  _engine: {fileID: 7822135313551743458}
+  _physicsSystem: {fileID: 7702717458789281797}
   engineFailure:
     errorCode: 16417
     symptoms: 0
@@ -401,55 +399,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 3, z: 3.7145023}
   m_Center: {x: 0, y: 0, z: 5.3337994}
---- !u!1 &7514410255656151248
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3652831216363417242}
-  - component: {fileID: 2412073538784126254}
-  m_Layer: 0
-  m_Name: UtilitySwitchBoard
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3652831216363417242
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7514410255656151248}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 496607466442323903}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2412073538784126254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7514410255656151248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8af661ea1234286478741c961f474e18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  power: {fileID: 0}
-  ignition: {fileID: 3168919822665748876}
-  starter: {fileID: 0}
-  compressorReset: {fileID: 0}
-  powerReset: {fileID: 0}
 --- !u!1 &7860046795880319001
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,50 +431,6 @@ Transform:
   - {fileID: 8365191257826152530}
   m_Father: {fileID: 540248568467751865}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8103265863949333382
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3758584711796696764}
-  - component: {fileID: 8829153190797174595}
-  m_Layer: 0
-  m_Name: ControlSwitchBoard
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3758584711796696764
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8103265863949333382}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 496607466442323903}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8829153190797174595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8103265863949333382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0aebf372a63f1d44cb868197a6418554, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &9027282739505070887
 GameObject:
   m_ObjectHideFlags: 0
@@ -1176,18 +1081,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9e31a20dbbf77e4bbb8c0999fdc799a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3168919822665748876 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7943227709879629683, guid: 7d656c24ef4907a4291a7b5209f0e39c,
-    type: 3}
-  m_PrefabInstance: {fileID: 5027776736126150399}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d72fd1845cdcf24c840406f249621e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3379141635246323263 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7720118796351131840, guid: 7d656c24ef4907a4291a7b5209f0e39c,
@@ -1258,6 +1151,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 756a75e669b1d054bb7a617931c941fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7822135313551743458 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2975629012804566813, guid: 7d656c24ef4907a4291a7b5209f0e39c,
+    type: 3}
+  m_PrefabInstance: {fileID: 5027776736126150399}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1048ed9dd6c63e4da8fd462b73ff428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &8647885431611812309 stripped
