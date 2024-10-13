@@ -4,60 +4,72 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lightbulb : MonoBehaviour
+public class Lightbulb : ElectricalDevice
 {
     [SerializeField] private Renderer renderer;
     [SerializeField] private Light light;
-    [SerializeField] private float intensity;
-
+    
     private string COLOR_KEYWORD = "_Intensity";
+    private string SURGE_KEYWORD = "_Interference";
+
     private bool state;
+    private float intensity;
+    private float initialIntensity;
+    private Tween tween;
 
-    [Button("Toggle On/Off")]
-    public void Toggle()
+    private void Start()
     {
-        if(state)
-        {
-            Off();
-        } else
-        {
-            On();
-        }
-        state = !state;
+        initialIntensity = light.intensity;
+        intensity = initialIntensity;
     }
 
-    public void Set(bool state)
+    public void TurnOn()
     {
-        if (state)
-        {
-            On();
-        }
-        else
-        {
-            Off();
-        }
-        this.state = state;
-    }
-
-    public void On()
-    {
+        if (!isPowered) return;
+        this.state = true;
         renderer.material.DOKill();
         renderer.material.DOFloat(1f, COLOR_KEYWORD, 0.1f);
         if (light)
         {
-            light.DOKill();
-            light.DOIntensity(intensity, 0.1f);
+            if (tween != null) tween.Kill();
+            tween = DOTween.To(() => intensity, x => intensity = x, initialIntensity, 0.1f);
+            //light.DOKill();
+            //light.DOIntensity(intensity, 0.1f);
         }
     }
 
-    public void Off()
+    public void TurnOff()
     {
+        this.state = false;
         renderer.material.DOKill();
         renderer.material.DOFloat(0f, COLOR_KEYWORD, 0.5f).SetEase(Ease.OutCubic);
         if (light)
         {
-            light.DOKill();
-            light.DOIntensity(0f, 0.1f);
+
+            if (tween != null) tween.Kill();
+            tween = DOTween.To(() => intensity, x => intensity = x, 0f, 0.1f);
+            //light.DOKill();
+            //light.DOIntensity(0f, 0.1f);
         }
+    }
+
+    protected override void OnPowerGained()
+    {
+        TurnOn();
+    }
+
+    protected override void OnPowerLost()
+    {
+        TurnOff();
+    }
+
+    private void Update()
+    {
+        light.intensity = intensity * Mathf.Clamp01(1 - Mathf.PerlinNoise1D(Time.time) * surge);
+    }
+
+    protected override void OnSurge()
+    {
+        renderer.material.SetFloat(SURGE_KEYWORD, surge);
     }
 }
