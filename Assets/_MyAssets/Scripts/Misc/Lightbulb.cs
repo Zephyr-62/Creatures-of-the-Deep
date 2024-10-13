@@ -23,34 +23,10 @@ public class Lightbulb : ElectricalDevice
         intensity = initialIntensity;
     }
 
-    [Button("Toggle On/Off")]
-    public void Toggle()
-    {
-        if (state)
-        {
-            OnPowerOff();
-        }
-        else
-        {
-            OnPowerOn();
-        }
-        state = !state;
-    }
-
     public void TurnOn()
     {
+        if (!HasPower) return;
         this.state = true;
-        OnPowerOn();
-    }
-
-    public void TurnOff()
-    {
-        this.state = false;
-        OnPowerOff();
-    }
-
-    protected override void OnPowerOn()
-    {
         renderer.material.DOKill();
         renderer.material.DOFloat(1f, COLOR_KEYWORD, 0.1f);
         if (light)
@@ -62,8 +38,9 @@ public class Lightbulb : ElectricalDevice
         }
     }
 
-    protected override void OnPowerOff()
+    public void TurnOff()
     {
+        this.state = false;
         renderer.material.DOKill();
         renderer.material.DOFloat(0f, COLOR_KEYWORD, 0.5f).SetEase(Ease.OutCubic);
         if (light)
@@ -74,6 +51,16 @@ public class Lightbulb : ElectricalDevice
             //light.DOKill();
             //light.DOIntensity(0f, 0.1f);
         }
+    }
+
+    protected override void OnPowerGained()
+    {
+        TurnOn();
+    }
+
+    protected override void OnPowerLost()
+    {
+        TurnOff();
     }
 
     private void Update()

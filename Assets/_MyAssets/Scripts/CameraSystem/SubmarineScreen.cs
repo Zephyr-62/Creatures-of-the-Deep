@@ -21,8 +21,9 @@ public class SubmarineScreen : ElectricalDevice
         SetScreenCameraView();
     }
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         clickySwitch.onValueChanged.AddListener(ToggleScreen);
         
         buttonL.onGrabbed.AddListener(DecreaseCameraIndex);
@@ -30,8 +31,9 @@ public class SubmarineScreen : ElectricalDevice
         buttonR.onGrabbed.AddListener(IncreaseCameraIndex);
     }
 
-    private void OnDisable()
+    protected override void OnDisable()
     {
+        base.OnDisable();
         clickySwitch.onValueChanged.RemoveListener(ToggleScreen);
         
         buttonL.onGrabbed.RemoveListener(DecreaseCameraIndex);
@@ -91,14 +93,26 @@ public class SubmarineScreen : ElectricalDevice
         _screenRenderer.material.mainTexture = null;
     }
 
-    protected override void OnPowerOn()
+    protected override void OnPowerGained()
     {
-        
+        clickySwitch.onValueChanged.AddListener(ToggleScreen);
+
+        if (clickySwitch.GetBoolValue())
+        {
+            buttonL.onGrabbed.AddListener(DecreaseCameraIndex);
+            buttonR.onGrabbed.AddListener(IncreaseCameraIndex);
+            SetScreenCameraView();
+        }
     }
 
-    protected override void OnPowerOff()
+    protected override void OnPowerLost()
     {
-        
+        clickySwitch.onValueChanged.RemoveListener(ToggleScreen);
+
+        buttonL.onGrabbed.RemoveListener(DecreaseCameraIndex);
+        buttonR.onGrabbed.RemoveListener(IncreaseCameraIndex);
+        RemoveScreenCameraView();
+        cameras[cameraIndex].Unwatch();
     }
 
     protected override void OnSurge()

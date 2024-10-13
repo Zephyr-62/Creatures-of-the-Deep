@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class SubmarinePhysicsSystem : MonoBehaviour
+public class SubmarinePhysicsSystem : Measureable
 {
     [BeginColumnArea(areaStyle = LayoutStyle.BoxRound)]
 
@@ -162,5 +162,15 @@ public class SubmarinePhysicsSystem : MonoBehaviour
     public void SetMaxPower(float max)
     {
         limit = Mathf.Clamp01(max);
+    }
+
+    public override float Measure()
+    {
+        return Mathf.Abs(thrust);
+    }
+
+    public override Vector2 GetRange()
+    {
+        return new Vector2(0f, 1f);
     }
 }
