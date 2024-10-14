@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 8415503606262321961}
   - component: {fileID: 7702717458789281797}
   - component: {fileID: 8869134912052278747}
+  - component: {fileID: 493959703518851669}
   m_Layer: 0
   m_Name: Submarine
   m_TagString: Untagged
@@ -82,7 +83,7 @@ Rigidbody:
   m_GameObject: {fileID: 616634190552609702}
   serializedVersion: 4
   m_Mass: 1000
-  m_Drag: 0.5
+  m_Drag: 0.3
   m_AngularDrag: 0.4
   m_CenterOfMass: {x: 0, y: 0, z: -1}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -112,13 +113,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9904771256ffeed418c70bc391225c61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throttleControl: {fileID: 1307670824807771108}
-  steeringControl: {fileID: 1267364312463893566}
-  pitchControl: {fileID: 3497187953445905077}
-  elevationControl: {fileID: 3120643649950587126}
+  _throttleControl: {fileID: 1307670824807771108}
+  _steeringControl: {fileID: 1267364312463893566}
+  _pitchControl: {fileID: 3497187953445905077}
+  _elevationControl: {fileID: 3120643649950587126}
   BuoyancyStrength: 150
-  maxThrustSpeed: 10
-  thrustAccelerationForce: 350
+  maxThrustSpeed: 30
+  thrustAccelerationForce: 700
   thrustDeadzone: 0.1
   maxAngularVelocity: 0.8
   steeringAccelerationForce: 0.1
@@ -187,6 +188,19 @@ CapsuleCollider:
   m_Height: 7
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &493959703518851669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616634190552609702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 729fca83ad4b02f4aa9c50c095dfdbe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  system: {fileID: 5956822845284927706}
 --- !u!1 &5175877439472153781
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,10 +299,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _engine: {fileID: 7822135313551743458}
+  _pump: {fileID: 0}
   _physicsSystem: {fileID: 7702717458789281797}
   engineFailure:
     errorCode: 16417
     symptoms: 0
+    impactThresshold: 1800
+    impactRandomness: 1000
   missfireFailure:
     errorCode: 1
     symptoms: 0

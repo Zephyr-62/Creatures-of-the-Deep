@@ -42,9 +42,9 @@ public abstract class Malfunction
     public abstract bool IsFixed();
     public virtual void Update() { }
 
-    public virtual bool OnCollision(Collision collision)
+    public virtual void OnCollision(Collision collision)
     {
-        return false;
+        
     }
 
     private bool enabled;

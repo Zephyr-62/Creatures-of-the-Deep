@@ -21,6 +21,7 @@ public class Voltmeter : Meter
                 phase -= 2 * Mathf.PI;
 
             var t = Mathf.InverseLerp(-1f, 1f, Mathf.Sin(phase + seed));
+            if (!isPowered) return 0;
             return Mathf.Lerp(minAngle, maxAngle, t);
         }
         else

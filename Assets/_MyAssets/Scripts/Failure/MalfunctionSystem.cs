@@ -30,6 +30,7 @@ public class MalfunctionSystem : MonoBehaviour
     {
         allMalfunctions = new List<Malfunction>();
         RegisterMalfunction(engineFailure);
+        RegisterMalfunction(missfireFailure);
         RegisterMalfunction(throttleHydraulicFailure);
         RegisterMalfunction(steeringHydraulicFailure);
         RegisterMalfunction(pitchHydraulicFailure);
@@ -112,9 +113,11 @@ public class MalfunctionSystem : MonoBehaviour
         allMalfunctions.Add(malfunction);
     }
 
-    [Button("Test")]
-    public void Test()
+    public void Collision(Collision collision)
     {
-        Failure(screenVoltageSurge);
+        foreach (var malfunction in allMalfunctions)
+        {
+            malfunction.OnCollision(collision);
+        }
     }
 }

@@ -37,6 +37,7 @@ public class EngineAudio : MonoBehaviour
 
     private void StartEngine()
     {
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, transform);
         instance.start();
     }
 

@@ -171,6 +171,7 @@ public class SubmarinePhysicsSystem : Measureable
 
     public override float Measure()
     {
+        if (!engineEnabled) return 0f;
         return Mathf.Abs(thrust);
     }
 
