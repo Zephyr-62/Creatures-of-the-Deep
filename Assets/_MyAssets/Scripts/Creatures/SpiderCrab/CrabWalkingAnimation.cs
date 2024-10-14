@@ -69,22 +69,33 @@ public class CrabWalkingAnimation : MonoBehaviour
                 lth.RelativeTargetHintPosition = lth.Leg.InverseTransformPoint(raycastHit.point); // TODO fix max height or smth
             }
 
-            // Set target to last valid global position
-            lth.LegIKTarget.position = lth.LastPosition;
-
             // If target is too far from target hint, then update last valid position
             if(lth.Sequence == null || !lth.Sequence.active)
             {
+                // Set target to last valid global position
+                lth.LegIKTarget.position = lth.LastPosition;
+
                 var zDiff = (lth.LegIKTarget.position - lth.TargetHintPosition).sqrMagnitude;
                 if (zDiff > lth.MaxStepDistance || zDiff < -lth.MaxStepDistance) // TODO prevent step if too many legs moving
                 {
                     lth.LastPosition = lth.TargetHintPosition;
 
-                    lth.LegIKTarget.DOKill(true);
+                    // lth.LegIKTarget.DOKill(true);
                     lth.Sequence = lth.LegIKTarget.DOJump(lth.LastPosition, StepHeight, 1, Random.Range(StepDurationRange.x, StepDurationRange.y)).SetEase(animationEase);
                 }
             }
         }
+    }
+
+    [Button("Tween Test")]
+    public void TweenTest()
+    {
+        foreach (LegTargetHint lth in LegTargetHints)
+        {
+            lth.LegIKTarget.DOKill(true);
+            lth.Sequence = lth.LegIKTarget.DOJump(lth.LegIKTarget.position + Vector3.forward * 5, StepHeight, 1, StepDurationRange.x).SetEase(animationEase);
+        }
+
     }
 
     [BeginFoldout("Gizmos")]
