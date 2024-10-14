@@ -817,19 +817,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseInspectorFoldout: 0
   layoutInfos: []
-  buttonMethods:
-  - rid: 5369261907954631379
+  buttonMethods: []
   references:
     version: 2
-    RefIds:
-    - rid: 5369261907954631379
-      type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
-      data:
-        methodName: Test
-        buttonName: Test
-        foldout: 1
-        buttonSize: 12
-        parameters: []
+    RefIds: []
 --- !u!114 &790963171 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1427851565479440910, guid: f3022271edfedad4084e66802f71dedc,
@@ -854,24 +845,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05852d1c8a441fd468e86cedb557ba0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &848937198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseInspectorFoldout: 0
-  layoutInfos: []
-  buttonMethods: []
-  references:
-    version: 2
-    RefIds: []
 --- !u!114 &952975427 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3379141635246323263, guid: 18e532391cd4a0e42b039495051ea7cd,
@@ -1045,19 +1018,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseInspectorFoldout: 0
   layoutInfos:
-  - rid: 5369261953650786399
-  - rid: 5369261953650786400
-  - rid: 5369261953650786401
-  - rid: 5369261953650786402
-  - rid: 5369261953650786403
-  - rid: 5369261953650786404
-  - rid: 5369261953650786405
-  - rid: 5369261953650786406
+  - rid: 5369261953650786439
+  - rid: 5369261953650786440
+  - rid: 5369261953650786441
+  - rid: 5369261953650786442
+  - rid: 5369261953650786443
+  - rid: 5369261953650786444
+  - rid: 5369261953650786445
+  - rid: 5369261953650786446
   buttonMethods: []
   references:
     version: 2
     RefIds:
-    - rid: 5369261953650786399
+    - rid: 5369261953650786439
       type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: _throttleControl
@@ -1065,14 +1038,14 @@ MonoBehaviour:
           Culture=neutral, PublicKeyToken=null
         windowStyle: 13
         columnStyle: 1
-    - rid: 5369261953650786400
+    - rid: 5369261953650786440
       type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: BuoyancyStrength
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
         includeLast: 0
-    - rid: 5369261953650786401
+    - rid: 5369261953650786441
       type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: maxThrustSpeed
@@ -1080,20 +1053,20 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         windowStyle: 0
         columnStyle: 3
-    - rid: 5369261953650786402
+    - rid: 5369261953650786442
       type: {class: NewColumnInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: maxAngularVelocity
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-    - rid: 5369261953650786403
+    - rid: 5369261953650786443
       type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: pitchInputDelay
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
         includeLast: 0
-    - rid: 5369261953650786404
+    - rid: 5369261953650786444
       type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: pitchInputDelay
@@ -1101,19 +1074,37 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         windowStyle: 0
         columnStyle: 3
-    - rid: 5369261953650786405
+    - rid: 5369261953650786445
       type: {class: NewColumnInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: TargetRoll
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-    - rid: 5369261953650786406
+    - rid: 5369261953650786446
       type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: minRelativeCollisionVelocityForThrustShutdown
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
         includeLast: 0
+--- !u!114 &1044388597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseInspectorFoldout: 0
+  layoutInfos: []
+  buttonMethods: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1048780545 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1344558184021905810, guid: 18e532391cd4a0e42b039495051ea7cd,
@@ -1474,26 +1465,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1018462978406019011, guid: 18e532391cd4a0e42b039495051ea7cd,
         type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1018462978406019011, guid: 18e532391cd4a0e42b039495051ea7cd,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1018462978406019011, guid: 18e532391cd4a0e42b039495051ea7cd,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1018462978406019011, guid: 18e532391cd4a0e42b039495051ea7cd,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1018462978406019011, guid: 18e532391cd4a0e42b039495051ea7cd,
-        type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
@@ -1511,6 +1482,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2572974107078183680, guid: 18e532391cd4a0e42b039495051ea7cd,
+        type: 3}
+      propertyPath: _layerMask.m_Bits
+      value: 776
       objectReference: {fileID: 0}
     - target: {fileID: 3057764250669565401, guid: 18e532391cd4a0e42b039495051ea7cd,
         type: 3}
@@ -2219,7 +2195,7 @@ MonoBehaviour:
     - {fileID: 1279366850}
     - {fileID: 1095395137}
     - {fileID: 461322466}
-    - {fileID: 848937198}
+    - {fileID: 1044388597}
   extensionEnabled: 1
   debugMode: 0
 --- !u!4 &1795369006

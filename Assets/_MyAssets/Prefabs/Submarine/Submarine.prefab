@@ -328,8 +328,9 @@ MonoBehaviour:
   sonarVoltageSurge:
     errorCode: 0
     symptoms: 0
-    dial: {fileID: 0}
-    devices: []
+    dial: {fileID: 8100263291680837880}
+    devices:
+    - {fileID: 2572974107078183680}
     tolerance: 0.1
   screenVoltageSurge:
     errorCode: 8208
@@ -341,7 +342,7 @@ MonoBehaviour:
     - {fileID: 3379141635246323263}
     tolerance: 0.1
   lightsVoltageSurge:
-    errorCode: 0
+    errorCode: 8196
     symptoms: 0
     dial: {fileID: 0}
     devices: []
@@ -1096,6 +1097,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 756a75e669b1d054bb7a617931c941fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2572974107078183680 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7382325702242725375, guid: 7d656c24ef4907a4291a7b5209f0e39c,
+    type: 3}
+  m_PrefabInstance: {fileID: 5027776736126150399}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 967280426462e86fcb1d1efe582c6855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3120643649950587126 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7964757298027937289, guid: 7d656c24ef4907a4291a7b5209f0e39c,
@@ -1190,6 +1203,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1048ed9dd6c63e4da8fd462b73ff428, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8100263291680837880 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3868498374076429831, guid: 7d656c24ef4907a4291a7b5209f0e39c,
+    type: 3}
+  m_PrefabInstance: {fileID: 5027776736126150399}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9e31a20dbbf77e4bbb8c0999fdc799a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &8647885431611812309 stripped

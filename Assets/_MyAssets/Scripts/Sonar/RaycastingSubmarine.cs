@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RaycastingSubmarine : MonoBehaviour
+public class RaycastingSubmarine : ElectricalDevice
 {
 
     [SerializeField] private GameObject _submarine;
@@ -35,8 +35,6 @@ public class RaycastingSubmarine : MonoBehaviour
     {
         //Debug.Log(LayerMask.LayerToName(_layerMaskArtifact));
     }
-
-
 
     // Update is called once per frame
     void Update()
@@ -142,4 +140,23 @@ public class RaycastingSubmarine : MonoBehaviour
 
     }
 
+    protected override void OnPowerGained()
+    {
+        renderer.material.SetInt("_On", 1);
+    }
+
+    protected override void OnPowerLost()
+    {
+        renderer.material.SetInt("_On", 0);
+
+        var wipe = new Texture2D(sonar1.width, sonar1.height);
+
+        Graphics.Blit(wipe, sonar1);
+        Graphics.Blit(wipe, sonar2);
+    }
+
+    protected override void OnSurge()
+    {
+        renderer.material.SetFloat("_Interference", surge);
+    }
 }
