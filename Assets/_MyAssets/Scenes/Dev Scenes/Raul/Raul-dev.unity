@@ -1833,6 +1833,11 @@ MonoBehaviour:
     - {fileID: 4837256936048348391}
     - {fileID: 4837256936048348395}
     - {fileID: 1412278343}
+    - {fileID: 1203261391}
+    - {fileID: 1224898324}
+    - {fileID: 3246810717960937717, guid: aafa381a1a349e043b60e92a983dc4dc, type: 3}
+    - {fileID: 2940692500949693560, guid: aafa381a1a349e043b60e92a983dc4dc, type: 3}
+    - {fileID: 605176521412514415, guid: aafa381a1a349e043b60e92a983dc4dc, type: 3}
     m_values:
     - {fileID: 185046356}
     - {fileID: 287333396}
@@ -1856,6 +1861,11 @@ MonoBehaviour:
     - {fileID: 196906909}
     - {fileID: 1849298448}
     - {fileID: 785370514}
+    - {fileID: 739399683}
+    - {fileID: 898840031}
+    - {fileID: 644203679}
+    - {fileID: 932738548}
+    - {fileID: 933374697}
   extensionEnabled: 1
   debugMode: 0
 --- !u!4 &135543990
@@ -3552,6 +3562,115 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &231498074
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 231498078}
+  - component: {fileID: 231498077}
+  - component: {fileID: 231498076}
+  - component: {fileID: 231498075}
+  m_Layer: 0
+  m_Name: Capsule
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!136 &231498075
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231498074}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &231498076
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231498074}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: df2ac10b87f33124ba868a312d340a18, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &231498077
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231498074}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &231498078
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231498074}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.00072034803, y: -0.9983495, z: 0.0551737, w: -0.015929919}
+  m_LocalPosition: {x: 64.72996, y: 26.196863, z: 122.33643}
+  m_LocalScale: {x: 5.6346383, y: 3.028539, z: 5.6346383}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &239742064
 Mesh:
   m_ObjectHideFlags: 0
@@ -11975,6 +12094,24 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &644203679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseInspectorFoldout: 0
+  layoutInfos: []
+  buttonMethods: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &650934555
 GameObject:
   m_ObjectHideFlags: 0
@@ -12850,6 +12987,7 @@ GameObject:
   - component: {fileID: 678953005}
   - component: {fileID: 678953004}
   - component: {fileID: 678953003}
+  - component: {fileID: 678953007}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -12968,13 +13106,33 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 678953002}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.008362301, y: -0.08434367, z: -0.00086746365, w: -0.9964013}
-  m_LocalPosition: {x: 60.716938, y: 11.248541, z: 47.6217}
+  m_LocalRotation: {x: -0.02190246, y: -0.97346556, z: -0.20179558, w: 0.10565787}
+  m_LocalPosition: {x: 65.67, y: 4.49, z: 95.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1183024399 &678953007
+LookAtConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678953002}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 0, z: 0}
+  m_Roll: 0
+  m_WorldUpObject: {fileID: 0}
+  m_UseUpObject: 0
+  m_Active: 1
+  m_IsLocked: 0
+  m_Sources:
+  - sourceTransform: {fileID: 1991771370}
+    weight: 1
 --- !u!43 &679751764
 Mesh:
   m_ObjectHideFlags: 0
@@ -13970,6 +14128,24 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &739399683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseInspectorFoldout: 0
+  layoutInfos: []
+  buttonMethods: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!43 &766901575
 Mesh:
   m_ObjectHideFlags: 0
@@ -15760,6 +15936,60 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 895083054}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &898840031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseInspectorFoldout: 0
+  layoutInfos: []
+  buttonMethods:
+  - rid: 7396336983807885554
+  - rid: 7396336983807885555
+  - rid: 7396336983807885556
+  - rid: 7396336983807885557
+  references:
+    version: 2
+    RefIds:
+    - rid: 7396336983807885554
+      type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        methodName: SetInitPos
+        buttonName: Set New InitPos
+        foldout: 1
+        buttonSize: 12
+        parameters: []
+    - rid: 7396336983807885555
+      type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        methodName: StartWalk
+        buttonName: Start Walking
+        foldout: 1
+        buttonSize: 12
+        parameters: []
+    - rid: 7396336983807885556
+      type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        methodName: StopWalk
+        buttonName: Stop Walking
+        foldout: 1
+        buttonSize: 12
+        parameters: []
+    - rid: 7396336983807885557
+      type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        methodName: ResetPos
+        buttonName: Reset Position
+        foldout: 1
+        buttonSize: 12
+        parameters: []
 --- !u!43 &900772208
 Mesh:
   m_ObjectHideFlags: 0
@@ -16090,6 +16320,95 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &932738548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseInspectorFoldout: 0
+  layoutInfos:
+  - rid: 7396336983807885495
+  - rid: 7396336983807885496
+  buttonMethods: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 7396336983807885495
+      type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: LegTargetHintRadius
+        fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+        label: Gizmos
+        foldout: 0
+    - rid: 7396336983807885496
+      type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: OnDrawSelected
+        fieldTypeName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+        includeLast: 1
+--- !u!114 &933374697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseInspectorFoldout: 0
+  layoutInfos: []
+  buttonMethods:
+  - rid: 7396336983807885497
+  - rid: 7396336983807885498
+  - rid: 7396336983807885499
+  - rid: 7396336983807885500
+  references:
+    version: 2
+    RefIds:
+    - rid: 7396336983807885497
+      type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        methodName: SetInitPos
+        buttonName: Set New InitPos
+        foldout: 1
+        buttonSize: 12
+        parameters: []
+    - rid: 7396336983807885498
+      type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        methodName: StartWalk
+        buttonName: Start Walking
+        foldout: 1
+        buttonSize: 12
+        parameters: []
+    - rid: 7396336983807885499
+      type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        methodName: StopWalk
+        buttonName: Stop Walking
+        foldout: 1
+        buttonSize: 12
+        parameters: []
+    - rid: 7396336983807885500
+      type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        methodName: ResetPos
+        buttonName: Reset Position
+        foldout: 1
+        buttonSize: 12
+        parameters: []
 --- !u!1 &947485655
 GameObject:
   m_ObjectHideFlags: 0
@@ -17692,13 +18011,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseInspectorFoldout: 0
   layoutInfos:
-  - rid: 7396336982282731613
-  - rid: 7396336982282731614
+  - rid: 7396336983807885558
+  - rid: 7396336983807885559
   buttonMethods: []
   references:
     version: 2
     RefIds:
-    - rid: 7396336982282731613
+    - rid: 7396336983807885558
       type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: LegTargetHintRadius
@@ -17706,7 +18025,7 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         label: Gizmos
         foldout: 0
-    - rid: 7396336982282731614
+    - rid: 7396336983807885559
       type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: OnDrawSelected
@@ -19465,6 +19784,18 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &1203261391 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 405174022496689565, guid: aafa381a1a349e043b60e92a983dc4dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 4837256936048348390}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f205512635f686741a93d9e5fecec9b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1204634134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19845,6 +20176,18 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &1224898324 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 605176521412514415, guid: aafa381a1a349e043b60e92a983dc4dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 4837256936048348390}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f9ddcb98a0572448b9f3d529477718c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1231807265
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30186,6 +30529,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c2ae2db53f0fc94db6c3d31ebcec510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1991771370 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8881367745346995354, guid: aafa381a1a349e043b60e92a983dc4dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 4837256936048348390}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1993356466
 GameObject:
   m_ObjectHideFlags: 0
@@ -34197,20 +34546,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 605176521412514415, guid: aafa381a1a349e043b60e92a983dc4dc,
+        type: 3}
+      propertyPath: Target
+      value: 
+      objectReference: {fileID: 678953006}
     - target: {fileID: 8881367745346995354, guid: aafa381a1a349e043b60e92a983dc4dc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 65
+      value: 56.8
       objectReference: {fileID: 0}
     - target: {fileID: 8881367745346995354, guid: aafa381a1a349e043b60e92a983dc4dc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 20
+      value: 22.4
       objectReference: {fileID: 0}
     - target: {fileID: 8881367745346995354, guid: aafa381a1a349e043b60e92a983dc4dc,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 70.72
+      value: 55.5
       objectReference: {fileID: 0}
     - target: {fileID: 8881367745346995354, guid: aafa381a1a349e043b60e92a983dc4dc,
         type: 3}
@@ -38376,7 +38730,8 @@ SceneRoots:
   - {fileID: 135543990}
   - {fileID: 4837256936048348390}
   - {fileID: 1757118247}
-  - {fileID: 678953006}
   - {fileID: 1118102378}
   - {fileID: 1720567304}
   - {fileID: 583708479}
+  - {fileID: 678953006}
+  - {fileID: 231498078}

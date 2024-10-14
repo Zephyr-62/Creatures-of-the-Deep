@@ -87,17 +87,6 @@ public class CrabWalkingAnimation : MonoBehaviour
         }
     }
 
-    [Button("Tween Test")]
-    public void TweenTest()
-    {
-        foreach (LegTargetHint lth in LegTargetHints)
-        {
-            lth.LegIKTarget.DOKill(true);
-            lth.Sequence = lth.LegIKTarget.DOJump(lth.LegIKTarget.position + Vector3.forward * 5, StepHeight, 1, StepDurationRange.x).SetEase(animationEase);
-        }
-
-    }
-
     [BeginFoldout("Gizmos")]
     [SerializeField] 
     private float LegTargetHintRadius = 1.0f;
