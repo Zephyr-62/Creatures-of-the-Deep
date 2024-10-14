@@ -22,6 +22,7 @@ public class RaycastingSubmarine : MonoBehaviour
 
     private Vector2 _hitpoint;
     private Vector2 _currentHitPoint;
+    private Vector2 _artifactHitpoint;
     private bool _raycasting = false;
 
     private Vector2 _linePoint;
@@ -32,7 +33,7 @@ public class RaycastingSubmarine : MonoBehaviour
 
     void Start()
     {
-        
+        //Debug.Log(LayerMask.LayerToName(_layerMaskArtifact));
     }
 
 
@@ -40,45 +41,52 @@ public class RaycastingSubmarine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!_raycasting)
-        {
-            _raycasting = true;
-            //StartCoroutine(Raycasting());
-        }
+       
 
 
-        _angle += _angleStep * Time.deltaTime;
+        _angle += _angleStep * Time.deltaTime * 15f;
         if (_angle >= 360) _angle = 0;
+        _linePoint = CalculateLinePoint();
 
         _dir = Quaternion.AngleAxis(_angle, _submarine.transform.up) * _submarine.transform.forward;
 
         if (Physics.Raycast(_submarine.transform.position, _dir, out RaycastHit hitInfo, _distance, _layerMask))
         {
-            _hitpoint = TransformHitpoint(hitInfo.distance);
-            Debug.DrawRay(transform.position, _dir * hitInfo.distance, Color.red);
+            //if the hitpoint is an artifact5
+            if (hitInfo.transform.gameObject.layer == 8)
+            {
+                //Debug.Log(hitInfo.transform.gameObject.layer);
+                _artifactHitpoint = TransformHitpoint(hitInfo.distance);
+            }
+            else
+            {
+                _hitpoint = TransformHitpoint(hitInfo.distance);
+            }
+            
+            
         }
         else
         {
             _hitpoint = TransformHitpoint(_distance);
-            Debug.DrawRay(transform.position, _dir * _distance, Color.blue);
         }
-        _linePoint = CalculateLinePoint();
+
+        
 
 
 
+        if (_currentLinePoint == null || _currentLinePoint != _linePoint)
+        {
+       		 _currentLinePoint = _linePoint;
 
-
-        //if (_currentLinePoint == null || _currentLinePoint != _linePoint)
-        //{
-        //_currentLinePoint = _linePoint;
-
-        //if (_currentHitPoint == null || _currentHitPoint != _hitpoint)
-        //{
-        //    _currentHitPoint = _hitpoint;
-        //}
+		}
+        if (_currentHitPoint == null || _currentHitPoint != _hitpoint)
+        {
+            _currentHitPoint = _hitpoint;
+        }
 
         blitMat.SetVector("_Point", _hitpoint);
         blitMat.SetVector("_PointB", _linePoint);
+        blitMat.SetVector("_PointArtifact", _artifactHitpoint);
 
         RenderTexture tempRend = RenderTexture.GetTemporary(sonar1.width, sonar1.height, 0, sonar1.format);
         Graphics.Blit(sonar1, tempRend, blitMat, 0);
@@ -89,7 +97,7 @@ public class RaycastingSubmarine : MonoBehaviour
         (sonar1, sonar2) = (sonar2, sonar1);
         
         renderer.material.SetTexture("_BaseMap", sonar1);
-        //}
+        
 
         lastPosition = transform.position;
         lastRotation = transform.rotation;
@@ -104,15 +112,14 @@ public class RaycastingSubmarine : MonoBehaviour
                 _distance, _layerMask))
         {
             _hitpoint = TransformHitpoint(hitInfo.distance);
-            Debug.DrawRay(transform.position, _dir * hitInfo.distance, Color.red);
         }
         else
         {
-            Debug.DrawRay(transform.position, _dir * _distance, Color.blue);
+            _hitpoint = TransformHitpoint(_distance);
         }
         _linePoint = CalculateLinePoint();
 
-        yield return new WaitForSeconds(0.15f);
+        yield return new WaitForSeconds(0.001f);
         _raycasting = false;
     }
 
@@ -129,7 +136,7 @@ public class RaycastingSubmarine : MonoBehaviour
     private Vector2 CalculateLinePoint()
     {
         Vector2 rotVec = (Vector2.up);
-        float angleRad = Mathf.Deg2Rad * (-_angle);
+        float angleRad = Mathf.Deg2Rad * (-(_angle));
 
         return new Vector2(rotVec.x * Mathf.Cos(angleRad) - rotVec.y * Mathf.Sin(angleRad), rotVec.x * Mathf.Sin(angleRad) + rotVec.y * Mathf.Cos(angleRad));
 
