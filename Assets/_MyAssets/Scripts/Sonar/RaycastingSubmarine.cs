@@ -38,11 +38,16 @@ public class RaycastingSubmarine : ElectricalDevice
 
     // Update is called once per frame
     void Update()
-    {
+    {/*
+        if (!_raycasting)
+        {
+            _raycasting = true;
+            StartCorountine(Raycasting)
+        }*/
        
 
 
-        _angle += _angleStep * Time.deltaTime * 15f;
+        _angle += _angleStep * Time.deltaTime;
         if (_angle >= 360) _angle = 0;
         _linePoint = CalculateLinePoint();
 
@@ -85,6 +90,7 @@ public class RaycastingSubmarine : ElectricalDevice
         blitMat.SetVector("_Point", _hitpoint);
         blitMat.SetVector("_PointB", _linePoint);
         blitMat.SetVector("_PointArtifact", _artifactHitpoint);
+        blitMat.SetFloat("_TimeDeltaTime", Time.deltaTime);
 
         RenderTexture tempRend = RenderTexture.GetTemporary(sonar1.width, sonar1.height, 0, sonar1.format);
         Graphics.Blit(sonar1, tempRend, blitMat, 0);
