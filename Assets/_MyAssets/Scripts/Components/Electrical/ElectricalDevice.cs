@@ -9,7 +9,7 @@ public abstract class ElectricalDevice : Measureable
     public static float globalSurge => _globalSurge;
 
     private float _localSurge;
-    private bool _isPowered;
+    private bool _isPowered = true;
 
     public bool isPowered => _isPowered;
 

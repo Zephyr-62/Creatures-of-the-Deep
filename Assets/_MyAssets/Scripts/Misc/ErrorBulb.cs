@@ -7,7 +7,7 @@ using TMPro;
 using UnityEngine;
 using static Malfunction;
 
-public class ErrorBulb : MonoBehaviour
+public class ErrorBulb : ElectricalDevice
 {
     private static List<ErrorBulb> all = new List<ErrorBulb>();
 
@@ -48,6 +48,7 @@ public class ErrorBulb : MonoBehaviour
 
     public void On()
     {
+        if (!isPowered) return;
         renderer.material.DOKill();
         renderer.material.DOFloat(1f, COLOR_KEYWORD, 0.1f);
         if (light)
@@ -76,6 +77,7 @@ public class ErrorBulb : MonoBehaviour
 
     public void Set(ErrorMask mask)
     {
+        if (errorMask == ErrorMask.None) return;
         Set((mask & errorMask) == errorMask);
     }
 
@@ -87,18 +89,35 @@ public class ErrorBulb : MonoBehaviour
         }
     }
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         all.Add(this);
     }
 
-    private void OnDisable()
+    protected override void OnDisable()
     {
+        base.OnDisable();
         all.Remove(this);
     }
 
     private void OnValidate()
     {
         SetLabel(Enum.GetName(typeof(ErrorMask), errorMask));
+    }
+
+    protected override void OnPowerGained()
+    {
+        Set(state);
+    }
+
+    protected override void OnPowerLost()
+    {
+        Off();
+    }
+
+    protected override void OnSurge()
+    {
+        
     }
 }
