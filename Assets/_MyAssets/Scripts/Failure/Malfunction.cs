@@ -1,3 +1,4 @@
+using AdvancedEditorTools.Attributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,6 +10,8 @@ public abstract class Malfunction
     [SerializeField] protected ErrorMask errorCode;
     [SerializeField] protected SymptomMask symptoms;
 
+    protected MalfunctionSystem system;
+
     public ErrorMask ErrorCode => errorCode;
     public SymptomMask Symptoms => symptoms;
 
@@ -16,33 +19,39 @@ public abstract class Malfunction
     public enum ErrorMask
     {
         None = 0,
-        A1 = 1,
-        A2 = 2,
-        A3 = 4,
-        A4 = 8,
-        B1 = 16,
-        B2 = 32,
-        B3 = 64,
-        B4 = 128,
-        C1 = 256,
-        C2 = 512,
-        C3 = 1024,
-        C4 = 2048,
-        D1 = 4096,
-        D2 = 8192,
-        D3 = 16384,
-        D4 = 32768,
+        ENG = 1, //ENGINE
+        H_MFD = 2, //HYDRAULICS
+        SONR = 4, //SONAR
+        BRK = 8, //Breakers
+        CAM = 16, //Camera
+        PWR = 32, //Power
+        PMP = 128, //Pump
+        THR = 256, //Throttle
+        FIN = 512, //Pitch -> fins
+        RDR = 1024, //Rudder -> steering
+        DCTRL = 2048, //Depth control -> elevation
+        SPEC = 4096, //Spectronomer
+        VOL = 8192, //Voltage
+        HPE = 16384, //High Priority Emergency
+        HULL_SYS = 32768, //Hull System
+        BAR = 65536 // Pressure issue 
     }
 
-    public abstract void Enter(MalfunctionSystem system);
-    public abstract void Exit(MalfunctionSystem system);
-    public abstract bool IsFixed(MalfunctionSystem system);
+    public virtual void Enter() { enabled = true; }
+    public virtual void Exit() { enabled = false; }
+    public abstract bool IsFixed();
+    public virtual void Update() { }
+
+    public virtual bool OnCollision(Collision collision)
+    {
+        return false;
+    }
 
     private bool enabled;
     public bool Enabled => enabled;
 
-    public void Enable(bool enabled)
+    public void AttachSystem(MalfunctionSystem system)
     {
-        this.enabled = enabled;
+        this.system = system;
     }
 }

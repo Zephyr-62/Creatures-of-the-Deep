@@ -174,7 +174,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 3300526466647658817, guid: 3502795904db11e4e824e4bf86157a91, type: 3}
+  - {fileID: 2100000, guid: a5ae6fe60e57e334e8bef7393fd93aeb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -272,6 +272,12 @@ MonoBehaviour:
   onReleased:
     m_PersistentCalls:
       m_Calls: []
+  onBlocked:
+    m_PersistentCalls:
+      m_Calls: []
+  onUnblocked:
+    m_PersistentCalls:
+      m_Calls: []
   _value: 0
   max: 1
   handle: {fileID: 4931273108268401003}
@@ -280,10 +286,7 @@ MonoBehaviour:
   range: 0.4
   animationDuration: 0.05
   animationEase: 2
-  onReleasedValue:
-    m_PersistentCalls:
-      m_Calls: []
-  onValueChangedToMax:
+  onPulledToMax:
     m_PersistentCalls:
       m_Calls: []
   onReset:
@@ -353,7 +356,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 0cda390637dfa7f47965a70288fbf20c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

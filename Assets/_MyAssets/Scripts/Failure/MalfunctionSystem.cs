@@ -1,40 +1,47 @@
 using AdvancedEditorTools.Attributes;
-using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static Symptom;
 
 public class MalfunctionSystem : MonoBehaviour
 {
-    [SerializeField] private LightBoard lightBoard;
-
-    [SerializeField] private List<Malfunction> malfunctions;
-
-    [SerializeField] private SubmarineControlSwitchboard submarineControlSwitchboard;
-    [SerializeField] private SubmarineUtilitySwitchboard submarineUtilitySwitchboard;
-
-    public SubmarineControlSwitchboard controls => submarineControlSwitchboard;
-    public SubmarineUtilitySwitchboard utilities => submarineUtilitySwitchboard;
-
-    private Dictionary<SymptomMask, Symptom> symptoms;
-    private List<Malfunction> currentMalfunctions;
+    [SerializeField] private Engine _engine;
+    [SerializeField] private HydraulicPump _pump;
+    [SerializeField] private SubmarinePhysicsSystem _physicsSystem;
 
     [Header("Malfunctions")]
     [SerializeField] private EngineFailure engineFailure;
-    [SerializeField] private HydrolicFailure hydrolicFailure;
+    [SerializeField] private MissfireFailure missfireFailure;
+    [SerializeField] private HydraulicFailure throttleHydraulicFailure;
+    [SerializeField] private HydraulicFailure steeringHydraulicFailure;
+    [SerializeField] private HydraulicFailure pitchHydraulicFailure;
+    [SerializeField] private HydraulicFailure elevationHydraulicFailure;
+    [SerializeField] private LocalVoltageSurge sonarVoltageSurge;
+    [SerializeField] private LocalVoltageSurge screenVoltageSurge;
+    [SerializeField] private LocalVoltageSurge lightsVoltageSurge;
+
+    public Engine engine => _engine;
+    public HydraulicPump pump => _pump;
+    public SubmarinePhysicsSystem physicsSystem => _physicsSystem;
+
+    private List<Malfunction> allMalfunctions;
 
     private void Awake()
     {
-        currentMalfunctions = new List<Malfunction>();
-        symptoms = new Dictionary<SymptomMask, Symptom>
-        {
-            { SymptomMask.EngineCutOff,     new EngineCutOff()  },
-            { SymptomMask.LockThrottle,     new LockThrottle()  },
-            { SymptomMask.LockSteering,     new LockSteering()  },
-            { SymptomMask.LockPitch,        new LockPitch()     },
-            { SymptomMask.LockElevation,    new LockElevation() }
-        };
+        allMalfunctions = new List<Malfunction>();
+        RegisterMalfunction(engineFailure);
+        RegisterMalfunction(throttleHydraulicFailure);
+        RegisterMalfunction(steeringHydraulicFailure);
+        RegisterMalfunction(pitchHydraulicFailure);
+        RegisterMalfunction(elevationHydraulicFailure);
+        RegisterMalfunction(sonarVoltageSurge);
+        RegisterMalfunction(screenVoltageSurge);
+        RegisterMalfunction(lightsVoltageSurge);
+
+        throttleHydraulicFailure.affectedControl = physicsSystem.throttleControl;
+        steeringHydraulicFailure.affectedControl = physicsSystem.steeringControl;
+        pitchHydraulicFailure.affectedControl = physicsSystem.pitchControl;
+        elevationHydraulicFailure.affectedControl = physicsSystem.elevationControl;
     }
 
     private void Start()
@@ -44,68 +51,70 @@ public class MalfunctionSystem : MonoBehaviour
 
     private void Update()
     {
-        foreach (var malfunction in currentMalfunctions)
+        foreach (var malfunction in allMalfunctions)
         {
-            if (malfunction.IsFixed(this))
+            malfunction.Update();
+            if (malfunction.Enabled && malfunction.IsFixed())
             {
-                RemoveSymptoms(malfunction);
-                currentMalfunctions.Remove(malfunction);
-                malfunction.Exit(this);
+                malfunction.Exit();
             }
         }
     }
 
-    private void Failure(Malfunction malfunction)
+    public void Failure(Malfunction malfunction)
     {
         if (malfunction == null) return;
-        currentMalfunctions.Add(malfunction);
-        malfunction.Enter(this);
-        ApplySymptoms(malfunction);
+        if (malfunction.Enabled) return;
+        malfunction.AttachSystem(this);
+        malfunction.Enter();
     }
 
-    private void ApplySymptoms(Malfunction malfunction)
-    {
-        foreach (var symptom in symptoms)
-        {
-            if((malfunction.Symptoms & symptom.Key) == symptom.Key)
-            {
-                symptom.Value.Do(this);
-            }
-        }
-    }
-
-    private void RemoveSymptoms(Malfunction malfunction)
-    {
-        foreach (var symptom in symptoms)
-        {
-            if ((malfunction.Symptoms & symptom.Key) == symptom.Key)
-            {
-                symptom.Value.Undo(this);
-            }
-        }
-    }
+    
 
     IEnumerator ErrorCodeLoop()
     {
+        var index = 0;
+
         while (true)
         {
-            yield return new WaitUntil(() => currentMalfunctions.Count > 0);
+            for (var i = 0; i < allMalfunctions.Count; i++)
+            {
+                index++;
+                if(index >= allMalfunctions.Count)
+                {
+                    index = 0;
+                }
+                if (allMalfunctions[index].Enabled)
+                {
+                    break;
+                }
+            }
 
-            lightBoard.SetLights(currentMalfunctions[0].ErrorCode);
-            currentMalfunctions.Add(currentMalfunctions[0]);
-            currentMalfunctions.RemoveAt(0);
+            if (allMalfunctions[index].Enabled)
+            {
+                ErrorBulb.SetAll(allMalfunctions[index].ErrorCode);
 
-            yield return new WaitForSeconds(2f);
-            
-            lightBoard.SetLights(Malfunction.ErrorMask.None);
-            
-            yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(2f);
+
+                ErrorBulb.SetAll(Malfunction.ErrorMask.None);
+
+                yield return new WaitForSeconds(.5f);
+            } else
+            {
+                yield return null;
+            }
         }
+    }
+
+    private void RegisterMalfunction(Malfunction malfunction)
+    {
+        malfunction.AttachSystem(this);
+        allMalfunctions.Add(malfunction);
     }
 
     [Button("Test")]
     public void Test()
     {
-        Failure(engineFailure);
+        Failure(screenVoltageSurge);
     }
 }
