@@ -7,6 +7,8 @@ public class MalfunctionSystem : MonoBehaviour
 {
     [SerializeField] private Engine _engine;
     [SerializeField] private HydraulicPump _pump;
+    [SerializeField] private CircuitBreaker _breaker;
+
     [SerializeField] private SubmarinePhysicsSystem _physicsSystem;
 
     [Header("Malfunctions")]
@@ -19,12 +21,17 @@ public class MalfunctionSystem : MonoBehaviour
     [SerializeField] private LocalVoltageSurge sonarVoltageSurge;
     [SerializeField] private LocalVoltageSurge screenVoltageSurge;
     [SerializeField] private LocalVoltageSurge lightsVoltageSurge;
+    [SerializeField] private CriticalVoltageSurge criticalVoltageSurge;
+
+    [SerializeField] private FMODUnity.EventReference alert;
 
     public Engine engine => _engine;
     public HydraulicPump pump => _pump;
+    public CircuitBreaker breaker => _breaker;
     public SubmarinePhysicsSystem physicsSystem => _physicsSystem;
 
     private List<Malfunction> allMalfunctions;
+    private FMOD.Studio.EventInstance instance;
 
     private void Awake()
     {
@@ -38,11 +45,15 @@ public class MalfunctionSystem : MonoBehaviour
         RegisterMalfunction(sonarVoltageSurge);
         RegisterMalfunction(screenVoltageSurge);
         RegisterMalfunction(lightsVoltageSurge);
+        RegisterMalfunction(criticalVoltageSurge);
 
         throttleHydraulicFailure.affectedControl = physicsSystem.throttleControl;
         steeringHydraulicFailure.affectedControl = physicsSystem.steeringControl;
         pitchHydraulicFailure.affectedControl = physicsSystem.pitchControl;
         elevationHydraulicFailure.affectedControl = physicsSystem.elevationControl;
+
+        instance = FMODUnity.RuntimeManager.CreateInstance(alert);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, transform);
     }
 
     private void Start()
@@ -94,12 +105,19 @@ public class MalfunctionSystem : MonoBehaviour
             if (allMalfunctions[index].Enabled)
             {
                 ErrorBulb.SetAll(allMalfunctions[index].ErrorCode);
+                
+                
+                if((allMalfunctions[index].Symptoms & Symptom.SymptomMask.Alert) == Symptom.SymptomMask.Alert)
+                {
+                    instance.start();
+                    FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, transform);
+                }
 
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(1f);
 
                 ErrorBulb.SetAll(Malfunction.ErrorMask.None);
 
-                yield return new WaitForSeconds(.5f);
+                yield return new WaitForSeconds(.3f);
             } else
             {
                 yield return null;

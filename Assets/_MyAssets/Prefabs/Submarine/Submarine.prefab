@@ -300,6 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _engine: {fileID: 7822135313551743458}
   _pump: {fileID: 0}
+  _breaker: {fileID: 7694412221987458073}
   _physicsSystem: {fileID: 7702717458789281797}
   engineFailure:
     errorCode: 16417
@@ -311,30 +312,30 @@ MonoBehaviour:
     symptoms: 0
   throttleHydraulicFailure:
     errorCode: 258
-    symptoms: 0
+    symptoms: 1
     affectedControl: {fileID: 1307670824807771108}
   steeringHydraulicFailure:
     errorCode: 1026
-    symptoms: 0
+    symptoms: 1
     affectedControl: {fileID: 1267364312463893566}
   pitchHydraulicFailure:
     errorCode: 514
-    symptoms: 0
+    symptoms: 1
     affectedControl: {fileID: 3497187953445905077}
   elevationHydraulicFailure:
     errorCode: 2050
-    symptoms: 0
+    symptoms: 1
     affectedControl: {fileID: 3120643649950587126}
   sonarVoltageSurge:
-    errorCode: 0
-    symptoms: 0
+    errorCode: 8196
+    symptoms: 1
     dial: {fileID: 8100263291680837880}
     devices:
     - {fileID: 2572974107078183680}
     tolerance: 0.1
   screenVoltageSurge:
     errorCode: 8208
-    symptoms: 0
+    symptoms: 1
     dial: {fileID: 5692015754548326128}
     devices:
     - {fileID: 3783206230856178206}
@@ -342,11 +343,21 @@ MonoBehaviour:
     - {fileID: 3379141635246323263}
     tolerance: 0.1
   lightsVoltageSurge:
-    errorCode: 8196
+    errorCode: 0
     symptoms: 0
     dial: {fileID: 0}
     devices: []
     tolerance: 0.1
+  criticalVoltageSurge:
+    errorCode: 0
+    symptoms: 0
+  alert:
+    Guid:
+      Data1: -740559462
+      Data2: 1150476470
+      Data3: -1669503068
+      Data4: -725180511
+    Path: event:/Submarine/Failure/Alert
 --- !u!1 &6697414005029098260
 GameObject:
   m_ObjectHideFlags: 0
@@ -1191,6 +1202,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 756a75e669b1d054bb7a617931c941fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7694412221987458073 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3390730495346682598, guid: 7d656c24ef4907a4291a7b5209f0e39c,
+    type: 3}
+  m_PrefabInstance: {fileID: 5027776736126150399}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1451d49385d1cc54d9249f6e795833a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &7822135313551743458 stripped
