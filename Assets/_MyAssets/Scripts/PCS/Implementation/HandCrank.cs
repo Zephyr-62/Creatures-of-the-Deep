@@ -21,16 +21,28 @@ public class HandCrank : PhysicalControlSurface
     [SerializeField] public UnityEvent onValueChangedToMax;
     [SerializeField] public UnityEvent onValueChangedToMin;
 
+    [Header("Sounds")]
+    [SerializeField] private FMODUnity.EventReference rotate;
+    [SerializeField] private string parameter = "crank_speed";
+
+
     private Vector3 point;
     private Vector3 dir;
     private float targetAngle;
     private float clampedAngle;
     private float currentMinAngle, currentMaxAngle;
+    private FMOD.Studio.EventInstance instance;
 
     private void Awake()
     {
         currentMinAngle = minAngle;
         currentMaxAngle = maxAngle;
+    }
+
+    private void Start()
+    {
+        instance = FMODUnity.RuntimeManager.CreateInstance(rotate);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, transform);
     }
 
     public float value
@@ -58,6 +70,19 @@ public class HandCrank : PhysicalControlSurface
         }
     }
 
+    internal override void Grab(FirstPersonCamera firstPersonCamera, Vector3 grabPoint)
+    {
+        base.Grab(firstPersonCamera, grabPoint);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, transform);
+        instance.start();
+    }
+
+    internal override void Release()
+    {
+        base.Release();
+        instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+    }
+
     public override void HandleInput()
     {
         var plane = new Plane(rotatePoint.up, rotatePoint.position);
@@ -76,9 +101,16 @@ public class HandCrank : PhysicalControlSurface
 
     private void AdjustToAngle(float angle)
     {
+        angle = Mathf.Clamp(angle, currentMinAngle, currentMaxAngle);
+
         var delta = Mathf.DeltaAngle(targetAngle, angle);
-   
-        targetAngle = targetAngle + Mathf.Clamp(delta, -speed * Time.deltaTime, speed * Time.deltaTime);
+
+        var v = Mathf.Clamp(delta, -speed * Time.deltaTime, speed * Time.deltaTime);
+
+
+        instance.setParameterByName(parameter, Mathf.Abs((v / Time.deltaTime)/speed));
+
+        targetAngle = targetAngle + v;
 
         clampedAngle = Mathf.Clamp(targetAngle, currentMinAngle, currentMaxAngle);
         rotatePoint.localRotation = Quaternion.AngleAxis(clampedAngle, Vector3.up);

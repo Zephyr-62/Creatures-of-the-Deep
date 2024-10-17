@@ -12,14 +12,20 @@ public class Engine : ElectricalDevice
     [Header("Settings")]
     [SerializeField] private float _minimumStartValue = 0.9f;
     [SerializeField] private float _minimumStartVelocity = 10f;
+    [SerializeField] private float _heatCapacity;
     [Header("Events")]
     [SerializeField] private UnityEvent _onSuccessfullStart;
+
+    private float _heat;
 
     public ClickySwitch power => _power;
     public ClickySwitch ignition => _ignition;
     public Pulley starter => _starter;
     public float minimumStartValue => _minimumStartValue;
     public float minimumStartVelocity => _minimumStartVelocity;
+    public float heat => _heat;
+    public float heatCapacity => _heatCapacity;
+
     public UnityEvent onSuccessfullStart => _onSuccessfullStart;
 
     protected override void OnEnable()
@@ -58,5 +64,20 @@ public class Engine : ElectricalDevice
     protected override void OnSurge()
     {
         
+    }
+
+    private void Update()
+    {
+        _heat = heat * 0.9f * Time.deltaTime;
+    }
+
+    public override float Measure()
+    {
+        return _heat;
+    }
+
+    public override Vector2 GetRange()
+    {
+        return new Vector2(0, _heatCapacity);
     }
 }

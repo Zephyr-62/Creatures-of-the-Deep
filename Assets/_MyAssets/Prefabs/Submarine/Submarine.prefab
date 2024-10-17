@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 7702717458789281797}
   - component: {fileID: 8869134912052278747}
   - component: {fileID: 493959703518851669}
+  - component: {fileID: 2923513526150963023}
   m_Layer: 0
   m_Name: Submarine
   m_TagString: Untagged
@@ -201,6 +202,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   system: {fileID: 5956822845284927706}
+  audioPrefab: {fileID: 1448729584505001403, guid: 35e887a79a4f42d41a50c4c310e1839b,
+    type: 3}
+--- !u!114 &2923513526150963023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616634190552609702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1791721199
+      Data2: 1268787870
+      Data3: 556504218
+      Data4: 119680066
+    Path: event:/Submarine/BaseAmbience
+  Event: 
+  PlayEvent: 11
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &5175877439472153781
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,18 +348,26 @@ MonoBehaviour:
     errorCode: 258
     symptoms: 1
     affectedControl: {fileID: 1307670824807771108}
+    impactThresshold: 1600
+    impactRandomness: 3000
   steeringHydraulicFailure:
     errorCode: 1026
     symptoms: 1
     affectedControl: {fileID: 1267364312463893566}
+    impactThresshold: 1600
+    impactRandomness: 3000
   pitchHydraulicFailure:
     errorCode: 514
     symptoms: 1
     affectedControl: {fileID: 3497187953445905077}
+    impactThresshold: 1600
+    impactRandomness: 3000
   elevationHydraulicFailure:
     errorCode: 2050
     symptoms: 1
     affectedControl: {fileID: 3120643649950587126}
+    impactThresshold: 1600
+    impactRandomness: 3000
   sonarVoltageSurge:
     errorCode: 8196
     symptoms: 1
