@@ -12,16 +12,18 @@ public class MalfunctionSystem : MonoBehaviour
     [SerializeField] private SubmarinePhysicsSystem _physicsSystem;
 
     [Header("Malfunctions")]
-    [SerializeField] private EngineFailure engineFailure;
-    [SerializeField] private MissfireFailure missfireFailure;
-    [SerializeField] private HydraulicFailure throttleHydraulicFailure;
-    [SerializeField] private HydraulicFailure steeringHydraulicFailure;
-    [SerializeField] private HydraulicFailure pitchHydraulicFailure;
-    [SerializeField] private HydraulicFailure elevationHydraulicFailure;
-    [SerializeField] private LocalVoltageSurge sonarVoltageSurge;
-    [SerializeField] private LocalVoltageSurge screenVoltageSurge;
-    [SerializeField] private LocalVoltageSurge lightsVoltageSurge;
-    [SerializeField] private CriticalVoltageSurge criticalVoltageSurge;
+    public EngineFailure engineFailure;
+    public OverheatingFailure missfireFailure;
+    public HydraulicFailure throttleHydraulicFailure;
+    public HydraulicFailure steeringHydraulicFailure;
+    public HydraulicFailure pitchHydraulicFailure;
+    public HydraulicFailure elevationHydraulicFailure;
+    public LocalVoltageSurge sonarVoltageSurge;
+    public LocalVoltageSurge screenVoltageSurge;
+    public LocalVoltageSurge lightsVoltageSurge;
+    public CriticalVoltageSurge criticalVoltageSurge;
+
+
 
     [SerializeField] private FMODUnity.EventReference alert;
 
@@ -80,8 +82,6 @@ public class MalfunctionSystem : MonoBehaviour
         malfunction.AttachSystem(this);
         malfunction.Enter();
     }
-
-    
 
     IEnumerator ErrorCodeLoop()
     {
