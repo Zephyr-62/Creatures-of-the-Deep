@@ -41,8 +41,7 @@ public class HandCrank : PhysicalControlSurface
 
     private void Start()
     {
-        instance = FMODUnity.RuntimeManager.CreateInstance(rotate);
-        FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, transform);
+        
     }
 
     public float value
@@ -73,6 +72,7 @@ public class HandCrank : PhysicalControlSurface
     internal override void Grab(FirstPersonCamera firstPersonCamera, Vector3 grabPoint)
     {
         base.Grab(firstPersonCamera, grabPoint);
+        instance = FMODUnity.RuntimeManager.CreateInstance(rotate);
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, transform);
         instance.start();
     }

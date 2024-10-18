@@ -13,12 +13,14 @@ public class OverheatingFailure : Malfunction
     {
         base.Enter();
         system.physicsSystem.TurnOff();
+        system.engine.Overheat(true);
     }
 
     public override void Exit()
     {
         base.Exit();
         system.Failure(system.engineFailure);
+        system.engine.Overheat(false);
     }
 
     public override bool IsFixed()

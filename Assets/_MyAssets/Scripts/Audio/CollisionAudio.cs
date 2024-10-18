@@ -10,15 +10,11 @@ public class CollisionAudio : MonoBehaviour
     [SerializeField] private FMODUnity.EventReference collisionSound;
     private FMOD.Studio.EventInstance instance;
 
-    private bool done;
-
     private void Start()
     {
         instance = FMODUnity.RuntimeManager.CreateInstance(collisionSound);
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, transform);
         
-        var callback = new FMOD.Studio.EVENT_CALLBACK(CallBack);
-        instance.setCallback(callback, EVENT_CALLBACK_TYPE.STOPPED);
 
         instance.start();
 
@@ -26,15 +22,16 @@ public class CollisionAudio : MonoBehaviour
 
     private void Update()
     {
-        if (done)
+        if(instance.isValid() && instance.getPlaybackState(out var state) == RESULT.OK && state == PLAYBACK_STATE.STOPPED)
         {
-            Destroy(gameObject);
+            instance.release();
+            StartCoroutine(DelayedDeletion());
         }
     }
 
-    private RESULT CallBack(EVENT_CALLBACK_TYPE type, IntPtr _event, IntPtr parameters)
+    IEnumerator DelayedDeletion()
     {
-        done = true;
-        return RESULT.OK;
+        yield return new WaitForSeconds(0.5f);
+        Destroy(gameObject);
     }
 }

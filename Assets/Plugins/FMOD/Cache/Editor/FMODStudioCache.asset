@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Engine/Power
+  m_Name: parameter:/Engine/engine_level
   m_EditorClassIdentifier: 
-  Name: Power
+  Name: engine_level
   StudioPath: 
   Min: 0
   Max: 1
@@ -168,10 +168,10 @@ MonoBehaviour:
   Path: Assets/_MyAssets/Audio/main_fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638648069816003955
+  lastModified: 638648493267271375
   FileSizes:
   - Name: Desktop
-    Value: 3072288
+    Value: 3366560
   Exists: 1
 --- !u!114 &-3170323082403319442
 MonoBehaviour:
@@ -281,6 +281,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1299
+--- !u!114 &-549673227023441186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Submarine/Failure/Overheat
+  m_EditorClassIdentifier: 
+  Path: event:/Submarine/Failure/Overheat
+  Guid:
+    Data1: 2139793432
+    Data2: 1240060348
+    Data3: 1958476730
+    Data4: -1336678951
+  Banks:
+  - {fileID: -3412374948495567671}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 2827336502873350194}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 26993
 --- !u!114 &-315758287116454358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,12 +398,13 @@ MonoBehaviour:
   - {fileID: 3164919821014380917}
   - {fileID: -6496237357679525378}
   - {fileID: 4069511354846223289}
+  - {fileID: -549673227023441186}
   EditorParameters: []
   MasterBanks:
   - {fileID: -3412374948495567671}
   StringsBanks:
   - {fileID: 3561581469223207880}
-  cacheTime: 638648069816053941
+  cacheTime: 638648493267311367
   cacheVersion: 131619
 --- !u!114 &595240047088548061
 MonoBehaviour:
@@ -431,6 +460,54 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &2360368102596075221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Engine/elevation_level
+  m_EditorClassIdentifier: 
+  Name: elevation_level
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3517067699
+    data2: 1204822705
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &2827336502873350194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Overheat/heat_level
+  m_EditorClassIdentifier: 
+  Name: heat_level
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4060496780
+    data2: 3248570264
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &3164919821014380917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,10 +550,10 @@ MonoBehaviour:
   Path: Assets/_MyAssets/Audio/main_fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638648069816053941
+  lastModified: 638648493267311367
   FileSizes:
   - Name: Desktop
-    Value: 1718
+    Value: 1862
   Exists: 1
 --- !u!114 &4069511354846223289
 MonoBehaviour:
@@ -557,6 +634,7 @@ MonoBehaviour:
   IsOneShot: 0
   Parameters:
   - {fileID: -8650874348767067818}
+  - {fileID: 2360368102596075221}
   MinDistance: 1
   MaxDistance: 20
   Length: 7551

@@ -244,7 +244,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8365191257826152530}
-  - component: {fileID: 6802502866570874750}
   m_Layer: 0
   m_Name: Engine
   m_TagString: Untagged
@@ -267,27 +266,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3894084093706015218}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6802502866570874750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5175877439472153781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89e14170bfcaaac4197a2866167a071f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  physicsSystem: {fileID: 7702717458789281797}
-  baseEngine:
-    Guid:
-      Data1: 591774172
-      Data2: 1336632948
-      Data3: -497708143
-      Data4: 2117688090
-    Path: event:/Submarine/Engine/Engine
-  parameter: Power
 --- !u!1 &5528843093687749734
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,8 +320,9 @@ MonoBehaviour:
     impactThresshold: 1800
     impactRandomness: 1000
   missfireFailure:
-    errorCode: 1
-    symptoms: 0
+    errorCode: 20481
+    symptoms: 1
+    recoveryHeatLevel: 3
   throttleHydraulicFailure:
     errorCode: 258
     symptoms: 1
@@ -751,11 +730,51 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: a5ae6fe60e57e334e8bef7393fd93aeb, type: 2}
+    - target: {fileID: 2681332388138213965, guid: 7d656c24ef4907a4291a7b5209f0e39c,
+        type: 3}
+      propertyPath: heat.Path
+      value: event:/Submarine/Failure/Overheat
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681332388138213965, guid: 7d656c24ef4907a4291a7b5209f0e39c,
+        type: 3}
+      propertyPath: heatParameter
+      value: heat_level
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681332388138213965, guid: 7d656c24ef4907a4291a7b5209f0e39c,
+        type: 3}
+      propertyPath: engineParameter
+      value: engine_level
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681332388138213965, guid: 7d656c24ef4907a4291a7b5209f0e39c,
+        type: 3}
+      propertyPath: heat.Guid.Data1
+      value: 2139793432
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681332388138213965, guid: 7d656c24ef4907a4291a7b5209f0e39c,
+        type: 3}
+      propertyPath: heat.Guid.Data2
+      value: 1240060348
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681332388138213965, guid: 7d656c24ef4907a4291a7b5209f0e39c,
+        type: 3}
+      propertyPath: heat.Guid.Data3
+      value: 1958476730
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681332388138213965, guid: 7d656c24ef4907a4291a7b5209f0e39c,
+        type: 3}
+      propertyPath: heat.Guid.Data4
+      value: -1336678951
+      objectReference: {fileID: 0}
     - target: {fileID: 2817025284134201532, guid: 7d656c24ef4907a4291a7b5209f0e39c,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 6a130283c1ca78d4d9e329504b1b055f, type: 2}
+    - target: {fileID: 2975629012804566813, guid: 7d656c24ef4907a4291a7b5209f0e39c,
+        type: 3}
+      propertyPath: _system
+      value: 
+      objectReference: {fileID: 7702717458789281797}
     - target: {fileID: 3330558549518905739, guid: 7d656c24ef4907a4291a7b5209f0e39c,
         type: 3}
       propertyPath: m_LocalPosition.y

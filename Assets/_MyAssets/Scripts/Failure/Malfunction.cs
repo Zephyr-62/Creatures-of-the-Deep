@@ -30,7 +30,7 @@ public abstract class Malfunction
         FIN = 512, //Pitch -> fins
         RDR = 1024, //Rudder -> steering
         DCTRL = 2048, //Depth control -> elevation
-        SPEC = 4096, //Spectronomer
+        TEMP = 4096, //Spectronomer
         VOL = 8192, //Voltage
         HPE = 16384, //High Priority Emergency
         HULL_SYS = 32768, //Hull System
