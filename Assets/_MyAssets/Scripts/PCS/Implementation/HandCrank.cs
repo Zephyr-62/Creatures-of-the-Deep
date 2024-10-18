@@ -112,7 +112,21 @@ public class HandCrank : PhysicalControlSurface
 
         targetAngle = targetAngle + v;
 
-        clampedAngle = Mathf.Clamp(targetAngle, currentMinAngle, currentMaxAngle);
+        var a = Mathf.Clamp(targetAngle, currentMinAngle, currentMaxAngle);
+        if (a != clampedAngle)
+        {
+            if (a == currentMaxAngle)
+            {
+                Debug.Log("DONKK!!");
+                onValueChangedToMax.Invoke();
+            }
+            if (a == currentMinAngle)
+            {
+                onValueChangedToMin.Invoke();
+            }
+        }
+        clampedAngle = a;
+
         rotatePoint.localRotation = Quaternion.AngleAxis(clampedAngle, Vector3.up);
     }
 

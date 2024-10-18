@@ -55,14 +55,6 @@ public class Lever : PhysicalControlSurface
             _value = Mathf.Clamp(value, min, max);
             if (old != _value)
             {
-                if (_value == max)
-                {
-                    onValueChangedToMax.Invoke();
-                }
-                if (_value == min)
-                {
-                    onValueChangedToMin.Invoke();
-                }
                 onValueChanged.Invoke();
             }
         }
@@ -120,7 +112,19 @@ public class Lever : PhysicalControlSurface
 
         targetAngle = targetAngle + v;
 
-        clampedAngle = Mathf.Clamp(targetAngle, currentMinAngle, currentMaxAngle);
+        var a  = Mathf.Clamp(targetAngle, currentMinAngle, currentMaxAngle);
+        if(a != clampedAngle)
+        {
+            if (a == currentMaxAngle)
+            {
+                onValueChangedToMax.Invoke();
+            }
+            if (a == currentMinAngle)
+            {
+                onValueChangedToMin.Invoke();
+            }
+        }
+        clampedAngle = a;
 
         rotatePoint.localRotation = Quaternion.AngleAxis(clampedAngle, Vector3.right);
     }
