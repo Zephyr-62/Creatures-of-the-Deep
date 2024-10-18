@@ -69,7 +69,7 @@ public class HandCrank : PhysicalControlSurface
         }
     }
 
-    internal override void Grab(FirstPersonCamera firstPersonCamera, Vector3 grabPoint)
+    internal override void Grab(FirstPersonCamera firstPersonCamera, Vector3 grabPoint, bool fireEvent = true)
     {
         base.Grab(firstPersonCamera, grabPoint);
         instance = FMODUnity.RuntimeManager.CreateInstance(rotate);
@@ -77,7 +77,7 @@ public class HandCrank : PhysicalControlSurface
         instance.start();
     }
 
-    internal override void Release()
+    internal override void Release(bool fireEvent = true)
     {
         base.Release();
         instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
@@ -117,7 +117,6 @@ public class HandCrank : PhysicalControlSurface
         {
             if (a == currentMaxAngle)
             {
-                Debug.Log("DONKK!!");
                 onValueChangedToMax.Invoke();
             }
             if (a == currentMinAngle)

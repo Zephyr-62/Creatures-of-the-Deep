@@ -37,15 +37,15 @@ public class Button : PhysicalControlSurface
         }
     }
 
-    internal override void Grab(FirstPersonCamera firstPersonCamera, Vector3 grabPoint)
+    internal override void Grab(FirstPersonCamera firstPersonCamera, Vector3 grabPoint, bool fireEvent = true)
     {
-        base.Grab(firstPersonCamera, grabPoint);
+        base.Grab(firstPersonCamera, grabPoint, !blocked);
         AdjustToValue(true);
     }
 
-    internal override void Release()
+    internal override void Release(bool fireEvent = true)
     {
-        base.Release();
+        base.Release(!blocked);
         AdjustToValue(false);
     }
 

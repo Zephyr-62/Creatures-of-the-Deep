@@ -64,7 +64,7 @@ public class Lever : PhysicalControlSurface
     {
     }
 
-    internal override void Grab(FirstPersonCamera firstPersonCamera, Vector3 grabPoint)
+    internal override void Grab(FirstPersonCamera firstPersonCamera, Vector3 grabPoint, bool fireEvent = true)
     {
         base.Grab(firstPersonCamera, grabPoint);
         instance = FMODUnity.RuntimeManager.CreateInstance(rotate);
@@ -72,7 +72,7 @@ public class Lever : PhysicalControlSurface
         instance.start();
     }
 
-    internal override void Release()
+    internal override void Release(bool fireEvent = true)
     {
         base.Release();
         instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);

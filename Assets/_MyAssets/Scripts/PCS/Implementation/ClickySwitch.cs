@@ -52,7 +52,7 @@ public class ClickySwitch : PhysicalControlSurface
         }
     }
 
-    internal override void Release()
+    internal override void Release(bool fireEvent = true)
     {
         base.Release();
     }

@@ -56,7 +56,7 @@ public class LeverSwitch : PhysicalControlSurface
         }
     }
 
-    internal override void Grab(FirstPersonCamera firstPersonCamera, Vector3 grabPoint)
+    internal override void Grab(FirstPersonCamera firstPersonCamera, Vector3 grabPoint, bool fireEvent = true)
     {
         base.Grab(firstPersonCamera, grabPoint);
         velocity = 0;

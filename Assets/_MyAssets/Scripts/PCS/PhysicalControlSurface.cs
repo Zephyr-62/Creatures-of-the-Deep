@@ -24,17 +24,17 @@ public abstract class PhysicalControlSurface : MonoBehaviour
     protected bool blocked;
     protected Vector3 grabPoint;
 
-    internal virtual void Grab(FirstPersonCamera firstPersonCamera, Vector3 grabPoint)
+    internal virtual void Grab(FirstPersonCamera firstPersonCamera, Vector3 grabPoint, bool fireEvent = true)
     {
         this.firstPersonCamera = firstPersonCamera;
         this.grabPoint = grabPoint;
-        onGrabbed.Invoke();
+        if(fireEvent) onGrabbed.Invoke();
     }
 
-    internal virtual void Release()
+    internal virtual void Release(bool fireEvent = true)
     {
         this.firstPersonCamera = null;
-        onReleased.Invoke();
+        if (fireEvent) onReleased.Invoke();
     }
 
     internal Vector3 UpdateSurface(Vector3 input)
