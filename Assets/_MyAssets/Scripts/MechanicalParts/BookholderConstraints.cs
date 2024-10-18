@@ -6,9 +6,9 @@ using UnityEngine;
 public class BookholderConstraints : MonoBehaviour
 {
     [Header("Inputs")]
-    [Range(45, 135)]
+    [Range(-35, 50)]
     public float BaseRotation = 135;
-    [Range(0, 0.44f)]
+    [Range(-0.25f, 0.25f)]
     public float TargetDepth = 0.2f;
 
     [Header("Configs")]
@@ -33,15 +33,15 @@ public class BookholderConstraints : MonoBehaviour
         ArmDir = PivotBook.position - PlayerPOV.position;
         ArmDir = Vector3.Scale(ArmDir, new Vector3(1, 0, 1)).normalized;
 
-        PivotBase.rotation = Quaternion.Euler(0, BaseRotation, 0);
+        PivotBase.localRotation = Quaternion.Euler(0, BaseRotation, 0);
         CalculateTarget();
         CalculateHintPos();
     }
 
     private void CalculateTarget()
     {
-        IK_target.LookAt(PlayerPOV);
         IK_target.position = PivotArm1.position + PivotBase.up * TargetHeight + ArmDir * TargetDepth;
+        PivotBook.LookAt(PlayerPOV);
     }
 
     private void CalculateHintPos()
