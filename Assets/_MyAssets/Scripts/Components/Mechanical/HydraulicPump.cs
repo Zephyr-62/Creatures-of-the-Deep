@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class HydraulicPump : Measureable
 {
-    [SerializeField] private Button pressureRelease;
+    [SerializeField] private HandCrank crankA;
+    [SerializeField] private HandCrank crankB;
+    [SerializeField] private HandCrank crankC;
+    [SerializeField] private HandCrank crankD;
 
     public override Vector2 GetRange()
     {
