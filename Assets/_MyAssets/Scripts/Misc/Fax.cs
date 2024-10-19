@@ -70,7 +70,7 @@ public class Fax : MonoBehaviour
 
         for (int i = 0; i < resolution + 1; i++)
         {
-            MoveSection(i, spline.EvaluatePosition(trueOffset + stepSize * i));
+            MoveSection(i, transform.InverseTransformPoint(spline.EvaluatePosition(trueOffset + stepSize * i)));
         }
 
         mesh.SetVertices(vertices);
@@ -94,7 +94,7 @@ public class Fax : MonoBehaviour
 
         float w = width * 0.5f;
 
-        Vector3 first = spline.EvaluatePosition(trueOffset);
+        Vector3 first = transform.InverseTransformPoint(spline.EvaluatePosition(trueOffset));
         vertices.Add(first + (w * Vector3.right));
         vertices.Add(first + (w * Vector3.left));
 
@@ -103,7 +103,7 @@ public class Fax : MonoBehaviour
 
         for (int i = 1; i < resolution + 1; i++)
         {
-            AddSection(i, spline.EvaluatePosition(trueOffset + stepSize * i));
+            AddSection(i, transform.InverseTransformPoint(spline.EvaluatePosition(trueOffset + stepSize * i)));
         }
 
         mesh.SetVertices(vertices);
@@ -167,8 +167,6 @@ public class Fax : MonoBehaviour
         var r = 30;
         var h = Mathf.Floor(r * x) * 0.5f;
         var g = Mathf.Max((r * x % 1) - 0.5f, 0);
-
-        Debug.Log(t + " " + (h + g) / r);
 
         return (h + g) / (r * 0.5f);
     }

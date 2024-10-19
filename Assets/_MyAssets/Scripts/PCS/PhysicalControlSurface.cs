@@ -22,7 +22,7 @@ public abstract class PhysicalControlSurface : Measureable
 
     protected FirstPersonCamera FirstPersonCamera => firstPersonCamera;
 
-    protected bool blocked;
+    protected bool blocked = false;
     protected Vector3 grabPoint;
 
     internal virtual void Grab(FirstPersonCamera firstPersonCamera, Vector3 grabPoint, bool fireEvent = true)
