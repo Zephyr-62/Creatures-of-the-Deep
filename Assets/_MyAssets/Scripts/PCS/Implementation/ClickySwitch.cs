@@ -148,6 +148,16 @@ public class ClickySwitch : PhysicalControlSurface
         AdjustToValue(value != 0);
     }
 
+    public override float Get01FloatValue()
+    {
+        return GetFloatValue();
+    }
+
+    public override void Set01FloatValue(float value)
+    {
+        SetFloatValue(value);
+    }
+
     private void OnValidate()
     {
         old = !value;

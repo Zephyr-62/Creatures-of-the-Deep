@@ -115,6 +115,16 @@ public class Button : PhysicalControlSurface
         AdjustToValue(value != 0);
     }
 
+    public override float Get01FloatValue()
+    {
+        return GetFloatValue();
+    }
+
+    public override void Set01FloatValue(float value)
+    {
+        SetFloatValue(value);
+    }
+
     private void OnValidate()
     {
         AdjustToValue(value, true);
@@ -137,4 +147,5 @@ public class Button : PhysicalControlSurface
         Handles.Label(transform.position, value.ToString());
 #endif
     }
+
 }

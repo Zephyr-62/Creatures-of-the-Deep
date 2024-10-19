@@ -7,9 +7,11 @@ public class QuestSystem : MonoBehaviour
     [SerializeField] private List<Quest> quests = new();
     [SerializeField] private Quest currentQuest;
     [SerializeField] private Button newQuestButton;
+    [SerializeField] private Button completeQuestButton;
 
     [SerializeField] public Transform submarineTransform;
     [SerializeField] public ArtefactSystem artefactSystem;
+    [SerializeField] public Fax fax;
 
     [SerializeField] public UnityEvent questStarted;
     [SerializeField] public UnityEvent questCompleted;
@@ -47,9 +49,7 @@ public class QuestSystem : MonoBehaviour
             currentQuest.StartQuest(this);
             questStarted.Invoke();
             
-            Debug.Log("====== Quest was started! ======");
-            Debug.Log("Quest Name: " + currentQuest.GetQuestName());
-            Debug.Log("Description " + currentQuest.GetDescription());
+            if(fax) fax.Print(currentQuest.GetQuestName() + " " + currentQuest.GetDescription());
         }
     }
 

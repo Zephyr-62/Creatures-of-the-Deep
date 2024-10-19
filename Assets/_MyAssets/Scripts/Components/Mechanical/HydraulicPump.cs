@@ -4,10 +4,29 @@ using UnityEngine;
 
 public class HydraulicPump : Measureable
 {
-    [SerializeField] private HandCrank crankA;
-    [SerializeField] private HandCrank crankB;
-    [SerializeField] private HandCrank crankC;
-    [SerializeField] private HandCrank crankD;
+    [SerializeField] private SubmarinePhysicsSystem _system;
+    [SerializeField] private HandCrank _crankThrust;
+    [SerializeField] private HandCrank _crankSteering;
+    [SerializeField] private HandCrank _crankPitch;
+    [SerializeField] private HandCrank _crankElevation;
+
+    public void Vent()
+    {
+        CheckVent(_system.throttleControl, _crankThrust);
+    }
+
+    private void CheckVent(PhysicalControlSurface pcs, HandCrank crank)
+    {
+        var v = crank.Get01FloatValue();
+        if (pcs.isBlocked && v >= 0.8)
+        {
+            pcs.Unblock();
+        }
+        else if (v >= 0.2f)
+        {
+            pcs.Block();
+        }
+    }
 
     public override Vector2 GetRange()
     {

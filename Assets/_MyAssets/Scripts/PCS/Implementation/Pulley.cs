@@ -120,17 +120,27 @@ public class Pulley : PhysicalControlSurface
 
     public override void SetBoolValue(bool value)
     {
-        this.value = value ? 1 : 0;
+        AdjustToValue(value ? 1 : 0);
     }
 
     public override void SetFloatValue(float value)
     {
-        this.value = value;
+        AdjustToValue(value);
     }
 
     public override void SetIntValue(int value)
     {
-        this.value = value;
+        AdjustToValue(value);
+    }
+
+    public override float Get01FloatValue()
+    {
+        return Mathf.InverseLerp(0, max, value);
+    }
+
+    public override void Set01FloatValue(float value)
+    {
+        SetFloatValue(Mathf.Lerp(0, max, value));
     }
 
     private void OnDrawGizmosSelected()

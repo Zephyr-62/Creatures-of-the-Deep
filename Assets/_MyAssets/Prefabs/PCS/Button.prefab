@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1073332301176272254}
   - component: {fileID: 7531337247609498858}
   - component: {fileID: 4921403109744802433}
+  - component: {fileID: 5835691659101272442}
   m_Layer: 10
   m_Name: Btn
   m_TagString: Untagged
@@ -64,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a5ae6fe60e57e334e8bef7393fd93aeb, type: 2}
+  - {fileID: 2100000, guid: d7d269e13bbed3e4a9e95088fc57cec2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107,6 +108,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.08, y: 0.049999997, z: 0.07999999}
   m_Center: {x: 0.0000009536743, y: 0.03500763, z: -5.2154064e-10}
+--- !u!114 &5835691659101272442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2412956715340319644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe00bc4297bdbcb4cb907cf1df7e0210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderer: {fileID: 7531337247609498858}
+  light: {fileID: 0}
 --- !u!1 &3676403845084160611
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,10 +415,34 @@ MonoBehaviour:
         m_CallState: 2
   onBlocked:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5835691659101272442}
+        m_TargetAssemblyTypeName: Lightbulb, Assembly-CSharp
+        m_MethodName: TurnOff
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onUnblocked:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5835691659101272442}
+        m_TargetAssemblyTypeName: Lightbulb, Assembly-CSharp
+        m_MethodName: TurnOn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   movePoint: {fileID: 3388727794326957784}
   depth: 0.02
   range: 0.2

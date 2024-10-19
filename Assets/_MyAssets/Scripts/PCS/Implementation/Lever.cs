@@ -165,6 +165,16 @@ public class Lever : PhysicalControlSurface
         AdjustToValue(value);
     }
 
+    public override float Get01FloatValue()
+    {
+        return Mathf.InverseLerp(min, max, value);
+    }
+
+    public override void Set01FloatValue(float value)
+    {
+        SetFloatValue(Mathf.Lerp(min, max, value));
+    }
+
     private void OnValidate()
     {
         AdjustToValue(value);
