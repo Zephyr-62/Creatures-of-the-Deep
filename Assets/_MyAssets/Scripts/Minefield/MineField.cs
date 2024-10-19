@@ -11,6 +11,7 @@ public class MineField : MonoBehaviour
     [SerializeField] private float yHeight = 10f;
     [SerializeField] private float zDepth = 100f;
     [SerializeField] private int rejectionSamples = 30;
+    [SerializeField] private bool drawGizmos = true;
 
     private List<Vector2> _points;
 
@@ -26,6 +27,7 @@ public class MineField : MonoBehaviour
 
     void OnDrawGizmos()
     {
+        if (!drawGizmos) return;
         Gizmos.color = Color.red;
         foreach (Vector2 point in _points)
         {
