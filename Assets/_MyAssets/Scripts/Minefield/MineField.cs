@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class MineField : MonoBehaviour
 {
+    [SerializeField] private BoxCollider minefieldCollider;
     [SerializeField] private GameObject hazardObject;
     [SerializeField] private float hazardScale = 1f;
     [SerializeField] [Range(2f, 10f)] public float radius = 5;
@@ -15,6 +16,11 @@ public class MineField : MonoBehaviour
 
     void OnValidate()
     {
+        Vector3 colliderSize = new Vector3(xWidth, yHeight, zDepth);
+
+        minefieldCollider.size = colliderSize;
+        minefieldCollider.center = colliderSize / 2;
+
         _points = PoissonDiscSampling.GeneratePoints(radius, new Vector2(xWidth, zDepth), rejectionSamples);
     }
 
@@ -23,7 +29,7 @@ public class MineField : MonoBehaviour
         Gizmos.color = Color.red;
         foreach (Vector2 point in _points)
         {
-            Gizmos.DrawWireSphere(new Vector3(point.x, yHeight/2, point.y) + transform.position, 1);
+            Gizmos.DrawWireSphere(new Vector3(point.x, yHeight / 2, point.y) + transform.position, 1);
         }
     }
 

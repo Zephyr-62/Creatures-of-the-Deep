@@ -1,17 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 
 public class MineDetectorSystem : MonoBehaviour
 {
-    [SerializeField] public Transform submarineTransform;
-    [SerializeField] public SphereCollider sensorCollider;
-
-    [SerializeField] private float detectionRange = 10;
-    [SerializeField] private float lethalRange = 5;
+    [SerializeField] private SphereCollider outerCollider;
+    [SerializeField] private CapsuleCollider innerCollider;
 
     [SerializeField] public UnityEvent minesDetected;
     [SerializeField] public UnityEvent minesExited;
@@ -19,42 +12,26 @@ public class MineDetectorSystem : MonoBehaviour
 
     private int _visibleMinesCount;
 
-    private void OnValidate()
-    {
-        sensorCollider.radius = detectionRange;
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(submarineTransform.position, detectionRange);
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(submarineTransform.position, lethalRange);
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.TryGetComponent(out SeaMine mine))
+        if (!other.gameObject.TryGetComponent(out MineField _)) return;
+
+        if (innerCollider.bounds.Intersects(other.bounds))
         {
-            if (_visibleMinesCount == 0) minesDetected.Invoke();
-            _visibleMinesCount++;
+            minesExploded.Invoke();
+        }
+        else if (outerCollider.bounds.Intersects(other.bounds))
+        {
+            minesDetected.Invoke();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.TryGetComponent(out SeaMine mine))
+        if (!other.gameObject.TryGetComponent(out MineField _)) return;
+        if (!outerCollider.bounds.Intersects(other.bounds))
         {
-            _visibleMinesCount--;
-            if (_visibleMinesCount == 0) minesExited.Invoke();
-        }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.TryGetComponent(out SeaMine mine) &&
-            Vector3.Distance(submarineTransform.position, mine.transform.position) <= lethalRange)
-        {
-            minesExploded.Invoke();
+            minesExited.Invoke();
         }
     }
 
