@@ -23,7 +23,7 @@ public class MineField : MonoBehaviour
         Gizmos.color = Color.red;
         foreach (Vector2 point in _points)
         {
-            Gizmos.DrawWireSphere(new Vector3(point.x, 0, point.y) + transform.position, 1);
+            Gizmos.DrawWireSphere(new Vector3(point.x, yHeight/2, point.y) + transform.position, 1);
         }
     }
 
