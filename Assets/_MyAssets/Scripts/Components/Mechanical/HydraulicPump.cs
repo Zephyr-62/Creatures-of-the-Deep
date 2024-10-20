@@ -17,12 +17,15 @@ public class HydraulicPump : Measureable
     public void Vent()
     {
         CheckVent(_system.throttleControl, _crankThrust);
+        CheckVent(_system.steeringControl, _crankSteering);
+        CheckVent(_system.pitchControl, _crankPitch);
+        CheckVent(_system.elevationControl, _crankElevation);
     }
 
     private void CheckVent(PhysicalControlSurface pcs, HandCrank crank)
     {
         var v = crank.Get01FloatValue();
-        if (pcs.isBlocked && v >= 0.8)
+        if (pcs.isBlocked && v >= 0.8f)
         {
             OnVent.Invoke(pcs);
         }
