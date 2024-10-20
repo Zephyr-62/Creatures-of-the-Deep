@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,30 +7,44 @@ using UnityEngine.Events;
 public class HydraulicPump : Measureable
 {
     [SerializeField] private SubmarinePhysicsSystem _system;
-    [SerializeField] private HandCrank _crankThrust;
-    [SerializeField] private HandCrank _crankSteering;
-    [SerializeField] private HandCrank _crankPitch;
-    [SerializeField] private HandCrank _crankElevation;
+    [SerializeField] private HandCrank _crankA;
+    [SerializeField] private HandCrank _crankB;
+    [SerializeField] private HandCrank _crankC;
+    [SerializeField] private HandCrank _crankD;
+    [SerializeField] private HandCrank _crankE;
+
+    [SerializeField] private Valve root;
+
 
     public UnityEvent<PhysicalControlSurface> OnVent;
     public UnityEvent<PhysicalControlSurface> OnDecompress;
 
     public void Vent()
     {
-        CheckVent(_system.throttleControl, _crankThrust);
-        CheckVent(_system.steeringControl, _crankSteering);
-        CheckVent(_system.pitchControl, _crankPitch);
-        CheckVent(_system.elevationControl, _crankElevation);
+        CheckValve(root);
     }
 
-    private void CheckVent(PhysicalControlSurface pcs, HandCrank crank)
+    private void CheckValve(Valve valve)
     {
-        var v = crank.Get01FloatValue();
-        if (pcs.isBlocked && v >= 0.8f)
+        if(valve.crank.Get01FloatValue() > 0.2f)
+        {
+            CheckValve(valve.rightValve);
+            Vent(valve.rightPCS);
+        } else if(valve.crank.Get01FloatValue() < 0.8f)
+        {
+            CheckValve(valve.leftValve);
+            Vent(valve.leftPCS);
+        }
+    }
+
+    private void Vent(PhysicalControlSurface pcs)
+    {
+        if (!pcs) return;
+        if (pcs.isBlocked)
         {
             OnVent.Invoke(pcs);
         }
-        else if (v >= 0.2f)
+        else
         {
             OnDecompress.Invoke(pcs);
         }

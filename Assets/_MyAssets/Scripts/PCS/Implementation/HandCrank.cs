@@ -20,7 +20,6 @@ public class HandCrank : PhysicalControlSurface
     [Header("Extra events")]
     [SerializeField] public UnityEvent onValueChangedToMax;
     [SerializeField] public UnityEvent onValueChangedToMin;
-
     [Header("Sounds")]
     [SerializeField] private FMODUnity.EventReference rotate;
     [SerializeField] private string parameter = "crank_speed";
@@ -37,11 +36,6 @@ public class HandCrank : PhysicalControlSurface
     {
         currentMinAngle = minAngle;
         currentMaxAngle = maxAngle;
-    }
-
-    private void Start()
-    {
-        
     }
 
     public float value
@@ -99,40 +93,48 @@ public class HandCrank : PhysicalControlSurface
         }
     }
 
-    private void AdjustToAngle(float angle)
+    private void AdjustToAngle(float angle, bool skip = false)
     {
-        angle = Mathf.Clamp(angle, currentMinAngle, currentMaxAngle);
-
-        var delta = Mathf.DeltaAngle(targetAngle, angle);
-
-        var v = Mathf.Clamp(delta, -speed * Time.deltaTime, speed * Time.deltaTime);
-
-
-        instance.setParameterByName(parameter, Mathf.Abs((v / Time.deltaTime)/speed));
-
-        targetAngle = targetAngle + v;
-
-        var a = Mathf.Clamp(targetAngle, currentMinAngle, currentMaxAngle);
-        if (a != clampedAngle)
+        if (skip)
         {
-            if (a == currentMaxAngle)
+            targetAngle = Mathf.Clamp(angle, currentMinAngle, currentMaxAngle);
+            clampedAngle = targetAngle;
+            Debug.Log(clampedAngle);
+        }  else
+        {
+            angle = Mathf.Clamp(angle, currentMinAngle, currentMaxAngle);
+
+            var delta = Mathf.DeltaAngle(targetAngle, angle);
+
+            var v = Mathf.Clamp(delta, -speed * Time.deltaTime, speed * Time.deltaTime);
+
+
+            instance.setParameterByName(parameter, Mathf.Abs((v / Time.deltaTime) / speed));
+
+            targetAngle = targetAngle + v;
+
+            var a = Mathf.Clamp(targetAngle, currentMinAngle, currentMaxAngle);
+            if (a != clampedAngle)
             {
-                onValueChangedToMax.Invoke();
+                if (a == currentMaxAngle)
+                {
+                    onValueChangedToMax.Invoke();
+                }
+                if (a == currentMinAngle)
+                {
+                    onValueChangedToMin.Invoke();
+                }
             }
-            if (a == currentMinAngle)
-            {
-                onValueChangedToMin.Invoke();
-            }
+            clampedAngle = a;
         }
-        clampedAngle = a;
 
         rotatePoint.localRotation = Quaternion.AngleAxis(clampedAngle, Vector3.up);
     }
 
-    private void AdjustToValue(float value)
+    private void AdjustToValue(float value, bool skip = false)
     {
         this.value = value;
-        AdjustToAngle(Mathf.Lerp(minAngle, maxAngle, Mathf.InverseLerp(min, max, this.value)));
+        AdjustToAngle(Mathf.Lerp(minAngle, maxAngle, Mathf.InverseLerp(min, max, this.value)), skip);
     }
 
     public override float GetFloatValue()
@@ -152,17 +154,17 @@ public class HandCrank : PhysicalControlSurface
 
     public override void SetFloatValue(float value)
     {
-        AdjustToValue(value);
+        AdjustToValue(value, true);
     }
 
     public override void SetBoolValue(bool value)
     {
-        AdjustToValue(value ? max : min);
+        AdjustToValue(value ? max : min, true);
     }
 
     public override void SetIntValue(int value)
     {
-        AdjustToValue(value);
+        AdjustToValue(value, true);
     }
 
     public override float Get01FloatValue()
@@ -177,7 +179,9 @@ public class HandCrank : PhysicalControlSurface
 
     private void OnValidate()
     {
-        AdjustToValue(value);
+        currentMinAngle = minAngle;
+        currentMaxAngle = maxAngle;
+        AdjustToValue(value, true);
     }
 
     private void OnDrawGizmos()
