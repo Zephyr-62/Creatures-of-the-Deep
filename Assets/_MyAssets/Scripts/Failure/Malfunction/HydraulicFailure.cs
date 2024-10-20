@@ -10,21 +10,25 @@ public class HydraulicFailure : Malfunction
     [SerializeField] private float impactThresshold;
     [SerializeField] private float impactRandomness;
 
+    private bool _fixed;
+
     public override void Enter()
     {
         base.Enter();
         affectedControl.Block();
+        _fixed = false;
     }
 
     public override void Exit()
     {
         base.Exit();
         affectedControl.Unblock();
+        _fixed = false;
     }
 
     public override bool IsFixed()
     {
-        return false;
+        return _fixed;
     }
 
     public override void Update()
@@ -48,6 +52,30 @@ public class HydraulicFailure : Malfunction
         float collisionForce = reducedMass * relativeVelocity.magnitude;
 
         if (!Enabled && collisionForce > UnityEngine.Random.Range(impactThresshold, impactThresshold + impactRandomness))
+        {
+            system.Failure(this);
+        }
+    }
+
+    public override void AttachSystem(MalfunctionSystem system)
+    {
+        base.AttachSystem(system);
+        system.pump.OnVent.AddListener(OnVent);
+        system.pump.OnDecompress.AddListener(OnDecompress);
+
+    }
+
+    private void OnVent(PhysicalControlSurface pcs)
+    {
+        if (pcs == affectedControl && Enabled)
+        {
+            _fixed = true;
+        }
+    }
+
+    private void OnDecompress(PhysicalControlSurface pcs)
+    {
+        if(pcs == affectedControl && !Enabled)
         {
             system.Failure(this);
         }

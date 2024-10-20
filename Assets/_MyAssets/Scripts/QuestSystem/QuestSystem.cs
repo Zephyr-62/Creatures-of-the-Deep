@@ -69,8 +69,11 @@ public class QuestSystem : MonoBehaviour
             
             currentQuest.StartQuest(this);
             questStarted.Invoke();
-            
-            if(fax) fax.Print(currentQuest.GetQuestName() + " " + currentQuest.GetDescription());
+
+            if (fax) 
+            {
+                fax.Print(currentQuest.GetQuestName(), currentQuest.GetDescription());
+            } 
         }
     }
 

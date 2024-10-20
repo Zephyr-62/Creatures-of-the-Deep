@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HydraulicPump : Measureable
 {
@@ -9,6 +10,9 @@ public class HydraulicPump : Measureable
     [SerializeField] private HandCrank _crankSteering;
     [SerializeField] private HandCrank _crankPitch;
     [SerializeField] private HandCrank _crankElevation;
+
+    public UnityEvent<PhysicalControlSurface> OnVent;
+    public UnityEvent<PhysicalControlSurface> OnDecompress;
 
     public void Vent()
     {
@@ -20,11 +24,11 @@ public class HydraulicPump : Measureable
         var v = crank.Get01FloatValue();
         if (pcs.isBlocked && v >= 0.8)
         {
-            pcs.Unblock();
+            OnVent.Invoke(pcs);
         }
         else if (v >= 0.2f)
         {
-            pcs.Block();
+            OnDecompress.Invoke(pcs);
         }
     }
 

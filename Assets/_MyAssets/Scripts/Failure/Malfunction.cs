@@ -50,7 +50,7 @@ public abstract class Malfunction
     private bool enabled;
     public bool Enabled => enabled;
 
-    public void AttachSystem(MalfunctionSystem system)
+    public virtual void AttachSystem(MalfunctionSystem system)
     {
         this.system = system;
     }

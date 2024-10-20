@@ -15,7 +15,8 @@ public class Fax : MonoBehaviour
 
     [SerializeField] private float width, length;
     [SerializeField, Min(2)] private int resolution;
-    [SerializeField] private TMP_Text textField;
+    [SerializeField] private TMP_Text title;
+    [SerializeField] private TMP_Text description;
 
     private MeshFilter meshFilter;
     private Mesh mesh;
@@ -145,9 +146,10 @@ public class Fax : MonoBehaviour
     }
 
     [Button("Print")]
-    public void Print(string text)
+    public void Print(string title, string description)
     {
-        textField.text = text;
+        this.title.text = title;
+        this.description.text = description;
         offset = -length;
         if (tween != null) tween.Kill();
         tween = DOTween.To(() => offset, x => offset = x, 0f, 3f).SetEase(Ease);
