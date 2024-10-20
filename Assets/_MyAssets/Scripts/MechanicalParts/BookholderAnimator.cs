@@ -144,12 +144,6 @@ public class BookholderAnimator : MonoBehaviour
         CurrentState = newState;
     }
 
-    [Button("InteractWithBookshelf")]
-    async private void _InteractWithBookshelf()
-    {
-        await InteractWithBookshelf(() => { });
-    }
-
     async public Task InteractWithBookshelf(TweenCallback duringInteraction)
     {
         await IK_target.DOLocalMove(
@@ -162,25 +156,21 @@ public class BookholderAnimator : MonoBehaviour
             .AsyncWaitForCompletion();
     }
 
-    [Button("Tween Base Rotation")]
     async private Task SetBaseRotation(float val, float time)
     {
         await DOTween.To(() => BaseRotation, x => BaseRotation = x, val, time).AsyncWaitForCompletion();
     }
 
-    [Button("Tween Height Mount")]
     async private Task SetHeightMount(float val, float time)
     {
         await DOTween.To(() => ArmHeightMount, x => ArmHeightMount = x, val, time).AsyncWaitForCompletion();
     }
 
-    [Button("Tween Rack Distance")]
     async private Task SetRackDistance(float val, float time)
     {
         await DOTween.To(() => BaseRackDistance, x => BaseRackDistance = x, val, time).AsyncWaitForCompletion();
     }
 
-    [Button("Tween Claw Open")]
     async private Task SetClawOpen(bool isOpen)
     {
         var clawState = isOpen ? OpenedClawsAngle : CollapsedClawsAngle;
@@ -191,7 +181,6 @@ public class BookholderAnimator : MonoBehaviour
         await Task.WhenAll(tasks);
     }
 
-    [Button("Tween Collapse Arm")]
     async private Task DOCollapseArm()
     {
         await SetHeightMount(0, 0.75f);
@@ -257,7 +246,6 @@ public class BookholderAnimator : MonoBehaviour
         IK_hint.position = PivotArm1.position + ArmDir;
     }
 
-    [Button("Tween Display Book")]
     async private Task AsyncBookDisplayUpdate()
     {
         var ArmDir = PivotBook.position - PlayerPOV.position;
