@@ -209,9 +209,9 @@ public class RaycastingSubmarine : ElectricalDevice
         _angleArt = Vector2.Angle(_submarine.transform.forward, _artiPos);
         float angleRad = _angleArt * Mathf.Deg2Rad;
         Vector2 rotVec;
-        if (Mathf.Abs(dis) > (_distance - (_distance / 11) ))
+        if (Mathf.Abs(dis) > (_distance - (_distance * 0.08f) ))
         {
-            rotVec = new Vector2(0, 0.9f);
+            rotVec = new Vector2(0, 0.92f);
             _arrow = true;
         }
         else
@@ -224,13 +224,13 @@ public class RaycastingSubmarine : ElectricalDevice
 
     private Vector2 CalculateArrowL()
     {
-        Vector2 rotVec = new Vector2(0, 0.87f);
+        Vector2 rotVec = new Vector2(0, 0.88f);
         float angleRad = (_angleArt - 2.5f) * Mathf.Deg2Rad;
         return new Vector2(rotVec.x * Mathf.Cos(angleRad) - rotVec.y * Mathf.Sin(angleRad), rotVec.x * Mathf.Sin(angleRad) + rotVec.y * Mathf.Cos(angleRad));
     }
     private Vector2 CalculateArrowR()
     {
-        Vector2 rotVec = new Vector2(0, 0.87f);
+        Vector2 rotVec = new Vector2(0, 0.88f);
         float angleRad = (_angleArt + 2.5f) * Mathf.Deg2Rad;
         return new Vector2(rotVec.x * Mathf.Cos(angleRad) - rotVec.y * Mathf.Sin(angleRad), rotVec.x * Mathf.Sin(angleRad) + rotVec.y * Mathf.Cos(angleRad));
     }
