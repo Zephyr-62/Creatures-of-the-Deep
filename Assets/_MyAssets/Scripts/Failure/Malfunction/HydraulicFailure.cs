@@ -36,22 +36,11 @@ public class HydraulicFailure : Malfunction
         
     }
 
-    public override void OnCollision(Collision collision)
+    public override void OnCollision(Collision collision, float force)
     {
-        base.OnCollision(collision);
+        base.OnCollision(collision, force);
 
-        Rigidbody rb1 = system.GetComponentInParent<Rigidbody>();
-        Rigidbody rb2 = collision.rigidbody;
-
-        float mass1 = rb1.mass;
-        float mass2 = rb2 != null ? rb2.mass : 1000f;
-
-        Vector3 relativeVelocity = collision.relativeVelocity;
-
-        float reducedMass = (2 * mass1 * mass2) / (mass1 + mass2);
-        float collisionForce = reducedMass * relativeVelocity.magnitude;
-
-        if (!Enabled && collisionForce > UnityEngine.Random.Range(impactThresshold, impactThresshold + impactRandomness))
+        if (!Enabled && force > UnityEngine.Random.Range(impactThresshold, impactThresshold + impactRandomness))
         {
             system.Failure(this);
         }

@@ -133,9 +133,20 @@ public class MalfunctionSystem : MonoBehaviour
 
     public void Collision(Collision collision)
     {
+        Rigidbody rb1 = physicsSystem.GetComponentInParent<Rigidbody>();
+        Rigidbody rb2 = collision.rigidbody;
+
+        float mass1 = rb1.mass;
+        float mass2 = rb2 != null ? rb2.mass : 1000f;
+
+        Vector3 relativeVelocity = collision.relativeVelocity;
+
+        float reducedMass = (2 * mass1 * mass2) / (mass1 + mass2);
+        float collisionForce = reducedMass * relativeVelocity.magnitude;
+
         foreach (var malfunction in allMalfunctions)
         {
-            malfunction.OnCollision(collision);
+            malfunction.OnCollision(collision, collisionForce);
         }
     }
 }

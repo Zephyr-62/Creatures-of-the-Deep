@@ -50,5 +50,6 @@ public class LocalVoltageSurge : Malfunction
                 system.Failure(this);
             }
         }
+        
     }
 }
