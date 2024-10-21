@@ -74,7 +74,6 @@ public class QuestSystem : MonoBehaviour
             }
             if (sonar)
             {
-                Debug.Log(currentQuest.GetWaypoint());
                 sonar.ArtifactLocation(currentQuest.GetWaypoint());
             }
         }

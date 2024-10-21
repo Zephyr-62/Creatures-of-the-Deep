@@ -1,13 +1,13 @@
 using AdvancedEditorTools.Attributes;
 using DG.Tweening;
+using FMOD;
+using FMOD.Studio;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Splines;
-using UnityEngine.UIElements;
 
 public class Fax : MonoBehaviour
 {
@@ -17,6 +17,8 @@ public class Fax : MonoBehaviour
     [SerializeField, Min(2)] private int resolution;
     [SerializeField] private TMP_Text title;
     [SerializeField] private TMP_Text description;
+    [SerializeField] private FMODUnity.EventReference print;
+    private FMOD.Studio.EventInstance instance;
 
     private MeshFilter meshFilter;
     private Mesh mesh;
@@ -151,8 +153,15 @@ public class Fax : MonoBehaviour
         this.title.text = title;
         this.description.text = description;
         offset = -length;
+
+        instance = FMODUnity.RuntimeManager.CreateInstance(print);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, transform);
+        instance.start();
+
         if (tween != null) tween.Kill();
         tween = DOTween.To(() => offset, x => offset = x, 0f, 3f).SetEase(Ease);
+
+        tween.onComplete += () => instance.stop(STOP_MODE.ALLOWFADEOUT);
     }
 
     [Button("Detach")]
