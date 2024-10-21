@@ -19,7 +19,7 @@ public class Lightbulb : ElectricalDevice
 
     private void Start()
     {
-        initialIntensity = light.intensity;
+        if(light) initialIntensity = light.intensity;
         intensity = initialIntensity;
     }
 
@@ -65,7 +65,7 @@ public class Lightbulb : ElectricalDevice
 
     private void Update()
     {
-        light.intensity = intensity * Mathf.Clamp01(1 - Mathf.PerlinNoise1D(Time.time) * surge);
+        if(light) light.intensity = intensity * Mathf.Clamp01(1 - Mathf.PerlinNoise1D(Time.time) * surge);
     }
 
     protected override void OnSurge()

@@ -19,10 +19,10 @@ public class SubmarinePhysicsSystem : Measureable
     public PhysicalControlSurface pitchControl => _pitchControl;
     public PhysicalControlSurface elevationControl => _elevationControl;
 
-    public float thrust => Mathf.Clamp(throttleControl.GetFloatValue(), -limit, limit);
-    public float steering => Mathf.Clamp(_steeringControl.GetFloatValue(), -limit, limit);
-    public float pitch => Mathf.Clamp(_pitchControl.GetFloatValue(), -limit, limit);
-    public float elevation => Mathf.Clamp(_elevationControl.GetFloatValue(), -limit, limit);
+    public float thrust => engineEnabled ? Mathf.Clamp(throttleControl.GetFloatValue(), -limit, limit) : 0f;
+    public float steering => engineEnabled ? Mathf.Clamp(_steeringControl.GetFloatValue(), -limit, limit) : 0f;
+    public float pitch => engineEnabled ? Mathf.Clamp(_pitchControl.GetFloatValue(), -limit, limit) : 0f;
+    public float elevation => engineEnabled ? Mathf.Clamp(_elevationControl.GetFloatValue(), -limit, limit) : 0f;
     
     [EndColumnArea]
     [SerializeField] private float BuoyancyStrength = 75;

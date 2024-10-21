@@ -37,15 +37,15 @@ public class Button : PhysicalControlSurface
         }
     }
 
-    internal override void Grab(FirstPersonCamera firstPersonCamera, Vector3 grabPoint)
+    internal override void Grab(FirstPersonCamera firstPersonCamera, Vector3 grabPoint, bool fireEvent = true)
     {
-        base.Grab(firstPersonCamera, grabPoint);
+        base.Grab(firstPersonCamera, grabPoint, !blocked);
         AdjustToValue(true);
     }
 
-    internal override void Release()
+    internal override void Release(bool fireEvent = true)
     {
-        base.Release();
+        base.Release(!blocked);
         AdjustToValue(false);
     }
 
@@ -115,6 +115,16 @@ public class Button : PhysicalControlSurface
         AdjustToValue(value != 0);
     }
 
+    public override float Get01FloatValue()
+    {
+        return GetFloatValue();
+    }
+
+    public override void Set01FloatValue(float value)
+    {
+        SetFloatValue(value);
+    }
+
     private void OnValidate()
     {
         AdjustToValue(value, true);
@@ -137,4 +147,5 @@ public class Button : PhysicalControlSurface
         Handles.Label(transform.position, value.ToString());
 #endif
     }
+
 }

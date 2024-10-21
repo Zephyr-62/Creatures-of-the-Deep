@@ -56,7 +56,7 @@ public class LeverSwitch : PhysicalControlSurface
         }
     }
 
-    internal override void Grab(FirstPersonCamera firstPersonCamera, Vector3 grabPoint)
+    internal override void Grab(FirstPersonCamera firstPersonCamera, Vector3 grabPoint, bool fireEvent = true)
     {
         base.Grab(firstPersonCamera, grabPoint);
         velocity = 0;
@@ -158,6 +158,16 @@ public class LeverSwitch : PhysicalControlSurface
     public override void SetIntValue(int value)
     {
         AdjustToValue(value != 0);
+    }
+
+    public override float Get01FloatValue()
+    {
+        return GetFloatValue();
+    }
+
+    public override void Set01FloatValue(float value)
+    {
+        SetFloatValue(value);
     }
 
     private void OnValidate()

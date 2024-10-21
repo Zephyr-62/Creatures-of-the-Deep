@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Engine/Power
+  m_Name: parameter:/Engine/engine_level
   m_EditorClassIdentifier: 
-  Name: Power
+  Name: engine_level
   StudioPath: 
   Min: 0
   Max: 1
@@ -20,6 +20,81 @@ MonoBehaviour:
   ID:
     data1: 1848510520
     data2: 1731051347
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-6497010165646932629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Change/crank_speed
+  m_EditorClassIdentifier: 
+  Name: crank_speed
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2674769079
+    data2: 841979010
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-6496237357679525378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Submarine/BaseAmbience
+  m_EditorClassIdentifier: 
+  Path: event:/Submarine/BaseAmbience
+  Guid:
+    Data1: 1791721199
+    Data2: 1268787870
+    Data3: 556504218
+    Data4: 119680066
+  Banks:
+  - {fileID: -3412374948495567671}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 311180
+--- !u!114 &-5664708340192898915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Change/lever_speed
+  m_EditorClassIdentifier: 
+  Name: lever_speed
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 457843772
+    data2: 2467952693
   Type: 0
   IsGlobal: 0
   Labels: []
@@ -72,12 +147,12 @@ MonoBehaviour:
   Banks:
   - {fileID: -3412374948495567671}
   IsStream: 0
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 50
 --- !u!114 &-3412374948495567671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,10 +168,10 @@ MonoBehaviour:
   Path: Assets/_MyAssets/Audio/main_fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638648096608312334
+  lastModified: 638648812811586831
   FileSizes:
   - Name: Desktop
-    Value: 82400
+    Value: 3366560
   Exists: 1
 --- !u!114 &-3170323082403319442
 MonoBehaviour:
@@ -146,12 +221,12 @@ MonoBehaviour:
   Banks:
   - {fileID: -3412374948495567671}
   IsStream: 0
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 6000
 --- !u!114 &-1362536992055633582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,12 +248,12 @@ MonoBehaviour:
   Banks:
   - {fileID: -3412374948495567671}
   IsStream: 0
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
-  Length: 0
+  MaxDistance: 10
+  Length: 200
 --- !u!114 &-1045668318434641165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,12 +275,40 @@ MonoBehaviour:
   Banks:
   - {fileID: -3412374948495567671}
   IsStream: 0
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 1299
+--- !u!114 &-549673227023441186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Submarine/Failure/Overheat
+  m_EditorClassIdentifier: 
+  Path: event:/Submarine/Failure/Overheat
+  Guid:
+    Data1: 2139793432
+    Data2: 1240060348
+    Data3: 1958476730
+    Data4: -1336678951
+  Banks:
+  - {fileID: -3412374948495567671}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 2827336502873350194}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 26993
 --- !u!114 &-315758287116454358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,12 +330,13 @@ MonoBehaviour:
   Banks:
   - {fileID: -3412374948495567671}
   IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -6497010165646932629}
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 3343
 --- !u!114 &-21706825140149106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,12 +395,16 @@ MonoBehaviour:
   - {fileID: -21706825140149106}
   - {fileID: -3514486025272056517}
   - {fileID: -2274186953102622752}
+  - {fileID: 3164919821014380917}
+  - {fileID: -6496237357679525378}
+  - {fileID: 4069511354846223289}
+  - {fileID: -549673227023441186}
   EditorParameters: []
   MasterBanks:
   - {fileID: -3412374948495567671}
   StringsBanks:
   - {fileID: 3561581469223207880}
-  cacheTime: 638648096608322081
+  cacheTime: 638648812811596641
   cacheVersion: 131619
 --- !u!114 &595240047088548061
 MonoBehaviour:
@@ -352,6 +460,81 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &2360368102596075221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Engine/elevation_level
+  m_EditorClassIdentifier: 
+  Name: elevation_level
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3517067699
+    data2: 1204822705
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &2827336502873350194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Overheat/heat_level
+  m_EditorClassIdentifier: 
+  Name: heat_level
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4060496780
+    data2: 3248570264
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &3164919821014380917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Submarine/Failure/Collision
+  m_EditorClassIdentifier: 
+  Path: event:/Submarine/Failure/Collision
+  Guid:
+    Data1: -1266374392
+    Data2: 1281213342
+    Data3: 1543013014
+    Data4: -1845047990
+  Banks:
+  - {fileID: -3412374948495567671}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 5400
 --- !u!114 &3561581469223207880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,11 +550,38 @@ MonoBehaviour:
   Path: Assets/_MyAssets/Audio/main_fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638648096608322081
+  lastModified: 638648812811596641
   FileSizes:
   - Name: Desktop
-    Value: 1474
+    Value: 1862
   Exists: 1
+--- !u!114 &4069511354846223289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Submarine/PCS/ElectricalLever/Change
+  m_EditorClassIdentifier: 
+  Path: event:/Submarine/PCS/ElectricalLever/Change
+  Guid:
+    Data1: -1516631255
+    Data2: 1217773068
+    Data3: -1814337383
+    Data4: -70662381
+  Banks:
+  - {fileID: -3412374948495567671}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 880
 --- !u!114 &4492659210166597183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,12 +603,12 @@ MonoBehaviour:
   Banks:
   - {fileID: -3412374948495567671}
   IsStream: 0
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 1139
 --- !u!114 &4732592975428542728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -424,6 +634,7 @@ MonoBehaviour:
   IsOneShot: 0
   Parameters:
   - {fileID: -8650874348767067818}
+  - {fileID: 2360368102596075221}
   MinDistance: 1
   MaxDistance: 20
   Length: 7551
@@ -448,12 +659,12 @@ MonoBehaviour:
   Banks:
   - {fileID: -3412374948495567671}
   IsStream: 0
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 6000
 --- !u!114 &5451754715601819399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -475,12 +686,12 @@ MonoBehaviour:
   Banks:
   - {fileID: -3412374948495567671}
   IsStream: 0
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
-  Length: 0
+  MaxDistance: 10
+  Length: 100
 --- !u!114 &5489827043073744014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -502,9 +713,10 @@ MonoBehaviour:
   Banks:
   - {fileID: -3412374948495567671}
   IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -5664708340192898915}
   MinDistance: 1
   MaxDistance: 20
-  Length: 12
+  Length: 3343
