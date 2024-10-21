@@ -35,7 +35,7 @@ public class MineDetectorSystem : MonoBehaviour
         }
     }
 
-    public void DebugLogMinesEntered()
+    public void DebugLogMinesDetected()
     {
         // Warnings should go of in the submarine
         Debug.Log("Mine field is close!");

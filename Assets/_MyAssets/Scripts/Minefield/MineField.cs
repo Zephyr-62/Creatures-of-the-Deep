@@ -5,8 +5,8 @@ public class MineField : MonoBehaviour
 {
     [SerializeField] private BoxCollider minefieldCollider;
     [SerializeField] private GameObject hazardObject;
-    [SerializeField] private float hazardScale = 1f;
-    [SerializeField] [Range(2f, 10f)] public float radius = 5;
+    [SerializeField] [Range(1f, 200f)] private float hazardScale = 1f;
+    [SerializeField] [Range(1f, 200f)] private float radius = 5;
     [SerializeField] private float xWidth = 100f;
     [SerializeField] private float yHeight = 10f;
     [SerializeField] private float zDepth = 100f;
@@ -31,7 +31,7 @@ public class MineField : MonoBehaviour
         Gizmos.color = Color.red;
         foreach (Vector2 point in _points)
         {
-            Gizmos.DrawWireSphere(new Vector3(point.x, yHeight / 2, point.y) + transform.position, 1);
+            Gizmos.DrawWireSphere(new Vector3(point.x, yHeight / 2, point.y) + transform.position, hazardScale);
         }
     }
 
