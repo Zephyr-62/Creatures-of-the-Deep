@@ -31,6 +31,9 @@ public class RaycastingSubmarine : ElectricalDevice
     private Vector3 lastPosition;
     private Quaternion lastRotation;
 
+	private Vector2 _artiPos;
+	private Vector3 _currentArtiPos;
+
     void Start()
     {
         //Debug.Log(LayerMask.LayerToName(_layerMaskArtifact));
@@ -166,4 +169,14 @@ public class RaycastingSubmarine : ElectricalDevice
     {
         renderer.material.SetFloat("_Interference", surge);
     }
+	
+	public void ArtifactLocation(Vector3 pos)
+	{
+		_artiPos = pos;
+	}
+
+	private void CalculateDistance()
+	{
+		
+	}
 }
