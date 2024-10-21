@@ -154,6 +154,7 @@ public class Fax : MonoBehaviour
         this.description.text = description;
         offset = -length;
 
+
         instance = FMODUnity.RuntimeManager.CreateInstance(print);
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, transform);
         instance.start();
@@ -162,6 +163,7 @@ public class Fax : MonoBehaviour
         tween = DOTween.To(() => offset, x => offset = x, 0f, 3f).SetEase(Ease);
 
         tween.onComplete += () => instance.stop(STOP_MODE.ALLOWFADEOUT);
+        tween.onKill += () => instance.stop(STOP_MODE.IMMEDIATE);
     }
 
     [Button("Detach")]

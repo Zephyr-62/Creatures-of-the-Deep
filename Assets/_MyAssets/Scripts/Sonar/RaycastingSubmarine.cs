@@ -210,7 +210,7 @@ public class RaycastingSubmarine : ElectricalDevice
         float dis = Vector2.Distance(subWithoutY, _artiPos);
         Vector2 dirVec = _artiPos - subWithoutY;
         Vector2 subForward = new Vector2(_submarine.transform.forward.x, _submarine.transform.forward.z);
-        _angleArt = Vector2.Angle(subForward, dirVec);
+        _angleArt = Vector2.SignedAngle(subForward, dirVec);
         float angleRad = _angleArt * Mathf.Deg2Rad;
         Vector2 rotVec;
         if (Mathf.Abs(dis) > (_distance - (_distance * 0.08f) ))
