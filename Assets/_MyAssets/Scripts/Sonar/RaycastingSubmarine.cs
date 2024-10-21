@@ -224,14 +224,14 @@ public class RaycastingSubmarine : ElectricalDevice
 
     private Vector2 CalculateArrowL()
     {
-        Vector2 rotVec = new Vector2(0, 0.85f);
-        float angleRad = (_angleArt - 5) * Mathf.Deg2Rad;
+        Vector2 rotVec = new Vector2(0, 0.87f);
+        float angleRad = (_angleArt - 2.5f) * Mathf.Deg2Rad;
         return new Vector2(rotVec.x * Mathf.Cos(angleRad) - rotVec.y * Mathf.Sin(angleRad), rotVec.x * Mathf.Sin(angleRad) + rotVec.y * Mathf.Cos(angleRad));
     }
     private Vector2 CalculateArrowR()
     {
-        Vector2 rotVec = new Vector2(0, 0.85f);
-        float angleRad = (_angleArt + 5) * Mathf.Deg2Rad;
+        Vector2 rotVec = new Vector2(0, 0.87f);
+        float angleRad = (_angleArt + 2.5f) * Mathf.Deg2Rad;
         return new Vector2(rotVec.x * Mathf.Cos(angleRad) - rotVec.y * Mathf.Sin(angleRad), rotVec.x * Mathf.Sin(angleRad) + rotVec.y * Mathf.Cos(angleRad));
     }
 }
