@@ -35,10 +35,7 @@ public class QuestSystem : MonoBehaviour
     {
         if(currentQuest == null && quests.Count > 0 && last + quests[0].GetResponseTime() <= Time.time)
         {
-            newQuestButton.Unblock();
-        } else
-        {
-            newQuestButton.Block();
+            StartNewQuest();
         }
 
         if(currentQuest && currentQuest.IsCompleted(this))
@@ -62,7 +59,7 @@ public class QuestSystem : MonoBehaviour
 
     public void StartNewQuest()
     {
-        if (newQuestButton.GetBoolValue() && currentQuest == null && quests.Count > 0)
+        if (currentQuest == null && quests.Count > 0)
         {
             currentQuest = quests[0];
             quests.RemoveAt(0);
@@ -90,7 +87,7 @@ public class QuestSystem : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         var previous = transform.position;
 
