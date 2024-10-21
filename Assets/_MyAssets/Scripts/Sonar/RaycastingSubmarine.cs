@@ -1,6 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
+using UnityEngine.Polybrush;
+using Quaternion = UnityEngine.Quaternion;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 public class RaycastingSubmarine : ElectricalDevice
 {
@@ -31,12 +36,22 @@ public class RaycastingSubmarine : ElectricalDevice
     private Vector3 lastPosition;
     private Quaternion lastRotation;
 
+	private Vector2 _artiPos;
+    private Vector2 _calculatedArtiPos;
+	private Vector2 _currentArtiPos;
+    private Vector2 _artiArrowL;
+    private Vector2 _artiArrowR;
+
+    private bool _arrow;
+    private float _angleArt;
     void Start()
     {
+        _artiPos = Vector2.zero;
         //Debug.Log(LayerMask.LayerToName(_layerMaskArtifact));
     }
 
     // Update is called once per frame
+
     void Update()
     {/*
         if (!_raycasting)
@@ -73,8 +88,26 @@ public class RaycastingSubmarine : ElectricalDevice
             _hitpoint = TransformHitpoint(_distance);
         }
 
-        
 
+
+        if (_artiPos != Vector2.zero )
+        {
+            _currentArtiPos = CalculateArtiPoint();
+            blitMat.SetVector("_PointArtifact", _currentArtiPos);
+        }
+
+        if (_arrow)
+        {
+            _arrow = false;
+            blitMat.SetVector("_PointArrowL", CalculateArrowL());
+            blitMat.SetVector("_PointArrowR", CalculateArrowR());
+        }
+        else
+        {
+            blitMat.SetVector("_PointArrowL", _currentArtiPos);
+            blitMat.SetVector("_PointArrowR", _currentArtiPos);
+            
+        }
 
 
         if (_currentLinePoint == null || _currentLinePoint != _linePoint)
@@ -89,7 +122,6 @@ public class RaycastingSubmarine : ElectricalDevice
 
         blitMat.SetVector("_Point", _hitpoint);
         blitMat.SetVector("_PointB", _linePoint);
-        blitMat.SetVector("_PointArtifact", _artifactHitpoint);
         blitMat.SetFloat("_TimeDeltaTime", Time.deltaTime);
 
         RenderTexture tempRend = RenderTexture.GetTemporary(sonar1.width, sonar1.height, 0, sonar1.format);
@@ -164,5 +196,42 @@ public class RaycastingSubmarine : ElectricalDevice
     protected override void OnSurge()
     {
         renderer.material.SetFloat("_Interference", surge);
+    }
+	
+	public void ArtifactLocation(Vector3 pos)
+	{
+		_artiPos = pos;
+	}
+
+	private Vector2 CalculateArtiPoint()
+    {
+        float dis = Vector2.Distance(_submarine.transform.position, _artiPos);
+        _angleArt = Vector2.Angle(_submarine.transform.forward, _artiPos);
+        float angleRad = _angleArt * Mathf.Deg2Rad;
+        Vector2 rotVec;
+        if (Mathf.Abs(dis) > (_distance - (_distance * 0.08f) ))
+        {
+            rotVec = new Vector2(0, 0.92f);
+            _arrow = true;
+        }
+        else
+        {
+            float scaledDis = (dis / (_distance));
+            rotVec = (Vector2.up * scaledDis);
+        }
+        return new Vector2(rotVec.x * Mathf.Cos(angleRad) - rotVec.y * Mathf.Sin(angleRad), rotVec.x * Mathf.Sin(angleRad) + rotVec.y * Mathf.Cos(angleRad));
+    }
+
+    private Vector2 CalculateArrowL()
+    {
+        Vector2 rotVec = new Vector2(0, 0.88f);
+        float angleRad = (_angleArt - 2.5f) * Mathf.Deg2Rad;
+        return new Vector2(rotVec.x * Mathf.Cos(angleRad) - rotVec.y * Mathf.Sin(angleRad), rotVec.x * Mathf.Sin(angleRad) + rotVec.y * Mathf.Cos(angleRad));
+    }
+    private Vector2 CalculateArrowR()
+    {
+        Vector2 rotVec = new Vector2(0, 0.88f);
+        float angleRad = (_angleArt + 2.5f) * Mathf.Deg2Rad;
+        return new Vector2(rotVec.x * Mathf.Cos(angleRad) - rotVec.y * Mathf.Sin(angleRad), rotVec.x * Mathf.Sin(angleRad) + rotVec.y * Mathf.Cos(angleRad));
     }
 }
