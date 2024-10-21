@@ -17,4 +17,9 @@ public abstract class Quest : ScriptableObject
     public abstract bool IsCompleted(QuestSystem qs);
 
     public abstract Vector3 Debug();
+
+    public virtual Vector3 GetWaypoint()
+    {
+        return Vector3.zero;
+    }
 }

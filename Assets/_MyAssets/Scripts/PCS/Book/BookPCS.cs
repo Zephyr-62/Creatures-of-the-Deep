@@ -57,7 +57,7 @@ public class BookPCS : PhysicalControlSurface
         }
     }
 
-    internal override void Release()
+    internal override void Release(bool fireEvent = true)
     {
         base.Release();
     }
@@ -151,5 +151,15 @@ public class BookPCS : PhysicalControlSurface
     protected virtual void PageTurnCompleted(int leftPageNumber, int rightPageNumber)
     {
         //isTurning = false;
+    }
+
+    public override float Get01FloatValue()
+    {
+        return value ? 1f : 0f;
+    }
+
+    public override void Set01FloatValue(float value)
+    {
+        AdjustToValue(_value);
     }
 }
