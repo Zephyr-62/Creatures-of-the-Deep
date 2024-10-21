@@ -200,13 +200,17 @@ public class RaycastingSubmarine : ElectricalDevice
 	
 	public void ArtifactLocation(Vector3 pos)
 	{
-		_artiPos = pos;
+		_artiPos = new Vector2(pos.x,  pos.z);
 	}
 
 	private Vector2 CalculateArtiPoint()
     {
-        float dis = Vector2.Distance(_submarine.transform.position, _artiPos);
-        _angleArt = Vector2.Angle(_submarine.transform.forward, _artiPos);
+        Vector3 subPos = _submarine.transform.position;
+        Vector2 subWithoutY = new Vector2(subPos.x, subPos.z);
+        float dis = Vector2.Distance(subWithoutY, _artiPos);
+        Vector2 dirVec = _artiPos - subWithoutY;
+        Vector2 subForward = new Vector2(_submarine.transform.forward.x, _submarine.transform.forward.z);
+        _angleArt = Vector2.Angle(subForward, dirVec);
         float angleRad = _angleArt * Mathf.Deg2Rad;
         Vector2 rotVec;
         if (Mathf.Abs(dis) > (_distance - (_distance * 0.08f) ))
