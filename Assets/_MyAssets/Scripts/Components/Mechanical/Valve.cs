@@ -6,7 +6,18 @@ public class Valve : MonoBehaviour
 {
     public HandCrank crank;
     public Valve leftValve;
-    public PhysicalControlSurface leftPCS;
+    public Target leftTarget;
     public Valve rightValve;
-    public PhysicalControlSurface rightPCS;
+    public Target rightTarget;
+
+    public enum Target
+    {
+        None,
+        Thrust,
+        Steering,
+        Pitch,
+        Elevation,
+        Engine,
+        Exhaust
+    }
 }
