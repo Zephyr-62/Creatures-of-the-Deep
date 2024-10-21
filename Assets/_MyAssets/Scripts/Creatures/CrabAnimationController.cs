@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CrabWalkingAnimation : MonoBehaviour
+public class CrabAnimationController : EnemyAnimationController
 {
     [SerializeField] private float BodyHeightAdjustDelay = 0.2f;
     [SerializeField] private float BaseHeight = 20.0f;
@@ -12,7 +12,7 @@ public class CrabWalkingAnimation : MonoBehaviour
     [SerializeField]
     private List<LegTargetHint> LegTargetHints;
 
-    [SerializeField] public LayerMask WalkableLayer;
+    [SerializeField] private LayerMask WalkableLayer;
     [SerializeField] private Ease animationEase = Ease.OutCubic;
 
 

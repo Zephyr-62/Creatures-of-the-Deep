@@ -7229,8 +7229,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8881367745346995354}
   - component: {fileID: 3246810717960937717}
-  - component: {fileID: 2940692500949693560}
   - component: {fileID: 605176521412514415}
+  - component: {fileID: 2940692500949693560}
   m_Layer: 16
   m_Name: SpiderCrab
   m_TagString: Untagged
@@ -7267,6 +7267,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f205512635f686741a93d9e5fecec9b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &605176521412514415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9026164897023906824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f9ddcb98a0572448b9f3d529477718c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentState: 0
+  FollowTarget: {fileID: 0}
+  AnimController: {fileID: 2940692500949693560}
+  IdleChance: 0.3
+  IdleDuration: {x: 7.5, y: 12.5}
+  idleTime: 0
+  idleTimer: 0
+  RandomPatrol: 1
+  PatrolTargetIdx: -1
+  PatrolToTargetSettings:
+    Speed: 3
+    MinDistanceToTarget: 10
+    AngleToTargetThreshold: 5
+    RotationDelay: 5
+  PatrolTargets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  ChaseTarget: {fileID: 0}
+  chaseTrigger: 0
+  ChaseTargetSettings:
+    Speed: 5.5
+    MinDistanceToTarget: 20
+    AngleToTargetThreshold: 10
+    RotationDelay: 3.5
+  DetectionRange: 100
+  DetectionViewAngle: 100
+  AggroRange: 130
+  AggroViewAngle: 130
+  SearchTime: 15
+  searchTimer: 0
+  WalkingToLastDetectedSpot: 0
+  LastSeenTargetPos: {x: 0, y: 0, z: 0}
+  GizmosFollowTargetLenght: 15
+  GizmosDetectionConeColor: {r: 0, g: 1, b: 0, a: 0.29803923}
+  GizmosDrawAggroCone: 1
+  GizmosAggroConeColor: {r: 1, g: 0, b: 0, a: 0.29803923}
+  DebugTargetFollowSettings:
+    Speed: 5.5
+    MinDistanceToTarget: 20
+    AngleToTargetThreshold: 10
+    RotationDelay: 3.5
 --- !u!114 &2940692500949693560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7279,6 +7337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfbce8d42b333eb488710a264b9b1561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AIController: {fileID: 0}
   BodyHeightAdjustDelay: 1.5
   BaseHeight: 18
   LegTargetHints:
@@ -7344,26 +7403,9 @@ MonoBehaviour:
   animationEase: 8
   StepHeight: 6
   StepDurationRange: {x: 3.5, y: 5}
-  LegTargetHintRadius: 1.25
+  LegTargetHintRadius: 1
   OnDraw: 0
   OnDrawSelected: 1
---- !u!114 &605176521412514415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9026164897023906824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f9ddcb98a0572448b9f3d529477718c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TargetMinSqrDistance: 700
-  AngleToTargetThreshold: 0.1
-  WalkSpeed: 2
-  RotationDelay: 150
-  Target: {fileID: 0}
 --- !u!1 &9082330307874761227
 GameObject:
   m_ObjectHideFlags: 0
