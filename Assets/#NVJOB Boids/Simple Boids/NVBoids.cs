@@ -281,21 +281,7 @@ public class NVBoids : MonoBehaviour
         //--------------
     }
 
-
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    private void OnTriggerEnter(Collider other)
-    {
-        // Check if the collider's name is "Submarin"
-        if (other.gameObject.name == "Submarin")
-        {
-            Debug.Log("Collided with Submarin, destroying: " + gameObject.name);
-            Destroy(gameObject); // Destroy this game object
-        }
-    }
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
     void CreateBird()
     {
@@ -307,13 +293,9 @@ public class NVBoids : MonoBehaviour
         rdTargetPos = new Vector3[birdsNum];
         spVelocity = new float[birdsNum];
 
-        for (int b = 0; b < birdsNum; b++)
+         for (int b = 0; b < birdsNum; b++)
         {
             birdsTransform[b] = Instantiate(birdPref, thisTransform).transform;
-
-            // Add a collider to each bird
-            SphereCollider birdCollider = birdsTransform[b].gameObject.AddComponent<SphereCollider>();
-            birdCollider.isTrigger = true; // Set as trigger
 
             Vector3 lpv = Random.insideUnitSphere * fragmentedBirds;
             birdsTransform[b].localPosition = rdTargetPos[b] = new Vector3(lpv.x, lpv.y * fragmentedBirdsYLimit, lpv.z);
