@@ -171,12 +171,6 @@ public class EnemyAIController : MonoBehaviour
 
     protected void OnPatrollingTargetReached()
     {
-        if(Random.value < IdleChance)
-        {
-            SwitchToState(State.Idle);
-            return;
-        }
-
         // Set random target if invalid index
         if(PatrolTargetIdx < 0 || PatrolTargetIdx >= PatrolTargets.Count)
         {
@@ -199,7 +193,10 @@ public class EnemyAIController : MonoBehaviour
         if (PatrolTargetIdx >= PatrolTargets.Count)
             PatrolTargetIdx = 0;
 
-        FollowTarget = PatrolTargets[PatrolTargetIdx];            
+        FollowTarget = PatrolTargets[PatrolTargetIdx];
+
+        if (Random.value < IdleChance)
+            SwitchToState(State.Idle);
     }
 
     protected void IdleUpdate()
