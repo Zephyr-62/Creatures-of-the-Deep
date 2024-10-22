@@ -7280,8 +7280,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentState: 0
+  MovingDirection: {x: 0, y: 0, z: 0}
   FollowTarget: {fileID: 0}
-  AnimController: {fileID: 2940692500949693560}
   IdleChance: 0.3
   IdleDuration: {x: 7.5, y: 12.5}
   idleTime: 0
@@ -7308,9 +7308,9 @@ MonoBehaviour:
     MinDistanceToTarget: 20
     AngleToTargetThreshold: 10
     RotationDelay: 3.5
-  DetectionRange: 100
+  DetectionRange: 60
   DetectionViewAngle: 100
-  AggroRange: 130
+  AggroRange: 80
   AggroViewAngle: 130
   SearchTime: 15
   searchTimer: 0
@@ -7338,74 +7338,89 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AIController: {fileID: 0}
+  TargetBodyHeight: 0
+  stepForwardPredictionDistance: 0
+  stepDurationRange: {x: 0, y: 0}
   BodyHeightAdjustDelay: 1.5
-  BaseHeight: 18
+  StandBodyHeight: 30
+  WalkBodyHeight: 18
+  PatrollingStepForwardPredictionDistance: 10
+  ChaseStepForwardPredictionDistance: 15
+  StepHeight: 6
+  PatrollingStepDurationRange: {x: 3.5, y: 5}
+  ChaseStepDurationRange: {x: 1.5, y: 2.5}
   LegTargetHints:
   - Leg: {fileID: 7683267683453869951}
     LegIKTarget: {fileID: 8798389286565295511}
+    TargetHintPositionAdjusted: {x: 37.75074, y: -2.1999989, z: 73.24924}
     RelativeTargetHintPosition: {x: 3.5, y: -3.9, z: 0}
     MaxStepDistance: 128
     HintBaseHeight: -3.9
     HintHeightRange: {x: -2, y: -4.25}
-    LastPosition: {x: 35.95074, y: -2.1999989, z: 74.849236}
+    LastPosition: {x: 37.75074, y: -2.1999989, z: 73.24924}
   - Leg: {fileID: 7749426485059041996}
     LegIKTarget: {fileID: 163933561401485587}
+    TargetHintPositionAdjusted: {x: 29.65, y: -2.1999989, z: 53.9}
     RelativeTargetHintPosition: {x: 3.5, y: -3.9, z: 0}
     MaxStepDistance: 96
     HintBaseHeight: -3.9
     HintHeightRange: {x: -2, y: -4.25}
-    LastPosition: {x: 27.85, y: -2.1999989, z: 55.5}
+    LastPosition: {x: 29.65, y: -2.1999989, z: 53.9}
   - Leg: {fileID: 1370490417808553800}
     LegIKTarget: {fileID: 8655607602013189863}
+    TargetHintPositionAdjusted: {x: 34.413467, y: -2.1999989, z: 38.899998}
     RelativeTargetHintPosition: {x: 3.5, y: -3.9, z: 0}
     MaxStepDistance: 128
     HintBaseHeight: -3.9
     HintHeightRange: {x: -2, y: -4.25}
-    LastPosition: {x: 32.613464, y: -2.1999989, z: 40.499996}
+    LastPosition: {x: 34.413467, y: -2.1999989, z: 38.899998}
   - Leg: {fileID: 3779774513475578864}
     LegIKTarget: {fileID: 1808446790449372200}
+    TargetHintPositionAdjusted: {x: 45.099995, y: -2.1999989, z: 28.213469}
     RelativeTargetHintPosition: {x: 3.5, y: -3.9, z: 0}
     MaxStepDistance: 96
     HintBaseHeight: -3.9
     HintHeightRange: {x: -2, y: -4.25}
-    LastPosition: {x: 43.299995, y: -2.1999989, z: 29.813467}
+    LastPosition: {x: 45.099995, y: -2.1999989, z: 28.213469}
   - Leg: {fileID: 5890840175743941895}
     LegIKTarget: {fileID: 3937213910873585591}
+    TargetHintPositionAdjusted: {x: 79.44924, y: -2.1999989, z: 73.249245}
     RelativeTargetHintPosition: {x: 3.5, y: -3.9, z: 0}
     MaxStepDistance: 128
     HintBaseHeight: -3.9
     HintHeightRange: {x: -2, y: -4.25}
-    LastPosition: {x: 77.64925, y: -2.1999989, z: 74.84924}
+    LastPosition: {x: 79.44924, y: -2.1999989, z: 73.249245}
   - Leg: {fileID: 3383407601949318311}
     LegIKTarget: {fileID: 7206534041963386593}
+    TargetHintPositionAdjusted: {x: 87.549995, y: -2.1999989, z: 53.9}
     RelativeTargetHintPosition: {x: 3.5, y: -3.9, z: 0}
     MaxStepDistance: 96
     HintBaseHeight: -3.9
     HintHeightRange: {x: -2, y: -4.25}
-    LastPosition: {x: 85.75, y: -2.1999989, z: 55.5}
+    LastPosition: {x: 87.549995, y: -2.1999989, z: 53.9}
   - Leg: {fileID: 5142501658832580349}
     LegIKTarget: {fileID: 3729608646853849488}
+    TargetHintPositionAdjusted: {x: 82.78653, y: -2.1999989, z: 38.899998}
     RelativeTargetHintPosition: {x: 3.5, y: -3.9, z: 0}
     MaxStepDistance: 128
     HintBaseHeight: -3.9
     HintHeightRange: {x: -2, y: -4.25}
-    LastPosition: {x: 80.986534, y: -2.1999989, z: 40.499996}
+    LastPosition: {x: 82.78653, y: -2.1999989, z: 38.899998}
   - Leg: {fileID: 65289186341900021}
     LegIKTarget: {fileID: 2726720913741284367}
+    TargetHintPositionAdjusted: {x: 72.1, y: -2.1999989, z: 28.213469}
     RelativeTargetHintPosition: {x: 3.5, y: -3.9, z: 0}
     MaxStepDistance: 96
     HintBaseHeight: -3.9
     HintHeightRange: {x: -2, y: -4.25}
-    LastPosition: {x: 70.3, y: -2.1999989, z: 29.813467}
+    LastPosition: {x: 72.1, y: -2.1999989, z: 28.213469}
   WalkableLayer:
     serializedVersion: 2
     m_Bits: 1
   animationEase: 8
-  StepHeight: 6
-  StepDurationRange: {x: 3.5, y: 5}
-  LegTargetHintRadius: 1
-  OnDraw: 0
-  OnDrawSelected: 1
+  LegTargetHintRadius: 1.5
+  OnDraw: 1
+  OnDrawSelected: 0
 --- !u!1 &9082330307874761227
 GameObject:
   m_ObjectHideFlags: 0

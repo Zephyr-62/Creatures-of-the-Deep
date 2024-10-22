@@ -4,14 +4,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CrabAnimationController : EnemyAnimationController
+public class CrabAnimationController : EnemyAnimationController<CrabAIController>
 {
+    [SerializeField] [ReadOnly] private float TargetBodyHeight;
+    [SerializeField] [ReadOnly] private float stepForwardPredictionDistance;
+    [SerializeField] [ReadOnly] private Vector2 stepDurationRange;
+    [SerializeField] [ReadOnly] private float targetScanAngle;
+    [SerializeField] private bool ScanningTarget = false;
+
+    [Header("Settings")]
     [SerializeField] private float BodyHeightAdjustDelay = 0.2f;
-    [SerializeField] private float BaseHeight = 20.0f;
+    [SerializeField] private float StandBodyHeight = 30;
+    [SerializeField] private float WalkBodyHeight = 18;
+    [LineSeparator]
 
-    [SerializeField]
-    private List<LegTargetHint> LegTargetHints;
+    [SerializeField] private float StepHeight = 6f;
+    [SerializeField] private float PatrollingStepForwardPredictionDistance = 10f;
+    [SerializeField] private float ChaseStepForwardPredictionDistance = 15f;
+    [SerializeField] private Vector2 PatrollingStepDurationRange = new(3.5f, 5f);
+    [SerializeField] private Vector2 ChaseStepDurationRange = new(3.5f, 5f);
+    [LineSeparator]
+    [Tooltip("Crab will look at +- this angle")]
+    [SerializeField] private Vector2 TargetScanAngleRange = new(30, 60);
+    [SerializeField] private float ScanDelay = 3.5f;
 
+    [LineSeparator]
+
+
+    [SerializeField] private List<LegTargetHint> LegTargetHints;
     [SerializeField] private LayerMask WalkableLayer;
     [SerializeField] private Ease animationEase = Ease.OutCubic;
 
@@ -22,6 +42,7 @@ public class CrabAnimationController : EnemyAnimationController
         public Transform Leg;
         public Transform LegIKTarget;
         public Vector3 TargetHintPosition { get => Leg.TransformPoint(RelativeTargetHintPosition); }
+        public Vector3 TargetHintPositionAdjusted;
         public Vector3 RelativeTargetHintPosition;   // Relative position to Leg of IK target hint
         public float MaxStepDistance;      // = 4;
 
@@ -32,8 +53,6 @@ public class CrabAnimationController : EnemyAnimationController
         public Sequence Sequence;
     }
 
-    public float StepHeight = 5.5f;
-    public Vector2 StepDurationRange = new(8, 12);
 
 
     [ContextMenu("Reset Last Position")]
@@ -42,11 +61,17 @@ public class CrabAnimationController : EnemyAnimationController
         foreach (LegTargetHint lth in LegTargetHints)
         {
             lth.LastPosition = lth.TargetHintPosition;
+            lth.TargetHintPositionAdjusted = lth.TargetHintPosition;
         }
     }
+    protected override void Init()
+    {
+        stepForwardPredictionDistance = PatrollingStepForwardPredictionDistance;
+        stepDurationRange = PatrollingStepDurationRange;
+    }
 
-    // Update is called once per frame
-    void Update()
+
+    void FixedUpdate()
     {
         // Update body
         float heightAcc = 0;
@@ -55,7 +80,7 @@ public class CrabAnimationController : EnemyAnimationController
             heightAcc += legTargetHint.LegIKTarget.position.y;
         }
         this.transform.position = new (transform.position.x,
-            Mathf.Lerp(transform.position.y, (heightAcc / LegTargetHints.Count) + BaseHeight, Time.deltaTime / BodyHeightAdjustDelay),
+            Mathf.Lerp(transform.position.y, (heightAcc / LegTargetHints.Count) + TargetBodyHeight, Time.fixedDeltaTime / BodyHeightAdjustDelay),
                 transform.position.z
             );
 
@@ -63,27 +88,40 @@ public class CrabAnimationController : EnemyAnimationController
         // Update legs
         foreach (LegTargetHint lth in LegTargetHints)
         {
-            // Update relative target hint
-            if (Physics.Raycast(new Vector3(lth.TargetHintPosition.x, this.transform.position.y, lth.TargetHintPosition.z), Vector3.down, out var raycastHit, 100, WalkableLayer))
+            // Calculate desired leg pos based on desired pos + moving prediction
+            var newDesiredLegPos = AIController.GetMovingDir() * stepForwardPredictionDistance;
+            newDesiredLegPos = new Vector3(lth.TargetHintPosition.x + newDesiredLegPos.x, this.transform.position.y, lth.TargetHintPosition.z + newDesiredLegPos.z);
+
+            // calculate height of target hint
+            if (Physics.Raycast(newDesiredLegPos, Vector3.down, out var raycastHit, 100, WalkableLayer))
             {
-                lth.RelativeTargetHintPosition = lth.Leg.InverseTransformPoint(raycastHit.point); // TODO fix max height or smth
+                lth.TargetHintPositionAdjusted = raycastHit.point; // TODO fix max height or smth
             }
 
-            // If target is too far from target hint, then update last valid position
+            // If leg not currently taking a step
             if(lth.Sequence == null || !lth.Sequence.active)
             {
-                // Set target to last valid global position
+                // Set actual IK target to last valid feet global position
                 lth.LegIKTarget.position = lth.LastPosition;
 
-                var zDiff = (lth.LegIKTarget.position - lth.TargetHintPosition).sqrMagnitude;
-                if (zDiff > lth.MaxStepDistance || zDiff < -lth.MaxStepDistance) // TODO prevent step if too many legs moving
+                // If target is too far from target hint, then take step (update last valid position to current hint pos)
+                var zDiff = (lth.LegIKTarget.position - lth.TargetHintPositionAdjusted).sqrMagnitude;
+                if (zDiff > lth.MaxStepDistance || zDiff < -lth.MaxStepDistance) // TODO prevent step if too many legs moving --> prevent movement?
                 {
-                    lth.LastPosition = lth.TargetHintPosition;
+                    lth.LastPosition = lth.TargetHintPositionAdjusted;
 
                     // lth.LegIKTarget.DOKill(true);
-                    lth.Sequence = lth.LegIKTarget.DOJump(lth.LastPosition, StepHeight, 1, Random.Range(StepDurationRange.x, StepDurationRange.y)).SetEase(animationEase);
+                    lth.Sequence = lth.LegIKTarget.DOJump(lth.LastPosition, StepHeight, 1, Random.Range(stepDurationRange.x, stepDurationRange.y)).SetEase(animationEase);
                 }
             }
+        }
+
+        if (ScanningTarget)
+        {
+            var angleDiff = targetScanAngle - Vector3.SignedAngle(Vector3.forward, this.transform.forward, Vector3.up);
+            if (Mathf.Abs(angleDiff) > 15)
+                this.transform.Rotate(Vector3.up, angleDiff * Time.fixedDeltaTime / ScanDelay);
+            else GetNewScanAngle();
         }
     }
 
@@ -107,7 +145,7 @@ public class CrabAnimationController : EnemyAnimationController
     {
         foreach (var lth in LegTargetHints)
         {
-            var targetHintPos = lth.TargetHintPosition;
+            var targetHintPos = lth.TargetHintPositionAdjusted;
 
             Gizmos.color = Color.red;
             Gizmos.DrawSphere(targetHintPos, LegTargetHintRadius);
@@ -119,4 +157,53 @@ public class CrabAnimationController : EnemyAnimationController
 
         }
     }
+
+    protected override void OnAIStateChanged(EnemyAIController.State newState)
+    {
+        base.OnAIStateChanged(newState);
+
+        switch (newState)
+        {
+            case EnemyAIController.State.Idle:
+                ScanningTarget = true;
+                GetNewScanAngle();
+                TargetBodyHeight = StandBodyHeight;
+                break;
+            case EnemyAIController.State.Patrolling:
+                ScanningTarget = false;
+                stepForwardPredictionDistance = PatrollingStepForwardPredictionDistance;
+                TargetBodyHeight = WalkBodyHeight;
+                stepDurationRange = PatrollingStepDurationRange;
+                break;
+            case EnemyAIController.State.Chasing:
+                ScanningTarget = false;
+                stepForwardPredictionDistance = ChaseStepForwardPredictionDistance;
+                TargetBodyHeight = WalkBodyHeight;
+                stepDurationRange = ChaseStepDurationRange;
+                break;
+            case EnemyAIController.State.Attacking:
+                ScanningTarget = false;
+                TargetBodyHeight = WalkBodyHeight;
+                break;
+            case EnemyAIController.State.Searching:
+                ScanningTarget = true;
+                GetNewScanAngle();
+                TargetBodyHeight = StandBodyHeight;
+                break;
+
+            default:
+                break;
+        }
+
+    }
+
+    private void GetNewScanAngle()
+    {
+        var newAngle = Random.Range(TargetScanAngleRange.x, TargetScanAngleRange.y);
+        newAngle *= Random.value > 0.5f ? 1 : -1;
+        targetScanAngle = Vector3.SignedAngle(Vector3.forward, this.transform.forward, Vector3.up) + newAngle;
+        targetScanAngle = ((targetScanAngle + 180) % 360) - 180.0f;
+    }
+
+
 }

@@ -2,15 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EnemyAnimationController : MonoBehaviour
+[RequireComponent(typeof(EnemyAIController))]
+public abstract class EnemyAnimationController<T> : MonoBehaviour where T : EnemyAIController
 {
     [HideInInspector]
-    public EnemyAIController AIController;
+    public T AIController;
 
-    public virtual void Idle() { }
-    public virtual void Patrol() { }
-    public virtual void Chase() { }
-    public virtual void Attack() { }
-    public virtual void Search() { }
+    virtual protected void Start()
+    {
+        AIController = GetComponent<T>();
+        AIController.OnStateChanged += OnAIStateChanged;
+        Init();
+
+    }
+
+    protected virtual void Init() { }
+    protected virtual void OnAIStateChanged(EnemyAIController.State newState) { }
 
 }

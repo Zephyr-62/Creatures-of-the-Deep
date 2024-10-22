@@ -1,16 +1,17 @@
 using AdvancedEditorTools.Attributes;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyAIController : MonoBehaviour
 {
+    public Action<State> OnStateChanged;
     [SerializeField] [ReadOnly] protected State CurrentState;
-
-    [BeginFoldout("General")]
+    [SerializeField][ReadOnly] protected Vector3 MovingDirection;
     [SerializeField] protected Transform FollowTarget;
-    [SerializeField] protected EnemyAnimationController AnimController;
-    [EndFoldout]
+
 
     [BeginFoldout("Idle")]
     [Tooltip("Evaluated every time a patrol target is reached")]
@@ -94,11 +95,6 @@ public class EnemyAIController : MonoBehaviour
         public float RotationDelay;
     }
 
-    private void Start()
-    {
-        AnimController.AIController = this;
-    }
-
     private void FixedUpdate()
     {
         switch (CurrentState)
@@ -142,23 +138,23 @@ public class EnemyAIController : MonoBehaviour
         switch (newState)
         {
             case State.Idle:
-                AnimController.Idle();
+                OnStateChanged?.Invoke(State.Idle);
                 idleTime = Random.Range(IdleDuration.x, IdleDuration.y);
                 idleTimer = 0;
                 break;
 
             case State.Patrolling:
-                AnimController.Patrol();
-                if(FollowTarget == null)
+                OnStateChanged?.Invoke(State.Patrolling);
+                if (FollowTarget == null)
                     FollowTarget = PatrolTargets[0];
                 break;
 
             case State.Chasing:
-                AnimController.Chase();
+                OnStateChanged?.Invoke(State.Chasing);
                 break;
 
             case State.Attacking:
-                AnimController.Attack();
+                OnStateChanged?.Invoke(State.Attacking);
                 break;
 
             case State.Searching:                
@@ -221,9 +217,10 @@ public class EnemyAIController : MonoBehaviour
     protected void FollowTargetUpdate(TargetFollowSettings followSettings, System.Action OnTargetReached, Vector3 targetPos)
     {
         var TargetDir = (targetPos - this.transform.position);
-        this.transform.position = Vector3.Lerp(this.transform.position, this.transform.position + TargetDir.normalized, Time.deltaTime * followSettings.Speed);
+        MovingDirection = TargetDir.normalized;
+        this.transform.position = Vector3.Lerp(this.transform.position, this.transform.position + MovingDirection, Time.deltaTime * followSettings.Speed);
 
-        var angleToTarget = Vector3.SignedAngle(this.transform.forward, TargetDir, Vector3.up);
+        var angleToTarget = Vector3.SignedAngle(this.transform.forward, MovingDirection, Vector3.up);
         if (Mathf.Abs(angleToTarget) > followSettings.AngleToTargetThreshold)
             this.transform.Rotate(Vector3.up, angleToTarget * Time.fixedDeltaTime / followSettings.RotationDelay);
 
@@ -246,7 +243,7 @@ public class EnemyAIController : MonoBehaviour
             FollowTargetUpdate(ChaseTargetSettings, () =>
             {
                 WalkingToLastDetectedSpot = false;
-                AnimController.Search();
+                OnStateChanged?.Invoke(State.Searching);
             }, LastSeenTargetPos);
             return;
         }

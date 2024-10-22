@@ -7,5 +7,6 @@ using UnityEngine;
 public class CrabAIController : EnemyAIController
 {
 
+    public Vector3 GetMovingDir() => MovingDirection;
 
 }

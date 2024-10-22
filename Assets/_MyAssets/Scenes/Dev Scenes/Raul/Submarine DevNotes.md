@@ -2,14 +2,13 @@
 # TODO
 
 
-
-
-- Crab move legs ahead of target (based on moving dir & speed)
 - Crab idle anim
 - Crab anim fix lerp body
 - Crab attack 
+- Stop crab walking if cannot move legs (define maximum leg height up/down)
 
 - Trigger on light (front lights & lightbulbs)/heat (engine hot)/sound (no alarms going and no thrust)/always
+- Some of the triggers require direct line of sight
 		
 		
 - Tentacles --> Jellyfish, Kelp, Sea Serpent, Swinging Lightbulb
