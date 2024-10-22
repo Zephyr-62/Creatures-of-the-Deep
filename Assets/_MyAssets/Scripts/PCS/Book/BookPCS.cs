@@ -64,12 +64,12 @@ public class BookPCS : PhysicalControlSurface
 
     public override void HandleInput()
     {
-        if (book.IsTurningPages || book.IsDraggingPage || UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+        if (book.IsTurningPages)
         {
             // exit if already turning
             return;
         }
-        var plane = new Plane(transform.up, transform.position);
+        var plane = new Plane(transform.forward, transform.position);
         var ray = FirstPersonCamera.GetRay();
 
         if (plane.Raycast(ray, out var e))
@@ -77,7 +77,7 @@ public class BookPCS : PhysicalControlSurface
             point = ray.GetPoint(e);
             dir = point - rotatePoint.position;
 
-            var angle = Vector3.SignedAngle(Vector3.right, transform.InverseTransformDirection(dir), Vector3.up);
+            var angle = Vector3.SignedAngle(Vector3.up, transform.InverseTransformDirection(dir), Vector3.forward);
             var dirPage = Page.TurnDirectionEnum.TurnForward;
             if (angle > 0)
             {
@@ -141,7 +141,7 @@ public class BookPCS : PhysicalControlSurface
         Gizmos.DrawRay(rotatePoint.position, dir);
 #if UNITY_EDITOR
         Handles.color = Color.blue;
-        Handles.DrawWireDisc(rotatePoint.position, transform.right, range);
+        Handles.DrawWireDisc(rotatePoint.position, transform.forward, range);
         Handles.Label(transform.position, value.ToString());
 #endif
     }
