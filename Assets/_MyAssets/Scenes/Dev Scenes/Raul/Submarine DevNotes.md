@@ -1,8 +1,6 @@
 
 # TODO
 
-
-- Crab idle anim
 - Crab anim fix lerp body
 - Crab attack 
 - Stop crab walking if cannot move legs (define maximum leg height up/down)
