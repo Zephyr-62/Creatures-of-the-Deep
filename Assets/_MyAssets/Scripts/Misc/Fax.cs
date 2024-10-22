@@ -48,20 +48,6 @@ public class Fax : MonoBehaviour
         offset = -length;
     }
 
-    private void OnValidate()
-    {
-        if (Application.isPlaying) return;
-
-        meshFilter = GetComponent<MeshFilter>();
-        mesh = new Mesh();
-
-        vertices = new List<Vector3>();
-        normals = new List<Vector3>();
-        uvs = new List<Vector2>();
-        triangles = new List<int>();
-        BuildMesh();
-    }
-
     private void Update()
     {
         MoveMesh();

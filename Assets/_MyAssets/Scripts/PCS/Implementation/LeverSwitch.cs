@@ -37,6 +37,7 @@ public class LeverSwitch : PhysicalControlSurface
     {
         currentMinAngle = minAngle;
         currentMaxAngle = maxAngle;
+        AdjustToValue(value);
     }
 
     public bool value
