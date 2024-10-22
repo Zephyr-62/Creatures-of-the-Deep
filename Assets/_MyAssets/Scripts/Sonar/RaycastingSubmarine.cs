@@ -90,24 +90,7 @@ public class RaycastingSubmarine : ElectricalDevice
 
 
 
-        if (_artiPos != Vector2.zero )
-        {
-            _currentArtiPos = CalculateArtiPoint();
-            blitMat.SetVector("_PointArtifact", _currentArtiPos);
-        }
-
-        if (_arrow)
-        {
-            _arrow = false;
-            blitMat.SetVector("_PointArrowL", CalculateArrowL());
-            blitMat.SetVector("_PointArrowR", CalculateArrowR());
-        }
-        else
-        {
-            blitMat.SetVector("_PointArrowL", _currentArtiPos);
-            blitMat.SetVector("_PointArrowR", _currentArtiPos);
-            
-        }
+        
 
 
         if (_currentLinePoint == null || _currentLinePoint != _linePoint)
@@ -118,6 +101,20 @@ public class RaycastingSubmarine : ElectricalDevice
         if (_currentHitPoint == null || _currentHitPoint != _hitpoint)
         {
             _currentHitPoint = _hitpoint;
+        }
+        _currentArtiPos = CalculateArtiPoint();
+        blitMat.SetVector("_PointArtifact", _currentArtiPos);
+        if (_arrow)
+        {
+            _arrow = false;
+            blitMat.SetVector("_PointArrowL", CalculateArrowL());
+            blitMat.SetVector("_PointArrowR", CalculateArrowR());
+        }
+        else
+        {
+            blitMat.SetVector("_PointArrowL", _currentArtiPos);
+            blitMat.SetVector("_PointArrowR", _currentArtiPos);
+                                                                             
         }
 
         blitMat.SetVector("_Point", _hitpoint);
@@ -200,7 +197,18 @@ public class RaycastingSubmarine : ElectricalDevice
 	
 	public void ArtifactLocation(Vector3 pos)
 	{
-		_artiPos = new Vector2(pos.x,  pos.z);
+        if (pos == Vector3.negativeInfinity)
+        {
+            blitMat.SetFloat("_ArtefactActivate", 0);
+            
+        }
+        else
+        {
+            blitMat.SetFloat("_ArtefactActivate", 1);
+            _artiPos = new Vector2(pos.x,  pos.z);
+            
+        }
+        
 	}
 
 	private Vector2 CalculateArtiPoint()
