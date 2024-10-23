@@ -7,7 +7,7 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 0000021708DB8078 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 0000021663685818 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -18,6 +18,587 @@
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3338400
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F03FF8F368
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF9B83E4130
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF9B83E40F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF9B83E4210
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF9B83E42D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000021663EBFE28
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='232832__musicboy9000__sound-2-chair-dragged', format=5, channels=2, frequency=48000, lengthbytes=42720, lengthpcm=160496, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.235382.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3338400
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F03FF8F368
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF9B83E4130
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF9B83E40F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF9B83E4210
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF9B83E42D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000021663EBEFB8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='636105__theboulder3400__metal-frame - Trimmed', format=5, channels=2, frequency=48000, lengthbytes=9856, lengthpcm=55199, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.635315.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3338400
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F03FF8F368
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF9B83E4130
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF9B83E40F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF9B83E4210
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF9B83E42D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000002184AC62268
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='737419__sadiquecat__arcade-button-press-two-stage', format=5, channels=1, frequency=48000, lengthbytes=8480, lengthpcm=49698, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=1.000000.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3338400
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F03FF8F368
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF9B83E4130
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF9B83E40F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF9B83E4210
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF9B83E42D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000021663EBE358
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='242739__marlonhj__engine1', format=5, channels=1, frequency=48000, lengthbytes=16224, lengthpcm=98320, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.396759.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3338400
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F03FF8F368
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF9B83E4130
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF9B83E40F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF9B83E4210
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF9B83E42D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000021663EBE358
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='electric-motor-engine-start-stop-98304', format=5, channels=1, frequency=48000, lengthbytes=46784, lengthpcm=297168, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.945312.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3338400
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F03FF8F368
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF9B83E4130
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF9B83E40F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF9B83E4210
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF9B83E42D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000021663EBE358
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='222804__gthall__engine-idle', format=5, channels=2, frequency=48000, lengthbytes=53024, lengthpcm=206208, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.267395.
+[WRN] EventInstance::update                    : Event {2345c1dc-6674-4fab-9193-55e21a5b397e} waited 119 milliseconds for sample data to load.  Preload sample data to avoid this delay.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3338400
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F03FF8F368
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF9B83E4130
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF9B83E40F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF9B83E4210
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF9B83E42D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000002184AC62058
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='636102__theboulder3400__metal-frame - Trimmed', format=5, channels=2, frequency=48000, lengthbytes=12416, lengthpcm=62399, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.635315.
+[WRN] EventInstance::update                    : Event {f4c71365-b040-4436-90d1-f84e6ebd8f5b} waited 70 milliseconds for sample data to load.  Preload sample data to avoid this delay.
+[WRN] EventInstance::update                    : Event {f4c71365-b040-4436-90d1-f84e6ebd8f5b} waited 70 milliseconds for sample data to load.  Preload sample data to avoid this delay.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3338400
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F03FF8F368
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF9B83E4130
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF9B83E40F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF9B83E4210
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF9B83E42D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000021709F5ACE8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='700685__mathewhenry__metal-door-squeaking-16-long', format=5, channels=1, frequency=48000, lengthbytes=21696, lengthpcm=156000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.507950.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3338400
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F03FF8F368
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF9B83E4130
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF9B83E40F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF9B83E4210
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF9B83E42D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000021709F5ACE8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='700681__mathewhenry__metal-door-squeaking-12-medium', format=5, channels=1, frequency=48000, lengthbytes=13600, lengthpcm=88500, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.366121.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3338400
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F03FF8F368
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF9B83E4130
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF9B83E40F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF9B83E4210
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF9B83E42D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000021709F5ACE8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='700683__mathewhenry__metal-door-squeaking-14-medium', format=5, channels=1, frequency=48000, lengthbytes=13952, lengthpcm=100500, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.530439.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3338400
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F03FF8F368
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF9B83E4130
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF9B83E40F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF9B83E4210
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF9B83E42D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000021709F5ACE8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='636101__theboulder3400__metal-frame - Trimmed', format=5, channels=2, frequency=48000, lengthbytes=14112, lengthpcm=74400, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.571716.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3338400
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F03FF8F368
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF9B83E4130
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF9B83E40F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF9B83E4210
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF9B83E42D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000021709F5ACE8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='636096__theboulder3400__metal-frame - Trimmed', format=5, channels=2, frequency=48000, lengthbytes=7968, lengthpcm=43200, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.551666.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3338400
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F03FF8F368
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF9B83E4130
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF9B83E40F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF9B83E4210
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF9B83E42D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000021709F5ACE8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='700682__mathewhenry__metal-door-squeaking-13-medium', format=5, channels=1, frequency=48000, lengthbytes=14944, lengthpcm=91500, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.466946.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3338400
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F03FF8F368
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF9B83E4130
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF9B83E40F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF9B83E4210
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF9B83E42D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000021709F5ACE8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='636099__theboulder3400__metal-frame - Trimmed', format=5, channels=2, frequency=48000, lengthbytes=11904, lengthpcm=69600, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.568451.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3338400
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F03FF8F368
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF9B83E4130
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF9B83E40F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF9B83E4210
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF9B83E42D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000021709F5ACE8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='636103__theboulder3400__metal-frame - Trimmed', format=5, channels=2, frequency=48000, lengthbytes=9376, lengthpcm=55200, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.666687.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3338400
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F03FF8F368
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF9B83E4130
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF9B83E40F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF9B83E4210
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF9B83E42D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000021709F5ACE8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='636098__theboulder3400__metal-frame - Trimmed', format=5, channels=2, frequency=48000, lengthbytes=13824, lengthpcm=72000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.570404.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3338400
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F03FF8F368
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF9B83E4130
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF9B83E40F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF9B83E4210
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF9B83E42D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000021709F5ACE8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='700679__mathewhenry__metal-door-squeaking-10-medium', format=5, channels=1, frequency=48000, lengthbytes=11392, lengthpcm=126000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.137099.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3338400
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F03FF8F368
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF9B83E4130
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF9B83E40F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF9B83E4210
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF9B83E42D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000021709F5ACE8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='700693__mathewhenry__metal-door-squeaking-22-long', format=5, channels=1, frequency=48000, lengthbytes=32800, lengthpcm=252000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.531846.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3338400
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F03FF8F368
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF9B83E4130
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF9B83E40F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF9B83E4210
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF9B83E42D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000021709F5ACE8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='700694__mathewhenry__metal-door-squeaking-23-long', format=5, channels=1, frequency=48000, lengthbytes=30720, lengthpcm=204000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.704646.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3338400
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F03FF8F368
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF9B83E4130
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF9B83E40F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF9B83E4210
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF9B83E42D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000021709F5ACE8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='636104__theboulder3400__metal-frame - Trimmed', format=5, channels=2, frequency=48000, lengthbytes=8800, lengthpcm=45024, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.589996.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3338400
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F03FF8F368
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF9B83E4130
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF9B83E40F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF9B83E4210
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF9B83E42D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000021709F5ACE8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='636097__theboulder3400__metal-frame - Trimmed', format=5, channels=2, frequency=48000, lengthbytes=12128, lengthpcm=64800, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.567902.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3338400
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F03FF8F368
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF9B83E4130
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF9B83E40F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF9B83E4210
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF9B83E42D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000021709F5ACE8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='636100__theboulder3400__metal-frame - Trimmed', format=5, channels=2, frequency=48000, lengthbytes=10272, lengthpcm=69599, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.582428.
+[WRN] EventInstance::update                    : Event {b484a908-c39e-4c5d-9682-f85b4acd0692} waited 69 milliseconds for sample data to load.  Preload sample data to avoid this delay.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3338400
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F03FF8F368
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF9B83E4130
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF9B83E40F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF9B83E4210
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF9B83E42D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000021663EBFE28
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='403253__the_chemical_workshop__taserhigh-voltage-discharge - Trimmed', format=5, channels=1, frequency=48000, lengthbytes=4000, lengthpcm=21120, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.891205.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3338400
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F03FF8F368
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF9B83E4130
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF9B83E40F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF9B83E4210
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF9B83E42D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000021663EBFE28
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='403254__the_chemical_workshop__taserhigh-voltage-discharge - Trimmed', format=5, channels=1, frequency=48000, lengthbytes=7232, lengthpcm=41760, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.891235.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3338400
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F03FF8F368
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF9B83E4130
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF9B83E40F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF9B83E4210
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF9B83E42D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000021663EBFE28
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='403252__the_chemical_workshop__taserhigh-voltage-discharge - Trimmed', format=5, channels=1, frequency=48000, lengthbytes=5344, lengthpcm=28800, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.891144.
+[LOG] SoundI::release                          :  (000002170CAC8A38)
+[LOG] SoundI::release                          :     700679__mathewhenry__metal-door-squeaking-10-medium (000002166592E998)
+[LOG] SoundI::release                          :  (000002170CACA2A8)
+[LOG] SoundI::release                          :     700681__mathewhenry__metal-door-squeaking-12-medium (000002166592E658)
+[LOG] SoundI::release                          :  (000002170CAC8FF8)
+[LOG] SoundI::release                          :     700683__mathewhenry__metal-door-squeaking-14-medium (000002166592B738)
+[LOG] SoundI::release                          :  (000002170CAC8E88)
+[LOG] SoundI::release                          :     700682__mathewhenry__metal-door-squeaking-13-medium (000002166592ABD8)
+[LOG] SoundI::release                          :  (000002170CAC85E8)
+[LOG] SoundI::release                          :     700685__mathewhenry__metal-door-squeaking-16-long (00000216659306D8)
+[LOG] SoundI::release                          :  (000002170CAC8308)
+[LOG] SoundI::release                          :     700693__mathewhenry__metal-door-squeaking-22-long (000002166592EE78)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3338400
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F03FF8F368
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF9B83E4130
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF9B83E40F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF9B83E4210
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF9B83E42D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000021663EC16E8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='700685__mathewhenry__metal-door-squeaking-16-long', format=5, channels=1, frequency=48000, lengthbytes=21696, lengthpcm=156000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.507950.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3338400
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F03FF8F368
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF9B83E4130
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF9B83E40F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF9B83E4210
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF9B83E42D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000021663EC16E8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='700681__mathewhenry__metal-door-squeaking-12-medium', format=5, channels=1, frequency=48000, lengthbytes=13600, lengthpcm=88500, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.366121.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3338400
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F03FF8F368
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF9B83E4130
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF9B83E40F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF9B83E4210
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF9B83E42D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000021663EC16E8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='700683__mathewhenry__metal-door-squeaking-14-medium', format=5, channels=1, frequency=48000, lengthbytes=13952, lengthpcm=100500, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.530439.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3338400
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F03FF8F368
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF9B83E4130
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF9B83E40F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF9B83E4210
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF9B83E42D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000021663EC16E8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='700682__mathewhenry__metal-door-squeaking-13-medium', format=5, channels=1, frequency=48000, lengthbytes=14944, lengthpcm=91500, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.466946.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3338400
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F03FF8F368
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF9B83E4130
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF9B83E40F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF9B83E4210
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF9B83E42D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000021663EC16E8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='700679__mathewhenry__metal-door-squeaking-10-medium', format=5, channels=1, frequency=48000, lengthbytes=11392, lengthpcm=126000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.137099.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 3338400
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 45216
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F03FF8F368
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF9B83E4130
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF9B83E40F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF9B83E4210
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF9B83E42D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000021663EC16E8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='700693__mathewhenry__metal-door-squeaking-22-long', format=5, channels=1, frequency=48000, lengthbytes=32800, lengthpcm=252000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.531846.
+[WRN] OutputWASAPI::mixerThread                : Starvation detected in WASAPI output buffer!
+[WRN] OutputWASAPI::mixerThread                : Starvation detected in WASAPI output buffer!
+[LOG] SoundI::release                          :  (000002165AADF428)
+[LOG] SoundI::release                          :     700679__mathewhenry__metal-door-squeaking-10-medium (000002165AC22C58)
+[LOG] SoundI::release                          :  (000002165AADBAA8)
+[LOG] SoundI::release                          :     700681__mathewhenry__metal-door-squeaking-12-medium (000002165AC22438)
+[LOG] SoundI::release                          :  (000002165AADF2B8)
+[LOG] SoundI::release                          :     700683__mathewhenry__metal-door-squeaking-14-medium (000002165AC22918)
+[LOG] SoundI::release                          :  (000002165AADD8D8)
+[LOG] SoundI::release                          :     700682__mathewhenry__metal-door-squeaking-13-medium (000002165AC22778)
+[LOG] SoundI::release                          :  (000002165AADB208)
+[LOG] SoundI::release                          :     700685__mathewhenry__metal-door-squeaking-16-long (0000021421B00598)
+[LOG] SoundI::release                          :  (000002165AADA0C8)
+[LOG] SoundI::release                          :     700693__mathewhenry__metal-door-squeaking-22-long (0000021707D29328)
+[LOG] SoundI::release                          : 393819__kinoton__underwater-ambience (0000021666D82448)
+[LOG] SoundI::release                          :     393819__kinoton__underwater-ambience (000002165641C078)
+[LOG] SoundI::release                          :     393819__kinoton__underwater-ambience (0000021706B1FD58)
+[LOG] SoundI::release                          :  (000002170CAC92D8)
+[LOG] SoundI::release                          :     700694__mathewhenry__metal-door-squeaking-23-long (000002166592B3F8)
+[LOG] SoundI::release                          :  (000002170CACA138)
+[LOG] SoundI::release                          :     636096__theboulder3400__metal-frame - Trimmed (000002166592E318)
+[LOG] SoundI::release                          :  (000002170CACB558)
+[LOG] SoundI::release                          :     636097__theboulder3400__metal-frame - Trimmed (000002166592B598)
+[LOG] SoundI::release                          :  (000002170CAC61F8)
+[LOG] SoundI::release                          :     636098__theboulder3400__metal-frame - Trimmed (000002166592DAF8)
+[LOG] SoundI::release                          :  (000002170CAC7618)
+[LOG] SoundI::release                          :     636099__theboulder3400__metal-frame - Trimmed (000002166592BDB8)
+[LOG] SoundI::release                          :  (000002170CAC9728)
+[LOG] SoundI::release                          :     636100__theboulder3400__metal-frame - Trimmed (0000021665930538)
+[LOG] SoundI::release                          :  (000002170CAC67B8)
+[LOG] SoundI::release                          :     636101__theboulder3400__metal-frame - Trimmed (000002166592EB38)
+[LOG] SoundI::release                          :  (000002170CACA418)
+[LOG] SoundI::release                          :     636103__theboulder3400__metal-frame - Trimmed (000002166592A6F8)
+[LOG] SoundI::release                          :  (000002170CAC6368)
+[LOG] SoundI::release                          :     636104__theboulder3400__metal-frame - Trimmed (000002166592FB78)
+[LOG] SoundI::release                          :  (00000218018D2B68)
+[LOG] SoundI::release                          :     732998__bjelicvuk__printer (00000217979A03B8)
+[LOG] SoundI::release                          :  (000002165AADE458)
+[LOG] SoundI::release                          :     636105__theboulder3400__metal-frame - Trimmed (0000021801672088)
+[LOG] SoundI::release                          :  (000002165AAD9F58)
+[LOG] SoundI::release                          :     222804__gthall__engine-idle (0000021421AFFF18)
+[LOG] SoundI::release                          :  (000002165AADD038)
+[LOG] SoundI::release                          :     242739__marlonhj__engine1 (00000218016728A8)
+[LOG] SoundI::release                          :  (000002165AADEB88)
+[LOG] SoundI::release                          :     electric-motor-engine-start-stop-98304 (0000021801672BE8)
+[LOG] SoundI::release                          :  (00000218018D25A8)
+[LOG] SoundI::release                          :     442161__steaq__enter-button-low-robotic (00000217979A0D78)
+[LOG] SoundI::release                          :  (000002170E0F72E8)
+[LOG] SoundI::release                          :     636102__theboulder3400__metal-frame - Trimmed (0000021664DBF7B8)
+[LOG] SoundI::release                          :  (000002165AADC068)
+[LOG] SoundI::release                          :     232832__musicboy9000__sound-2-chair-dragged (0000021801672708)
+[LOG] SoundI::release                          :  (000002170E0F4208)
+[LOG] SoundI::release                          :     737419__sadiquecat__arcade-button-press-two-stage (0000021664DBE918)
+[LOG] SoundI::release                          :  (000002165AADB7C8)
+[LOG] SoundI::release                          :     403252__the_chemical_workshop__taserhigh-voltage-discharge - Trimmed (0000021421B00738)
+[LOG] SoundI::release                          :  (000002165AADEE68)
+[LOG] SoundI::release                          :     403254__the_chemical_workshop__taserhigh-voltage-discharge - Trimmed (0000021421B000B8)
+[LOG] SoundI::release                          :  (000002165AADD318)
+[LOG] SoundI::release                          :     403253__the_chemical_workshop__taserhigh-voltage-discharge - Trimmed (0000021421AFFD78)
+[LOG] Thread::callback                         : FMOD Studio update thread finished.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] SystemI::close                           : Closed.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Thread::callback                         : FMOD Studio sample load thread finished.
 [LOG] LiveUpdate::release                      : 
@@ -25,3 +606,5 @@
 [LOG] Thread::callback                         : FMOD stream thread finished.
 [LOG] Thread::callback                         : FMOD mixer thread finished.
 [LOG] SystemI::close                           : Closed.
+[LOG] Thread::callback                         : FMOD nonblocking thread (0) finished.
+[LOG] Thread::callback                         : FMOD file thread finished.
