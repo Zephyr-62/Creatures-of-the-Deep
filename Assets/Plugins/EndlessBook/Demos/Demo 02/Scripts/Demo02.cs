@@ -696,5 +696,6 @@
                             onPageTurnStart: OnPageTurnStart,
                             onPageTurnEnd: OnPageTurnEnd);
         }
+
     }
 }

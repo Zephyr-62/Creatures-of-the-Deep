@@ -11,12 +11,17 @@ public class LocalVoltageSurge : Malfunction
     public List<ElectricalDevice> devices;
     public float tolerance = 0.2f;
     float target;
+    bool selfTriggered = false;
 
     public override void Enter()
     {
         base.Enter();
         count++;
-        target = UnityEngine.Random.Range(dial.Min, dial.Max);
+        if (!selfTriggered)
+        {
+            target = UnityEngine.Random.Range(dial.Min, dial.Max);
+        }
+        selfTriggered = false;
     }
 
     public override void Exit()
@@ -27,7 +32,7 @@ public class LocalVoltageSurge : Malfunction
 
     public override bool IsFixed()
     {
-        return Mathf.Abs(dial.GetFloatValue() - target) < tolerance;
+        return Mathf.Abs(dial.GetFloatValue() - target) <= tolerance;
     }
 
     public override void Update()
@@ -38,6 +43,11 @@ public class LocalVoltageSurge : Malfunction
             foreach (var device in devices)
             {
                 device.SetSurge(Mathf.Clamp01(Mathf.Abs(dial.GetFloatValue() - target) - tolerance));
+            }
+            if (!Enabled && Mathf.Abs(dial.GetFloatValue() - target) > tolerance)
+            {
+                selfTriggered = true;
+                system.Failure(this);
             }
         }
     }

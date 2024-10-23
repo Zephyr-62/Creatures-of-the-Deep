@@ -36,7 +36,7 @@ public class Engine : ElectricalDevice
 
     private void AttemptStart()
     {
-        if (isPowered) return;
+        if (!isPowered) return;
         if (!ignition.GetBoolValue()) return;
         if (!power.GetBoolValue()) return;
         if (starter.GetFloatValue() >= minimumStartValue && starter.Velocity >= minimumStartVelocity)
