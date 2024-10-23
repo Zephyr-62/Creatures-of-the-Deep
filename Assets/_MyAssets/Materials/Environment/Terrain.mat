@@ -84,6 +84,12 @@ Material:
     m_Ints: []
     m_Floats:
     - _AddPrecomputedVelocity: 0
+    - _AlgaeAccentMetallic: 0
+    - _AlgaeAccentSmoothness: 0
+    - _AlgaeCliffMetallic: 0
+    - _AlgaeCliffSmoothness: 0
+    - _AlgaeMetallic: 0
+    - _AlgaeSmoothness: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _Blend: 0
@@ -91,6 +97,8 @@ Material:
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
+    - _CliffEnd: 0.1
+    - _CliffStart: 0.6
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
@@ -107,12 +115,18 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _SandAccentMetallic: 0.5
-    - _SandAccentSmoothness: 0.22
-    - _SandCliffMetallic: -0.09
-    - _SandCliffSmoothness: 0.15
-    - _SandMetallic: 0.24
-    - _SandSmoothness: 0.19
+    - _RockAccentMetallic: 0
+    - _RockAccentSmoothness: 0
+    - _RockCliffMetallic: 0
+    - _RockCliffSmoothness: 0
+    - _RockMetallic: 0
+    - _RockSmoothness: 0
+    - _SandAccentMetallic: 0.02
+    - _SandAccentSmoothness: 0.1
+    - _SandCliffMetallic: 0
+    - _SandCliffSmoothness: 0
+    - _SandMetallic: 0.5
+    - _SandSmoothness: 0.4
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -131,8 +145,8 @@ Material:
     - _RockAccentColor: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 0}
     - _RockCliffColor: {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 0}
     - _RockColor: {r: 0.5754717, g: 0.5754717, b: 0.5754717, a: 0}
-    - _SandAccentColor: {r: 1, g: 0.7064722, b: 0, a: 0}
-    - _SandCliffColor: {r: 0.5943396, g: 0.51448053, b: 0.38407794, a: 0}
+    - _SandAccentColor: {r: 1, g: 0.8487792, b: 0.48584908, a: 0}
+    - _SandCliffColor: {r: 0.4339623, g: 0.39427236, b: 0.34594163, a: 0}
     - _SandColor: {r: 1, g: 0.9711134, b: 0.8160377, a: 0}
     - _SandRockColor: {r: 0.2924528, g: 0.1365386, b: 0.009656467, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
