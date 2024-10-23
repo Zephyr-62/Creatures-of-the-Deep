@@ -12,9 +12,8 @@ using UnityEngine.Serialization;
 public class BookPCS : PhysicalControlSurface
 {
     public EndlessBook book;
-    public float turnspeed;
+    public bool reversePageIfNotMidway = true;
 
-    public float turnStopSpeed;
     [Header("Values")]
     [FormerlySerializedAs("value"), SerializeField] private bool _value;
     [Header("Moving parts")]
@@ -29,11 +28,13 @@ public class BookPCS : PhysicalControlSurface
     [SerializeField] private UnityEvent onSwitchedOn;
     [SerializeField] private UnityEvent onSwitchedOff;
 
+    
     private Vector3 point;
     private Vector3 dir;
     private float targetAngle;
     private float clampedAngle;
     private bool old;
+    private Vector3 _grabPoint;
 
     private bool turnForward;
 
@@ -64,7 +65,7 @@ public class BookPCS : PhysicalControlSurface
         base.Release();
         if (book.IsDraggingPage && !book.IsTurningPages)
         {
-            book.TurnPageDragStop(turnStopSpeed, PageTurnCompleted);
+            book.TurnPageDragStop(1, PageTurnCompleted, reverse: reversePageIfNotMidway ? (book.TurnPageDragNormalizedTime < 0.5f) : false);
         }
     }
 
@@ -75,7 +76,7 @@ public class BookPCS : PhysicalControlSurface
             // exit if already turning
             return;
         }
-        var plane = new Plane(transform.forward, transform.position);
+        var plane = new Plane(transform.forward, _grabPoint);
         var ray = FirstPersonCamera.GetRay();
 
         if (plane.Raycast(ray, out var e))
@@ -84,6 +85,16 @@ public class BookPCS : PhysicalControlSurface
             dir = point - rotatePoint.position;
 
             var angle = Vector3.SignedAngle(Vector3.up, transform.InverseTransformDirection(dir), Vector3.forward);
+            if (angle < minAngle)
+            {
+                var adjustAngle = angle + minAngle;
+                angle = minAngle + adjustAngle;
+            }
+            else if (angle > maxAngle)
+            {
+                var adjustAngle = angle - maxAngle;
+                angle = maxAngle - adjustAngle;
+            }
             if(dir.magnitude > range)
             {
                 FirstPersonCamera.ForceRelease();
@@ -104,13 +115,14 @@ public class BookPCS : PhysicalControlSurface
 
     internal override void Grab(FirstPersonCamera firstPersonCamera, Vector3 grabPoint)
     {
+        _grabPoint = grabPoint;
         base.Grab(firstPersonCamera, grabPoint);
         if (book.IsTurningPages || book.IsDraggingPage)
         {
             // exit if already turning
             return;
         }
-        var plane = new Plane(transform.forward, transform.position);
+        var plane = new Plane(transform.forward, _grabPoint);
         var ray = FirstPersonCamera.GetRay();
 
         if (plane.Raycast(ray, out var e))
@@ -129,18 +141,6 @@ public class BookPCS : PhysicalControlSurface
             }
 
 
-        }
-    }
-
-    public void TurnPage()
-    {
-        if (turnForward)
-        {
-            TurnPageForward();
-        }
-        else
-        {
-            TurnPageBackward();
         }
     }
     private void AdjustToValue(bool value, bool skipAnimation = false)
@@ -209,7 +209,7 @@ public class BookPCS : PhysicalControlSurface
     }
     private void OnDrawGizmos()
     {
-        //if (!grabbed) return;
+        if (!grabbed) return;
         Gizmos.color = Color.green;
         Gizmos.DrawSphere(point, 0.05f);
         Gizmos.DrawRay(rotatePoint.position, dir);
@@ -227,36 +227,5 @@ public class BookPCS : PhysicalControlSurface
         //isTurning = false;
     }
 
-    public void TurnPageForward()
-    {
-        Debug.Log("that works");
-        if (!book.IsTurningPages && !book.IsDraggingPage)
-        {
-            book.TurnPageDragStart(Page.TurnDirectionEnum.TurnForward);
-        }
-        else if(book.IsDraggingPage && !book.IsTurningPages)
-        {
-            book.TurnPageDrag(turnStopSpeed);
-        }
-    }
 
-    private void TurnPageBackward()
-    {
-        if (!book.IsTurningPages && !book.IsDraggingPage)
-        {
-            book.TurnPageDragStart(Page.TurnDirectionEnum.TurnBackward);
-        }
-        else if(book.IsDraggingPage && !book.IsTurningPages)
-        {
-            book.TurnPageDrag(turnStopSpeed);
-        }
-    }
-
-    public void TurnPageFinish()
-    {
-        if (book.IsDraggingPage || book.IsTurningPages)
-        {
-            book.TurnPageDragStop(turnStopSpeed, PageTurnCompleted);
-        }
-    }
 }
