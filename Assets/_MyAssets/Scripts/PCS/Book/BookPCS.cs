@@ -62,6 +62,10 @@ public class BookPCS : PhysicalControlSurface
     internal override void Release()
     {
         base.Release();
+        if (book.IsDraggingPage && !book.IsTurningPages)
+        {
+            book.TurnPageDragStop(turnStopSpeed, PageTurnCompleted);
+        }
     }
 
     public override void HandleInput()
@@ -80,18 +84,50 @@ public class BookPCS : PhysicalControlSurface
             dir = point - rotatePoint.position;
 
             var angle = Vector3.SignedAngle(Vector3.up, transform.InverseTransformDirection(dir), Vector3.forward);
-            var dirPage = Page.TurnDirectionEnum.TurnForward;
-            if (angle > 0)
+            if(dir.magnitude > range)
             {
-                turnForward = true;
+                FirstPersonCamera.ForceRelease();
+                return;
+            }
+            
+            clampedAngle = Mathf.Clamp(angle, minAngle, maxAngle);
+
+            var turningTime = Mathf.InverseLerp(minAngle, maxAngle, clampedAngle);
+            if (book.CurrentState == EndlessBook.StateEnum.OpenMiddle)
+            {
+                book.TurnPageDrag(1 - turningTime);
+                
+            }
+
+        }
+    }
+
+    internal override void Grab(FirstPersonCamera firstPersonCamera, Vector3 grabPoint)
+    {
+        base.Grab(firstPersonCamera, grabPoint);
+        if (book.IsTurningPages || book.IsDraggingPage)
+        {
+            // exit if already turning
+            return;
+        }
+        var plane = new Plane(transform.forward, transform.position);
+        var ray = FirstPersonCamera.GetRay();
+
+        if (plane.Raycast(ray, out var e))
+        {
+            point = ray.GetPoint(e);
+            dir = point - rotatePoint.position;
+
+            var angle = Vector3.SignedAngle(Vector3.up, transform.InverseTransformDirection(dir), Vector3.forward);
+            if (angle < 0)
+            {
+                book.TurnPageDragStart(Page.TurnDirectionEnum.TurnForward);
             }
             else
             {
-                turnForward = false;
+                book.TurnPageDragStart(Page.TurnDirectionEnum.TurnBackward);
             }
-            //this.value = angle >= switchAngle;
 
-            //AdjustToAngle(angle);
 
         }
     }
