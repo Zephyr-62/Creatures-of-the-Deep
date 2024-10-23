@@ -160,8 +160,6 @@ public class CrabAnimationController : EnemyAnimationController<CrabAIController
 
     protected override void OnAIStateChanged(EnemyAIController.State newState)
     {
-        base.OnAIStateChanged(newState);
-
         switch (newState)
         {
             case EnemyAIController.State.Idle:
@@ -202,7 +200,7 @@ public class CrabAnimationController : EnemyAnimationController<CrabAIController
         var newAngle = Random.Range(TargetScanAngleRange.x, TargetScanAngleRange.y);
         newAngle *= Random.value > 0.5f ? 1 : -1;
         targetScanAngle = Vector3.SignedAngle(Vector3.forward, this.transform.forward, Vector3.up) + newAngle;
-        targetScanAngle = ((targetScanAngle + 180) % 360) - 180.0f;
+        targetScanAngle = ((targetScanAngle + 180) % 360) - 180.0f; // Make sure target angle is in range [-180, 180]
     }
 
 

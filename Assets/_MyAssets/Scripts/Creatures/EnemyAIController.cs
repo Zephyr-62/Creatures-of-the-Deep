@@ -2,14 +2,18 @@ using AdvancedEditorTools.Attributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using static EnemyAIController;
+using static UnityEngine.UI.Image;
 using Random = UnityEngine.Random;
 
 public class EnemyAIController : MonoBehaviour
 {
     public Action<State> OnStateChanged;
     [SerializeField] [ReadOnly] protected State CurrentState;
-    [SerializeField][ReadOnly] protected Vector3 MovingDirection;
+    [SerializeField] [ReadOnly] protected Vector3 TargetPosition;
+    [SerializeField] [ReadOnly] protected Vector3 MovingDirection;
     [SerializeField] protected Transform FollowTarget;
 
 
@@ -33,6 +37,8 @@ public class EnemyAIController : MonoBehaviour
     [BeginFoldout("Chase")]
     [SerializeField] protected Transform ChaseTarget; // Target to chase (the player/submarine)
     [SerializeField] protected ChaseTrigger chaseTrigger;
+    [SerializeField] protected bool chaseRequireDirectLineOfSight;
+    [SerializeField] private LayerMask ViewObstacleLayerMask;
     [SerializeField] protected TargetFollowSettings ChaseTargetSettings;
     [Tooltip("How close the target has to be to switch to hunt state")]
     [SerializeField] protected float DetectionRange = 30;
@@ -214,6 +220,7 @@ public class EnemyAIController : MonoBehaviour
     protected void FollowTargetUpdate(TargetFollowSettings followSettings, System.Action OnTargetReached, Vector3 targetPos)
     {
         var TargetDir = (targetPos - this.transform.position);
+        TargetPosition = targetPos;
         MovingDirection = TargetDir.normalized;
         this.transform.position = Vector3.Lerp(this.transform.position, this.transform.position + MovingDirection, Time.deltaTime * followSettings.Speed);
 
@@ -227,10 +234,42 @@ public class EnemyAIController : MonoBehaviour
 
     protected bool TryChaseTargetDetection(float distance, float viewAngle)
     {
-        var targetDetected = (ChaseTarget.position - this.transform.position).magnitude <= distance &&                                  // Min Distance Reached
-            Vector3.Angle(this.transform.forward, (ChaseTarget.position - this.transform.position).normalized) <= viewAngle / 2.0f;     // Inside view angle
+        var targetDir = ChaseTarget.position - this.transform.position;
 
-        return targetDetected;
+        // Check inside view angle
+        if (Vector3.Angle(this.transform.forward, (ChaseTarget.position - this.transform.position).normalized) > viewAngle / 2.0f)
+            return false;
+        
+
+        if (chaseRequireDirectLineOfSight) // Check if target close enough & in line of sight
+        {
+            if (!Physics.Raycast(this.transform.position, targetDir.normalized, out RaycastHit hitInfo, distance, ViewObstacleLayerMask))
+                return false; 
+            if (hitInfo.collider.transform != ChaseTarget)
+            {
+                Debug.Log("Chase raycast hit obstacle", hitInfo.collider.gameObject);
+                return false;
+            }
+        }
+        else if (targetDir.magnitude > distance) // Check if target close enough
+            return false;
+
+        switch (chaseTrigger)
+        {
+            case ChaseTrigger.Light:
+                // submarineManager.lightEmitters.any(x => x.on)
+                break;
+            case ChaseTrigger.Heat:
+                // submarineManager.heatEmitters.any(x => x.on)
+                break;
+            case ChaseTrigger.Sound:
+                // submarineManager.soundEmitters.any(x => x.on)
+                break;
+            default:
+                break;
+        }
+
+        return true;
     }
 
     protected void SearchingTargetUpdate()
@@ -261,18 +300,14 @@ public class EnemyAIController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if(FollowTarget != null && (CurrentState == State.Patrolling || CurrentState == State.Chasing))
-        {
-            var moveDir = (FollowTarget.position - this.transform.position).normalized;
-            var reachPos = this.transform.position + moveDir * GizmosFollowTargetLenght;
+        var reachPos = this.transform.position + MovingDirection * GizmosFollowTargetLenght;
 
-            Gizmos.color = Color.green;
-            Gizmos.DrawSphere(reachPos, 1);
-            Gizmos.DrawLine(this.transform.position, reachPos);
-            Gizmos.color = Color.red;
-            Gizmos.DrawSphere(FollowTarget.position, 1);
-            Gizmos.DrawLine(FollowTarget.position, reachPos);
-        }
+        Gizmos.color = Color.green;
+        Gizmos.DrawSphere(reachPos, 1);
+        Gizmos.DrawLine(this.transform.position, reachPos);
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(TargetPosition, 1);
+        Gizmos.DrawLine(TargetPosition, reachPos);
 
         // Player detection cone
         Gizmos.color = GizmosDetectionConeColor;
@@ -282,21 +317,21 @@ public class EnemyAIController : MonoBehaviour
             DrawSphericalConeGizmo(transform.position, this.transform.forward, AggroViewAngle/2.0f, AggroRange);
 
 
-        if (ChaseTarget != null)
-        {
-            var ChaseTargetAngle = Vector3.Angle(this.transform.forward, (ChaseTarget.position - this.transform.position).normalized);
-            var targetInViewCone = 
-                (ChaseTarget.position - this.transform.position).magnitude <= DetectionRange && // Min Distance Reached
-                ChaseTargetAngle <= DetectionViewAngle/2.0f;
+        //if (ChaseTarget != null)
+        //{
+        //    var ChaseTargetAngle = Vector3.Angle(this.transform.forward, (ChaseTarget.position - this.transform.position).normalized);
+        //    var targetInViewCone = 
+        //        (ChaseTarget.position - this.transform.position).magnitude <= DetectionRange && // Min Distance Reached
+        //        ChaseTargetAngle <= DetectionViewAngle/2.0f;
 
-            Gizmos.color = targetInViewCone ? Color.magenta : Color.cyan;
-            Gizmos.DrawSphere(ChaseTarget.position, 1);
-        }
+        //    Gizmos.color = targetInViewCone ? Color.magenta : Color.cyan;
+        //    Gizmos.DrawSphere(ChaseTarget.position, 2);
+        //}
 
         if(CurrentState == State.Searching && WalkingToLastDetectedSpot)
         {
             Gizmos.color = Color.magenta;
-            Gizmos.DrawSphere(LastSeenTargetPos, 1);
+            Gizmos.DrawSphere(LastSeenTargetPos, 1.5f);
         }
     }
 
