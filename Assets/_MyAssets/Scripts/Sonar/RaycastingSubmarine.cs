@@ -102,6 +102,7 @@ public class RaycastingSubmarine : ElectricalDevice
         {
             _currentHitPoint = _hitpoint;
         }
+        
         _currentArtiPos = CalculateArtiPoint();
         blitMat.SetVector("_PointArtifact", _currentArtiPos);
         if (_arrow)
@@ -199,7 +200,7 @@ public class RaycastingSubmarine : ElectricalDevice
 	{
         if (pos == Vector3.negativeInfinity)
         {
-            blitMat.SetFloat("_ArtefactActivate", 0);
+            blitMat.SetInt("_ArtefactActivate", 0);
             
         }
         else

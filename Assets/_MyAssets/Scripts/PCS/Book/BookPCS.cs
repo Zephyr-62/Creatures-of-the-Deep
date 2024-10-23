@@ -35,6 +35,8 @@ public class BookPCS : PhysicalControlSurface
     private float clampedAngle;
     private bool old;
 
+    private bool turnForward;
+
     public bool value
     {
         get
@@ -81,28 +83,64 @@ public class BookPCS : PhysicalControlSurface
             var dirPage = Page.TurnDirectionEnum.TurnForward;
             if (angle > 0)
             {
-                dirPage = Page.TurnDirectionEnum.TurnForward;
+                turnForward = true;
             }
             else
             {
-                dirPage = Page.TurnDirectionEnum.TurnBackward;
+                turnForward = false;
             }
-            book.TurnPageDragStart(dirPage);
-            //book.TurnPageDrag(0.1f);
-            book.TurnPageDragStop(turnStopSpeed, PageTurnCompleted, false);
             //this.value = angle >= switchAngle;
 
             //AdjustToAngle(angle);
 
         }
     }
-    
+
+    public void TurnPage()
+    {
+        if (turnForward)
+        {
+            TurnPageForward();
+        }
+        else
+        {
+            TurnPageBackward();
+        }
+    }
     private void AdjustToValue(bool value, bool skipAnimation = false)
     {
-        //this.value = value;
-        //AdjustToAngle(this.value ? maxAngle : minAngle, skipAnimation);
+        this.value = value;
+        AdjustToAngle(this.value ? maxAngle : minAngle, skipAnimation);
     }
-    
+    private void AdjustToAngle(float angle, bool skipAnimation = false)
+    {
+        if (blocked) return;
+
+        targetAngle = angle;
+        clampedAngle = Mathf.Clamp(targetAngle, minAngle, maxAngle);
+
+        if(clampedAngle > switchAngle && value != old)
+        {
+            Rotate(maxAngle, skipAnimation);
+        }
+        else if (clampedAngle < switchAngle && value != old)
+        {
+            Rotate(minAngle, skipAnimation);
+        }
+    }
+
+    private void Rotate(float angle, bool skipAnimation = false)
+    {
+        if (skipAnimation)
+        {
+            rotatePoint.localRotation = Quaternion.AngleAxis(angle, Vector3.right);
+        }
+        else
+        {
+            rotatePoint.DOKill();
+            rotatePoint.DOLocalRotate(new Vector3(angle, 0, 0), animationDuration).SetEase(animationEase);
+        }
+    }
     
     public override float GetFloatValue()
     {
@@ -135,7 +173,7 @@ public class BookPCS : PhysicalControlSurface
     }
     private void OnDrawGizmos()
     {
-        if (!grabbed) return;
+        //if (!grabbed) return;
         Gizmos.color = Color.green;
         Gizmos.DrawSphere(point, 0.05f);
         Gizmos.DrawRay(rotatePoint.position, dir);
@@ -151,5 +189,38 @@ public class BookPCS : PhysicalControlSurface
     protected virtual void PageTurnCompleted(int leftPageNumber, int rightPageNumber)
     {
         //isTurning = false;
+    }
+
+    public void TurnPageForward()
+    {
+        Debug.Log("that works");
+        if (!book.IsTurningPages && !book.IsDraggingPage)
+        {
+            book.TurnPageDragStart(Page.TurnDirectionEnum.TurnForward);
+        }
+        else if(book.IsDraggingPage && !book.IsTurningPages)
+        {
+            book.TurnPageDrag(turnStopSpeed);
+        }
+    }
+
+    private void TurnPageBackward()
+    {
+        if (!book.IsTurningPages && !book.IsDraggingPage)
+        {
+            book.TurnPageDragStart(Page.TurnDirectionEnum.TurnBackward);
+        }
+        else if(book.IsDraggingPage && !book.IsTurningPages)
+        {
+            book.TurnPageDrag(turnStopSpeed);
+        }
+    }
+
+    public void TurnPageFinish()
+    {
+        if (book.IsDraggingPage || book.IsTurningPages)
+        {
+            book.TurnPageDragStop(turnStopSpeed, PageTurnCompleted);
+        }
     }
 }
