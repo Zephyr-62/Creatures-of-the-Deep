@@ -88,7 +88,8 @@ public class SubmarinePhysicsSystem : Measureable
     void FixedUpdate()
     {
         rb.maxAngularVelocity = maxAngularVelocity;
-        
+
+
         if (engineEnabled)
         {
             // Thrust
@@ -107,15 +108,20 @@ public class SubmarinePhysicsSystem : Measureable
 
             if (elevation != 0)
                 rb.AddForce(BuoyancyStrength * elevation * Vector3.up, ForceMode.Force);
-        }
-        
-        PitchStabilization();
 
-        // Roll
-        RollStabilization();
+            PitchStabilization();
+
+            // Roll
+            RollStabilization();
+        } else
+        {
+            rb.AddForce(Physics.gravity * Time.fixedDeltaTime * rb.mass);
+        }
+
+
 
         // Buoyancy
-        
+
     }
 
     private void PitchStabilization()
