@@ -2,10 +2,7 @@ using AdvancedEditorTools.Attributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using static EnemyAIController;
-using static UnityEngine.UI.Image;
 using Random = UnityEngine.Random;
 
 public class EnemyAIController : MonoBehaviour
@@ -137,7 +134,7 @@ public class EnemyAIController : MonoBehaviour
         }
     }
 
-    // Make sure animations are finished before switching??
+    // Make sure animations stop when switching?
     [Button("Switch to state")]
     public void SwitchToState(State newState)
     {
