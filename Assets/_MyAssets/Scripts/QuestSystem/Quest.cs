@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Quest : ScriptableObject
 {
     [SerializeField] private string questName;
-    [SerializeField] [TextArea] private string description;
+    [SerializeField] [TextArea(3, 20)] private string description;
     [SerializeField] private float responseTime;
 
     public string GetQuestName() => questName;
