@@ -20,6 +20,6 @@ public abstract class Quest : ScriptableObject
 
     public virtual Vector3 GetWaypoint()
     {
-        return Vector3.zero;
+        return new Vector3(10000, 10000, 10000);
     }
 }

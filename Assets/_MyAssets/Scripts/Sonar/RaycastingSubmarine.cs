@@ -46,7 +46,7 @@ public class RaycastingSubmarine : ElectricalDevice
     private float _angleArt;
     void Start()
     {
-        _artiPos = Vector2.zero;
+        ArtifactLocation(new Vector3(10000, 10000, 10000));
         //Debug.Log(LayerMask.LayerToName(_layerMaskArtifact));
     }
 
@@ -102,20 +102,24 @@ public class RaycastingSubmarine : ElectricalDevice
         {
             _currentHitPoint = _hitpoint;
         }
-        _currentArtiPos = CalculateArtiPoint();
-        blitMat.SetVector("_PointArtifact", _currentArtiPos);
-        if (_arrow)
+        if(_artiPos != new Vector2(10000, 10000))
         {
-            _arrow = false;
-            blitMat.SetVector("_PointArrowL", CalculateArrowL());
-            blitMat.SetVector("_PointArrowR", CalculateArrowR());
+            _currentArtiPos = CalculateArtiPoint();
+            blitMat.SetVector("_PointArtifact", _currentArtiPos);
+            if (_arrow)
+            {
+                _arrow = false;
+                blitMat.SetVector("_PointArrowL", CalculateArrowL());
+                blitMat.SetVector("_PointArrowR", CalculateArrowR());
+            }
+            else
+            {
+                blitMat.SetVector("_PointArrowL", _currentArtiPos);
+                blitMat.SetVector("_PointArrowR", _currentArtiPos);
+
+            }
         }
-        else
-        {
-            blitMat.SetVector("_PointArrowL", _currentArtiPos);
-            blitMat.SetVector("_PointArrowR", _currentArtiPos);
-                                                                             
-        }
+        
 
         blitMat.SetVector("_Point", _hitpoint);
         blitMat.SetVector("_PointB", _linePoint);
@@ -197,14 +201,14 @@ public class RaycastingSubmarine : ElectricalDevice
 	
 	public void ArtifactLocation(Vector3 pos)
 	{
-        if (pos == Vector3.negativeInfinity)
+        if (pos == new Vector3(10000, 10000, 10000))
         {
-            blitMat.SetFloat("_ArtefactActivate", 0);
-            
+            blitMat.SetInt("_ArtefactActivate", 0);
+            _artiPos = new Vector2(10000, 10000);
         }
         else
         {
-            blitMat.SetFloat("_ArtefactActivate", 1);
+            blitMat.SetInt("_ArtefactActivate", 1);
             _artiPos = new Vector2(pos.x,  pos.z);
             
         }
