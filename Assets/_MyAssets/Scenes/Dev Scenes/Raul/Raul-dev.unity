@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0.06941973, g: 0.11019312, b: 0.2264151, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.08
+  m_FogDensity: 0.045
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
@@ -119,24 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &12956976
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseInspectorFoldout: 0
-  layoutInfos: []
-  buttonMethods: []
-  references:
-    version: 2
-    RefIds: []
 --- !u!1 &18936851
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,18 +653,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 37099729}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &46600851 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3052054430166414487, guid: aafa381a1a349e043b60e92a983dc4dc,
-    type: 3}
-  m_PrefabInstance: {fileID: 4837256936048348390}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f205512635f686741a93d9e5fecec9b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &50872028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -762,24 +732,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 50872028}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &79587645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseInspectorFoldout: 0
-  layoutInfos: []
-  buttonMethods: []
-  references:
-    version: 2
-    RefIds: []
 --- !u!1001 &100604038
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -968,21 +920,9 @@ MonoBehaviour:
     - {fileID: 2393243429509120737, guid: d451bf8b2565e8d4cbf7bf5b7331b591, type: 3}
     - {fileID: 7702717458789281797, guid: 18e532391cd4a0e42b039495051ea7cd, type: 3}
     - {fileID: 926998523}
-    - {fileID: 0}
-    - {fileID: 681673234}
+    - {fileID: 5622438620727902493, guid: 4ca5b7537e1857243aa2354112d9284c, type: 3}
     - {fileID: 1826487067}
-    - {fileID: 503541790}
-    - {fileID: 336262784}
-    - {fileID: 46600851}
-    - {fileID: 656503120}
     - {fileID: 165814769}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 5610814800174672540, guid: fe0723f909bc4e24eb24d298b481db73, type: 3}
     m_values:
     - {fileID: 1016739987}
     - {fileID: 245942075}
@@ -994,21 +934,9 @@ MonoBehaviour:
     - {fileID: 1168523558}
     - {fileID: 841359838}
     - {fileID: 1345980711}
-    - {fileID: 140750928}
-    - {fileID: 79587645}
-    - {fileID: 1970013293}
-    - {fileID: 1810623788}
-    - {fileID: 930676964}
-    - {fileID: 1065797212}
-    - {fileID: 252844940}
-    - {fileID: 1957818117}
-    - {fileID: 1003533476}
-    - {fileID: 1965665667}
-    - {fileID: 2067181602}
-    - {fileID: 160066980}
-    - {fileID: 2022010113}
-    - {fileID: 966246796}
-    - {fileID: 12956976}
+    - {fileID: 1197636244}
+    - {fileID: 837607916}
+    - {fileID: 1254266744}
   extensionEnabled: 1
   debugMode: 0
 --- !u!4 &135543990
@@ -1026,33 +954,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &140750928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseInspectorFoldout: 0
-  layoutInfos: []
-  buttonMethods:
-  - rid: 7396337154440036489
-  references:
-    version: 2
-    RefIds:
-    - rid: 7396337154440036489
-      type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
-      data:
-        methodName: ToggleBlock
-        buttonName: Toggle block
-        foldout: 1
-        buttonSize: 12
-        parameters: []
 --- !u!1 &144861133
 GameObject:
   m_ObjectHideFlags: 0
@@ -1203,41 +1104,6 @@ Transform:
   - {fileID: 1343132898}
   m_Father: {fileID: 751727336}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &160066980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseInspectorFoldout: 0
-  layoutInfos:
-  - rid: 7396337208402116683
-  - rid: 7396337208402116684
-  buttonMethods: []
-  references:
-    version: 2
-    RefIds:
-    - rid: 7396337208402116683
-      type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
-      data:
-        fieldName: LegTargetHintRadius
-        fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-        label: Gizmos
-        foldout: 0
-    - rid: 7396337208402116684
-      type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
-      data:
-        fieldName: OnDrawSelected
-        fieldTypeName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-        includeLast: 1
 --- !u!1 &164756392
 GameObject:
   m_ObjectHideFlags: 0
@@ -1889,20 +1755,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseInspectorFoldout: 0
   layoutInfos:
-  - rid: 7396337208402116704
-  - rid: 7396337208402116705
-  - rid: 7396337208402116706
-  - rid: 7396337208402116707
-  - rid: 7396337208402116708
-  - rid: 7396337208402116709
-  - rid: 7396337208402116710
+  - rid: 7396337209895551100
+  - rid: 7396337209895551101
+  - rid: 7396337209895551102
+  - rid: 7396337209895551103
+  - rid: 7396337209895551104
+  - rid: 7396337209895551105
+  - rid: 7396337209895551106
   buttonMethods:
-  - rid: 7396337208402116711
-  - rid: 7396337208402116712
+  - rid: 7396337209895551107
+  - rid: 7396337209895551108
   references:
     version: 2
     RefIds:
-    - rid: 7396337208402116704
+    - rid: 7396337209895551100
       type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: IdleChance
@@ -1910,14 +1776,14 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         label: Idle
         foldout: 0
-    - rid: 7396337208402116705
+    - rid: 7396337209895551101
       type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: RandomPatrol
         fieldTypeName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
         includeLast: 0
-    - rid: 7396337208402116706
+    - rid: 7396337209895551102
       type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: RandomPatrol
@@ -1925,14 +1791,14 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         label: Patrol
         foldout: 0
-    - rid: 7396337208402116707
+    - rid: 7396337209895551103
       type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: ChaseTarget
         fieldTypeName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
         includeLast: 0
-    - rid: 7396337208402116708
+    - rid: 7396337209895551104
       type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: ChaseTarget
@@ -1940,14 +1806,14 @@ MonoBehaviour:
           Culture=neutral, PublicKeyToken=null
         label: Chase
         foldout: 0
-    - rid: 7396337208402116709
+    - rid: 7396337209895551105
       type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: SearchTime
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
         includeLast: 0
-    - rid: 7396337208402116710
+    - rid: 7396337209895551106
       type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: SearchTime
@@ -1955,7 +1821,7 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         label: Search
         foldout: 0
-    - rid: 7396337208402116711
+    - rid: 7396337209895551107
       type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         methodName: SwitchToState
@@ -1970,7 +1836,7 @@ MonoBehaviour:
           isUsingRealTarget: 0
           target: {fileID: 512124977}
           containerTarget: {fileID: 512124977}
-    - rid: 7396337208402116712
+    - rid: 7396337209895551108
       type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         methodName: AutofillPatrolTargetsFromParent
@@ -2064,24 +1930,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 249899283}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &252844940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseInspectorFoldout: 0
-  layoutInfos: []
-  buttonMethods: []
-  references:
-    version: 2
-    RefIds: []
 --- !u!1 &264800945
 GameObject:
   m_ObjectHideFlags: 0
@@ -2550,13 +2398,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseInspectorFoldout: 0
   layoutInfos:
-  - rid: 7396337208402116702
-  - rid: 7396337208402116703
+  - rid: 7396337209895551098
+  - rid: 7396337209895551099
   buttonMethods: []
   references:
     version: 2
     RefIds:
-    - rid: 7396337208402116702
+    - rid: 7396337209895551098
       type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: LegTargetHintRadius
@@ -2564,7 +2412,7 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         label: Gizmos
         foldout: 0
-    - rid: 7396337208402116703
+    - rid: 7396337209895551099
       type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: OnDrawSelected
@@ -2951,18 +2799,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 561534309}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &336262784 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3739785223636503441, guid: cec7628d9a4ebdc40b68d28ebd10e2b4,
-    type: 3}
-  m_PrefabInstance: {fileID: 561534309}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 659324a74812f49499fec5aa26a09934, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &362412995
 GameObject:
   m_ObjectHideFlags: 0
@@ -4515,18 +4351,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &503541790 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6502987955605576780, guid: aafa381a1a349e043b60e92a983dc4dc,
-    type: 3}
-  m_PrefabInstance: {fileID: 4837256936048348390}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f205512635f686741a93d9e5fecec9b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &512124977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5932,6 +5756,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 606255139}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &612745651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 078f6fd1e8f7e6646b6e0d4badef7f18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SerializedField:
+    fieldName: newState
+    fieldType: EnemyAIController+State, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    isUsingRealContainer: 0
+    isUsingRealTarget: 0
+    target: {fileID: 612745651}
+    containerTarget: {fileID: 612745651}
+  value:
+    rid: -2
+  typeName: EnemyAIController+State, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  enumVal: Idle
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1 &614445356
 GameObject:
   m_ObjectHideFlags: 0
@@ -6356,6 +6210,36 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1045093247041777953, guid: 18e532391cd4a0e42b039495051ea7cd,
+        type: 3}
+      propertyPath: m_Positions.Array.data[0].x
+      value: 74.77702
+      objectReference: {fileID: 0}
+    - target: {fileID: 1045093247041777953, guid: 18e532391cd4a0e42b039495051ea7cd,
+        type: 3}
+      propertyPath: m_Positions.Array.data[0].y
+      value: 14.108039
+      objectReference: {fileID: 0}
+    - target: {fileID: 1045093247041777953, guid: 18e532391cd4a0e42b039495051ea7cd,
+        type: 3}
+      propertyPath: m_Positions.Array.data[0].z
+      value: 124.37175
+      objectReference: {fileID: 0}
+    - target: {fileID: 1045093247041777953, guid: 18e532391cd4a0e42b039495051ea7cd,
+        type: 3}
+      propertyPath: m_Positions.Array.data[1].x
+      value: 74.77799
+      objectReference: {fileID: 0}
+    - target: {fileID: 1045093247041777953, guid: 18e532391cd4a0e42b039495051ea7cd,
+        type: 3}
+      propertyPath: m_Positions.Array.data[1].y
+      value: 14.116927
+      objectReference: {fileID: 0}
+    - target: {fileID: 1045093247041777953, guid: 18e532391cd4a0e42b039495051ea7cd,
+        type: 3}
+      propertyPath: m_Positions.Array.data[1].z
+      value: 124.372345
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6369,6 +6253,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1552137141}
     m_Modifications:
+    - target: {fileID: 493959703518851669, guid: 18e532391cd4a0e42b039495051ea7cd,
+        type: 3}
+      propertyPath: system
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 540248568467751865, guid: 18e532391cd4a0e42b039495051ea7cd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6423,6 +6312,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Submarine (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1045093247041777953, guid: 18e532391cd4a0e42b039495051ea7cd,
+        type: 3}
+      propertyPath: m_Positions.Array.data[0].x
+      value: -22.452724
+      objectReference: {fileID: 0}
+    - target: {fileID: 1045093247041777953, guid: 18e532391cd4a0e42b039495051ea7cd,
+        type: 3}
+      propertyPath: m_Positions.Array.data[0].y
+      value: 35.191376
+      objectReference: {fileID: 0}
+    - target: {fileID: 1045093247041777953, guid: 18e532391cd4a0e42b039495051ea7cd,
+        type: 3}
+      propertyPath: m_Positions.Array.data[0].z
+      value: -5.981639
+      objectReference: {fileID: 0}
+    - target: {fileID: 1045093247041777953, guid: 18e532391cd4a0e42b039495051ea7cd,
+        type: 3}
+      propertyPath: m_Positions.Array.data[1].x
+      value: -22.45206
+      objectReference: {fileID: 0}
+    - target: {fileID: 1045093247041777953, guid: 18e532391cd4a0e42b039495051ea7cd,
+        type: 3}
+      propertyPath: m_Positions.Array.data[1].y
+      value: 35.200306
+      objectReference: {fileID: 0}
+    - target: {fileID: 1045093247041777953, guid: 18e532391cd4a0e42b039495051ea7cd,
+        type: 3}
+      propertyPath: m_Positions.Array.data[1].z
+      value: -5.9819927
       objectReference: {fileID: 0}
     - target: {fileID: 4951347903950757067, guid: 18e532391cd4a0e42b039495051ea7cd,
         type: 3}
@@ -6670,18 +6589,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 650934555}
   m_Mesh: {fileID: -7481045295689884865, guid: 8eee75b3b407dea449ba75a764f16165, type: 3}
---- !u!114 &656503120 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5365971828845625564, guid: aafa381a1a349e043b60e92a983dc4dc,
-    type: 3}
-  m_PrefabInstance: {fileID: 4837256936048348390}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f205512635f686741a93d9e5fecec9b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &657080991
 GameObject:
   m_ObjectHideFlags: 0
@@ -6805,27 +6712,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 192774431}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &661134964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96e282c4d0e4ee749b5eb38f544a57af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SerializedField:
-    fieldName: parent
-    fieldType: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-    isUsingRealContainer: 0
-    isUsingRealTarget: 0
-    target: {fileID: 661134964}
-    containerTarget: {fileID: 661134964}
-  value: {fileID: 490671751}
 --- !u!1001 &667453225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7093,8 +6979,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 678953002}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.020944951, y: -0.9645284, z: -0.2504829, w: 0.080651894}
-  m_LocalPosition: {x: 65.67, y: 4.49, z: 95.88}
+  m_LocalRotation: {x: -0.004826113, y: 0.98040503, z: 0.1954395, w: 0.024210209}
+  m_LocalPosition: {x: 56.9, y: 13.9, z: 88.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7120,18 +7006,6 @@ LookAtConstraint:
   m_Sources:
   - sourceTransform: {fileID: 1991771370}
     weight: 1
---- !u!114 &681673234 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6802502866570874750, guid: 18e532391cd4a0e42b039495051ea7cd,
-    type: 3}
-  m_PrefabInstance: {fileID: 633978157}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89e14170bfcaaac4197a2866167a071f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &682108844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7862,36 +7736,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 791755121}
   m_Mesh: {fileID: -7481045295689884865, guid: 8eee75b3b407dea449ba75a764f16165, type: 3}
---- !u!114 &798229144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 078f6fd1e8f7e6646b6e0d4badef7f18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SerializedField:
-    fieldName: newState
-    fieldType: EnemyAIController+State, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-    isUsingRealContainer: 0
-    isUsingRealTarget: 0
-    target: {fileID: 798229144}
-    containerTarget: {fileID: 798229144}
-  value:
-    rid: -2
-  typeName: EnemyAIController+State, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-    PublicKeyToken=null
-  enumVal: Idle
-  references:
-    version: 2
-    RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
 --- !u!1001 &805065362
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8039,6 +7883,124 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 814765016}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &837607916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseInspectorFoldout: 0
+  layoutInfos:
+  - rid: 7396337209895551077
+  - rid: 7396337209895551078
+  - rid: 7396337209895551079
+  - rid: 7396337209895551080
+  - rid: 7396337209895551081
+  - rid: 7396337209895551082
+  - rid: 7396337209895551083
+  - rid: 7396337209895551084
+  buttonMethods:
+  - rid: 7396337209895551085
+  - rid: 7396337209895551086
+  references:
+    version: 2
+    RefIds:
+    - rid: 7396337209895551077
+      type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: IdleChance
+        fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+        label: Idle
+        foldout: 0
+    - rid: 7396337209895551078
+      type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: RandomPatrol
+        fieldTypeName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+        includeLast: 0
+    - rid: 7396337209895551079
+      type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: RandomPatrol
+        fieldTypeName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+        label: Patrol
+        foldout: 0
+    - rid: 7396337209895551080
+      type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: ChaseTarget
+        fieldTypeName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        includeLast: 0
+    - rid: 7396337209895551081
+      type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: ChaseTarget
+        fieldTypeName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        label: Chase
+        foldout: 0
+    - rid: 7396337209895551082
+      type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: SearchTime
+        fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+        includeLast: 0
+    - rid: 7396337209895551083
+      type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: SearchTime
+        fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+        label: Search
+        foldout: 0
+    - rid: 7396337209895551084
+      type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: GizmosFollowTargetLenght
+        fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+        includeLast: 0
+    - rid: 7396337209895551085
+      type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        methodName: SwitchToState
+        buttonName: Switch to state
+        foldout: 1
+        buttonSize: 12
+        parameters:
+        - fieldName: newState
+          fieldType: EnemyAIController+State, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+            PublicKeyToken=null
+          isUsingRealContainer: 0
+          isUsingRealTarget: 0
+          target: {fileID: 612745651}
+          containerTarget: {fileID: 612745651}
+    - rid: 7396337209895551086
+      type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        methodName: AutofillPatrolTargetsFromParent
+        buttonName: Autocomplete patrol targets
+        foldout: 1
+        buttonSize: 12
+        parameters:
+        - fieldName: parent
+          fieldType: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          isUsingRealContainer: 0
+          isUsingRealTarget: 0
+          target: {fileID: 1790151574}
+          containerTarget: {fileID: 1790151574}
 --- !u!114 &841359838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8758,24 +8720,6 @@ MonoBehaviour:
           isUsingRealTarget: 0
           target: {fileID: 1070317537}
           containerTarget: {fileID: 1070317537}
---- !u!114 &930676964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseInspectorFoldout: 0
-  layoutInfos: []
-  buttonMethods: []
-  references:
-    version: 2
-    RefIds: []
 --- !u!1 &936584444
 GameObject:
   m_ObjectHideFlags: 0
@@ -9029,24 +8973,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 959683970}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &966246796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseInspectorFoldout: 0
-  layoutInfos: []
-  buttonMethods: []
-  references:
-    version: 2
-    RefIds: []
 --- !u!1 &977570690
 GameObject:
   m_ObjectHideFlags: 0
@@ -9335,89 +9261,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 100604038}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1003533476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseInspectorFoldout: 0
-  layoutInfos:
-  - rid: 7396337208402116694
-  - rid: 7396337208402116695
-  - rid: 7396337208402116696
-  - rid: 7396337208402116697
-  - rid: 7396337208402116698
-  - rid: 7396337208402116699
-  - rid: 7396337208402116700
-  - rid: 7396337208402116701
-  buttonMethods: []
-  references:
-    version: 2
-    RefIds:
-    - rid: 7396337208402116694
-      type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
-      data:
-        fieldName: _throttleControl
-        fieldTypeName: PhysicalControlSurface, Assembly-CSharp, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-        windowStyle: 13
-        columnStyle: 1
-    - rid: 7396337208402116695
-      type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
-      data:
-        fieldName: BuoyancyStrength
-        fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-        includeLast: 0
-    - rid: 7396337208402116696
-      type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
-      data:
-        fieldName: maxThrustSpeed
-        fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-        windowStyle: 0
-        columnStyle: 3
-    - rid: 7396337208402116697
-      type: {class: NewColumnInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
-      data:
-        fieldName: maxAngularVelocity
-        fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-    - rid: 7396337208402116698
-      type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
-      data:
-        fieldName: pitchInputDelay
-        fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-        includeLast: 0
-    - rid: 7396337208402116699
-      type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
-      data:
-        fieldName: pitchInputDelay
-        fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-        windowStyle: 0
-        columnStyle: 3
-    - rid: 7396337208402116700
-      type: {class: NewColumnInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
-      data:
-        fieldName: TargetRoll
-        fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-    - rid: 7396337208402116701
-      type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
-      data:
-        fieldName: minRelativeCollisionVelocityForThrustShutdown
-        fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-        includeLast: 0
 --- !u!114 &1016739987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9863,24 +9706,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1051074676}
   m_Mesh: {fileID: 2109155341553118406, guid: bc5204701e106264d8bf48ad9915ab59, type: 3}
---- !u!114 &1065797212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseInspectorFoldout: 0
-  layoutInfos: []
-  buttonMethods: []
-  references:
-    version: 2
-    RefIds: []
 --- !u!1001 &1067890795
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10859,6 +10684,89 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1194204414}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1197636244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseInspectorFoldout: 0
+  layoutInfos:
+  - rid: 7396337209895550984
+  - rid: 7396337209895550985
+  - rid: 7396337209895550986
+  - rid: 7396337209895550987
+  - rid: 7396337209895550988
+  - rid: 7396337209895550989
+  - rid: 7396337209895550990
+  - rid: 7396337209895550991
+  buttonMethods: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 7396337209895550984
+      type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: _throttleControl
+        fieldTypeName: PhysicalControlSurface, Assembly-CSharp, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        windowStyle: 13
+        columnStyle: 1
+    - rid: 7396337209895550985
+      type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: BuoyancyStrength
+        fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+        includeLast: 0
+    - rid: 7396337209895550986
+      type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: maxThrustSpeed
+        fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+        windowStyle: 0
+        columnStyle: 3
+    - rid: 7396337209895550987
+      type: {class: NewColumnInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: maxAngularVelocity
+        fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+    - rid: 7396337209895550988
+      type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: pitchInputDelay
+        fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+        includeLast: 0
+    - rid: 7396337209895550989
+      type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: pitchInputDelay
+        fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+        windowStyle: 0
+        columnStyle: 3
+    - rid: 7396337209895550990
+      type: {class: NewColumnInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: TargetRoll
+        fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+    - rid: 7396337209895550991
+      type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: minRelativeCollisionVelocityForThrustShutdown
+        fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+        includeLast: 0
 --- !u!1 &1209345759
 GameObject:
   m_ObjectHideFlags: 0
@@ -11343,6 +11251,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1252678994}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1254266744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseInspectorFoldout: 0
+  layoutInfos: []
+  buttonMethods: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1255833513
 GameObject:
   m_ObjectHideFlags: 0
@@ -15290,36 +15216,6 @@ MonoBehaviour:
     m_DampPosition: 0.5
     m_DampRotation: 0.5
     m_MaintainAim: 1
---- !u!114 &1687332321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 078f6fd1e8f7e6646b6e0d4badef7f18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SerializedField:
-    fieldName: newState
-    fieldType: EnemyAIController+State, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-    isUsingRealContainer: 0
-    isUsingRealTarget: 0
-    target: {fileID: 1687332321}
-    containerTarget: {fileID: 1687332321}
-  value:
-    rid: -2
-  typeName: EnemyAIController+State, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-    PublicKeyToken=null
-  enumVal: Idle
-  references:
-    version: 2
-    RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
 --- !u!1001 &1700208049
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16980,6 +16876,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1783533140}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1790151574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96e282c4d0e4ee749b5eb38f544a57af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SerializedField:
+    fieldName: parent
+    fieldType: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    isUsingRealContainer: 0
+    isUsingRealTarget: 0
+    target: {fileID: 1790151574}
+    containerTarget: {fileID: 1790151574}
+  value: {fileID: 0}
 --- !u!1001 &1792143398
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17273,24 +17190,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1809413483}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1810623788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseInspectorFoldout: 0
-  layoutInfos: []
-  buttonMethods: []
-  references:
-    version: 2
-    RefIds: []
 --- !u!1 &1819567744
 GameObject:
   m_ObjectHideFlags: 0
@@ -17392,7 +17291,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1826487067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19023,166 +18922,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 468091963}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1957818117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseInspectorFoldout: 0
-  layoutInfos: []
-  buttonMethods: []
-  references:
-    version: 2
-    RefIds: []
 --- !u!4 &1963666542 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9098869664868180158, guid: cec7628d9a4ebdc40b68d28ebd10e2b4,
     type: 3}
   m_PrefabInstance: {fileID: 2272956453838408220}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1965665667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseInspectorFoldout: 0
-  layoutInfos: []
-  buttonMethods: []
-  references:
-    version: 2
-    RefIds: []
---- !u!114 &1970013293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseInspectorFoldout: 0
-  layoutInfos:
-  - rid: 7396337187993158138
-  - rid: 7396337187993158139
-  - rid: 7396337187993158140
-  - rid: 7396337187993158141
-  - rid: 7396337187993158142
-  - rid: 7396337187993158143
-  - rid: 7396337187993158144
-  - rid: 7396337187993158145
-  buttonMethods:
-  - rid: 7396337187993158146
-  - rid: 7396337187993158147
-  references:
-    version: 2
-    RefIds:
-    - rid: 7396337187993158138
-      type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
-      data:
-        fieldName: IdleChance
-        fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-        label: Idle
-        foldout: 0
-    - rid: 7396337187993158139
-      type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
-      data:
-        fieldName: RandomPatrol
-        fieldTypeName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-        includeLast: 0
-    - rid: 7396337187993158140
-      type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
-      data:
-        fieldName: RandomPatrol
-        fieldTypeName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-        label: Patrol
-        foldout: 1
-    - rid: 7396337187993158141
-      type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
-      data:
-        fieldName: ChaseTarget
-        fieldTypeName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-        includeLast: 0
-    - rid: 7396337187993158142
-      type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
-      data:
-        fieldName: ChaseTarget
-        fieldTypeName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-        label: Chase
-        foldout: 1
-    - rid: 7396337187993158143
-      type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
-      data:
-        fieldName: SearchTime
-        fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-        includeLast: 0
-    - rid: 7396337187993158144
-      type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
-      data:
-        fieldName: SearchTime
-        fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-        label: Search
-        foldout: 0
-    - rid: 7396337187993158145
-      type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
-      data:
-        fieldName: GizmosFollowTargetLenght
-        fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-        includeLast: 0
-    - rid: 7396337187993158146
-      type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
-      data:
-        methodName: SwitchToState
-        buttonName: Switch to state
-        foldout: 1
-        buttonSize: 12
-        parameters:
-        - fieldName: newState
-          fieldType: EnemyAIController+State, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-            PublicKeyToken=null
-          isUsingRealContainer: 0
-          isUsingRealTarget: 0
-          target: {fileID: 1687332321}
-          containerTarget: {fileID: 1687332321}
-    - rid: 7396337187993158147
-      type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
-      data:
-        methodName: AutofillPatrolTargetsFromParent
-        buttonName: Autocomplete patrol targets
-        foldout: 1
-        buttonSize: 12
-        parameters:
-        - fieldName: parent
-          fieldType: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-          isUsingRealContainer: 0
-          isUsingRealTarget: 0
-          target: {fileID: 661134964}
-          containerTarget: {fileID: 661134964}
 --- !u!1 &1983623161
 GameObject:
   m_ObjectHideFlags: 0
@@ -19703,24 +19448,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2010639078}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2022010113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseInspectorFoldout: 0
-  layoutInfos: []
-  buttonMethods: []
-  references:
-    version: 2
-    RefIds: []
 --- !u!1 &2037152847
 GameObject:
   m_ObjectHideFlags: 0
@@ -19998,116 +19725,6 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
---- !u!114 &2067181602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseInspectorFoldout: 0
-  layoutInfos:
-  - rid: 7396337208402116685
-  - rid: 7396337208402116686
-  - rid: 7396337208402116687
-  - rid: 7396337208402116688
-  - rid: 7396337208402116689
-  - rid: 7396337208402116690
-  - rid: 7396337208402116691
-  buttonMethods:
-  - rid: 7396337208402116692
-  - rid: 7396337208402116693
-  references:
-    version: 2
-    RefIds:
-    - rid: 7396337208402116685
-      type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
-      data:
-        fieldName: IdleChance
-        fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-        label: Idle
-        foldout: 0
-    - rid: 7396337208402116686
-      type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
-      data:
-        fieldName: RandomPatrol
-        fieldTypeName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-        includeLast: 0
-    - rid: 7396337208402116687
-      type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
-      data:
-        fieldName: RandomPatrol
-        fieldTypeName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-        label: Patrol
-        foldout: 0
-    - rid: 7396337208402116688
-      type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
-      data:
-        fieldName: ChaseTarget
-        fieldTypeName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-        includeLast: 0
-    - rid: 7396337208402116689
-      type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
-      data:
-        fieldName: ChaseTarget
-        fieldTypeName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-        label: Chase
-        foldout: 0
-    - rid: 7396337208402116690
-      type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
-      data:
-        fieldName: SearchTime
-        fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-        includeLast: 0
-    - rid: 7396337208402116691
-      type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
-      data:
-        fieldName: SearchTime
-        fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
-          PublicKeyToken=b77a5c561934e089
-        label: Search
-        foldout: 0
-    - rid: 7396337208402116692
-      type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
-      data:
-        methodName: SwitchToState
-        buttonName: Switch to state
-        foldout: 1
-        buttonSize: 12
-        parameters:
-        - fieldName: newState
-          fieldType: EnemyAIController+State, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-            PublicKeyToken=null
-          isUsingRealContainer: 0
-          isUsingRealTarget: 0
-          target: {fileID: 798229144}
-          containerTarget: {fileID: 798229144}
-    - rid: 7396337208402116693
-      type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
-      data:
-        methodName: AutofillPatrolTargetsFromParent
-        buttonName: Autocomplete patrol targets
-        foldout: 1
-        buttonSize: 12
-        parameters:
-        - fieldName: parent
-          fieldType: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-          isUsingRealContainer: 0
-          isUsingRealTarget: 0
-          target: {fileID: 2091554153}
-          containerTarget: {fileID: 2091554153}
 --- !u!1001 &2076249048
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20187,27 +19804,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2076249048}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2091554153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96e282c4d0e4ee749b5eb38f544a57af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SerializedField:
-    fieldName: parent
-    fieldType: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-    isUsingRealContainer: 0
-    isUsingRealTarget: 0
-    target: {fileID: 2091554153}
-    containerTarget: {fileID: 2091554153}
-  value: {fileID: 0}
 --- !u!4 &2110120551 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9098869664868180158, guid: cec7628d9a4ebdc40b68d28ebd10e2b4,

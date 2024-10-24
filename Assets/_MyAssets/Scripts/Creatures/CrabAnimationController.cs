@@ -11,6 +11,7 @@ public class CrabAnimationController : EnemyAnimationController<CrabAIController
     [SerializeField] [ReadOnly] private Vector2 stepDurationRange;
     [SerializeField] [ReadOnly] private float targetScanAngle;
     [SerializeField] private bool ScanningTarget = false;
+    [SerializeField] private bool AttackingTarget = false;
 
     [Header("Settings")]
     [SerializeField] private float BodyHeightAdjustDelay = 0.2f;
@@ -18,7 +19,18 @@ public class CrabAnimationController : EnemyAnimationController<CrabAIController
     [SerializeField] private float WalkBodyHeight = 18;
     [SerializeField] private float FeetHeight = 3;
     [LineSeparator]
+    [SerializeField] private float LArmHeight = -5;
+    [SerializeField] private float RArmHeight = -5;
+    [SerializeField] private float LArmAmplitude = 3;
+    [SerializeField] private float RArmAmplitude = 3;
+    [SerializeField] private float LArmFreq = 3;
+    [SerializeField] private float RArmFreq = 3;
+    [SerializeField] private Transform LArmTarget;
+    [SerializeField] private Transform RArmTarget;
+    private Vector3 RightArmDefaultTargetPos;
 
+
+    [LineSeparator]
     [SerializeField] private float StepHeight = 6f;
     [SerializeField] private float PatrollingStepForwardPredictionDistance = 10f;
     [SerializeField] private float ChaseStepForwardPredictionDistance = 15f;
@@ -69,6 +81,7 @@ public class CrabAnimationController : EnemyAnimationController<CrabAIController
     {
         stepForwardPredictionDistance = PatrollingStepForwardPredictionDistance;
         stepDurationRange = PatrollingStepDurationRange;
+        RightArmDefaultTargetPos = RArmTarget.localPosition;
     }
 
 
@@ -117,6 +130,7 @@ public class CrabAnimationController : EnemyAnimationController<CrabAIController
             }
         }
 
+        // Rotate body if scanning
         if (ScanningTarget)
         {
             var angleDiff = targetScanAngle - Vector3.SignedAngle(Vector3.forward, this.transform.forward, Vector3.up);
@@ -124,6 +138,19 @@ public class CrabAnimationController : EnemyAnimationController<CrabAIController
                 this.transform.Rotate(Vector3.up, angleDiff * Time.fixedDeltaTime / ScanDelay);
             else GetNewScanAngle();
         }
+
+        // Lerp right arm if not attacking
+        if (!AttackingTarget)
+        {
+            RArmTarget.localPosition = new Vector3(RArmTarget.localPosition.x,
+                RArmHeight + Mathf.Sin(Time.time * RArmFreq) * RArmAmplitude,
+                RArmTarget.localPosition.z);
+        }
+        else RArmTarget.localPosition = RightArmDefaultTargetPos;
+        LArmTarget.localPosition = new Vector3(LArmTarget.localPosition.x,
+            LArmHeight + Mathf.Sin(Time.time * LArmFreq) * LArmAmplitude,
+            LArmTarget.localPosition.z);
+
     }
 
     [BeginFoldout("Gizmos")]
@@ -165,26 +192,31 @@ public class CrabAnimationController : EnemyAnimationController<CrabAIController
         {
             case EnemyAIController.State.Idle:
                 ScanningTarget = true;
+                AttackingTarget = false;
                 GetNewScanAngle();
                 TargetBodyHeight = StandBodyHeight;
                 break;
             case EnemyAIController.State.Patrolling:
                 ScanningTarget = false;
+                AttackingTarget = false;
                 stepForwardPredictionDistance = PatrollingStepForwardPredictionDistance;
                 TargetBodyHeight = WalkBodyHeight;
                 stepDurationRange = PatrollingStepDurationRange;
                 break;
             case EnemyAIController.State.Chasing:
                 ScanningTarget = false;
+                AttackingTarget = false;
                 stepForwardPredictionDistance = ChaseStepForwardPredictionDistance;
                 TargetBodyHeight = WalkBodyHeight;
                 stepDurationRange = ChaseStepDurationRange;
                 break;
             case EnemyAIController.State.Attacking:
                 ScanningTarget = false;
+                AttackingTarget = true;
                 TargetBodyHeight = WalkBodyHeight;
                 break;
             case EnemyAIController.State.Searching:
+                AttackingTarget = false;
                 ScanningTarget = true;
                 GetNewScanAngle();
                 TargetBodyHeight = StandBodyHeight;

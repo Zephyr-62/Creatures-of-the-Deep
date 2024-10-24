@@ -643,7 +643,7 @@ Transform:
   m_GameObject: {fileID: 812143384307007268}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -17.189455, y: -3.4480398, z: 3.6381598}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -972,8 +972,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1287803695595108314}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.19511074, y: -0.37239268, z: 0.27557433, w: 0.86447346}
-  m_LocalPosition: {x: 0.556, y: 1.578, z: 13.204}
+  m_LocalRotation: {x: -0.16994919, y: -0.44745895, z: 0.29176474, w: 0.828113}
+  m_LocalPosition: {x: 0.53827, y: 1.5659183, z: 13.15232}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1727,7 +1727,7 @@ Transform:
   m_GameObject: {fileID: 2330516077941050627}
   serializedVersion: 2
   m_LocalRotation: {x: 0.18512277, y: 0.36072192, z: 0.09895797, w: 0.9087445}
-  m_LocalPosition: {x: -3.001, y: -5.69, z: 11.15}
+  m_LocalPosition: {x: -2.9339726, y: -6.017279, z: 11.25811}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2708,6 +2708,22 @@ MonoBehaviour:
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0}
     m_Visible: 1
+  - m_Transform: {fileID: 2117594662361162313}
+    m_Style:
+      shape: {fileID: 4300000, guid: 687b70eb9c49243639f9379f6965034f, type: 2}
+      color: {r: 1, g: 0, b: 0, a: 0.5}
+      size: 0.1
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+    m_Visible: 1
+  - m_Transform: {fileID: 408358965889412102}
+    m_Style:
+      shape: {fileID: 4300000, guid: e050c2b16fe384bd994474655a4b4968, type: 2}
+      color: {r: 1, g: 0, b: 0, a: 0.5}
+      size: 0.1
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+    m_Visible: 1
 --- !u!114 &5886924585732551311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2722,9 +2738,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Weight: 1
   m_Data:
-    m_Root: {fileID: 5536554525516984029}
-    m_Mid: {fileID: 5617750791676978646}
-    m_Tip: {fileID: 3861374472931053341}
+    m_Root: {fileID: 5617750791676978646}
+    m_Mid: {fileID: 3861374472931053341}
+    m_Tip: {fileID: 4484677369764248048}
     m_Target: {fileID: 2117594662361162313}
     m_Hint: {fileID: 408358965889412102}
     m_TargetPositionWeight: 1
@@ -2977,7 +2993,6 @@ GameObject:
   - component: {fileID: 4694101322979243627}
   - component: {fileID: 984421465727328662}
   - component: {fileID: 1897041201818432739}
-  - component: {fileID: 5274887978142145738}
   m_Layer: 0
   m_Name: Rig 1
   m_TagString: Untagged
@@ -3032,6 +3047,38 @@ MonoBehaviour:
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0}
     m_Visible: 1
+  - m_Transform: {fileID: 1227883982978276701}
+    m_Style:
+      shape: {fileID: 4300000, guid: 687b70eb9c49243639f9379f6965034f, type: 2}
+      color: {r: 1, g: 0, b: 0, a: 0.5}
+      size: 0.1
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+    m_Visible: 1
+  - m_Transform: {fileID: 3137714088231461711}
+    m_Style:
+      shape: {fileID: 4300000, guid: e050c2b16fe384bd994474655a4b4968, type: 2}
+      color: {r: 1, g: 0, b: 0, a: 0.5}
+      size: 0.1
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+    m_Visible: 1
+  - m_Transform: {fileID: 1227883982978276701}
+    m_Style:
+      shape: {fileID: 4300000, guid: 687b70eb9c49243639f9379f6965034f, type: 2}
+      color: {r: 1, g: 0, b: 0, a: 0.5}
+      size: 0.1
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+    m_Visible: 1
+  - m_Transform: {fileID: 3137714088231461711}
+    m_Style:
+      shape: {fileID: 4300000, guid: e050c2b16fe384bd994474655a4b4968, type: 2}
+      color: {r: 1, g: 0, b: 0, a: 0.5}
+      size: 0.1
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0}
+    m_Visible: 1
 --- !u!114 &1897041201818432739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3046,9 +3093,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Weight: 1
   m_Data:
-    m_Root: {fileID: 5176483421490256458}
-    m_Mid: {fileID: 8203734099423975262}
-    m_Tip: {fileID: 1028517481931433858}
+    m_Root: {fileID: 8203734099423975262}
+    m_Mid: {fileID: 1028517481931433858}
+    m_Tip: {fileID: 8443961044588246777}
     m_Target: {fileID: 1227883982978276701}
     m_Hint: {fileID: 3137714088231461711}
     m_TargetPositionWeight: 1
@@ -3056,25 +3103,6 @@ MonoBehaviour:
     m_HintWeight: 1
     m_MaintainTargetPositionOffset: 0
     m_MaintainTargetRotationOffset: 0
---- !u!114 &5274887978142145738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5464037545916919229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b37cffab30b939469bac076fdd82c59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Weight: 1
-  m_Data:
-    m_ConstrainedObject: {fileID: 1227883982978276701}
-    m_Source: {fileID: 4694101322979243627}
-    m_DampPosition: 0.5
-    m_DampRotation: 0
-    m_MaintainAim: 1
 --- !u!1 &5477658881071691621
 GameObject:
   m_ObjectHideFlags: 0
@@ -3339,7 +3367,7 @@ Transform:
   m_GameObject: {fileID: 6083946695234959225}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 16.005152, y: -2.9470592, z: 7.5144267}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5209,10 +5237,19 @@ MonoBehaviour:
   stepDurationRange: {x: 0, y: 0}
   targetScanAngle: 0
   ScanningTarget: 0
+  AttackingTarget: 0
   BodyHeightAdjustDelay: 1.5
   StandBodyHeight: 22.5
   WalkBodyHeight: 15
   FeetHeight: 7.5
+  LArmHeight: -6
+  RArmHeight: 0
+  LArmAmplitude: 1
+  RArmAmplitude: 3
+  LArmFreq: 1
+  RArmFreq: 0.4
+  LArmTarget: {fileID: 1227883982978276701}
+  RArmTarget: {fileID: 2117594662361162313}
   StepHeight: 6
   PatrollingStepForwardPredictionDistance: 10
   ChaseStepForwardPredictionDistance: 15
