@@ -30,6 +30,9 @@ public class Lever : PhysicalControlSurface
     private float clampedAngle;
     private float currentMinAngle, currentMaxAngle;
 
+    public float Min => min;
+    public float Max => max;
+
     private void Awake()
     {
         currentMinAngle = minAngle;

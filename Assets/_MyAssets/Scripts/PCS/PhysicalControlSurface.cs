@@ -62,26 +62,4 @@ public abstract class PhysicalControlSurface : MonoBehaviour
         blocked = false;
         onUnblocked.Invoke();
     }
-
-    [Button("Toggle block")]
-    public void ToggleBlock()
-    {
-        if(blocked)
-        {
-            Unblock();
-        } else
-        {
-            Block();
-        }
-    }
-
-    public void OnStopFunctioning()
-    {
-        Block();
-    }
-
-    public void OnResumeFunctioning()
-    {
-        Unblock();
-    }
 }

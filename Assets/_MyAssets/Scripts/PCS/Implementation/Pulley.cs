@@ -10,7 +10,7 @@ using UnityEngine.Serialization;
 
 public class Pulley : PhysicalControlSurface
 {
-    private const float SMOOTHING_FACTOR = 0.1f;
+    private const float SMOOTHING_FACTOR = 10f;
 
     [Header("Values")]
     [FormerlySerializedAs("value"), SerializeField] private float _value;
@@ -23,8 +23,7 @@ public class Pulley : PhysicalControlSurface
     [SerializeField] private float animationDuration = 0.05f;
     [SerializeField] private Ease animationEase = Ease.InSine;
     [Header("Extra events")]
-    [SerializeField] public UnityEvent<float> onReleasedValue;
-    [SerializeField] public UnityEvent onValueChangedToMax;
+    [SerializeField] public UnityEvent onPulledToMax;
     [SerializeField] public UnityEvent onReset;
 
     private Vector3 point;
@@ -51,7 +50,7 @@ public class Pulley : PhysicalControlSurface
                 onValueChanged.Invoke();
                 if(_value == max)
                 {
-                    onValueChangedToMax.Invoke();
+                    onPulledToMax.Invoke();
                 }
             }
         }
@@ -65,7 +64,6 @@ public class Pulley : PhysicalControlSurface
         {
             handle.DOLocalMove(Vector3.zero, animationDuration).SetEase(animationEase).onComplete += () => onReset.Invoke();
             DOTween.To(() => value, (x) => value = x, 0, animationDuration).SetEase(animationEase);
-            onReleasedValue.Invoke(value);
         }
     }
 
@@ -138,7 +136,7 @@ public class Pulley : PhysicalControlSurface
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawSphere(point, SMOOTHING_FACTOR);
+        Gizmos.DrawSphere(point, 0.1f);
     }
 
     private void OnValidate()
@@ -148,8 +146,7 @@ public class Pulley : PhysicalControlSurface
 
     private void Update()
     {
-        velocity = SMOOTHING_FACTOR * (value - last) / Time.deltaTime + (1 - SMOOTHING_FACTOR) * velocity;
-        if (velocity < 0.01f) velocity = 0;
+        velocity = (value - last) / Time.deltaTime;
         last = value;
     }
 

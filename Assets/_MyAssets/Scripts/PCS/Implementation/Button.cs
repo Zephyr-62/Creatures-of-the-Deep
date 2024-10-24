@@ -18,7 +18,24 @@ public class Button : PhysicalControlSurface
     [SerializeField] private Ease animationEase = Ease.Linear;
 
     private Vector3 point;
-    private bool value;
+    private bool _value;
+    
+    public bool value
+    {
+        get
+        {
+            return _value;
+        }
+        private set
+        {
+            var old = _value;
+            _value = value;
+            if (old != _value)
+            {
+                onValueChanged.Invoke();
+            }
+        }
+    }
 
     internal override void Grab(FirstPersonCamera firstPersonCamera, Vector3 grabPoint)
     {
@@ -51,7 +68,7 @@ public class Button : PhysicalControlSurface
 
     private void AdjustToValue(bool value, bool skipAnimation = false)
     {
-        if(blocked) return;
+        if(blocked && value) return;
 
         this.value = value;
 
