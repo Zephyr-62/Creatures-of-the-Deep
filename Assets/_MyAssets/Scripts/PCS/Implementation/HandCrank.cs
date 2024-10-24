@@ -20,12 +20,17 @@ public class HandCrank : PhysicalControlSurface
     [Header("Extra events")]
     [SerializeField] public UnityEvent onValueChangedToMax;
     [SerializeField] public UnityEvent onValueChangedToMin;
+    [Header("Sounds")]
+    [SerializeField] private FMODUnity.EventReference rotate;
+    [SerializeField] private string parameter = "crank_speed";
+
 
     private Vector3 point;
     private Vector3 dir;
     private float targetAngle;
     private float clampedAngle;
     private float currentMinAngle, currentMaxAngle;
+    private FMOD.Studio.EventInstance instance;
 
     private void Awake()
     {
@@ -58,6 +63,20 @@ public class HandCrank : PhysicalControlSurface
         }
     }
 
+    internal override void Grab(FirstPersonCamera firstPersonCamera, Vector3 grabPoint, bool fireEvent = true)
+    {
+        base.Grab(firstPersonCamera, grabPoint);
+        instance = FMODUnity.RuntimeManager.CreateInstance(rotate);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, transform);
+        instance.start();
+    }
+
+    internal override void Release(bool fireEvent = true)
+    {
+        base.Release();
+        instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+    }
+
     public override void HandleInput()
     {
         var plane = new Plane(rotatePoint.up, rotatePoint.position);
@@ -68,26 +87,59 @@ public class HandCrank : PhysicalControlSurface
             point = ray.GetPoint(e);
             dir = point - rotatePoint.position;
 
+            if (dir.magnitude > range)
+            {
+                FirstPersonCamera.ForceRelease();
+                return;
+            }
+
             AdjustToAngle(Vector3.SignedAngle(Vector3.forward, transform.InverseTransformDirection(dir), Vector3.up));
 
             value = Mathf.Lerp(min, max, Mathf.InverseLerp(minAngle, maxAngle, clampedAngle));
         }
     }
 
-    private void AdjustToAngle(float angle)
+    private void AdjustToAngle(float angle, bool skip = false)
     {
-        var delta = Mathf.DeltaAngle(targetAngle, angle);
-   
-        targetAngle = targetAngle + Mathf.Clamp(delta, -speed * Time.deltaTime, speed * Time.deltaTime);
+        if (skip)
+        {
+            targetAngle = Mathf.Clamp(angle, currentMinAngle, currentMaxAngle);
+            clampedAngle = targetAngle;
+        }  else
+        {
+            angle = Mathf.Clamp(angle, currentMinAngle, currentMaxAngle);
 
-        clampedAngle = Mathf.Clamp(targetAngle, currentMinAngle, currentMaxAngle);
+            var delta = Mathf.DeltaAngle(targetAngle, angle);
+
+            var v = Mathf.Clamp(delta, -speed * Time.deltaTime, speed * Time.deltaTime);
+
+
+            instance.setParameterByName(parameter, Mathf.Abs((v / Time.deltaTime) / speed));
+
+            targetAngle = targetAngle + v;
+
+            var a = Mathf.Clamp(targetAngle, currentMinAngle, currentMaxAngle);
+            if (a != clampedAngle)
+            {
+                if (a == currentMaxAngle)
+                {
+                    onValueChangedToMax.Invoke();
+                }
+                if (a == currentMinAngle)
+                {
+                    onValueChangedToMin.Invoke();
+                }
+            }
+            clampedAngle = a;
+        }
+
         rotatePoint.localRotation = Quaternion.AngleAxis(clampedAngle, Vector3.up);
     }
 
-    private void AdjustToValue(float value)
+    private void AdjustToValue(float value, bool skip = false)
     {
         this.value = value;
-        AdjustToAngle(Mathf.Lerp(minAngle, maxAngle, Mathf.InverseLerp(min, max, this.value)));
+        AdjustToAngle(Mathf.Lerp(minAngle, maxAngle, Mathf.InverseLerp(min, max, this.value)), skip);
     }
 
     public override float GetFloatValue()
@@ -107,22 +159,34 @@ public class HandCrank : PhysicalControlSurface
 
     public override void SetFloatValue(float value)
     {
-        AdjustToValue(value);
+        AdjustToValue(value, true);
     }
 
     public override void SetBoolValue(bool value)
     {
-        AdjustToValue(value ? max : min);
+        AdjustToValue(value ? max : min, true);
     }
 
     public override void SetIntValue(int value)
     {
-        AdjustToValue(value);
+        AdjustToValue(value, true);
+    }
+
+    public override float Get01FloatValue()
+    {
+        return Mathf.InverseLerp(min, max, value);
+    }
+
+    public override void Set01FloatValue(float value)
+    {
+        SetFloatValue(Mathf.Lerp(min, max, value));
     }
 
     private void OnValidate()
     {
-        AdjustToValue(value);
+        currentMinAngle = minAngle;
+        currentMaxAngle = maxAngle;
+        AdjustToValue(value, true);
     }
 
     private void OnDrawGizmos()

@@ -52,7 +52,7 @@ public class ClickySwitch : PhysicalControlSurface
         }
     }
 
-    internal override void Release()
+    internal override void Release(bool fireEvent = true)
     {
         base.Release();
     }
@@ -146,6 +146,16 @@ public class ClickySwitch : PhysicalControlSurface
     public override void SetIntValue(int value)
     {
         AdjustToValue(value != 0);
+    }
+
+    public override float Get01FloatValue()
+    {
+        return GetFloatValue();
+    }
+
+    public override void Set01FloatValue(float value)
+    {
+        SetFloatValue(value);
     }
 
     private void OnValidate()

@@ -7,9 +7,12 @@ using UnityEngine;
 [Serializable]
 public class EngineFailure : Malfunction
 {
+    [SerializeField] private float impactThresshold;
+    [SerializeField] private float impactRandomness;
+
     private bool isFixed;
 
-    public override void Enter()
+    public override void Enter(MalfunctionTrigger trigger = null)
     {
         base.Enter();
         isFixed = false;
@@ -23,6 +26,7 @@ public class EngineFailure : Malfunction
         base.Exit();
         system.physicsSystem.TurnOn();
         system.engine.ignition.SetBoolValue(false);
+        system.engine.onSuccessfullStart.RemoveListener(OnSuccessfullStart);
     }
 
     public override bool IsFixed()
@@ -38,8 +42,17 @@ public class EngineFailure : Malfunction
     public override void Update()
     {
         base.Update();
-        
-        if(!Enabled && !system.engine.power.GetBoolValue()) 
+        if(!Enabled && (!system.engine.power.GetBoolValue() || !system.engine.isPowered)) 
+        {
+            system.Failure(this);
+        }
+    }
+
+    public override void OnCollision(Collision collision, float f)
+    {
+        base.OnCollision(collision, f);
+
+        if (!Enabled && f > UnityEngine.Random.Range(impactThresshold, impactThresshold + impactRandomness))
         {
             system.Failure(this);
         }
