@@ -653,6 +653,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 37099729}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &46600851 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3052054430166414487, guid: aafa381a1a349e043b60e92a983dc4dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 4837256936048348390}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f205512635f686741a93d9e5fecec9b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &50872028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -943,6 +955,9 @@ MonoBehaviour:
     - {fileID: 1826487067}
     - {fileID: 503541790}
     - {fileID: 336262784}
+    - {fileID: 46600851}
+    - {fileID: 656503120}
+    - {fileID: 165814769}
     m_values:
     - {fileID: 1016739987}
     - {fileID: 245942075}
@@ -959,6 +974,9 @@ MonoBehaviour:
     - {fileID: 1970013293}
     - {fileID: 1810623788}
     - {fileID: 930676964}
+    - {fileID: 1065797212}
+    - {fileID: 252844940}
+    - {fileID: 1957818117}
   extensionEnabled: 1
   debugMode: 0
 --- !u!4 &135543990
@@ -1270,6 +1288,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1324306361}
   m_LocalEulerAnglesHint: {x: 2.208, y: 19.15, z: 0}
+--- !u!114 &165814769 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 405174022496689565, guid: aafa381a1a349e043b60e92a983dc4dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 4837256936048348390}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f205512635f686741a93d9e5fecec9b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &192774431
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1792,20 +1822,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseInspectorFoldout: 0
   layoutInfos:
-  - rid: 7396337187993157963
-  - rid: 7396337187993157964
-  - rid: 7396337187993157965
-  - rid: 7396337187993157966
-  - rid: 7396337187993157967
-  - rid: 7396337187993157968
-  - rid: 7396337187993157969
+  - rid: 7396337187993158173
+  - rid: 7396337187993158174
+  - rid: 7396337187993158175
+  - rid: 7396337187993158176
+  - rid: 7396337187993158177
+  - rid: 7396337187993158178
+  - rid: 7396337187993158179
   buttonMethods:
-  - rid: 7396337187993157970
-  - rid: 7396337187993157971
+  - rid: 7396337187993158180
+  - rid: 7396337187993158181
   references:
     version: 2
     RefIds:
-    - rid: 7396337187993157963
+    - rid: 7396337187993158173
       type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: IdleChance
@@ -1813,14 +1843,14 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         label: Idle
         foldout: 0
-    - rid: 7396337187993157964
+    - rid: 7396337187993158174
       type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: RandomPatrol
         fieldTypeName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
         includeLast: 0
-    - rid: 7396337187993157965
+    - rid: 7396337187993158175
       type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: RandomPatrol
@@ -1828,14 +1858,14 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         label: Patrol
         foldout: 0
-    - rid: 7396337187993157966
+    - rid: 7396337187993158176
       type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: ChaseTarget
         fieldTypeName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
         includeLast: 0
-    - rid: 7396337187993157967
+    - rid: 7396337187993158177
       type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: ChaseTarget
@@ -1843,14 +1873,14 @@ MonoBehaviour:
           Culture=neutral, PublicKeyToken=null
         label: Chase
         foldout: 0
-    - rid: 7396337187993157968
+    - rid: 7396337187993158178
       type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: SearchTime
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
         includeLast: 0
-    - rid: 7396337187993157969
+    - rid: 7396337187993158179
       type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: SearchTime
@@ -1858,7 +1888,7 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         label: Search
         foldout: 0
-    - rid: 7396337187993157970
+    - rid: 7396337187993158180
       type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         methodName: SwitchToState
@@ -1873,7 +1903,7 @@ MonoBehaviour:
           isUsingRealTarget: 0
           target: {fileID: 512124977}
           containerTarget: {fileID: 512124977}
-    - rid: 7396337187993157971
+    - rid: 7396337187993158181
       type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         methodName: AutofillPatrolTargetsFromParent
@@ -1967,6 +1997,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 249899283}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &252844940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseInspectorFoldout: 0
+  layoutInfos: []
+  buttonMethods: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &264800945
 GameObject:
   m_ObjectHideFlags: 0
@@ -2435,13 +2483,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseInspectorFoldout: 0
   layoutInfos:
-  - rid: 7396337187993157961
-  - rid: 7396337187993157962
+  - rid: 7396337187993158171
+  - rid: 7396337187993158172
   buttonMethods: []
   references:
     version: 2
     RefIds:
-    - rid: 7396337187993157961
+    - rid: 7396337187993158171
       type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: LegTargetHintRadius
@@ -2449,7 +2497,7 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         label: Gizmos
         foldout: 0
-    - rid: 7396337187993157962
+    - rid: 7396337187993158172
       type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: OnDrawSelected
@@ -3867,7 +3915,7 @@ Transform:
   m_GameObject: {fileID: 450137712}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.71982044, z: -0, w: 0.69416034}
-  m_LocalPosition: {x: -21.119759, y: 1.4300003, z: 79.87186}
+  m_LocalPosition: {x: -50.6, y: 1.4300003, z: 86}
   m_LocalScale: {x: 10.853026, y: 10.853026, z: 10.853026}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6184,37 +6232,37 @@ PrefabInstance:
     - target: {fileID: 540248568467751865, guid: 18e532391cd4a0e42b039495051ea7cd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 64.26
+      value: 75.186165
       objectReference: {fileID: 0}
     - target: {fileID: 540248568467751865, guid: 18e532391cd4a0e42b039495051ea7cd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.75
+      value: 13.11
       objectReference: {fileID: 0}
     - target: {fileID: 540248568467751865, guid: 18e532391cd4a0e42b039495051ea7cd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 84.74
+      value: 123.865204
       objectReference: {fileID: 0}
     - target: {fileID: 540248568467751865, guid: 18e532391cd4a0e42b039495051ea7cd,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.13026322
+      value: -0.8716853
       objectReference: {fileID: 0}
     - target: {fileID: 540248568467751865, guid: 18e532391cd4a0e42b039495051ea7cd,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.008288726
+      value: -0.05546584
       objectReference: {fileID: 0}
     - target: {fileID: 540248568467751865, guid: 18e532391cd4a0e42b039495051ea7cd,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.9894438
+      value: -0.48593438
       objectReference: {fileID: 0}
     - target: {fileID: 540248568467751865, guid: 18e532391cd4a0e42b039495051ea7cd,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.06295888
+      value: 0.030920295
       objectReference: {fileID: 0}
     - target: {fileID: 540248568467751865, guid: 18e532391cd4a0e42b039495051ea7cd,
         type: 3}
@@ -6224,7 +6272,7 @@ PrefabInstance:
     - target: {fileID: 540248568467751865, guid: 18e532391cd4a0e42b039495051ea7cd,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -195
+      value: -301.724
       objectReference: {fileID: 0}
     - target: {fileID: 540248568467751865, guid: 18e532391cd4a0e42b039495051ea7cd,
         type: 3}
@@ -6555,6 +6603,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 650934555}
   m_Mesh: {fileID: -7481045295689884865, guid: 8eee75b3b407dea449ba75a764f16165, type: 3}
+--- !u!114 &656503120 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5365971828845625564, guid: aafa381a1a349e043b60e92a983dc4dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 4837256936048348390}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f205512635f686741a93d9e5fecec9b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &657080991
 GameObject:
   m_ObjectHideFlags: 0
@@ -6848,7 +6908,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 678953002}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.016482249, y: -0.9768331, z: -0.19711334, w: 0.08168096}
+  m_LocalRotation: {x: -0.020944951, y: -0.9645284, z: -0.2504829, w: 0.080651894}
   m_LocalPosition: {x: 65.67, y: 4.49, z: 95.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7088,7 +7148,7 @@ Transform:
   m_GameObject: {fileID: 699907275}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.71982044, z: -0, w: 0.69416034}
-  m_LocalPosition: {x: -31.322266, y: 0, z: 82.74391}
+  m_LocalPosition: {x: -36, y: 0, z: 91.6}
   m_LocalScale: {x: 10.853026, y: 10.853026, z: 10.853026}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9487,6 +9547,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1051074676}
   m_Mesh: {fileID: 2109155341553118406, guid: bc5204701e106264d8bf48ad9915ab59, type: 3}
+--- !u!114 &1065797212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseInspectorFoldout: 0
+  layoutInfos: []
+  buttonMethods: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1001 &1067890795
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11986,19 +12064,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseInspectorFoldout: 0
   layoutInfos:
-  - rid: 7396337187993157780
-  - rid: 7396337187993157781
-  - rid: 7396337187993157782
-  - rid: 7396337187993157783
-  - rid: 7396337187993157784
-  - rid: 7396337187993157785
-  - rid: 7396337187993157786
-  - rid: 7396337187993157787
+  - rid: 7396337187993158070
+  - rid: 7396337187993158071
+  - rid: 7396337187993158072
+  - rid: 7396337187993158073
+  - rid: 7396337187993158074
+  - rid: 7396337187993158075
+  - rid: 7396337187993158076
+  - rid: 7396337187993158077
   buttonMethods: []
   references:
     version: 2
     RefIds:
-    - rid: 7396337187993157780
+    - rid: 7396337187993158070
       type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: ThrustInput
@@ -12006,14 +12084,14 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         windowStyle: 13
         columnStyle: 1
-    - rid: 7396337187993157781
+    - rid: 7396337187993158071
       type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: BuoyancyStrength
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
         includeLast: 0
-    - rid: 7396337187993157782
+    - rid: 7396337187993158072
       type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: maxThrustSpeed
@@ -12021,20 +12099,20 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         windowStyle: 0
         columnStyle: 3
-    - rid: 7396337187993157783
+    - rid: 7396337187993158073
       type: {class: NewColumnInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: maxAngularVelocity
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-    - rid: 7396337187993157784
+    - rid: 7396337187993158074
       type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: pitchInputDelay
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
         includeLast: 0
-    - rid: 7396337187993157785
+    - rid: 7396337187993158075
       type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: pitchInputDelay
@@ -12042,13 +12120,13 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         windowStyle: 0
         columnStyle: 3
-    - rid: 7396337187993157786
+    - rid: 7396337187993158076
       type: {class: NewColumnInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: TargetRoll
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-    - rid: 7396337187993157787
+    - rid: 7396337187993158077
       type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: minRelativeCollisionVelocityForThrustShutdown
@@ -15422,7 +15500,7 @@ Transform:
   m_GameObject: {fileID: 1720567301}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.94799, y: 24.7, z: -16.3}
+  m_LocalPosition: {x: -17.94799, y: 38.34, z: -16.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18629,6 +18707,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 468091963}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1957818117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseInspectorFoldout: 0
+  layoutInfos: []
+  buttonMethods: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!4 &1963666542 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9098869664868180158, guid: cec7628d9a4ebdc40b68d28ebd10e2b4,
@@ -18649,21 +18745,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseInspectorFoldout: 0
   layoutInfos:
-  - rid: 7396337187993158019
-  - rid: 7396337187993158020
-  - rid: 7396337187993158021
-  - rid: 7396337187993158022
-  - rid: 7396337187993158023
-  - rid: 7396337187993158024
-  - rid: 7396337187993158025
-  - rid: 7396337187993158026
+  - rid: 7396337187993158138
+  - rid: 7396337187993158139
+  - rid: 7396337187993158140
+  - rid: 7396337187993158141
+  - rid: 7396337187993158142
+  - rid: 7396337187993158143
+  - rid: 7396337187993158144
+  - rid: 7396337187993158145
   buttonMethods:
-  - rid: 7396337187993158027
-  - rid: 7396337187993158028
+  - rid: 7396337187993158146
+  - rid: 7396337187993158147
   references:
     version: 2
     RefIds:
-    - rid: 7396337187993158019
+    - rid: 7396337187993158138
       type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: IdleChance
@@ -18671,14 +18767,14 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         label: Idle
         foldout: 0
-    - rid: 7396337187993158020
+    - rid: 7396337187993158139
       type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: RandomPatrol
         fieldTypeName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
         includeLast: 0
-    - rid: 7396337187993158021
+    - rid: 7396337187993158140
       type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: RandomPatrol
@@ -18686,14 +18782,14 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         label: Patrol
         foldout: 1
-    - rid: 7396337187993158022
+    - rid: 7396337187993158141
       type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: ChaseTarget
         fieldTypeName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
         includeLast: 0
-    - rid: 7396337187993158023
+    - rid: 7396337187993158142
       type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: ChaseTarget
@@ -18701,14 +18797,14 @@ MonoBehaviour:
           Culture=neutral, PublicKeyToken=null
         label: Chase
         foldout: 1
-    - rid: 7396337187993158024
+    - rid: 7396337187993158143
       type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: SearchTime
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
         includeLast: 0
-    - rid: 7396337187993158025
+    - rid: 7396337187993158144
       type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: SearchTime
@@ -18716,14 +18812,14 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         label: Search
         foldout: 0
-    - rid: 7396337187993158026
+    - rid: 7396337187993158145
       type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: GizmosFollowTargetLenght
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
         includeLast: 0
-    - rid: 7396337187993158027
+    - rid: 7396337187993158146
       type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         methodName: SwitchToState
@@ -18738,7 +18834,7 @@ MonoBehaviour:
           isUsingRealTarget: 0
           target: {fileID: 1687332321}
           containerTarget: {fileID: 1687332321}
-    - rid: 7396337187993158028
+    - rid: 7396337187993158147
       type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         methodName: AutofillPatrolTargetsFromParent
@@ -21169,16 +21265,6 @@ PrefabInstance:
       propertyPath: 'PatrolTargets.Array.data[6]'
       value: 
       objectReference: {fileID: 430926166}
-    - target: {fileID: 605176521412514415, guid: aafa381a1a349e043b60e92a983dc4dc,
-        type: 3}
-      propertyPath: ViewObstacleLayerMask.m_Bits
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 605176521412514415, guid: aafa381a1a349e043b60e92a983dc4dc,
-        type: 3}
-      propertyPath: chaseRequireDirectLineOfSight
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8881367745346995354, guid: aafa381a1a349e043b60e92a983dc4dc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -21187,7 +21273,7 @@ PrefabInstance:
     - target: {fileID: 8881367745346995354, guid: aafa381a1a349e043b60e92a983dc4dc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 22.4
+      value: 28.2
       objectReference: {fileID: 0}
     - target: {fileID: 8881367745346995354, guid: aafa381a1a349e043b60e92a983dc4dc,
         type: 3}
@@ -21363,6 +21449,79 @@ Transform:
   m_Children: []
   m_Father: {fileID: 543450653434674497}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &5342713317376369251
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3805577023647487867, guid: 215297d6725b631429ee24310947131f,
+        type: 3}
+      propertyPath: m_Name
+      value: CrabClawLarge
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805577023647487867, guid: 215297d6725b631429ee24310947131f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583521544786267585, guid: 215297d6725b631429ee24310947131f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 82.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583521544786267585, guid: 215297d6725b631429ee24310947131f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -11.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583521544786267585, guid: 215297d6725b631429ee24310947131f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 89.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583521544786267585, guid: 215297d6725b631429ee24310947131f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5511217
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583521544786267585, guid: 215297d6725b631429ee24310947131f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.3124465
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583521544786267585, guid: 215297d6725b631429ee24310947131f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5217321
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583521544786267585, guid: 215297d6725b631429ee24310947131f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.57134736
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583521544786267585, guid: 215297d6725b631429ee24310947131f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 109.85199
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583521544786267585, guid: 215297d6725b631429ee24310947131f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 140.05301
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583521544786267585, guid: 215297d6725b631429ee24310947131f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 243.433
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 215297d6725b631429ee24310947131f, type: 3}
 --- !u!33 &5454094134867155151
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -22598,4 +22757,5 @@ SceneRoots:
   - {fileID: 490671751}
   - {fileID: 633978157}
   - {fileID: 1755425317}
+  - {fileID: 5342713317376369251}
   - {fileID: 1826487068}

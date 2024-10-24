@@ -16,6 +16,7 @@ public class CrabAnimationController : EnemyAnimationController<CrabAIController
     [SerializeField] private float BodyHeightAdjustDelay = 0.2f;
     [SerializeField] private float StandBodyHeight = 30;
     [SerializeField] private float WalkBodyHeight = 18;
+    [SerializeField] private float FeetHeight = 3;
     [LineSeparator]
 
     [SerializeField] private float StepHeight = 6f;
@@ -95,7 +96,7 @@ public class CrabAnimationController : EnemyAnimationController<CrabAIController
             // calculate height of target hint
             if (Physics.Raycast(newDesiredLegPos, Vector3.down, out var raycastHit, 100, WalkableLayer))
             {
-                lth.TargetHintPositionAdjusted = raycastHit.point; // TODO fix max height or smth
+                lth.TargetHintPositionAdjusted = raycastHit.point + FeetHeight * Vector3.up; // TODO fix max height or smth
             }
 
             // If leg not currently taking a step
