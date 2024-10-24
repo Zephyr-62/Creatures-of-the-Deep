@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public class CriticalVoltageSurge : Malfunction
 {
-    public override void Enter()
+    public override void Enter(MalfunctionTrigger trigger = null)
     {
         base.Enter();
 

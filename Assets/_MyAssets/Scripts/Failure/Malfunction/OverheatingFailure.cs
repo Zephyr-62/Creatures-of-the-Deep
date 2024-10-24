@@ -9,7 +9,7 @@ public class OverheatingFailure : Malfunction
 {
     [SerializeField] private float recoveryHeatLevel;
 
-    public override void Enter()
+    public override void Enter(MalfunctionTrigger trigger = null)
     {
         base.Enter();
         system.physicsSystem.TurnOff();

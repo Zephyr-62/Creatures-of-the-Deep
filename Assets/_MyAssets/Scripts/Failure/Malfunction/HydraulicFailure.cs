@@ -12,7 +12,7 @@ public class HydraulicFailure : Malfunction
 
     private bool _fixed;
 
-    public override void Enter()
+    public override void Enter(MalfunctionTrigger trigger = null)
     {
         base.Enter();
         affectedControl.Block();

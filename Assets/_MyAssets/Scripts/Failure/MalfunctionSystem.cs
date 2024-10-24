@@ -22,6 +22,7 @@ public class MalfunctionSystem : MonoBehaviour
     public LocalVoltageSurge screenVoltageSurge;
     public LocalVoltageSurge lightsVoltageSurge;
     public CriticalVoltageSurge criticalVoltageSurge;
+    public ElevationFailure elevationFailure;
 
 
 
@@ -48,6 +49,7 @@ public class MalfunctionSystem : MonoBehaviour
         RegisterMalfunction(screenVoltageSurge);
         RegisterMalfunction(lightsVoltageSurge);
         RegisterMalfunction(criticalVoltageSurge);
+        RegisterMalfunction(elevationFailure);
 
         throttleHydraulicFailure.affectedControl = physicsSystem.throttleControl;
         steeringHydraulicFailure.affectedControl = physicsSystem.steeringControl;
@@ -75,12 +77,12 @@ public class MalfunctionSystem : MonoBehaviour
         }
     }
 
-    public void Failure(Malfunction malfunction)
+    public void Failure(Malfunction malfunction, MalfunctionTrigger trigger = null)
     {
         if (malfunction == null) return;
         if (malfunction.Enabled) return;
         malfunction.AttachSystem(this);
-        malfunction.Enter();
+        malfunction.Enter(trigger);
     }
 
     IEnumerator ErrorCodeLoop()

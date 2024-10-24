@@ -12,7 +12,7 @@ public class EngineFailure : Malfunction
 
     private bool isFixed;
 
-    public override void Enter()
+    public override void Enter(MalfunctionTrigger trigger = null)
     {
         base.Enter();
         isFixed = false;

@@ -13,7 +13,7 @@ public class LocalVoltageSurge : Malfunction
     float target;
     bool selfTriggered = false;
 
-    public override void Enter()
+    public override void Enter(MalfunctionTrigger trigger = null)
     {
         base.Enter();
         count++;

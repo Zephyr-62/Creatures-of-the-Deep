@@ -37,7 +37,7 @@ public abstract class Malfunction
         BAR = 65536 // Pressure issue 
     }
 
-    public virtual void Enter() { enabled = true; }
+    public virtual void Enter(MalfunctionTrigger trigger = null) { enabled = true; }
     public virtual void Exit() { enabled = false; }
     public abstract bool IsFixed();
     public virtual void Update() { }

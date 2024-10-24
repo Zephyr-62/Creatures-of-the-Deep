@@ -3441,6 +3441,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81e87017d50769140b5d75576ce6cc22, type: 3}
+--- !u!114 &4337463442662513988 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4254273101012657371, guid: 81e87017d50769140b5d75576ce6cc22,
+    type: 3}
+  m_PrefabInstance: {fileID: 521277214193334687}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d72fd1845cdcf24c840406f249621e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7073245080714648246 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7283099264563618601, guid: 81e87017d50769140b5d75576ce6cc22,
@@ -5741,6 +5753,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 604677713088965324}
     m_Modifications:
+    - target: {fileID: 12900407500593970, guid: a170c7913dc6179438b9bac70d42809c,
+        type: 3}
+      propertyPath: clickySwitch
+      value: 
+      objectReference: {fileID: 4337463442662513988}
     - target: {fileID: 166944640345246205, guid: a170c7913dc6179438b9bac70d42809c,
         type: 3}
       propertyPath: m_Name
