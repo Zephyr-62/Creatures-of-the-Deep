@@ -33,8 +33,8 @@ public abstract class Symptom
     public enum SymptomMask
     {
         None = 0,
-        Shake = 1,
-        B = 2,
+        Alert = 1,
+        Shake = 2,
         C = 4,
         D = 8,
         E = 16,

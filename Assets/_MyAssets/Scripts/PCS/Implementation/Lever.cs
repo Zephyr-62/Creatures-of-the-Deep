@@ -23,12 +23,16 @@ public class Lever : PhysicalControlSurface
     [Header("Extra events")]
     [SerializeField] public UnityEvent onValueChangedToMax;
     [SerializeField] public UnityEvent onValueChangedToMin;
+    [Header("Sounds")]
+    [SerializeField] private FMODUnity.EventReference rotate;
+    [SerializeField] private string parameter = "lever_speed";
 
     private Vector3 point;
     private Vector3 dir;
     private float targetAngle;
     private float clampedAngle;
     private float currentMinAngle, currentMaxAngle;
+    private FMOD.Studio.EventInstance instance;
 
     public float Min => min;
     public float Max => max;
@@ -51,17 +55,27 @@ public class Lever : PhysicalControlSurface
             _value = Mathf.Clamp(value, min, max);
             if (old != _value)
             {
-                if (_value == max)
-                {
-                    onValueChangedToMax.Invoke();
-                }
-                if (_value == min)
-                {
-                    onValueChangedToMin.Invoke();
-                }
                 onValueChanged.Invoke();
             }
         }
+    }
+
+    private void Start()
+    {
+    }
+
+    internal override void Grab(FirstPersonCamera firstPersonCamera, Vector3 grabPoint, bool fireEvent = true)
+    {
+        base.Grab(firstPersonCamera, grabPoint);
+        instance = FMODUnity.RuntimeManager.CreateInstance(rotate);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, transform);
+        instance.start();
+    }
+
+    internal override void Release(bool fireEvent = true)
+    {
+        base.Release();
+        instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }
 
     public override void HandleInput()
@@ -88,11 +102,30 @@ public class Lever : PhysicalControlSurface
 
     private void AdjustToAngle(float angle)
     {
+        angle = Mathf.Clamp(angle, currentMinAngle, currentMaxAngle);
+
         var delta = Mathf.DeltaAngle(targetAngle, angle);
 
-        targetAngle = targetAngle + Mathf.Clamp(delta, -speed * Time.deltaTime, speed * Time.deltaTime);
+        var v = Mathf.Clamp(delta, -speed * Time.deltaTime, speed * Time.deltaTime);
 
-        clampedAngle = Mathf.Clamp(targetAngle, currentMinAngle, currentMaxAngle);
+        instance.setParameterByName(parameter, Mathf.Abs((v / Time.deltaTime) / speed));
+
+        targetAngle = targetAngle + v;
+
+        var a  = Mathf.Clamp(targetAngle, currentMinAngle, currentMaxAngle);
+        if(a != clampedAngle)
+        {
+            if (a == currentMaxAngle)
+            {
+                onValueChangedToMax.Invoke();
+            }
+            if (a == currentMinAngle)
+            {
+                onValueChangedToMin.Invoke();
+            }
+        }
+        clampedAngle = a;
+
         rotatePoint.localRotation = Quaternion.AngleAxis(clampedAngle, Vector3.right);
     }
 
@@ -130,6 +163,16 @@ public class Lever : PhysicalControlSurface
     public override void SetIntValue(int value)
     {
         AdjustToValue(value);
+    }
+
+    public override float Get01FloatValue()
+    {
+        return Mathf.InverseLerp(min, max, value);
+    }
+
+    public override void Set01FloatValue(float value)
+    {
+        SetFloatValue(Mathf.Lerp(min, max, value));
     }
 
     private void OnValidate()

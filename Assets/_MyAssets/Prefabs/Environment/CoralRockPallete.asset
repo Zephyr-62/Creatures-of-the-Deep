@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 121be107ed67d87439e932b4f412adb9, type: 3}
+  m_Name: Rocks
+  m_EditorClassIdentifier: 
+  objects: []
+  prefabs:
+  - prefab: {fileID: 8592791830350161572, guid: 69e4a3e39c48e674f9d66b3a0c1ea2a9,
+      type: 3}
+    weight: 1
+    minMaxScaleMltp: {x: 1, y: 1}
+    normalAllighn: 0.5
+    snapChildren: 0
+  - prefab: {fileID: 3756755255885857208, guid: 3fafab2e8e978dc428b4b799d1f1270f,
+      type: 3}
+    weight: 1
+    minMaxScaleMltp: {x: 1, y: 1}
+    normalAllighn: 0.5
+    snapChildren: 0
+  - prefab: {fileID: 9171492525604483407, guid: 4e8177d5c4cf7524082d4c9bdbbbc790,
+      type: 3}
+    weight: 1
+    minMaxScaleMltp: {x: 1, y: 1}
+    normalAllighn: 0.5
+    snapChildren: 0
+  - prefab: {fileID: 5484469578581182521, guid: 46e66a87f2e2cfe49b90e8cc06c3ffe1,
+      type: 3}
+    weight: 1
+    minMaxScaleMltp: {x: 1, y: 1}
+    normalAllighn: 0.5
+    snapChildren: 0
+  - prefab: {fileID: 1769314466463140131, guid: 8f89dfe420adced43b5b40287a530887,
+      type: 3}
+    weight: 1
+    minMaxScaleMltp: {x: 1, y: 1}
+    normalAllighn: 0.5
+    snapChildren: 0
+  - prefab: {fileID: 4638086011572110839, guid: 9d3cc38a7234966439f47b5450d271f0,
+      type: 3}
+    weight: 1
+    minMaxScaleMltp: {x: 1, y: 1}
+    normalAllighn: 0.5
+    snapChildren: 0
+  - prefab: {fileID: 3780050887303093856, guid: b3cb553ef0bbf0a4681a612370df8c6c,
+      type: 3}
+    weight: 1
+    minMaxScaleMltp: {x: 1, y: 1}
+    normalAllighn: 0.5
+    snapChildren: 0
+  - prefab: {fileID: 1535295116095950946, guid: 885b427d7760a8f4f9bdcd45d44b0f7b,
+      type: 3}
+    weight: 1
+    minMaxScaleMltp: {x: 1, y: 1}
+    normalAllighn: 0.5
+    snapChildren: 0
+  spawnAsPrefab: 1
+  minMaxScale: {x: 0.9, y: 1.1}
+  randRotAdd: {x: 0, y: 180, z: 0}
+  maxNormal: 166
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  avoidedLayer:
+    serializedVersion: 2
+    m_Bits: 0
