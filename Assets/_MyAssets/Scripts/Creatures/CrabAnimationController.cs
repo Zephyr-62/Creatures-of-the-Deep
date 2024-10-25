@@ -7,7 +7,7 @@ using UnityEngine;
 public class CrabAnimationController : EnemyAnimationController<CrabAIController>
 {
     [SerializeField] [ReadOnly] private float TargetBodyHeight;
-    [SerializeField] [ReadOnly] private float stepForwardPredictionDistance;
+    [SerializeField] private float stepForwardPredictionDistance;
     [SerializeField] [ReadOnly] private Vector2 stepDurationRange;
     [SerializeField] [ReadOnly] private float targetScanAngle;
     [SerializeField] private bool ScanningTarget = false;
@@ -34,6 +34,8 @@ public class CrabAnimationController : EnemyAnimationController<CrabAIController
     private Vector3 RightArmDefaultTargetPos;
     [LineSeparator]
     [SerializeField] private float StepHeight = 6f;
+    [SerializeField] private float MaxStepRaycastHeight = 20f;
+    [SerializeField] private float StepRaycastHeight = 1000f;
     [SerializeField] private float PatrollingStepForwardPredictionDistance = 10f;
     [SerializeField] private float ChaseStepForwardPredictionDistance = 15f;
     [SerializeField] private Vector2 PatrollingStepDurationRange = new(3.5f, 5f);
@@ -96,15 +98,15 @@ public class CrabAnimationController : EnemyAnimationController<CrabAIController
     void FixedUpdate()
     {
         // Update body
-        float heightAcc = 0;
+        Vector3 legPosAcc = Vector3.zero;
         foreach (var legTargetHint in LegTargetHints)
         {
-            heightAcc += legTargetHint.LegIKTarget.position.y;
+            legPosAcc += legTargetHint.LegIKTarget.position; 
         }
-        this.transform.position = new (transform.position.x,
-            Mathf.Lerp(transform.position.y, (heightAcc / LegTargetHints.Count) + TargetBodyHeight, Time.fixedDeltaTime / BodyHeightAdjustDelay),
-                transform.position.z
-            );
+        this.transform.position = Vector3.Lerp(
+            this.transform.position,
+            new (legPosAcc.x / LegTargetHints.Count, (legPosAcc.y / LegTargetHints.Count) + TargetBodyHeight, legPosAcc.z / LegTargetHints.Count),
+            Time.fixedDeltaTime / BodyHeightAdjustDelay);
 
 
         // Update legs
@@ -112,12 +114,13 @@ public class CrabAnimationController : EnemyAnimationController<CrabAIController
         {
             // Calculate desired leg pos based on desired pos + moving prediction
             var newDesiredLegPos = AIController.GetMovingDir() * stepForwardPredictionDistance;
-            newDesiredLegPos = new Vector3(lth.TargetHintPosition.x + newDesiredLegPos.x, this.transform.position.y, lth.TargetHintPosition.z + newDesiredLegPos.z);
+            newDesiredLegPos = new Vector3(lth.TargetHintPosition.x + newDesiredLegPos.x, this.transform.position.y + StepRaycastHeight, lth.TargetHintPosition.z + newDesiredLegPos.z);
 
             // calculate height of target hint
-            if (Physics.Raycast(newDesiredLegPos, Vector3.down, out var raycastHit, 100, WalkableLayer))
+            if (Physics.Raycast(newDesiredLegPos, Vector3.down, out var raycastHit, StepRaycastHeight + 50, WalkableLayer))
             {
-                lth.TargetHintPositionAdjusted = raycastHit.point + FeetHeight * Vector3.up; // TODO fix max height or smth
+                if(Mathf.Abs(raycastHit.point.y - lth.TargetHintPositionAdjusted.y) <= MaxStepRaycastHeight) // if step isn't too high
+                    lth.TargetHintPositionAdjusted = raycastHit.point + FeetHeight * Vector3.up;
             }
 
             // If leg not currently taking a step
@@ -226,7 +229,15 @@ public class CrabAnimationController : EnemyAnimationController<CrabAIController
             Gizmos.DrawLine(lth.LastPosition, targetHintPos);
             Gizmos.DrawSphere(lth.LastPosition, LegTargetHintRadius);
 
+            Gizmos.color = Color.magenta;
+            var rayStartPos = new Vector3(targetHintPos.x, this.transform.position.y + StepRaycastHeight, targetHintPos.z);
+            Gizmos.DrawLine(rayStartPos, rayStartPos + Vector3.down * StepRaycastHeight);
+            Gizmos.color = Color.blue;
+            Gizmos.DrawLine(rayStartPos + Vector3.down * StepRaycastHeight, rayStartPos + Vector3.down * (StepRaycastHeight+50));
+            Gizmos.DrawSphere(targetHintPos + Vector3.up * MaxStepRaycastHeight, 1);
+            Gizmos.DrawSphere(targetHintPos + Vector3.down * MaxStepRaycastHeight, 1);
         }
+
     }
 
 

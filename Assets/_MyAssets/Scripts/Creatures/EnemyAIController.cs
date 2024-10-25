@@ -260,9 +260,8 @@ public class EnemyAIController : MonoBehaviour
         switch (chaseTrigger)
         {
             case ChaseTrigger.Light:
-                // submarineManager.lightEmitters.any(x => x.on)
-                break;
-            case ChaseTrigger.Heat:
+                return Lightbulb.anyLight;
+            case ChaseTrigger.Heat:                
                 // submarineManager.heatEmitters.any(x => x.on)
                 break;
             case ChaseTrigger.Sound:

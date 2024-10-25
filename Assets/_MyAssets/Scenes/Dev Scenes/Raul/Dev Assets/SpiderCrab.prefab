@@ -4741,7 +4741,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3779774513475578864
 Transform:
   m_ObjectHideFlags: 0
@@ -5444,7 +5444,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &65289186341900021
 Transform:
   m_ObjectHideFlags: 0
@@ -5894,13 +5894,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
   ChaseTarget: {fileID: 0}
   chaseTrigger: 0
   chaseRequireDirectLineOfSight: 1
   ViewObstacleLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 513
   ChaseTargetSettings:
     Speed: 5.5
     MinDistanceToTarget: 25
@@ -5970,8 +5969,10 @@ MonoBehaviour:
   LArmTarget: {fileID: 1227883982978276701}
   RArmTarget: {fileID: 2117594662361162313}
   StepHeight: 6
-  PatrollingStepForwardPredictionDistance: 10
-  ChaseStepForwardPredictionDistance: 15
+  MaxStepRaycastHeight: 20
+  StepRaycastHeight: 50
+  PatrollingStepForwardPredictionDistance: 20
+  ChaseStepForwardPredictionDistance: 30
   PatrollingStepDurationRange: {x: 3.5, y: 5}
   ChaseStepDurationRange: {x: 1.5, y: 2.5}
   TargetScanAngleRange: {x: 30, y: 60}
@@ -5979,71 +5980,71 @@ MonoBehaviour:
   LegTargetHints:
   - Leg: {fileID: 7683267683453869951}
     LegIKTarget: {fileID: 8798389286565295511}
-    TargetHintPositionAdjusted: {x: 78.04925, y: 3.6000023, z: 74.65599}
+    TargetHintPositionAdjusted: {x: 55.476013, y: 3.6000023, z: 88.6294}
     RelativeTargetHintPosition: {x: 3.5, y: -3.9, z: 0}
     MaxStepDistance: 128
     HintBaseHeight: -3.9
     HintHeightRange: {x: -2, y: -4.25}
-    LastPosition: {x: 78.04925, y: 3.6000023, z: 74.65599}
+    LastPosition: {x: 55.476013, y: 3.6000023, z: 88.6294}
   - Leg: {fileID: 7749426485059041996}
     LegIKTarget: {fileID: 163933561401485587}
-    TargetHintPositionAdjusted: {x: 58.739185, y: 3.6000023, z: 82.84966}
+    TargetHintPositionAdjusted: {x: 36.027927, y: 3.6000023, z: 80.768936}
     RelativeTargetHintPosition: {x: 3.5, y: -3.9, z: 0}
     MaxStepDistance: 96
     HintBaseHeight: -3.9
     HintHeightRange: {x: -2, y: -4.25}
-    LastPosition: {x: 58.739185, y: 3.6000023, z: 82.84966}
+    LastPosition: {x: 36.027927, y: 3.6000023, z: 80.768936}
   - Leg: {fileID: 1370490417808553800}
     LegIKTarget: {fileID: 8655607602013189863}
-    TargetHintPositionAdjusted: {x: 43.716454, y: 3.6000023, z: 78.15837}
+    TargetHintPositionAdjusted: {x: 28.722492, y: 3.6000023, z: 66.82902}
     RelativeTargetHintPosition: {x: 3.5, y: -3.9, z: 0}
     MaxStepDistance: 128
     HintBaseHeight: -3.9
     HintHeightRange: {x: -2, y: -4.25}
-    LastPosition: {x: 43.716454, y: 3.6000023, z: 78.15837}
+    LastPosition: {x: 28.722492, y: 3.6000023, z: 66.82902}
   - Leg: {fileID: 3779774513475578864}
     LegIKTarget: {fileID: 1808446790449372200}
-    TargetHintPositionAdjusted: {x: 32.97867, y: 3.6000023, z: 67.523346}
+    TargetHintPositionAdjusted: {x: 28.649822, y: 3.6000023, z: 51.716156}
     RelativeTargetHintPosition: {x: 3.5, y: -3.9, z: 0}
     MaxStepDistance: 96
     HintBaseHeight: -3.9
     HintHeightRange: {x: -2, y: -4.25}
-    LastPosition: {x: 32.97867, y: 3.6000023, z: 67.523346}
+    LastPosition: {x: 28.649822, y: 3.6000023, z: 51.716156}
   - Leg: {fileID: 5890840175743941895}
     LegIKTarget: {fileID: 3937213910873585591}
-    TargetHintPositionAdjusted: {x: 77.84878, y: 3.6000023, z: 32.95797}
+    TargetHintPositionAdjusted: {x: 84.8192, y: 3.6000023, z: 59.002678}
     RelativeTargetHintPosition: {x: 3.5, y: -3.9, z: 0}
     MaxStepDistance: 128
     HintBaseHeight: -3.9
     HintHeightRange: {x: -2, y: -4.25}
-    LastPosition: {x: 77.84878, y: 3.6000023, z: 32.95797}
+    LastPosition: {x: 84.8192, y: 3.6000023, z: 59.002678}
   - Leg: {fileID: 3383407601949318311}
     LegIKTarget: {fileID: 7206534041963386593}
-    TargetHintPositionAdjusted: {x: 58.46081, y: 3.6000023, z: 24.950338}
+    TargetHintPositionAdjusted: {x: 76.77208, y: 3.6000023, z: 39.631065}
     RelativeTargetHintPosition: {x: 3.5, y: -3.9, z: 0}
     MaxStepDistance: 96
     HintBaseHeight: -3.9
     HintHeightRange: {x: -2, y: -4.25}
-    LastPosition: {x: 58.46081, y: 3.6000023, z: 24.950338}
+    LastPosition: {x: 76.77208, y: 3.6000023, z: 39.631065}
   - Leg: {fileID: 5142501658832580349}
     LegIKTarget: {fileID: 3729608646853849488}
-    TargetHintPositionAdjusted: {x: 43.483883, y: 3.6000023, z: 29.785866}
+    TargetHintPositionAdjusted: {x: 62.76255, y: 3.6000023, z: 32.460022}
     RelativeTargetHintPosition: {x: 3.5, y: -3.9, z: 0}
     MaxStepDistance: 128
     HintBaseHeight: -3.9
     HintHeightRange: {x: -2, y: -4.25}
-    LastPosition: {x: 43.483883, y: 3.6000023, z: 29.785866}
+    LastPosition: {x: 62.76255, y: 3.6000023, z: 32.460022}
   - Leg: {fileID: 65289186341900021}
     LegIKTarget: {fileID: 2726720913741284367}
-    TargetHintPositionAdjusted: {x: 32.848858, y: 3.6000023, z: 40.52365}
+    TargetHintPositionAdjusted: {x: 47.64969, y: 3.6000023, z: 32.532692}
     RelativeTargetHintPosition: {x: 3.5, y: -3.9, z: 0}
     MaxStepDistance: 96
     HintBaseHeight: -3.9
     HintHeightRange: {x: -2, y: -4.25}
-    LastPosition: {x: 32.848858, y: 3.6000023, z: 40.52365}
+    LastPosition: {x: 47.64969, y: 3.6000023, z: 32.532692}
   WalkableLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 512
   animationEase: 8
   AttackStartPos: {fileID: 3803592589046933038}
   AttackSetupTime: 1.5
