@@ -225,7 +225,7 @@ public class EnemyAIController : MonoBehaviour
         var TargetDir = (targetPos - this.transform.position);
         TargetPosition = targetPos;
         MovingDirection = TargetDir.normalized;
-        this.transform.position = Vector3.Lerp(this.transform.position, this.transform.position + MovingDirection, Time.fixedDeltaTime * followSettings.Speed);
+        // this.transform.position = Vector3.Lerp(this.transform.position, this.transform.position + MovingDirection, Time.fixedDeltaTime * followSettings.Speed);
 
         var angleToTarget = Vector3.SignedAngle(this.transform.forward, MovingDirection, Vector3.up);
         if (Mathf.Abs(angleToTarget) > followSettings.AngleToTargetThreshold)
