@@ -19,7 +19,6 @@ public class EnvironmentAreaCulling : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Enter");
         if (other.gameObject.TryGetComponent(out SubmarinePhysicsSystem _))
         {
             SetChildrenRendering(true);
@@ -28,7 +27,6 @@ public class EnvironmentAreaCulling : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("Exit");
         if (other.gameObject.TryGetComponent(out SubmarinePhysicsSystem _))
         {
             SetChildrenRendering(false);
