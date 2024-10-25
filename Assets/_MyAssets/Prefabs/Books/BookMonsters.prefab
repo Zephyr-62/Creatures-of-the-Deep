@@ -398,7 +398,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4698992234294582790}
   - component: {fileID: 9189729545427947608}
-  m_Layer: 0
+  - component: {fileID: 7965120399694092792}
+  - component: {fileID: 6479022606673214970}
+  m_Layer: 10
   m_Name: BookMonsters
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -436,7 +438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bookController: {fileID: 5169420537986409070}
-  currentState: 2
+  currentState: 0
   standinsTransform: {fileID: 5589705855027070580}
   pagesTransform: {fileID: 1335580921259703818}
   standinQualities: 0000000000000000000000000000000000000000
@@ -573,6 +575,70 @@ MonoBehaviour:
   maxPagesTurningCount: 4
   deltaTime: 0
   pageFillerMaterial: {fileID: 2100000, guid: 663770407e9edc4018d361c73aee0bf8, type: 2}
+--- !u!114 &7965120399694092792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861158665048385226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c5fb24c1957fe3bb71f9b0927bd836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onGrabbed:
+    m_PersistentCalls:
+      m_Calls: []
+  onReleased:
+    m_PersistentCalls:
+      m_Calls: []
+  onBlocked:
+    m_PersistentCalls:
+      m_Calls: []
+  onUnblocked:
+    m_PersistentCalls:
+      m_Calls: []
+  book: {fileID: 9189729545427947608}
+  reversePageIfNotMidway: 1
+  _value: 0
+  rotatePoint: {fileID: 4698992234294582790}
+  minAngle: -90
+  maxAngle: 90
+  range: 1
+  animationDuration: 0.1
+  animationEase: 1
+  switchAngle: 0
+  onSwitchedOn:
+    m_PersistentCalls:
+      m_Calls: []
+  onSwitchedOff:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!65 &6479022606673214970
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861158665048385226}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5, y: 0.5, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1020202992605159401
 GameObject:
   m_ObjectHideFlags: 0
@@ -2445,7 +2511,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6716786629953209929
 Transform:
   m_ObjectHideFlags: 0
@@ -4717,7 +4783,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3666575932110100396
 Transform:
   m_ObjectHideFlags: 0
