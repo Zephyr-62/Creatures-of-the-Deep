@@ -1,17 +1,17 @@
 
 # TODO
 
+# Urgent
+- Elevation + Pitch indicators + distance to target
+
+# Post delivery
 - Monster drawings 
-- Crab attack
-- Stop crab walking if cannot move legs (define maximum leg height up/down)
-- Max Distance from origin (confined area )
+
+# Post course end
 - Sea serpent
 - 3D Models for sea serpent, spiky rock?
-- Trigger on light (front lights & lightbulbs)/heat (engine hot)/sound (no alarms going and no thrust)/always
-- Poster
-
-- Tentacles --> Jellyfish, Swinging Lightbulb
+- Trigger on heat (engine hot)/sound (no alarms going and no thrust)/always
+- Tentacles --> Swinging Lightbulb, hanging vines
 - New Monsters: Electric Eel, Umibōzu, Marool, Baby Face Fish
-- Sounds for monsters
-
+- AI confined area
 - Crab anim fix lerp body

@@ -9,4 +9,12 @@ public class CrabAIController : EnemyAIController
 
     public Vector3 GetMovingDir() => MovingDirection;
 
+    public Transform GetChaseTarget() => ChaseTarget;
+
+    public override void HitChaseTarget()
+    {
+        base.HitChaseTarget();
+        // ChaseTarget.gameObject.SetActive(false);
+    }
+
 }
