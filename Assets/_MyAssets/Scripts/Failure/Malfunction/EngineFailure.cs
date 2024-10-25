@@ -12,7 +12,7 @@ public class EngineFailure : Malfunction
 
     private bool isFixed;
 
-    public override void Enter()
+    public override void Enter(MalfunctionTrigger trigger = null)
     {
         base.Enter();
         isFixed = false;
@@ -26,6 +26,7 @@ public class EngineFailure : Malfunction
         base.Exit();
         system.physicsSystem.TurnOn();
         system.engine.ignition.SetBoolValue(false);
+        system.engine.onSuccessfullStart.RemoveListener(OnSuccessfullStart);
     }
 
     public override bool IsFixed()
@@ -47,27 +48,11 @@ public class EngineFailure : Malfunction
         }
     }
 
-    public override void OnCollision(Collision collision)
+    public override void OnCollision(Collision collision, float f)
     {
-        base.OnCollision(collision);
+        base.OnCollision(collision, f);
 
-        Rigidbody rb1 = system.GetComponentInParent<Rigidbody>();
-        Rigidbody rb2 = collision.rigidbody;
-
-        // Get the masses of both objects
-        float mass1 = rb1.mass;
-        float mass2 = rb2 != null ? rb2.mass : 1000f;  // If the other object has no Rigidbody, assume mass 0
-
-        // Get the relative velocity
-        Vector3 relativeVelocity = collision.relativeVelocity;
-
-        // Calculate the reduced mass and force
-        float reducedMass = (2 * mass1 * mass2) / (mass1 + mass2);
-        float collisionForce = reducedMass * relativeVelocity.magnitude;
-
-        Debug.Log(collisionForce);
-
-        if (!Enabled && collisionForce > UnityEngine.Random.Range(impactThresshold, impactThresshold + impactRandomness))
+        if (!Enabled && f > UnityEngine.Random.Range(impactThresshold, impactThresshold + impactRandomness))
         {
             system.Failure(this);
         }

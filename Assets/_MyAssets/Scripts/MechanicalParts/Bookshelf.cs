@@ -1,38 +1,134 @@
+using AdvancedEditorTools.Attributes;
+using echo17.EndlessBook;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
+using static Bookshelf;
 
 public class Bookshelf : MonoBehaviour
 {
-    public Transform BookshelfParent;
     public Transform BookHolderParent;
+    public BookholderAnimator Bookholder;
 
-    public List<Transform> Books;
+    public Material ActiveLightMat;
+    public Material InactiveLightMat;
 
-    private int CurrentBookId; // == -1 when no book is held 
-    private Vector3 CurrentBookShelfPos = Vector3.zero;
-
-    public void GrabBook(int bookId)
+    [System.Serializable]
+    public class BookSlot
     {
-        if(bookId >= Books.Count || bookId < 0)
+        [ReadOnly]
+        public int id = -2; // Unassigned id
+        public Button button;
+        public MeshRenderer lightBulb;
+        public Transform slot;
+        public EndlessBook book;
+        public bool active = true; // Wether the button should work or not
+        public void SetLight(bool on)
+        {
+            lightBulb.material.SetFloat("_Intensity", on ? 1 : 0);
+        }
+    }
+    public void SetSlotActive(BookSlot bookSlot, bool val)
+    {
+        if (val)
+        {
+            bookSlot.lightBulb.material = ActiveLightMat;
+            bookSlot.SetLight(bookSlot.id == CurrentBookId);
+            bookSlot.button.Unblock();
+        }
+        else
+        {
+            bookSlot.lightBulb.material = InactiveLightMat;
+            bookSlot.SetLight(true);
+            bookSlot.button.Block();
+        }
+    }
+
+    public List<BookSlot> BookSlots;
+
+    [SerializeField]
+    [ReadOnly]
+    private int CurrentBookId = -1; // == -1 when no book is held 
+
+
+    private void Start()
+    {
+        CurrentBookId = -1;
+        int id = 0;
+        foreach (var bookSlot in BookSlots)
+        {
+            bookSlot.id = id;
+            id++;
+            SetSlotActive(bookSlot, bookSlot.active);
+        }
+    }
+
+    async public void ButtonPress(int BookId)
+    {
+        if (BookId >= BookSlots.Count || BookId < 0)
         {
             Debug.LogWarning("That book does not exist");
             return;
         }
-        if (CurrentBookId >= 0)
-            ReturnBook();
 
+        if (!BookSlots[BookId].active) return;
 
-        CurrentBookId = bookId;
+        // Block all buttons until action is completed
+        foreach (var bookSlot in BookSlots)
+        {
+            bookSlot.button.Block();
+        }
 
-        var book = Books[CurrentBookId];
-        CurrentBookShelfPos = book.localPosition;
-        // TODO Animate claw picking up book, then:
-        book.SetParent(BookHolderParent);
-        book.localPosition = Vector3.zero;
+        // Base move to position
+        await Bookholder.ChangeToState(BookholderAnimator.ClawState.BookshelfInteract);
+
+        //  Return selected book
+        if (CurrentBookId == BookId)
+        {
+            await ReturnBook(triggerCollapse: true);
+        }
+        // Grab a book
+        else
+        {
+            // Return first if already grabbing one
+            if (CurrentBookId >= 0)
+                await ReturnBook();
+            await GrabBook(BookId);
+        }
+
+        // Unblock all buttons after action is completed
+        foreach (var bookSlot in BookSlots)
+        {
+            if (bookSlot.active)
+                bookSlot.button.Unblock();
+        }
     }
 
-    public void ReturnBook()
+    async private Task GrabBook(int bookId)
+    {
+        CurrentBookId = bookId;
+
+        Bookholder.SetTargetBookSlot(BookSlots[CurrentBookId].slot);
+        await Bookholder.DOTweenToBookSlot();
+
+        var bookSlot = BookSlots[CurrentBookId];
+        var book = bookSlot.book;
+
+        // Reparent book while claw interacts
+        await Bookholder.InteractWithBookshelf(() =>
+        {
+            book.transform.SetParent(BookHolderParent, false);
+            bookSlot.SetLight(true);
+        });
+
+        await Bookholder.ChangeToState(BookholderAnimator.ClawState.BookDisplay);
+
+        // book.SetState(EndlessBook.StateEnum.OpenMiddle, animationTime: 0);
+        book.GetComponent<BookPCS>().Unblock();
+    }
+
+    async private Task ReturnBook(bool triggerCollapse=false)
     {
         if (CurrentBookId < 0)
         {
@@ -40,11 +136,27 @@ public class Bookshelf : MonoBehaviour
             return;
         }
 
-        var book = Books[CurrentBookId];
-        // TODO Animate calw dropping book, then:
-        book.SetParent(BookshelfParent);
-        book.localPosition = CurrentBookShelfPos;
+        Bookholder.SetTargetBookSlot(BookSlots[CurrentBookId].slot);
+
+        var bookSlot = BookSlots[CurrentBookId];
+        var book = bookSlot.book;
+        book.GetComponent<BookPCS>().Block();
+
+        await Bookholder.DOTweenToBookSlot();
+
+
+        book.SetState(EndlessBook.StateEnum.ClosedFront, animationTime: 0);
+
+        // Reparent book while claw interacts
+        await Bookholder.InteractWithBookshelf(() =>
+        {
+            book.transform.SetParent(bookSlot.slot, false);
+            bookSlot.SetLight(false);
+        });
+
         CurrentBookId = -1;
+        if (triggerCollapse)
+            await Bookholder.ChangeToState(BookholderAnimator.ClawState.Collapsed);
     }
 
 }

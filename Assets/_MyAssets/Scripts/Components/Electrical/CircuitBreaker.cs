@@ -26,4 +26,15 @@ public class CircuitBreaker : Measureable
     {
         return new Vector2(0f, surgeCap);
     }
+
+    public bool IsOverloaded()
+    {
+        return ElectricalDevice.TotalSurge() > surgeCap;
+    }
+
+    public void Break()
+    {
+        pcs.SetBoolValue(false);
+        pcs.Block();
+    }
 }

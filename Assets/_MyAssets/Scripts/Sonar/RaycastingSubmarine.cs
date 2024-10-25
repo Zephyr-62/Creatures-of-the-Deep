@@ -12,8 +12,13 @@ public class RaycastingSubmarine : ElectricalDevice
 
     [SerializeField] private GameObject _submarine;
     [SerializeField] private LayerMask _layerMask;
-    [SerializeField] private float _distance;
+    [SerializeField] private float _minDistance;
+    [SerializeField] private float _maxDistance;
     [SerializeField] private float _angleStep;
+    [SerializeField, Range(0, 1)] private float zoom;
+    [SerializeField] private PhysicalControlSurface pcs;
+
+    private float _distance;
 
     //public ComputeShader computeShader;
     public RenderTexture sonar1;
@@ -46,7 +51,7 @@ public class RaycastingSubmarine : ElectricalDevice
     private float _angleArt;
     void Start()
     {
-        _artiPos = Vector2.zero;
+        ArtifactLocation(new Vector3(10000, 10000, 10000));
         //Debug.Log(LayerMask.LayerToName(_layerMaskArtifact));
     }
 
@@ -59,8 +64,8 @@ public class RaycastingSubmarine : ElectricalDevice
             _raycasting = true;
             StartCorountine(Raycasting)
         }*/
-       
-
+        if(pcs) zoom = pcs.Get01FloatValue();
+        _distance = Mathf.Lerp(_minDistance, _maxDistance, zoom);
 
         _angle += _angleStep * Time.deltaTime;
         if (_angle >= 360) _angle = 0;
@@ -102,21 +107,24 @@ public class RaycastingSubmarine : ElectricalDevice
         {
             _currentHitPoint = _hitpoint;
         }
+        if(_artiPos != new Vector2(10000, 10000))
+        {
+            _currentArtiPos = CalculateArtiPoint();
+            blitMat.SetVector("_PointArtifact", _currentArtiPos);
+            if (_arrow)
+            {
+                _arrow = false;
+                blitMat.SetVector("_PointArrowL", CalculateArrowL());
+                blitMat.SetVector("_PointArrowR", CalculateArrowR());
+            }
+            else
+            {
+                blitMat.SetVector("_PointArrowL", _currentArtiPos);
+                blitMat.SetVector("_PointArrowR", _currentArtiPos);
+
+            }
+        }
         
-        _currentArtiPos = CalculateArtiPoint();
-        blitMat.SetVector("_PointArtifact", _currentArtiPos);
-        if (_arrow)
-        {
-            _arrow = false;
-            blitMat.SetVector("_PointArrowL", CalculateArrowL());
-            blitMat.SetVector("_PointArrowR", CalculateArrowR());
-        }
-        else
-        {
-            blitMat.SetVector("_PointArrowL", _currentArtiPos);
-            blitMat.SetVector("_PointArrowR", _currentArtiPos);
-                                                                             
-        }
 
         blitMat.SetVector("_Point", _hitpoint);
         blitMat.SetVector("_PointB", _linePoint);
@@ -198,14 +206,14 @@ public class RaycastingSubmarine : ElectricalDevice
 	
 	public void ArtifactLocation(Vector3 pos)
 	{
-        if (pos == Vector3.negativeInfinity)
+        if (pos == new Vector3(10000, 10000, 10000))
         {
             blitMat.SetInt("_ArtefactActivate", 0);
-            
+            _artiPos = new Vector2(10000, 10000);
         }
         else
         {
-            blitMat.SetFloat("_ArtefactActivate", 1);
+            blitMat.SetInt("_ArtefactActivate", 1);
             _artiPos = new Vector2(pos.x,  pos.z);
             
         }
@@ -219,7 +227,7 @@ public class RaycastingSubmarine : ElectricalDevice
         float dis = Vector2.Distance(subWithoutY, _artiPos);
         Vector2 dirVec = _artiPos - subWithoutY;
         Vector2 subForward = new Vector2(_submarine.transform.forward.x, _submarine.transform.forward.z);
-        _angleArt = Vector2.Angle(subForward, dirVec);
+        _angleArt = Vector2.SignedAngle(subForward, dirVec);
         float angleRad = _angleArt * Mathf.Deg2Rad;
         Vector2 rotVec;
         if (Mathf.Abs(dis) > (_distance - (_distance * 0.08f) ))

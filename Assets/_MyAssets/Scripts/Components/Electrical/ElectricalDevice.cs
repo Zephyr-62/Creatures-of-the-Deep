@@ -54,7 +54,7 @@ public abstract class ElectricalDevice : Measureable
 
     public static float TotalSurge()
     {
-        var x = _globalSurge;
+        var x = globalSurge;
         foreach (var device in all)
         {
             x += device._localSurge;

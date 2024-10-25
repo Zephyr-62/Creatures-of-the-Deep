@@ -1,48 +1,72 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Profiling.RawFrameDataView;
-using static UnityEngine.Rendering.DebugUI;
 
 public class EngineAudio : MonoBehaviour
 {
-    [SerializeField] private SubmarinePhysicsSystem physicsSystem;
+    [SerializeField] private Engine engine;
     [SerializeField] private FMODUnity.EventReference baseEngine;
-    [SerializeField] private string parameter;
+    [SerializeField] private string engineThrustParameter = "engine_level";
+    [SerializeField] private string engineElevationParameter = "elevation_level";
 
-    private FMOD.Studio.EventInstance instance;
+    [SerializeField] private FMODUnity.EventReference heat;
+    [SerializeField] private string heatParameter = "heat_level";
+
+    private FMOD.Studio.EventInstance engineInstance;
+    private FMOD.Studio.EventInstance heatInstance;
 
     void Start()
     {
-        instance = FMODUnity.RuntimeManager.CreateInstance(baseEngine);
-        FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, transform);
+        
     }
 
     private void OnEnable()
     {
-        physicsSystem.onStartEngine.AddListener(StartEngine);
-        physicsSystem.onStopEngine.AddListener(StopEngine);
+        engine.system.onStartEngine.AddListener(StartEngine);
+        engine.system.onStopEngine.AddListener(StopEngine);
+
+        engine.onOverheat.AddListener(Overheat);
     }
 
     private void OnDisable()
     {
-        physicsSystem.onStartEngine.RemoveListener(StartEngine);
-        physicsSystem.onStopEngine.RemoveListener(StopEngine);
+        engine.system.onStartEngine.RemoveListener(StartEngine);
+        engine.system.onStopEngine.RemoveListener(StopEngine);
+        
+        engine.onOverheat.RemoveListener(Overheat);
     }
 
     private void Update()
     {
-        instance.setParameterByName(parameter, Mathf.Abs(physicsSystem.thrust));
+        if (engineInstance.isValid())
+        {
+            engineInstance.setParameterByName(engineThrustParameter, Mathf.Abs(engine.system.thrust));
+            engineInstance.setParameterByName(engineElevationParameter, Mathf.Abs(engine.system.elevation));
+        }
+        if (heatInstance.isValid())
+        {
+            heatInstance.setParameterByName(heatParameter, engine.heat / engine.heatCapacity);
+        }
     }
 
     private void StartEngine()
     {
-        FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, transform);
-        instance.start();
+        engineInstance = FMODUnity.RuntimeManager.CreateInstance(baseEngine);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(engineInstance, transform);
+        engineInstance.start();
     }
 
     private void StopEngine()
     {
-        instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        engineInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        engineInstance.release();
+    }
+
+    private void Overheat()
+    {
+        heatInstance = FMODUnity.RuntimeManager.CreateInstance(heat);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(heatInstance, transform);
+        heatInstance.start();
+        heatInstance.release();
     }
 }

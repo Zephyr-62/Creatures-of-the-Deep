@@ -53,6 +53,15 @@ public partial class @SubmarineControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""8a668fd9-80da-47a1-acab-d6b6d99ab12f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -88,6 +97,17 @@ public partial class @SubmarineControls: IInputActionCollection2, IDisposable
                     ""action"": ""Zoom"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b400fdd7-7f37-43fc-a491-9fbabd86838a"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -99,6 +119,7 @@ public partial class @SubmarineControls: IInputActionCollection2, IDisposable
         m_InGame_FirstPersonCamera = m_InGame.FindAction("FirstPersonCamera", throwIfNotFound: true);
         m_InGame_Grab = m_InGame.FindAction("Grab", throwIfNotFound: true);
         m_InGame_Zoom = m_InGame.FindAction("Zoom", throwIfNotFound: true);
+        m_InGame_Pause = m_InGame.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -163,6 +184,7 @@ public partial class @SubmarineControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_InGame_FirstPersonCamera;
     private readonly InputAction m_InGame_Grab;
     private readonly InputAction m_InGame_Zoom;
+    private readonly InputAction m_InGame_Pause;
     public struct InGameActions
     {
         private @SubmarineControls m_Wrapper;
@@ -170,6 +192,7 @@ public partial class @SubmarineControls: IInputActionCollection2, IDisposable
         public InputAction @FirstPersonCamera => m_Wrapper.m_InGame_FirstPersonCamera;
         public InputAction @Grab => m_Wrapper.m_InGame_Grab;
         public InputAction @Zoom => m_Wrapper.m_InGame_Zoom;
+        public InputAction @Pause => m_Wrapper.m_InGame_Pause;
         public InputActionMap Get() { return m_Wrapper.m_InGame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -188,6 +211,9 @@ public partial class @SubmarineControls: IInputActionCollection2, IDisposable
             @Zoom.started += instance.OnZoom;
             @Zoom.performed += instance.OnZoom;
             @Zoom.canceled += instance.OnZoom;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IInGameActions instance)
@@ -201,6 +227,9 @@ public partial class @SubmarineControls: IInputActionCollection2, IDisposable
             @Zoom.started -= instance.OnZoom;
             @Zoom.performed -= instance.OnZoom;
             @Zoom.canceled -= instance.OnZoom;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IInGameActions instance)
@@ -223,5 +252,6 @@ public partial class @SubmarineControls: IInputActionCollection2, IDisposable
         void OnFirstPersonCamera(InputAction.CallbackContext context);
         void OnGrab(InputAction.CallbackContext context);
         void OnZoom(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

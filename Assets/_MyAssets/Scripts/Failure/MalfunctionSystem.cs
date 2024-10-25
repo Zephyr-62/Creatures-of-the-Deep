@@ -3,28 +3,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MalfunctionSystem : MonoBehaviour
+public class MalfunctionSystem : ElectricalDevice
 {
     [SerializeField] private Engine _engine;
     [SerializeField] private HydraulicPump _pump;
+    [SerializeField] private CircuitBreaker _breaker;
+
     [SerializeField] private SubmarinePhysicsSystem _physicsSystem;
 
     [Header("Malfunctions")]
-    [SerializeField] private EngineFailure engineFailure;
-    [SerializeField] private MissfireFailure missfireFailure;
-    [SerializeField] private HydraulicFailure throttleHydraulicFailure;
-    [SerializeField] private HydraulicFailure steeringHydraulicFailure;
-    [SerializeField] private HydraulicFailure pitchHydraulicFailure;
-    [SerializeField] private HydraulicFailure elevationHydraulicFailure;
-    [SerializeField] private LocalVoltageSurge sonarVoltageSurge;
-    [SerializeField] private LocalVoltageSurge screenVoltageSurge;
-    [SerializeField] private LocalVoltageSurge lightsVoltageSurge;
+    public EngineFailure engineFailure;
+    public OverheatingFailure missfireFailure;
+    public HydraulicFailure throttleHydraulicFailure;
+    public HydraulicFailure steeringHydraulicFailure;
+    public HydraulicFailure pitchHydraulicFailure;
+    public HydraulicFailure elevationHydraulicFailure;
+    public LocalVoltageSurge sonarVoltageSurge;
+    public LocalVoltageSurge screenVoltageSurge;
+    public CriticalVoltageSurge criticalVoltageSurge;
+    public ElevationFailure elevationFailure;
+    public Betrayal betrayal;
+
+    [SerializeField] private FMODUnity.EventReference alert;
 
     public Engine engine => _engine;
     public HydraulicPump pump => _pump;
+    public CircuitBreaker breaker => _breaker;
     public SubmarinePhysicsSystem physicsSystem => _physicsSystem;
 
     private List<Malfunction> allMalfunctions;
+    private FMOD.Studio.EventInstance instance;
 
     private void Awake()
     {
@@ -37,13 +45,20 @@ public class MalfunctionSystem : MonoBehaviour
         RegisterMalfunction(elevationHydraulicFailure);
         RegisterMalfunction(sonarVoltageSurge);
         RegisterMalfunction(screenVoltageSurge);
-        RegisterMalfunction(lightsVoltageSurge);
+        RegisterMalfunction(criticalVoltageSurge);
+        RegisterMalfunction(elevationFailure);
+        RegisterMalfunction(betrayal);
 
         throttleHydraulicFailure.affectedControl = physicsSystem.throttleControl;
         steeringHydraulicFailure.affectedControl = physicsSystem.steeringControl;
         pitchHydraulicFailure.affectedControl = physicsSystem.pitchControl;
         elevationHydraulicFailure.affectedControl = physicsSystem.elevationControl;
+
+        instance = FMODUnity.RuntimeManager.CreateInstance(alert);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, transform);
     }
+
+    
 
     private void Start()
     {
@@ -62,15 +77,13 @@ public class MalfunctionSystem : MonoBehaviour
         }
     }
 
-    public void Failure(Malfunction malfunction)
+    public void Failure(Malfunction malfunction, MalfunctionTrigger trigger = null)
     {
         if (malfunction == null) return;
         if (malfunction.Enabled) return;
         malfunction.AttachSystem(this);
-        malfunction.Enter();
+        malfunction.Enter(trigger);
     }
-
-    
 
     IEnumerator ErrorCodeLoop()
     {
@@ -94,12 +107,19 @@ public class MalfunctionSystem : MonoBehaviour
             if (allMalfunctions[index].Enabled)
             {
                 ErrorBulb.SetAll(allMalfunctions[index].ErrorCode);
+                
+                
+                if(isPowered && (allMalfunctions[index].Symptoms & Symptom.SymptomMask.Alert) == Symptom.SymptomMask.Alert)
+                {
+                    instance.start();
+                    FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, transform);
+                }
 
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(1f);
 
                 ErrorBulb.SetAll(Malfunction.ErrorMask.None);
 
-                yield return new WaitForSeconds(.5f);
+                yield return new WaitForSeconds(.3f);
             } else
             {
                 yield return null;
@@ -115,9 +135,41 @@ public class MalfunctionSystem : MonoBehaviour
 
     public void Collision(Collision collision)
     {
+        Rigidbody rb1 = physicsSystem.GetComponentInParent<Rigidbody>();
+        Rigidbody rb2 = collision.rigidbody;
+
+        float mass1 = rb1.mass;
+        float mass2 = rb2 != null ? rb2.mass : 1000f;
+
+        Vector3 relativeVelocity = collision.relativeVelocity;
+
+        float reducedMass = (2 * mass1 * mass2) / (mass1 + mass2);
+        float collisionForce = reducedMass * relativeVelocity.magnitude;
+
         foreach (var malfunction in allMalfunctions)
         {
-            malfunction.OnCollision(collision);
+            malfunction.OnCollision(collision, collisionForce);
         }
+    }
+
+    [Button("test")]
+    private void test()
+    {
+        Failure(betrayal);
+    }
+
+    protected override void OnPowerGained()
+    {
+        
+    }
+
+    protected override void OnPowerLost()
+    {
+        instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+    }
+
+    protected override void OnSurge()
+    {
+        
     }
 }

@@ -19,11 +19,11 @@ public class SubmarinePhysicsSystem : Measureable
     public PhysicalControlSurface pitchControl => _pitchControl;
     public PhysicalControlSurface elevationControl => _elevationControl;
 
-    public float thrust => Mathf.Clamp(throttleControl.GetFloatValue(), -limit, limit);
-    public float steering => Mathf.Clamp(_steeringControl.GetFloatValue(), -limit, limit);
-    public float pitch => Mathf.Clamp(_pitchControl.GetFloatValue(), -limit, limit);
-    public float elevation => Mathf.Clamp(_elevationControl.GetFloatValue(), -limit, limit);
-    
+    public float thrust => engineEnabled ? Mathf.Clamp(throttleControl.GetFloatValue(), -limit, limit) : 0f;
+    public float steering => engineEnabled ? Mathf.Clamp(_steeringControl.GetFloatValue(), -limit, limit) : 0f;
+    public float pitch => engineEnabled ? Mathf.Clamp(_pitchControl.GetFloatValue(), -limit, limit) : 0f;
+    public float elevation => engineEnabled ? Mathf.Clamp(_elevationControl.GetFloatValue(), -limit, limit) : 0f;
+
     [EndColumnArea]
     [SerializeField] private float BuoyancyStrength = 75;
 
@@ -79,6 +79,8 @@ public class SubmarinePhysicsSystem : Measureable
     private bool engineEnabled;
     private float limit = 1f;
 
+    public Rigidbody RB => rb;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -88,7 +90,8 @@ public class SubmarinePhysicsSystem : Measureable
     void FixedUpdate()
     {
         rb.maxAngularVelocity = maxAngularVelocity;
-        
+
+
         if (engineEnabled)
         {
             // Thrust
@@ -107,15 +110,20 @@ public class SubmarinePhysicsSystem : Measureable
 
             if (elevation != 0)
                 rb.AddForce(BuoyancyStrength * elevation * Vector3.up, ForceMode.Force);
-        }
-        
-        PitchStabilization();
 
-        // Roll
-        RollStabilization();
+            PitchStabilization();
+
+            // Roll
+            RollStabilization();
+        } else
+        {
+            rb.AddForce(Physics.gravity * Time.fixedDeltaTime * rb.mass);
+        }
+
+
 
         // Buoyancy
-        
+
     }
 
     private void PitchStabilization()
