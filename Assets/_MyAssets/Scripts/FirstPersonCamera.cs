@@ -66,7 +66,7 @@ public class FirstPersonCamera : MonoBehaviour
         {
             if (pcs)
             {
-                pcs.Grab(this, point);   
+                pcs.Grab(this, pcs.transform.InverseTransformPoint(point));   
             }
         } else if (pcs)
         {

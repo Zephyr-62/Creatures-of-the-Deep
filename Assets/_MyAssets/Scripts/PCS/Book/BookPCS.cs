@@ -15,7 +15,7 @@ public class BookPCS : PhysicalControlSurface
     public bool reversePageIfNotMidway = true;
 
     [Header("Values")]
-    [FormerlySerializedAs("value"), SerializeField] private bool _value;
+    [FormerlySerializedAs("value"), SerializeField] private float _value;
     [Header("Moving parts")]
     [SerializeField] private Transform rotatePoint;
     [SerializeField] private float minAngle, maxAngle;
@@ -31,34 +31,7 @@ public class BookPCS : PhysicalControlSurface
     
     private Vector3 point;
     private Vector3 dir;
-    private float targetAngle;
     private float clampedAngle;
-    private bool old;
-    private Vector3 _grabPoint;
-
-    private bool turnForward;
-
-    public bool value
-    {
-        get
-        {
-            return _value;
-        }
-        private set
-        {
-            if(_value != value)
-            {
-                old = _value;
-                _value = value;
-                if (old != _value)
-                {
-                    onValueChanged.Invoke();
-                    if(_value) onSwitchedOn.Invoke();
-                    else onSwitchedOff.Invoke();
-                }
-            }
-        }
-    }
 
     internal override void Release(bool fireEvent = true)
     {
@@ -76,7 +49,7 @@ public class BookPCS : PhysicalControlSurface
             // exit if already turning
             return;
         }
-        var plane = new Plane(transform.forward, _grabPoint);
+        var plane = new Plane(transform.forward, grabPoint);
         var ray = FirstPersonCamera.GetRay();
 
         if (plane.Raycast(ray, out var e))
@@ -115,21 +88,20 @@ public class BookPCS : PhysicalControlSurface
 
     internal override void Grab(FirstPersonCamera firstPersonCamera, Vector3 grabPoint, bool fireEvent = true)
     {
-        _grabPoint = grabPoint;
         base.Grab(firstPersonCamera, grabPoint, fireEvent);
         if (book.IsTurningPages || book.IsDraggingPage)
         {
             // exit if already turning
             return;
         }
-        var plane = new Plane(transform.forward, _grabPoint);
+        var plane = new Plane(transform.forward, grabPoint);
         var ray = FirstPersonCamera.GetRay();
 
         if (plane.Raycast(ray, out var e))
         {
             point = ray.GetPoint(e);
             dir = point - rotatePoint.position;
-
+            Debug.Log("DOING THIS");
             var angle = Vector3.SignedAngle(Vector3.up, transform.InverseTransformDirection(dir), Vector3.forward);
             if (angle < 0)
             {
@@ -139,73 +111,35 @@ public class BookPCS : PhysicalControlSurface
             {
                 book.TurnPageDragStart(Page.TurnDirectionEnum.TurnBackward);
             }
-
-
-        }
-    }
-    private void AdjustToValue(bool value, bool skipAnimation = false)
-    {
-        this.value = value;
-        AdjustToAngle(this.value ? maxAngle : minAngle, skipAnimation);
-    }
-    private void AdjustToAngle(float angle, bool skipAnimation = false)
-    {
-        if (blocked) return;
-
-        targetAngle = angle;
-        clampedAngle = Mathf.Clamp(targetAngle, minAngle, maxAngle);
-
-        if(clampedAngle > switchAngle && value != old)
-        {
-            Rotate(maxAngle, skipAnimation);
-        }
-        else if (clampedAngle < switchAngle && value != old)
-        {
-            Rotate(minAngle, skipAnimation);
-        }
-    }
-
-    private void Rotate(float angle, bool skipAnimation = false)
-    {
-        if (skipAnimation)
-        {
-            rotatePoint.localRotation = Quaternion.AngleAxis(angle, Vector3.right);
-        }
-        else
-        {
-            rotatePoint.DOKill();
-            rotatePoint.DOLocalRotate(new Vector3(angle, 0, 0), animationDuration).SetEase(animationEase);
         }
     }
     
+    
     public override float GetFloatValue()
     {
-        return value ? 1f : 0f;
+        return 0;
     }
 
     public override bool GetBoolValue()
     {
-        return value;
+        return false;
     }
 
     public override int GetIntValue()
     {
-        return value ? 1 : 0;
+        return 0;
     }
 
     public override void SetFloatValue(float value)
     {
-        AdjustToValue(value != 0);
     }
 
     public override void SetBoolValue(bool value)
     {
-        AdjustToValue(value);
     }
 
     public override void SetIntValue(int value)
     {
-        AdjustToValue(value != 0);
     }
     private void OnDrawGizmos()
     {
@@ -215,8 +149,8 @@ public class BookPCS : PhysicalControlSurface
         Gizmos.DrawRay(rotatePoint.position, dir);
 #if UNITY_EDITOR
         Handles.color = Color.blue;
-        Handles.DrawWireDisc(rotatePoint.position, transform.forward, range);
-        Handles.Label(transform.position, value.ToString());
+        Handles.DrawWireDisc(grabPoint, transform.forward, range);
+        Handles.Label(transform.position, clampedAngle.ToString());
 #endif
     }
     /// <summary>
