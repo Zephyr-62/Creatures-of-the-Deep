@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MalfunctionSystem : MonoBehaviour
+public class MalfunctionSystem : ElectricalDevice
 {
     [SerializeField] private Engine _engine;
     [SerializeField] private HydraulicPump _pump;
@@ -22,8 +22,7 @@ public class MalfunctionSystem : MonoBehaviour
     public LocalVoltageSurge screenVoltageSurge;
     public CriticalVoltageSurge criticalVoltageSurge;
     public ElevationFailure elevationFailure;
-
-
+    public Betrayal betrayal;
 
     [SerializeField] private FMODUnity.EventReference alert;
 
@@ -48,6 +47,7 @@ public class MalfunctionSystem : MonoBehaviour
         RegisterMalfunction(screenVoltageSurge);
         RegisterMalfunction(criticalVoltageSurge);
         RegisterMalfunction(elevationFailure);
+        RegisterMalfunction(betrayal);
 
         throttleHydraulicFailure.affectedControl = physicsSystem.throttleControl;
         steeringHydraulicFailure.affectedControl = physicsSystem.steeringControl;
@@ -57,6 +57,8 @@ public class MalfunctionSystem : MonoBehaviour
         instance = FMODUnity.RuntimeManager.CreateInstance(alert);
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, transform);
     }
+
+    
 
     private void Start()
     {
@@ -107,7 +109,7 @@ public class MalfunctionSystem : MonoBehaviour
                 ErrorBulb.SetAll(allMalfunctions[index].ErrorCode);
                 
                 
-                if((allMalfunctions[index].Symptoms & Symptom.SymptomMask.Alert) == Symptom.SymptomMask.Alert)
+                if(isPowered && (allMalfunctions[index].Symptoms & Symptom.SymptomMask.Alert) == Symptom.SymptomMask.Alert)
                 {
                     instance.start();
                     FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, transform);
@@ -148,5 +150,26 @@ public class MalfunctionSystem : MonoBehaviour
         {
             malfunction.OnCollision(collision, collisionForce);
         }
+    }
+
+    [Button("test")]
+    private void test()
+    {
+        Failure(betrayal);
+    }
+
+    protected override void OnPowerGained()
+    {
+        
+    }
+
+    protected override void OnPowerLost()
+    {
+        instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+    }
+
+    protected override void OnSurge()
+    {
+        
     }
 }
