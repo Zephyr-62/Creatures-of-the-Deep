@@ -49,6 +49,13 @@ public class FirstPersonCamera : MonoBehaviour
         Cursor.visible = false;
     }
 
+    private void OnEnable()
+    {
+        blackout.alpha = 1f;
+        blackout.DOFade(0f, 3f);
+        FMODUnity.RuntimeManager.GetBus("bus:/").setVolume(0);
+    }
+
     private void HandleFirstPersonCameraInput(InputAction.CallbackContext context)
     {
         input = context.ReadValue<Vector2>();
