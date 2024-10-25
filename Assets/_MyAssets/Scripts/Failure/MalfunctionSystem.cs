@@ -20,7 +20,6 @@ public class MalfunctionSystem : MonoBehaviour
     public HydraulicFailure elevationHydraulicFailure;
     public LocalVoltageSurge sonarVoltageSurge;
     public LocalVoltageSurge screenVoltageSurge;
-    public LocalVoltageSurge lightsVoltageSurge;
     public CriticalVoltageSurge criticalVoltageSurge;
     public ElevationFailure elevationFailure;
 
@@ -47,7 +46,6 @@ public class MalfunctionSystem : MonoBehaviour
         RegisterMalfunction(elevationHydraulicFailure);
         RegisterMalfunction(sonarVoltageSurge);
         RegisterMalfunction(screenVoltageSurge);
-        RegisterMalfunction(lightsVoltageSurge);
         RegisterMalfunction(criticalVoltageSurge);
         RegisterMalfunction(elevationFailure);
 

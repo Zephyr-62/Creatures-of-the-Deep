@@ -22,10 +22,16 @@ public class CollisionSystem : MonoBehaviour
             switch (comp.failure)
             {
                 case MalfunctionTrigger.Failure.EngineCutoff:
-                    system.Failure(system.engineFailure);
+                    system.Failure(system.engineFailure, comp);
                     break;
                 case MalfunctionTrigger.Failure.ElevationFailure:
-                    system.Failure(system.elevationFailure);
+                    system.Failure(system.elevationFailure, comp);
+                    break;
+                case MalfunctionTrigger.Failure.SonarVoltage:
+                    system.Failure(system.sonarVoltageSurge, comp);
+                    break;
+                case MalfunctionTrigger.Failure.ScreenVoltage:
+                    system.Failure(system.screenVoltageSurge, comp);
                     break;
                 default:
                     break;
