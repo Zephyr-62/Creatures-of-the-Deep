@@ -25,6 +25,7 @@ public class QuestSystem : MonoBehaviour
     {
         newQuestButton.onValueChanged.AddListener(StartNewQuest);
         completeQuestButton.onValueChanged.AddListener(CompleteQuest);
+        last = Time.time;
     }
 
     private void OnDisable()

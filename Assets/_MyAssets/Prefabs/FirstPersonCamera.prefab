@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1818604086642951704}
   - component: {fileID: 1427851565479440910}
   - component: {fileID: 3232087265349816358}
-  - component: {fileID: 6309160195571642619}
   m_Layer: 0
   m_Name: FirstPersonCamera
   m_TagString: MainCamera
@@ -159,19 +158,6 @@ MonoBehaviour:
   defaultFOV: 60
   zoomFOV: 30
 --- !u!114 &3232087265349816358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2176439852221289553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attenuationObject: {fileID: 0}
---- !u!114 &6309160195571642619
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -462,11 +448,6 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1783942009325501691, guid: a9bb0960c1092f14a8a4f20eca586443,
-        type: 3}
-      propertyPath: m_Value
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 3965934462912943082, guid: a9bb0960c1092f14a8a4f20eca586443,
         type: 3}
       propertyPath: m_Pivot.x
@@ -571,11 +552,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HUDCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 5963598442502383239, guid: a9bb0960c1092f14a8a4f20eca586443,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6466645890585048618, guid: a9bb0960c1092f14a8a4f20eca586443,
         type: 3}

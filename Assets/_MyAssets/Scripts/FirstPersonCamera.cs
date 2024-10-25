@@ -13,7 +13,7 @@ public class FirstPersonCamera : MonoBehaviour
     [SerializeField] private LayerMask mask;
     [SerializeField] private Reticle reticle;
     [SerializeField] private CanvasGroup blackout;
-    [SerializeField] private CanvasGroup menu;
+    [SerializeField] private Menu menu;
     [SerializeField] private Slider sensitivitySlider;
     [SerializeField] private float defaultFOV, zoomFOV;
 
@@ -53,7 +53,6 @@ public class FirstPersonCamera : MonoBehaviour
     {
         blackout.alpha = 1f;
         blackout.DOFade(0f, 3f);
-        FMODUnity.RuntimeManager.GetBus("bus:/").setVolume(0);
     }
 
     private void HandleFirstPersonCameraInput(InputAction.CallbackContext context)
@@ -63,7 +62,7 @@ public class FirstPersonCamera : MonoBehaviour
 
     private void HandleGrabInput(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && !paused)
         {
             if (pcs)
             {
@@ -95,14 +94,13 @@ public class FirstPersonCamera : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
-            menu.DOKill();
-            menu.DOFade(1f, 0.5f);
+            menu.ToggeMenu(true);
+            
         } else
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-            menu.DOKill();
-            menu.DOFade(0f, 0.5f);
+            menu.ToggeMenu(false);
         }
     }
 
@@ -117,9 +115,6 @@ public class FirstPersonCamera : MonoBehaviour
 
     private void Update()
     {
-        
-
-
         CheckForPCS();
 
         if (pcs)
