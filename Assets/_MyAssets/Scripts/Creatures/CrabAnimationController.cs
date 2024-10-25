@@ -13,10 +13,14 @@ public class CrabAnimationController : EnemyAnimationController<CrabAIController
     [SerializeField] private bool ScanningTarget = false;
     [SerializeField] private bool AttackingTarget = false;
 
-    [Header("Settings")]
+    [SerializeField] private FMODUnity.EventReference shriekSound;
+    [SerializeField] private FMODUnity.EventReference stepSound;
+
+    [Header("Body Settings")]
     [SerializeField] private float BodyHeightAdjustDelay = 0.2f;
-    [SerializeField] private float StandBodyHeight = 30;
-    [SerializeField] private float WalkBodyHeight = 18;
+    [SerializeField] private float StandBodyHeight = 22.5f;
+    [SerializeField] private float WalkBodyHeight = 15;
+    [SerializeField] private float AttackBodyHeight = 10;
     [SerializeField] private float FeetHeight = 3;
     [LineSeparator]
     [SerializeField] private float LArmHeight = -5;
@@ -28,8 +32,6 @@ public class CrabAnimationController : EnemyAnimationController<CrabAIController
     [SerializeField] private Transform LArmTarget;
     [SerializeField] private Transform RArmTarget;
     private Vector3 RightArmDefaultTargetPos;
-
-
     [LineSeparator]
     [SerializeField] private float StepHeight = 6f;
     [SerializeField] private float PatrollingStepForwardPredictionDistance = 10f;
@@ -40,14 +42,20 @@ public class CrabAnimationController : EnemyAnimationController<CrabAIController
     [Tooltip("Crab will look at +- this angle")]
     [SerializeField] private Vector2 TargetScanAngleRange = new(30, 60);
     [SerializeField] private float ScanDelay = 3.5f;
-
     [LineSeparator]
-
-
     [SerializeField] private List<LegTargetHint> LegTargetHints;
     [SerializeField] private LayerMask WalkableLayer;
     [SerializeField] private Ease animationEase = Ease.OutCubic;
-
+    [LineSeparator]
+    [Header("Attack settings")]
+    private Vector3 ArmPosBeforeAttack;
+    private Vector3 ArmPosOnAttackHit;
+    [SerializeField] private Transform AttackStartPos;
+    [SerializeField] private float AttackSetupTime = 1.5f;
+    [SerializeField] private float AttackTime = 0.5f;
+    [SerializeField] [ReadOnly] private float AttackSetupTimer = 0;
+    [SerializeField] [ReadOnly] private float AttackTimer = 0;
+    [SerializeField] [ReadOnly] private float AttackResetTimer = 0;
 
     [System.Serializable]
     protected class LegTargetHint
@@ -125,7 +133,9 @@ public class CrabAnimationController : EnemyAnimationController<CrabAIController
                     lth.LastPosition = lth.TargetHintPositionAdjusted;
 
                     // lth.LegIKTarget.DOKill(true);
-                    lth.Sequence = lth.LegIKTarget.DOJump(lth.LastPosition, StepHeight, 1, Random.Range(stepDurationRange.x, stepDurationRange.y)).SetEase(animationEase);
+                    lth.Sequence = lth.LegIKTarget.DOJump(lth.LastPosition, StepHeight, 1, Random.Range(stepDurationRange.x, stepDurationRange.y))
+                        .SetEase(animationEase)
+                        .OnComplete(() => FMODUnity.RuntimeManager.PlayOneShotAttached(stepSound, this.gameObject));
                 }
             }
         }
@@ -139,17 +149,50 @@ public class CrabAnimationController : EnemyAnimationController<CrabAIController
             else GetNewScanAngle();
         }
 
-        // Lerp right arm if not attacking
+        // Lerp arms
+        LArmTarget.localPosition = new Vector3(LArmTarget.localPosition.x,
+            LArmHeight + Mathf.Sin(Time.time * LArmFreq) * LArmAmplitude,
+            LArmTarget.localPosition.z);
         if (!AttackingTarget)
         {
             RArmTarget.localPosition = new Vector3(RArmTarget.localPosition.x,
                 RArmHeight + Mathf.Sin(Time.time * RArmFreq) * RArmAmplitude,
                 RArmTarget.localPosition.z);
         }
-        else RArmTarget.localPosition = RightArmDefaultTargetPos;
-        LArmTarget.localPosition = new Vector3(LArmTarget.localPosition.x,
-            LArmHeight + Mathf.Sin(Time.time * LArmFreq) * LArmAmplitude,
-            LArmTarget.localPosition.z);
+        else // Play attack animation
+        {
+            RArmTarget.localPosition = RightArmDefaultTargetPos;
+            if(AttackSetupTimer < AttackSetupTime)
+            {
+                RArmTarget.position = Vector3.Lerp(ArmPosBeforeAttack, AttackStartPos.position, AttackSetupTimer / AttackSetupTime);
+                AttackSetupTimer += Time.fixedDeltaTime;
+            }
+            else if(AttackTimer < AttackTime)
+            {
+                RArmTarget.position = Vector3.Lerp(AttackStartPos.position, AIController.GetChaseTarget().position, AttackTimer / AttackTime);
+                AttackTimer += Time.fixedDeltaTime;
+                if(AttackTimer >= AttackTime)
+                {
+                    ArmPosOnAttackHit = RArmTarget.localPosition;
+                    AIController.HitChaseTarget();
+                }
+            }
+            else if (AttackResetTimer < AttackSetupTime)
+            {
+                var destinationPos = new Vector3(RightArmDefaultTargetPos.x,
+                    RArmHeight + Mathf.Sin(Time.time * RArmFreq) * RArmAmplitude,
+                    RightArmDefaultTargetPos.z);
+
+                RArmTarget.localPosition = Vector3.Lerp(ArmPosOnAttackHit, destinationPos, AttackResetTimer / AttackSetupTime);
+                AttackResetTimer += Time.fixedDeltaTime;
+            }
+            else
+            {
+                AIController.SwitchToState(EnemyAIController.State.Patrolling);
+            }
+
+        } 
+
 
     }
 
@@ -186,6 +229,8 @@ public class CrabAnimationController : EnemyAnimationController<CrabAIController
         }
     }
 
+
+
     protected override void OnAIStateChanged(EnemyAIController.State newState)
     {
         switch (newState)
@@ -209,11 +254,16 @@ public class CrabAnimationController : EnemyAnimationController<CrabAIController
                 stepForwardPredictionDistance = ChaseStepForwardPredictionDistance;
                 TargetBodyHeight = WalkBodyHeight;
                 stepDurationRange = ChaseStepDurationRange;
+                FMODUnity.RuntimeManager.PlayOneShotAttached(shriekSound, this.gameObject);
                 break;
             case EnemyAIController.State.Attacking:
                 ScanningTarget = false;
                 AttackingTarget = true;
-                TargetBodyHeight = WalkBodyHeight;
+                AttackSetupTimer = 0;
+                AttackTimer = 0;
+                AttackResetTimer = 0;
+                ArmPosBeforeAttack = RArmTarget.position;
+                TargetBodyHeight = AttackBodyHeight;
                 break;
             case EnemyAIController.State.Searching:
                 AttackingTarget = false;

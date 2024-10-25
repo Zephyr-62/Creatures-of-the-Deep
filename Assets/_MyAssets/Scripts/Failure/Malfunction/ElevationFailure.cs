@@ -34,6 +34,7 @@ public class ElevationFailure : Malfunction
     {
         base.Update();
 
+        if (terrain == null) return;
         var t = terrain.SampleHeight(system.physicsSystem.transform.position);
 
         elevation = system.physicsSystem.transform.position.y - t;

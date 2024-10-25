@@ -8,6 +8,8 @@ using Random = UnityEngine.Random;
 public class EnemyAIController : MonoBehaviour
 {
     public Action<State> OnStateChanged;
+    public Action OnChaseTargetHit;
+
     [SerializeField] [ReadOnly] protected State CurrentState;
     [SerializeField] [ReadOnly] protected Vector3 TargetPosition;
     [SerializeField] [ReadOnly] protected Vector3 MovingDirection;
@@ -98,6 +100,11 @@ public class EnemyAIController : MonoBehaviour
         public float RotationDelay;
     }
 
+    public virtual void HitChaseTarget()
+    {
+        OnChaseTargetHit?.Invoke();
+    }
+
     private void FixedUpdate()
     {
         switch (CurrentState)
@@ -119,9 +126,7 @@ public class EnemyAIController : MonoBehaviour
                 else SwitchToState(State.Searching);
                 break;
             case State.Attacking:
-                // TODO wth do i implement here
                 Debug.Log("Attack!");
-                SwitchToState(State.Chasing);
                 break;
             case State.Searching:
                 if(TryChaseTargetDetection(AggroRange, AggroViewAngle)) SwitchToState(State.Chasing);
@@ -138,6 +143,7 @@ public class EnemyAIController : MonoBehaviour
     [Button("Switch to state")]
     public void SwitchToState(State newState)
     {
+        Debug.Log($"Switch to state {newState} from {CurrentState}");
         switch (newState)
         {
             case State.Idle:
@@ -236,11 +242,13 @@ public class EnemyAIController : MonoBehaviour
         // Check inside view angle
         if (Vector3.Angle(this.transform.forward, (ChaseTarget.position - this.transform.position).normalized) > viewAngle / 2.0f)
             return false;
-        
 
-        if (chaseRequireDirectLineOfSight) // Check if target close enough & in line of sight
+
+        if (targetDir.magnitude > distance) // Check if target close enough
+            return false;
+        if (chaseRequireDirectLineOfSight) // Check if target in line of sight
         {
-            if (!Physics.Raycast(this.transform.position, targetDir.normalized, out RaycastHit hitInfo, distance, ViewObstacleLayerMask))
+            if (!Physics.Raycast(this.transform.position, targetDir.normalized, out RaycastHit hitInfo, distance, ViewObstacleLayerMask, QueryTriggerInteraction.Ignore))
                 return false; 
             if (hitInfo.collider.transform != ChaseTarget)
             {
@@ -248,8 +256,6 @@ public class EnemyAIController : MonoBehaviour
                 return false;
             }
         }
-        else if (targetDir.magnitude > distance) // Check if target close enough
-            return false;
 
         switch (chaseTrigger)
         {
