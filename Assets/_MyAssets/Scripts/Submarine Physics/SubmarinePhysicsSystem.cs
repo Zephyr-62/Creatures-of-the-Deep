@@ -23,7 +23,7 @@ public class SubmarinePhysicsSystem : Measureable
     public float steering => engineEnabled ? Mathf.Clamp(_steeringControl.GetFloatValue(), -limit, limit) : 0f;
     public float pitch => engineEnabled ? Mathf.Clamp(_pitchControl.GetFloatValue(), -limit, limit) : 0f;
     public float elevation => engineEnabled ? Mathf.Clamp(_elevationControl.GetFloatValue(), -limit, limit) : 0f;
-    
+
     [EndColumnArea]
     [SerializeField] private float BuoyancyStrength = 75;
 
@@ -78,6 +78,8 @@ public class SubmarinePhysicsSystem : Measureable
     private Rigidbody rb;
     private bool engineEnabled;
     private float limit = 1f;
+
+    public Rigidbody RB => rb;
 
     private void Start()
     {

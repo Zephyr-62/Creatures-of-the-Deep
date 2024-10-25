@@ -8,9 +8,13 @@ using UnityEngine.UI;
 
 public class FirstPersonCamera : MonoBehaviour
 {
-    [SerializeField] private Vector2 sensitivity;
+    [SerializeField] private Vector2 minSensitivity;
+    [SerializeField] private Vector2 maxSensitivity;
     [SerializeField] private LayerMask mask;
     [SerializeField] private Reticle reticle;
+    [SerializeField] private CanvasGroup blackout;
+    [SerializeField] private Menu menu;
+    [SerializeField] private Slider sensitivitySlider;
     [SerializeField] private float defaultFOV, zoomFOV;
 
     private SubmarineControls controls;
@@ -19,6 +23,8 @@ public class FirstPersonCamera : MonoBehaviour
     private PhysicalControlSurface pcs;
     private Vector3 point;
     private Vector2 rotation;
+    private bool paused;
+
 
     private void Awake()
     {
@@ -33,12 +39,20 @@ public class FirstPersonCamera : MonoBehaviour
         controls.InGame.Zoom.performed += HandleZoomInput;
         controls.InGame.Zoom.canceled += HandleZoomInput;
 
+        controls.InGame.Pause.performed += HandlePauseInput;
+
         controls.Enable();
 
         attachedCamera = GetComponent<Camera>();
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    private void OnEnable()
+    {
+        blackout.alpha = 1f;
+        blackout.DOFade(0f, 3f);
     }
 
     private void HandleFirstPersonCameraInput(InputAction.CallbackContext context)
@@ -48,7 +62,7 @@ public class FirstPersonCamera : MonoBehaviour
 
     private void HandleGrabInput(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && !paused)
         {
             if (pcs)
             {
@@ -70,6 +84,23 @@ public class FirstPersonCamera : MonoBehaviour
         else
         {
             attachedCamera.DOFieldOfView(defaultFOV, 0.1f);
+        }
+    }
+
+    private void HandlePauseInput(InputAction.CallbackContext context)
+    {
+        paused = !paused;
+        if (paused)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+            menu.ToggeMenu(true);
+            
+        } else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            menu.ToggeMenu(false);
         }
     }
 
@@ -101,8 +132,10 @@ public class FirstPersonCamera : MonoBehaviour
             reticle.Set(Reticle.Mode.Normal);
         }
 
-        rotation.x += input.x * sensitivity.x * Time.deltaTime;
-        rotation.y += input.y * sensitivity.y * Time.deltaTime;
+        var sens = Vector3.Lerp(minSensitivity, maxSensitivity, sensitivitySlider.value);
+
+        rotation.x += input.x * sens.x * Time.deltaTime;
+        rotation.y += input.y * sens.y * Time.deltaTime;
         rotation.y = Mathf.Clamp(rotation.y, -80, 80);
         var xQuat = Quaternion.AngleAxis(rotation.x, Vector3.up);
         var yQuat = Quaternion.AngleAxis(rotation.y, Vector3.left);
@@ -129,5 +162,10 @@ public class FirstPersonCamera : MonoBehaviour
     public Ray GetRay()
     {
         return new Ray(attachedCamera.transform.position, attachedCamera.transform.forward);
+    }
+
+    public void Blackout()
+    {
+        blackout.DOFade(1f, 10f);
     }
 }

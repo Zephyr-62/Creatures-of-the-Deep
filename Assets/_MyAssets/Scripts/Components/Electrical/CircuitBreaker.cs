@@ -31,4 +31,10 @@ public class CircuitBreaker : Measureable
     {
         return ElectricalDevice.TotalSurge() > surgeCap;
     }
+
+    public void Break()
+    {
+        pcs.SetBoolValue(false);
+        pcs.Block();
+    }
 }

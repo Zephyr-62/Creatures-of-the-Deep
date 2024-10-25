@@ -14,6 +14,7 @@ public class QuestSystem : MonoBehaviour
     [SerializeField] public ArtefactSystem artefactSystem;
     [SerializeField] public Fax fax;
     [SerializeField] public RaycastingSubmarine sonar;
+    [SerializeField] public MalfunctionSystem malfunctionSystem;
 
     [SerializeField] public UnityEvent questStarted;
     [SerializeField] public UnityEvent questCompleted;
@@ -24,6 +25,7 @@ public class QuestSystem : MonoBehaviour
     {
         newQuestButton.onValueChanged.AddListener(StartNewQuest);
         completeQuestButton.onValueChanged.AddListener(CompleteQuest);
+        last = Time.time;
     }
 
     private void OnDisable()

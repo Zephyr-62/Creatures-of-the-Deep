@@ -24,6 +24,33 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-8156772014565782485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Creatures/Crab/Step
+  m_EditorClassIdentifier: 
+  Path: event:/Creatures/Crab/Step
+  Guid:
+    Data1: 1891108277
+    Data2: 1149149457
+    Data3: 417537176
+    Data4: 1415989037
+  Banks:
+  - {fileID: -3412374948495567671}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 1800
+  Length: 500
 --- !u!114 &-6497010165646932629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,10 +195,10 @@ MonoBehaviour:
   Path: Assets/_MyAssets/Audio/main_fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638651555930605670
+  lastModified: 638654620257151317
   FileSizes:
   - Name: Desktop
-    Value: 3383616
+    Value: 3638112
   Exists: 1
 --- !u!114 &-3170323082403319442
 MonoBehaviour:
@@ -309,6 +336,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 26993
+--- !u!114 &-410921777581901952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Creatures/Crab/Shriek
+  m_EditorClassIdentifier: 
+  Path: event:/Creatures/Crab/Shriek
+  Guid:
+    Data1: -600880143
+    Data2: 1078104382
+    Data3: -1598240881
+    Data4: -1703792293
+  Banks:
+  - {fileID: -3412374948495567671}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 1000
+  Length: 2050
 --- !u!114 &-315758287116454358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,12 +454,14 @@ MonoBehaviour:
   - {fileID: 4069511354846223289}
   - {fileID: -549673227023441186}
   - {fileID: 3742339544018404683}
+  - {fileID: -410921777581901952}
+  - {fileID: -8156772014565782485}
   EditorParameters: []
   MasterBanks:
   - {fileID: -3412374948495567671}
   StringsBanks:
   - {fileID: 3561581469223207880}
-  cacheTime: 638651555930660658
+  cacheTime: 638654620257216527
   cacheVersion: 131619
 --- !u!114 &595240047088548061
 MonoBehaviour:
@@ -551,10 +607,10 @@ MonoBehaviour:
   Path: Assets/_MyAssets/Audio/main_fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638651555930660658
+  lastModified: 638654620257216527
   FileSizes:
   - Name: Desktop
-    Value: 1910
+    Value: 2020
   Exists: 1
 --- !u!114 &3742339544018404683
 MonoBehaviour:
