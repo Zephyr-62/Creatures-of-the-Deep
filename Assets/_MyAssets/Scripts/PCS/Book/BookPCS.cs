@@ -60,9 +60,9 @@ public class BookPCS : PhysicalControlSurface
         }
     }
 
-    internal override void Release()
+    internal override void Release(bool fireEvent = true)
     {
-        base.Release();
+        base.Release(fireEvent);
         if (book.IsDraggingPage && !book.IsTurningPages)
         {
             book.TurnPageDragStop(1, PageTurnCompleted, reverse: reversePageIfNotMidway ? (book.TurnPageDragNormalizedTime < 0.5f) : false);
@@ -113,10 +113,10 @@ public class BookPCS : PhysicalControlSurface
         }
     }
 
-    internal override void Grab(FirstPersonCamera firstPersonCamera, Vector3 grabPoint)
+    internal override void Grab(FirstPersonCamera firstPersonCamera, Vector3 grabPoint, bool fireEvent = true)
     {
         _grabPoint = grabPoint;
-        base.Grab(firstPersonCamera, grabPoint);
+        base.Grab(firstPersonCamera, grabPoint, fireEvent);
         if (book.IsTurningPages || book.IsDraggingPage)
         {
             // exit if already turning
@@ -227,5 +227,12 @@ public class BookPCS : PhysicalControlSurface
         //isTurning = false;
     }
 
+    public override float Get01FloatValue()
+    {
+        return 0;
+    }
 
+    public override void Set01FloatValue(float value)
+    {
+    }
 }

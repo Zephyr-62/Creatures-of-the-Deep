@@ -124,7 +124,8 @@ public class Bookshelf : MonoBehaviour
 
         await Bookholder.ChangeToState(BookholderAnimator.ClawState.BookDisplay);
 
-        book.SetState(EndlessBook.StateEnum.OpenMiddle, animationTime: 0);
+        // book.SetState(EndlessBook.StateEnum.OpenMiddle, animationTime: 0);
+        book.GetComponent<BookPCS>().Unblock();
     }
 
     async private Task ReturnBook(bool triggerCollapse=false)
@@ -136,10 +137,14 @@ public class Bookshelf : MonoBehaviour
         }
 
         Bookholder.SetTargetBookSlot(BookSlots[CurrentBookId].slot);
-        await Bookholder.DOTweenToBookSlot();
 
         var bookSlot = BookSlots[CurrentBookId];
         var book = bookSlot.book;
+        book.GetComponent<BookPCS>().Block();
+
+        await Bookholder.DOTweenToBookSlot();
+
+
         book.SetState(EndlessBook.StateEnum.ClosedFront, animationTime: 0);
 
         // Reparent book while claw interacts
