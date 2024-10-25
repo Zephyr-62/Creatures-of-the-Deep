@@ -8,10 +8,13 @@ using UnityEngine.UI;
 
 public class FirstPersonCamera : MonoBehaviour
 {
-    [SerializeField] private Vector2 sensitivity;
+    [SerializeField] private Vector2 minSensitivity;
+    [SerializeField] private Vector2 maxSensitivity;
     [SerializeField] private LayerMask mask;
     [SerializeField] private Reticle reticle;
-    [SerializeField] private Image blackoutImage;
+    [SerializeField] private CanvasGroup blackout;
+    [SerializeField] private CanvasGroup menu;
+    [SerializeField] private Slider sensitivitySlider;
     [SerializeField] private float defaultFOV, zoomFOV;
 
     private SubmarineControls controls;
@@ -20,6 +23,8 @@ public class FirstPersonCamera : MonoBehaviour
     private PhysicalControlSurface pcs;
     private Vector3 point;
     private Vector2 rotation;
+    private bool paused;
+
 
     private void Awake()
     {
@@ -33,6 +38,8 @@ public class FirstPersonCamera : MonoBehaviour
 
         controls.InGame.Zoom.performed += HandleZoomInput;
         controls.InGame.Zoom.canceled += HandleZoomInput;
+
+        controls.InGame.Pause.performed += HandlePauseInput;
 
         controls.Enable();
 
@@ -74,6 +81,24 @@ public class FirstPersonCamera : MonoBehaviour
         }
     }
 
+    private void HandlePauseInput(InputAction.CallbackContext context)
+    {
+        paused = !paused;
+        if (paused)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+            menu.DOKill();
+            menu.DOFade(1f, 0.5f);
+        } else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            menu.DOKill();
+            menu.DOFade(0f, 0.5f);
+        }
+    }
+
     public void ForceRelease()
     {
         if (pcs != null)
@@ -85,6 +110,9 @@ public class FirstPersonCamera : MonoBehaviour
 
     private void Update()
     {
+        
+
+
         CheckForPCS();
 
         if (pcs)
@@ -102,8 +130,10 @@ public class FirstPersonCamera : MonoBehaviour
             reticle.Set(Reticle.Mode.Normal);
         }
 
-        rotation.x += input.x * sensitivity.x * Time.deltaTime;
-        rotation.y += input.y * sensitivity.y * Time.deltaTime;
+        var sens = Vector3.Lerp(minSensitivity, maxSensitivity, sensitivitySlider.value);
+
+        rotation.x += input.x * sens.x * Time.deltaTime;
+        rotation.y += input.y * sens.y * Time.deltaTime;
         rotation.y = Mathf.Clamp(rotation.y, -80, 80);
         var xQuat = Quaternion.AngleAxis(rotation.x, Vector3.up);
         var yQuat = Quaternion.AngleAxis(rotation.y, Vector3.left);
@@ -134,6 +164,6 @@ public class FirstPersonCamera : MonoBehaviour
 
     public void Blackout()
     {
-        blackoutImage.DOFade(1f, 10f);
+        blackout.DOFade(1f, 10f);
     }
 }
