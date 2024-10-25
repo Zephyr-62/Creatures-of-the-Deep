@@ -16,6 +16,10 @@ public class Lightbulb : ElectricalDevice
     private float intensity;
     private float initialIntensity;
     private Tween tween;
+    private bool state;
+
+    private static int count;
+    public static bool anyLight => count > 0;
 
     private void Start()
     {
@@ -33,6 +37,12 @@ public class Lightbulb : ElectricalDevice
     {
         if (!isPowered) return;
 
+        if (state != true)
+        {
+            state = true;
+            count++;
+        }
+
         if (renderer)
         {
             renderer.material.DOKill();
@@ -48,7 +58,13 @@ public class Lightbulb : ElectricalDevice
 
     public void TurnOff()
     {
+        if(state != false)
+        {
+            state = false;
+            count--;
+        }
 
+       
         if (renderer)
         {
             renderer.material.DOKill();

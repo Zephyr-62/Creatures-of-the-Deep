@@ -12,8 +12,13 @@ public class RaycastingSubmarine : ElectricalDevice
 
     [SerializeField] private GameObject _submarine;
     [SerializeField] private LayerMask _layerMask;
-    [SerializeField] private float _distance;
+    [SerializeField] private float _minDistance;
+    [SerializeField] private float _maxDistance;
     [SerializeField] private float _angleStep;
+    [SerializeField, Range(0, 1)] private float zoom;
+    [SerializeField] private PhysicalControlSurface pcs;
+
+    private float _distance;
 
     //public ComputeShader computeShader;
     public RenderTexture sonar1;
@@ -59,8 +64,8 @@ public class RaycastingSubmarine : ElectricalDevice
             _raycasting = true;
             StartCorountine(Raycasting)
         }*/
-       
-
+        if(pcs) zoom = pcs.Get01FloatValue();
+        _distance = Mathf.Lerp(_minDistance, _maxDistance, zoom);
 
         _angle += _angleStep * Time.deltaTime;
         if (_angle >= 360) _angle = 0;
