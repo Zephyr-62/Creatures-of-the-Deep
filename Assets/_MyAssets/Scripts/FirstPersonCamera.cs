@@ -11,6 +11,7 @@ public class FirstPersonCamera : MonoBehaviour
     [SerializeField] private Vector2 sensitivity;
     [SerializeField] private LayerMask mask;
     [SerializeField] private Reticle reticle;
+    [SerializeField] private Image blackoutImage;
     [SerializeField] private float defaultFOV, zoomFOV;
 
     private SubmarineControls controls;
@@ -129,5 +130,10 @@ public class FirstPersonCamera : MonoBehaviour
     public Ray GetRay()
     {
         return new Ray(attachedCamera.transform.position, attachedCamera.transform.forward);
+    }
+
+    public void Blackout()
+    {
+        blackoutImage.DOFade(1f, 10f);
     }
 }
