@@ -755,16 +755,51 @@
 				{
                     // turn dragging was not successful
                     isDraggingPage = false;
+                    if (currentState == StateEnum.OpenMiddle)
+                    {
+                        
+                        SetState(StateEnum.OpenBack);
+                    }
+                    else if (currentState == StateEnum.OpenBack)
+                    {
+                        SetState(StateEnum.ClosedBack);
+                    }
 					return false;
 				}
 
-				// get the book's left and right page numbers
-				bookLeftPage = LeftPageNumber(currentPageNumber);
-				bookRightPage = RightPageNumber(currentPageNumber + 2);
+                if (currentState == StateEnum.ClosedFront)
+                {
+                    isDraggingPage = false;
+                    SetState(StateEnum.OpenFront);
+                }
+                else if (currentState == StateEnum.OpenFront)
+                {
+                    isDraggingPage = false;
+                    SetState(StateEnum.OpenMiddle);
+                }
+                else
+                {
+                    // get the book's left and right page numbers
+                    bookLeftPage = LeftPageNumber(currentPageNumber);
+                    bookRightPage = RightPageNumber(currentPageNumber + 2);
+                    
+                    // get the turning page's front and back page numbers
+                    pageFrontPage = RightPageNumber(currentPageNumber);
+                    pageBackPage = LeftPageNumber(currentPageNumber + 2);
+                    
+                    // set the materials of the book's pages
+                    SetMaterial(MaterialEnum.BookPageLeft, GetPageMaterial(bookLeftPage));
+                    SetMaterial(MaterialEnum.BookPageRight, GetPageMaterial(bookRightPage));
 
-				// get the turning page's front and back page numbers
-				pageFrontPage = RightPageNumber(currentPageNumber);
-				pageBackPage = LeftPageNumber(currentPageNumber + 2);
+                    // activate a turning page and tell it to begin turning with zero speed
+                    pages[0].gameObject.SetActive(true);
+                    pages[0].pageTurnCompleted = null;
+                    pages[0].Turn(direction, 0,	GetPageMaterial(pageFrontPage), GetPageMaterial(pageBackPage));
+
+                    // turn dragging was successful
+                    return true;
+                }
+				
 			}
 			else
 			{
@@ -773,30 +808,55 @@
 				{
                     // turn dragging was not successful
                     isDraggingPage = false;
+                    if (currentState == StateEnum.OpenMiddle)
+                    {
+                        
+                        SetState(StateEnum.OpenFront);
+                    }
+                    else if (currentState == StateEnum.OpenFront)
+                    {
+                        SetState(StateEnum.ClosedFront);
+                    }
                     return false;
 				}
+                
+                if (currentState == StateEnum.ClosedBack)
+                {
+                    isDraggingPage = false;
+                    SetState(StateEnum.OpenBack);
+                }
+                else if (currentState == StateEnum.OpenBack)
+                {
+                    isDraggingPage = false;
+                    SetState(StateEnum.OpenMiddle);
+                }
+                else
+                {
+                    
+                    // get the book's left and right page numbers
+                    bookLeftPage = LeftPageNumber(currentPageNumber - 2);
+                    bookRightPage = RightPageNumber(currentPageNumber);
 
-				// get the book's left and right page numbers
-				bookLeftPage = LeftPageNumber(currentPageNumber - 2);
-				bookRightPage = RightPageNumber(currentPageNumber);
+                    // get the turning page's front and back page numbers
+                    pageFrontPage = RightPageNumber(currentPageNumber - 2);
+                    pageBackPage = LeftPageNumber(currentPageNumber);
+                    
+                    // set the materials of the book's pages
+                    SetMaterial(MaterialEnum.BookPageLeft, GetPageMaterial(bookLeftPage));
+                    SetMaterial(MaterialEnum.BookPageRight, GetPageMaterial(bookRightPage));
 
-				// get the turning page's front and back page numbers
-				pageFrontPage = RightPageNumber(currentPageNumber - 2);
-				pageBackPage = LeftPageNumber(currentPageNumber);
+                    // activate a turning page and tell it to begin turning with zero speed
+                    pages[0].gameObject.SetActive(true);
+                    pages[0].pageTurnCompleted = null;
+                    pages[0].Turn(direction, 0,	GetPageMaterial(pageFrontPage), GetPageMaterial(pageBackPage));
+
+                    // turn dragging was successful
+                    return true;
+                }
 			}
 
-			// set the materials of the book's pages
-			SetMaterial(MaterialEnum.BookPageLeft, GetPageMaterial(bookLeftPage));
-            SetMaterial(MaterialEnum.BookPageRight, GetPageMaterial(bookRightPage));
-
-			// activate a turning page and tell it to begin turning with zero speed
-			pages[0].gameObject.SetActive(true);
-			pages[0].pageTurnCompleted = null;
-			pages[0].Turn(direction, 0,	GetPageMaterial(pageFrontPage), GetPageMaterial(pageBackPage));
-
-			// turn dragging was successful
-			return true;
-		}
+            return false;
+        }
 
         /// <summary>
         /// This drags the page manually. Only call this after calling TurnPageDragStart

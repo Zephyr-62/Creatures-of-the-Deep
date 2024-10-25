@@ -23,12 +23,13 @@ public abstract class PhysicalControlSurface : Measureable
     protected FirstPersonCamera FirstPersonCamera => firstPersonCamera;
 
     protected bool blocked = false;
-    protected Vector3 grabPoint;
+    protected Vector3 grabPoint => transform.TransformPoint(_grabPoint);
+    private Vector3 _grabPoint;
 
     internal virtual void Grab(FirstPersonCamera firstPersonCamera, Vector3 grabPoint, bool fireEvent = true)
     {
         this.firstPersonCamera = firstPersonCamera;
-        this.grabPoint = grabPoint;
+        this._grabPoint = grabPoint;
         if(fireEvent) onGrabbed.Invoke();
     }
 
