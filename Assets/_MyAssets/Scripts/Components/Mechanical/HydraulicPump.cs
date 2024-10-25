@@ -11,6 +11,7 @@ public class HydraulicPump : Measureable
 
     [SerializeField] private Valve root;
     [SerializeField] private RouterIndicator indicator;
+    [SerializeField] private MalfunctionSystem malfunctionSystem;
 
 
     public UnityEvent<PhysicalControlSurface> OnVent;
@@ -71,7 +72,6 @@ public class HydraulicPump : Measureable
     private void Vent(PhysicalControlSurface pcs)
     {
         if (!pcs) return;
-        Debug.Log("Vented: " + pcs.name);
         if (pcs.isBlocked)
         {
             OnVent.Invoke(pcs);
@@ -79,6 +79,10 @@ public class HydraulicPump : Measureable
         else
         {
             OnDecompress.Invoke(pcs);
+            if(UnityEngine.Random.Range(0, 100) > 95)
+            {
+                malfunctionSystem.Failure(malfunctionSystem.engineFailure);
+            }
         }
     }
 

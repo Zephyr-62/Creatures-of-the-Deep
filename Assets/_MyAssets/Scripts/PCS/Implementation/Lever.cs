@@ -100,31 +100,39 @@ public class Lever : PhysicalControlSurface
         }
     }
 
-    private void AdjustToAngle(float angle)
+    private void AdjustToAngle(float angle, bool skip = false)
     {
-        angle = Mathf.Clamp(angle, currentMinAngle, currentMaxAngle);
-
-        var delta = Mathf.DeltaAngle(targetAngle, angle);
-
-        var v = Mathf.Clamp(delta, -speed * Time.deltaTime, speed * Time.deltaTime);
-
-        instance.setParameterByName(parameter, Mathf.Abs((v / Time.deltaTime) / speed));
-
-        targetAngle = targetAngle + v;
-
-        var a  = Mathf.Clamp(targetAngle, currentMinAngle, currentMaxAngle);
-        if(a != clampedAngle)
+        if (skip)
         {
-            if (a == currentMaxAngle)
+            clampedAngle = Mathf.Clamp(targetAngle, currentMinAngle, currentMaxAngle);
+        } else
+        {
+            angle = Mathf.Clamp(angle, currentMinAngle, currentMaxAngle);
+
+            var delta = Mathf.DeltaAngle(targetAngle, angle);
+
+            var v = Mathf.Clamp(delta, -speed * Time.deltaTime, speed * Time.deltaTime);
+
+            instance.setParameterByName(parameter, Mathf.Abs((v / Time.deltaTime) / speed));
+
+            targetAngle = targetAngle + v;
+
+            var a = Mathf.Clamp(targetAngle, currentMinAngle, currentMaxAngle);
+            if (a != clampedAngle)
             {
-                onValueChangedToMax.Invoke();
+                if (a == currentMaxAngle)
+                {
+                    onValueChangedToMax.Invoke();
+                }
+                if (a == currentMinAngle)
+                {
+                    onValueChangedToMin.Invoke();
+                }
             }
-            if (a == currentMinAngle)
-            {
-                onValueChangedToMin.Invoke();
-            }
+            clampedAngle = a;
         }
-        clampedAngle = a;
+
+        
 
         rotatePoint.localRotation = Quaternion.AngleAxis(clampedAngle, Vector3.right);
     }
@@ -132,7 +140,7 @@ public class Lever : PhysicalControlSurface
     private void AdjustToValue(float value)
     {
         this.value = value;
-        AdjustToAngle(Mathf.Lerp(minAngle, maxAngle, Mathf.InverseLerp(min, max, this.value)));
+        AdjustToAngle(Mathf.Lerp(minAngle, maxAngle, Mathf.InverseLerp(min, max, this.value)), true);
     }
 
     public override float GetFloatValue()
