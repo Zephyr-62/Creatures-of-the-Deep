@@ -34,7 +34,7 @@ public class ElevationFailure : Malfunction
     {
         base.Update();
 
-        var t = terrain.SampleHeight(system.physicsSystem.transform.position);
+        var t = getHeight(system.physicsSystem.transform.position);
 
         elevation = system.physicsSystem.transform.position.y - t;
 
@@ -42,5 +42,30 @@ public class ElevationFailure : Malfunction
         {
             system.Failure(this);
         }
+    }
+
+    private float getHeight(Vector3 pos)
+    {
+        foreach (var terrain in Terrain.activeTerrains)
+        {
+            if (IsPointInTerrain(pos, terrain))
+            {
+                return terrain.SampleHeight(pos);
+            }
+        }
+        return 0;
+    }
+
+    public bool IsPointInTerrain(Vector3 point, Terrain terrain)
+    {
+        Vector3 terrainPosition = terrain.transform.position;
+        TerrainData terrainData = terrain.terrainData;
+        float terrainWidth = terrainData.size.x;
+        float terrainLength = terrainData.size.z;
+
+        bool withinXBounds = point.x >= terrainPosition.x && point.x <= terrainPosition.x + terrainWidth;
+        bool withinZBounds = point.z >= terrainPosition.z && point.z <= terrainPosition.z + terrainLength;
+
+        return withinXBounds && withinZBounds;
     }
 }

@@ -11,5 +11,7 @@ public class MalfunctionTrigger : MonoBehaviour
     {
         EngineCutoff,
         ElevationFailure,
+        SonarVoltage,
+        ScreenVoltage
     }
 }

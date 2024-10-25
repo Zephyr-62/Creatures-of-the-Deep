@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 public class HeightIndicator : MonoBehaviour
 {
     [SerializeField] private float height;
 
+#if UNITY_EDITOR
 
     private void OnDrawGizmos()
     {
@@ -53,4 +56,5 @@ public class HeightIndicator : MonoBehaviour
 
         return withinXBounds && withinZBounds;
     }
+#endif
 }
