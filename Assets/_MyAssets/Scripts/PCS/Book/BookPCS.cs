@@ -12,9 +12,8 @@ using UnityEngine.Serialization;
 public class BookPCS : PhysicalControlSurface
 {
     public EndlessBook book;
-    public float turnspeed;
+    public bool reversePageIfNotMidway = true;
 
-    public float turnStopSpeed;
     [Header("Values")]
     [FormerlySerializedAs("value"), SerializeField] private bool _value;
     [Header("Moving parts")]
@@ -29,11 +28,15 @@ public class BookPCS : PhysicalControlSurface
     [SerializeField] private UnityEvent onSwitchedOn;
     [SerializeField] private UnityEvent onSwitchedOff;
 
+    
     private Vector3 point;
     private Vector3 dir;
     private float targetAngle;
     private float clampedAngle;
     private bool old;
+    private Vector3 _grabPoint;
+
+    private bool turnForward;
 
     public bool value
     {
@@ -59,7 +62,11 @@ public class BookPCS : PhysicalControlSurface
 
     internal override void Release(bool fireEvent = true)
     {
-        base.Release();
+        base.Release(fireEvent);
+        if (book.IsDraggingPage && !book.IsTurningPages)
+        {
+            book.TurnPageDragStop(1, PageTurnCompleted, reverse: reversePageIfNotMidway ? (book.TurnPageDragNormalizedTime < 0.5f) : false);
+        }
     }
 
     public override void HandleInput()
@@ -69,7 +76,7 @@ public class BookPCS : PhysicalControlSurface
             // exit if already turning
             return;
         }
-        var plane = new Plane(transform.forward, transform.position);
+        var plane = new Plane(transform.forward, _grabPoint);
         var ray = FirstPersonCamera.GetRay();
 
         if (plane.Raycast(ray, out var e))
@@ -78,31 +85,98 @@ public class BookPCS : PhysicalControlSurface
             dir = point - rotatePoint.position;
 
             var angle = Vector3.SignedAngle(Vector3.up, transform.InverseTransformDirection(dir), Vector3.forward);
-            var dirPage = Page.TurnDirectionEnum.TurnForward;
-            if (angle > 0)
+            if (angle < minAngle)
             {
-                dirPage = Page.TurnDirectionEnum.TurnForward;
+                var adjustAngle = angle + minAngle;
+                angle = minAngle + adjustAngle;
             }
-            else
+            else if (angle > maxAngle)
             {
-                dirPage = Page.TurnDirectionEnum.TurnBackward;
+                var adjustAngle = angle - maxAngle;
+                angle = maxAngle - adjustAngle;
             }
-            book.TurnPageDragStart(dirPage);
-            //book.TurnPageDrag(0.1f);
-            book.TurnPageDragStop(turnStopSpeed, PageTurnCompleted, false);
-            //this.value = angle >= switchAngle;
+            if(dir.magnitude > range)
+            {
+                FirstPersonCamera.ForceRelease();
+                return;
+            }
+            
+            clampedAngle = Mathf.Clamp(angle, minAngle, maxAngle);
 
-            //AdjustToAngle(angle);
+            var turningTime = Mathf.InverseLerp(minAngle, maxAngle, clampedAngle);
+            if (book.CurrentState == EndlessBook.StateEnum.OpenMiddle)
+            {
+                book.TurnPageDrag(1 - turningTime);
+                
+            }
 
         }
     }
-    
+
+    internal override void Grab(FirstPersonCamera firstPersonCamera, Vector3 grabPoint, bool fireEvent = true)
+    {
+        _grabPoint = grabPoint;
+        base.Grab(firstPersonCamera, grabPoint, fireEvent);
+        if (book.IsTurningPages || book.IsDraggingPage)
+        {
+            // exit if already turning
+            return;
+        }
+        var plane = new Plane(transform.forward, _grabPoint);
+        var ray = FirstPersonCamera.GetRay();
+
+        if (plane.Raycast(ray, out var e))
+        {
+            point = ray.GetPoint(e);
+            dir = point - rotatePoint.position;
+
+            var angle = Vector3.SignedAngle(Vector3.up, transform.InverseTransformDirection(dir), Vector3.forward);
+            if (angle < 0)
+            {
+                book.TurnPageDragStart(Page.TurnDirectionEnum.TurnForward);
+            }
+            else
+            {
+                book.TurnPageDragStart(Page.TurnDirectionEnum.TurnBackward);
+            }
+
+
+        }
+    }
     private void AdjustToValue(bool value, bool skipAnimation = false)
     {
-        //this.value = value;
-        //AdjustToAngle(this.value ? maxAngle : minAngle, skipAnimation);
+        this.value = value;
+        AdjustToAngle(this.value ? maxAngle : minAngle, skipAnimation);
     }
-    
+    private void AdjustToAngle(float angle, bool skipAnimation = false)
+    {
+        if (blocked) return;
+
+        targetAngle = angle;
+        clampedAngle = Mathf.Clamp(targetAngle, minAngle, maxAngle);
+
+        if(clampedAngle > switchAngle && value != old)
+        {
+            Rotate(maxAngle, skipAnimation);
+        }
+        else if (clampedAngle < switchAngle && value != old)
+        {
+            Rotate(minAngle, skipAnimation);
+        }
+    }
+
+    private void Rotate(float angle, bool skipAnimation = false)
+    {
+        if (skipAnimation)
+        {
+            rotatePoint.localRotation = Quaternion.AngleAxis(angle, Vector3.right);
+        }
+        else
+        {
+            rotatePoint.DOKill();
+            rotatePoint.DOLocalRotate(new Vector3(angle, 0, 0), animationDuration).SetEase(animationEase);
+        }
+    }
     
     public override float GetFloatValue()
     {
@@ -155,11 +229,10 @@ public class BookPCS : PhysicalControlSurface
 
     public override float Get01FloatValue()
     {
-        return value ? 1f : 0f;
+        return 0;
     }
 
     public override void Set01FloatValue(float value)
     {
-        AdjustToValue(_value);
     }
 }
