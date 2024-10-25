@@ -51,11 +51,6 @@ public class NVBoids : MonoBehaviour
     public float dangerSoaring = 0.5f;
     public LayerMask dangerLayer;
 
-    [Header("Avoidance Settings")]
-    public LayerMask avoidanceLayer; // LayerMask for colliders to avoid
-    public float avoidanceRadius = 5.0f; // Radius to check for nearby colliders
-
-
     [Header("Information")] // These variables are only information.
     public string HelpURL = "nvjob.github.io/unity/nvjob-boids";
     public string ReportAProblem = "nvjob.github.io/support";
@@ -135,42 +130,18 @@ public class NVBoids : MonoBehaviour
         float soaringCur = soaring * dangerSoaring * deltaTime;
 
         //--------------
-        //for (int b = 0; b < birdsNum; b++)
-        //{
-        //    if (birdsSpeedCur[b] != birdsSpeed[b]) birdsSpeedCur[b] = Mathf.SmoothDamp(birdsSpeedCur[b], birdsSpeed[b], ref spVelocity[b], 0.5f);
-        //    birdsTransform[b].Translate(translateCur * birdsSpeed[b]);
-        //    Vector3 tpCh = flocksTransform[curentFlock[b]].position + rdTargetPos[b] + verticalWaweCur - birdsTransform[b].position;
-        //    Quaternion rotationCur = Quaternion.LookRotation(Vector3.RotateTowards(birdsTransform[b].forward, tpCh, soaringCur, 0));
-        //    if (rotationClamp == false) birdsTransform[b].rotation = rotationCur;
-        //    else birdsTransform[b].localRotation = BirdsRotationClamp(rotationCur, rotationClampValue);
-        //}
-        //--------------
+
         for (int b = 0; b < birdsNum; b++)
         {
-            if (birdsSpeedCur[b] != birdsSpeed[b])
-                birdsSpeedCur[b] = Mathf.SmoothDamp(birdsSpeedCur[b], birdsSpeed[b], ref spVelocity[b], 0.5f);
-
-            // Avoidance Logic
-            Vector3 avoidanceForce = Vector3.zero;
-            Collider[] hitColliders = Physics.OverlapSphere(birdsTransform[b].position, avoidanceRadius, avoidanceLayer);
-            foreach (var hitCollider in hitColliders)
-            {
-                Vector3 directionAway = birdsTransform[b].position - hitCollider.ClosestPoint(birdsTransform[b].position);
-                avoidanceForce += directionAway.normalized / directionAway.magnitude; // Inverse distance weighting
-            }
-            avoidanceForce.Normalize();
-
-            // Move the bird
-            birdsTransform[b].Translate((translateCur + avoidanceForce) * birdsSpeed[b]);
+            if (birdsSpeedCur[b] != birdsSpeed[b]) birdsSpeedCur[b] = Mathf.SmoothDamp(birdsSpeedCur[b], birdsSpeed[b], ref spVelocity[b], 0.5f);
+            birdsTransform[b].Translate(translateCur * birdsSpeed[b]);
             Vector3 tpCh = flocksTransform[curentFlock[b]].position + rdTargetPos[b] + verticalWaweCur - birdsTransform[b].position;
             Quaternion rotationCur = Quaternion.LookRotation(Vector3.RotateTowards(birdsTransform[b].forward, tpCh, soaringCur, 0));
-            if (rotationClamp == false)
-                birdsTransform[b].rotation = rotationCur;
-            else
-                birdsTransform[b].localRotation = BirdsRotationClamp(rotationCur, rotationClampValue);
+            if (rotationClamp == false) birdsTransform[b].rotation = rotationCur;
+            else birdsTransform[b].localRotation = BirdsRotationClamp(rotationCur, rotationClampValue);
         }
-        //--------------
 
+        //--------------
     }
 
 
@@ -281,7 +252,9 @@ public class NVBoids : MonoBehaviour
         //--------------
     }
 
+
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
     void CreateBird()
     {
@@ -293,10 +266,9 @@ public class NVBoids : MonoBehaviour
         rdTargetPos = new Vector3[birdsNum];
         spVelocity = new float[birdsNum];
 
-         for (int b = 0; b < birdsNum; b++)
+        for (int b = 0; b < birdsNum; b++)
         {
             birdsTransform[b] = Instantiate(birdPref, thisTransform).transform;
-
             Vector3 lpv = Random.insideUnitSphere * fragmentedBirds;
             birdsTransform[b].localPosition = rdTargetPos[b] = new Vector3(lpv.x, lpv.y * fragmentedBirdsYLimit, lpv.z);
             birdsTransform[b].localScale = Vector3.one * Random.Range(scaleRandom.x, scaleRandom.y);
@@ -310,7 +282,6 @@ public class NVBoids : MonoBehaviour
 
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 
     static Quaternion BirdsRotationClamp(Quaternion rotationCur, float rotationClampValue)
