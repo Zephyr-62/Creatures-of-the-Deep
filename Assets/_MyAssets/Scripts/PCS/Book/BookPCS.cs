@@ -101,7 +101,6 @@ public class BookPCS : PhysicalControlSurface
         {
             point = ray.GetPoint(e);
             dir = point - rotatePoint.position;
-            Debug.Log("DOING THIS");
             var angle = Vector3.SignedAngle(Vector3.up, transform.InverseTransformDirection(dir), Vector3.forward);
             if (angle < 0)
             {
