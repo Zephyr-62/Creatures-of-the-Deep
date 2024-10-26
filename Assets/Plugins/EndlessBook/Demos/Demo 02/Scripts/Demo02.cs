@@ -115,6 +115,9 @@
             // turn off all the mini-scenes since no pages are visible
             TurnOffAllPageViews();
 
+            book.SetState(EndlessBook.StateEnum.ClosedFront,
+               animationTime: 1f, null,false
+            );
             // set up touch pad handlers
             touchPad.touchDownDetected = TouchPadTouchDownDetected;
             touchPad.touchUpDetected = TouchPadTouchUpDetected;
