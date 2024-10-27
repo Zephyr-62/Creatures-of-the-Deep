@@ -131,6 +131,7 @@ public class HandCrank : PhysicalControlSurface
                 }
             }
             clampedAngle = a;
+            targetAngle = clampedAngle;
         }
 
         rotatePoint.localRotation = Quaternion.AngleAxis(clampedAngle, Vector3.up);
