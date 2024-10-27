@@ -1,4 +1,5 @@
 using DG.Tweening;
+using FMOD.Studio;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,6 +7,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class MainMenuCamera : MonoBehaviour
 {
@@ -15,16 +18,23 @@ public class MainMenuCamera : MonoBehaviour
     [SerializeField] CanvasGroup blackout;
     [SerializeField] CanvasGroup label;
     [SerializeField] private int levelScene;
+    [SerializeField] private FMODUnity.EventReference music;
 
     private IDisposable m_EventListener;
 
-
+    EventInstance fmodInstance;
     private void OnEnable()
     {
+        fmodInstance = FMODUnity.RuntimeManager.CreateInstance(music);
+
+
         transform.position = start.position;
         label.alpha = 0;
         transform.DOMove(middle.position, 2).onComplete += () =>
         {
+            fmodInstance.start();
+            fmodInstance.release();
+
             m_EventListener = InputSystem.onAnyButtonPress.CallOnce(MovePast);
             label.DOFade(1, 1f).SetEase(Ease.OutCirc);
         };
@@ -35,11 +45,12 @@ public class MainMenuCamera : MonoBehaviour
 
     private void OnDisable()
     {
-        m_EventListener.Dispose();  
+        m_EventListener.Dispose();
     }
 
     private void MovePast(InputControl control)
     {
+        fmodInstance.stop(STOP_MODE.ALLOWFADEOUT);
         label.DOKill();
         transform.DOKill();
         blackout.DOKill();

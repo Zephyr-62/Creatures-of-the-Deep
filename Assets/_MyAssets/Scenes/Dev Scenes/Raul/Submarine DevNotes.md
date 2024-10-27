@@ -3,9 +3,8 @@
 
 
 # Post delivery
-- Elevation + Pitch indicators + distance to target
+- Elevation + Pitch indicators
 - Monster drawings + Empty drawing slot (scratched)?
-- Main menu music
 - Fix endgame quest
 - Boids + swinging lamp
 - Checkpoints on keyboard buttons

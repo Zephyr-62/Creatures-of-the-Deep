@@ -855,6 +855,24 @@ MonoBehaviour:
   BeamColor: {r: 1, g: 0, b: 1, a: 1}
   BeamHeight: 1000
   BeamThickness: 70
+--- !u!114 &40993722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseInspectorFoldout: 0
+  layoutInfos: []
+  buttonMethods: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1001 &50151612
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2818,6 +2836,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 120477401}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &133292032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 078f6fd1e8f7e6646b6e0d4badef7f18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SerializedField:
+    fieldName: newState
+    fieldType: BookholderAnimator+ClawState, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    isUsingRealContainer: 0
+    isUsingRealTarget: 0
+    target: {fileID: 133292032}
+    containerTarget: {fileID: 133292032}
+  value:
+    rid: -2
+  typeName: BookholderAnimator+ClawState, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  enumVal: BookDisplay
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1001 &135899777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7917,6 +7965,10 @@ MonoBehaviour:
     - {fileID: 281805660}
     - {fileID: 2572974107078183680, guid: 18e532391cd4a0e42b039495051ea7cd, type: 3}
     - {fileID: 1546094830396605211, guid: 18e532391cd4a0e42b039495051ea7cd, type: 3}
+    - {fileID: 3282566636471750028, guid: 35c53c9d337f1fa4384befdeedf67f8d, type: 3}
+    - {fileID: 6527515194745179176, guid: 35c53c9d337f1fa4384befdeedf67f8d, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
     m_values:
     - {fileID: 972156075}
     - {fileID: 625374552}
@@ -7966,6 +8018,10 @@ MonoBehaviour:
     - {fileID: 798855055}
     - {fileID: 2051171737}
     - {fileID: 1251479031}
+    - {fileID: 1926274553}
+    - {fileID: 2092088710}
+    - {fileID: 837326740}
+    - {fileID: 40993722}
   extensionEnabled: 1
   debugMode: 0
 --- !u!4 &358416226
@@ -8917,21 +8973,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseInspectorFoldout: 0
   layoutInfos:
-  - rid: 7396337276484584017
-  - rid: 7396337276484584018
-  - rid: 7396337276484584019
-  - rid: 7396337276484584020
-  - rid: 7396337276484584021
-  - rid: 7396337276484584022
-  - rid: 7396337276484584023
+  - rid: 7396337285673779340
+  - rid: 7396337285673779341
+  - rid: 7396337285673779342
+  - rid: 7396337285673779343
+  - rid: 7396337285673779344
+  - rid: 7396337285673779345
+  - rid: 7396337285673779346
+  - rid: 7396337285673779347
   buttonMethods:
-  - rid: 7396337276484584024
-  - rid: 7396337276484584025
-  - rid: 7396337276484584026
+  - rid: 7396337285673779348
+  - rid: 7396337285673779349
+  - rid: 7396337285673779350
   references:
     version: 2
     RefIds:
-    - rid: 7396337276484584017
+    - rid: 7396337285673779340
       type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: BaseRotation
@@ -8939,29 +8996,29 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         label: Inputs
         foldout: 0
-    - rid: 7396337276484584018
+    - rid: 7396337285673779341
       type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: BaseRackDistRange
         fieldTypeName: UnityEngine.Vector2, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
         includeLast: 0
-    - rid: 7396337276484584019
+    - rid: 7396337285673779342
       type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: BaseRackDistRange
         fieldTypeName: UnityEngine.Vector2, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
         label: Configs
-        foldout: 1
-    - rid: 7396337276484584020
+        foldout: 0
+    - rid: 7396337285673779343
       type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: IK_RIG
         fieldTypeName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
         includeLast: 0
-    - rid: 7396337276484584021
+    - rid: 7396337285673779344
       type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: IK_RIG
@@ -8969,7 +9026,22 @@ MonoBehaviour:
           Culture=neutral, PublicKeyToken=null
         label: Transforms
         foldout: 0
-    - rid: 7396337276484584022
+    - rid: 7396337285673779345
+      type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: armHeightSound
+        fieldTypeName: FMODUnity.EventReference, FMODUnity, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        includeLast: 0
+    - rid: 7396337285673779346
+      type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: armHeightSound
+        fieldTypeName: FMODUnity.EventReference, FMODUnity, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        label: Sounds
+        foldout: 0
+    - rid: 7396337285673779347
       type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: RotationMatchers
@@ -8977,15 +9049,7 @@ MonoBehaviour:
           Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
           mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
         includeLast: 0
-    - rid: 7396337276484584023
-      type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
-      data:
-        fieldName: RotationMatchers
-        fieldTypeName: System.Collections.Generic.List`1[[BookholderAnimator+RotationMatcher,
-          Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
-          mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
-        includeLast: 0
-    - rid: 7396337276484584024
+    - rid: 7396337285673779348
       type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         methodName: ChangeToState
@@ -9000,7 +9064,7 @@ MonoBehaviour:
           isUsingRealTarget: 0
           target: {fileID: 1608049672}
           containerTarget: {fileID: 1608049672}
-    - rid: 7396337276484584025
+    - rid: 7396337285673779349
       type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         methodName: InteractWithBookshelfButton
@@ -9008,7 +9072,7 @@ MonoBehaviour:
         foldout: 1
         buttonSize: 12
         parameters: []
-    - rid: 7396337276484584026
+    - rid: 7396337285673779350
       type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         methodName: DOTweenToBookSlot
@@ -18950,6 +19014,127 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8142909006869922603, guid: d6341c98c8d13714bb79220952a60591, type: 3}
+--- !u!114 &837326740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseInspectorFoldout: 0
+  layoutInfos:
+  - rid: 7396337285673779317
+  - rid: 7396337285673779318
+  - rid: 7396337285673779319
+  - rid: 7396337285673779320
+  - rid: 7396337285673779321
+  - rid: 7396337285673779322
+  - rid: 7396337285673779323
+  - rid: 7396337285673779324
+  buttonMethods:
+  - rid: 7396337285673779325
+  - rid: 7396337285673779326
+  - rid: 7396337285673779327
+  references:
+    version: 2
+    RefIds:
+    - rid: 7396337285673779317
+      type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: BaseRotation
+        fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+        label: Inputs
+        foldout: 0
+    - rid: 7396337285673779318
+      type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: BaseRackDistRange
+        fieldTypeName: UnityEngine.Vector2, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        includeLast: 0
+    - rid: 7396337285673779319
+      type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: BaseRackDistRange
+        fieldTypeName: UnityEngine.Vector2, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        label: Configs
+        foldout: 0
+    - rid: 7396337285673779320
+      type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: IK_RIG
+        fieldTypeName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        includeLast: 0
+    - rid: 7396337285673779321
+      type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: IK_RIG
+        fieldTypeName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        label: Transforms
+        foldout: 1
+    - rid: 7396337285673779322
+      type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: armHeightSound
+        fieldTypeName: FMODUnity.EventReference, FMODUnity, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        includeLast: 0
+    - rid: 7396337285673779323
+      type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: armHeightSound
+        fieldTypeName: FMODUnity.EventReference, FMODUnity, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        label: Sounds
+        foldout: 1
+    - rid: 7396337285673779324
+      type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: RotationMatchers
+        fieldTypeName: System.Collections.Generic.List`1[[BookholderAnimator+RotationMatcher,
+          Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+        includeLast: 0
+    - rid: 7396337285673779325
+      type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        methodName: ChangeToState
+        buttonName: Change state
+        foldout: 1
+        buttonSize: 12
+        parameters:
+        - fieldName: newState
+          fieldType: BookholderAnimator+ClawState, Assembly-CSharp, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          isUsingRealContainer: 0
+          isUsingRealTarget: 0
+          target: {fileID: 906967972}
+          containerTarget: {fileID: 906967972}
+    - rid: 7396337285673779326
+      type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        methodName: InteractWithBookshelfButton
+        buttonName: Play interact animation
+        foldout: 1
+        buttonSize: 12
+        parameters: []
+    - rid: 7396337285673779327
+      type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        methodName: DOTweenToBookSlot
+        buttonName: Tween To Book Slot
+        foldout: 1
+        buttonSize: 12
+        parameters: []
 --- !u!1001 &844502494
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20812,6 +20997,36 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1200, y: 500, z: 1200}
   m_Center: {x: -1000, y: 200, z: 2000}
+--- !u!114 &906967972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 078f6fd1e8f7e6646b6e0d4badef7f18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SerializedField:
+    fieldName: newState
+    fieldType: BookholderAnimator+ClawState, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    isUsingRealContainer: 0
+    isUsingRealTarget: 0
+    target: {fileID: 906967972}
+    containerTarget: {fileID: 906967972}
+  value:
+    rid: -2
+  typeName: BookholderAnimator+ClawState, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  enumVal: BookDisplay
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1001 &909465223
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44013,6 +44228,119 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f205512635f686741a93d9e5fecec9b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1926274553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseInspectorFoldout: 0
+  layoutInfos:
+  - rid: 7396337285673779215
+  - rid: 7396337285673779216
+  - rid: 7396337285673779217
+  - rid: 7396337285673779218
+  - rid: 7396337285673779219
+  - rid: 7396337285673779220
+  - rid: 7396337285673779221
+  buttonMethods:
+  - rid: 7396337285673779222
+  - rid: 7396337285673779223
+  - rid: 7396337285673779224
+  references:
+    version: 2
+    RefIds:
+    - rid: 7396337285673779215
+      type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: BaseRotation
+        fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+        label: Inputs
+        foldout: 0
+    - rid: 7396337285673779216
+      type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: BaseRackDistRange
+        fieldTypeName: UnityEngine.Vector2, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        includeLast: 0
+    - rid: 7396337285673779217
+      type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: BaseRackDistRange
+        fieldTypeName: UnityEngine.Vector2, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        label: Configs
+        foldout: 0
+    - rid: 7396337285673779218
+      type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: IK_RIG
+        fieldTypeName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        includeLast: 0
+    - rid: 7396337285673779219
+      type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: IK_RIG
+        fieldTypeName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        label: Transforms
+        foldout: 0
+    - rid: 7396337285673779220
+      type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: RotationMatchers
+        fieldTypeName: System.Collections.Generic.List`1[[BookholderAnimator+RotationMatcher,
+          Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+        includeLast: 0
+    - rid: 7396337285673779221
+      type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: RotationMatchers
+        fieldTypeName: System.Collections.Generic.List`1[[BookholderAnimator+RotationMatcher,
+          Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+        includeLast: 0
+    - rid: 7396337285673779222
+      type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        methodName: ChangeToState
+        buttonName: Change state
+        foldout: 1
+        buttonSize: 12
+        parameters:
+        - fieldName: newState
+          fieldType: BookholderAnimator+ClawState, Assembly-CSharp, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          isUsingRealContainer: 0
+          isUsingRealTarget: 0
+          target: {fileID: 133292032}
+          containerTarget: {fileID: 133292032}
+    - rid: 7396337285673779223
+      type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        methodName: InteractWithBookshelfButton
+        buttonName: Play interact animation
+        foldout: 1
+        buttonSize: 12
+        parameters: []
+    - rid: 7396337285673779224
+      type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        methodName: DOTweenToBookSlot
+        buttonName: Tween To Book Slot
+        foldout: 1
+        buttonSize: 12
+        parameters: []
 --- !u!1001 &1929992986
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47264,6 +47592,24 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2771860647083923344, guid: 7689eaead10d0c54786e13d51cf00487, type: 3}
+--- !u!114 &2092088710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseInspectorFoldout: 0
+  layoutInfos: []
+  buttonMethods: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1001 &2093392242
 PrefabInstance:
   m_ObjectHideFlags: 0

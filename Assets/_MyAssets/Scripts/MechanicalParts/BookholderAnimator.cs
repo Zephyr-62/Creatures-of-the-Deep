@@ -72,6 +72,11 @@ public class BookholderAnimator : MonoBehaviour
     [SerializeField] private Transform CollapsedHint;
     [SerializeField] private Transform CollapsedTarget;
     [EndFoldout]
+    [BeginFoldout("Sounds")]
+    [SerializeField] private FMODUnity.EventReference armHeightSound;
+    [SerializeField] private FMODUnity.EventReference armBaseDistanceSound;
+    [SerializeField] private FMODUnity.EventReference armBaseRotationSound;
+    [SerializeField] private FMODUnity.EventReference armGeneralAdjustmentSound;
     [EndFoldout]
 
 
@@ -124,6 +129,11 @@ public class BookholderAnimator : MonoBehaviour
                 break;
 
             case ClawState.Collapsed:   // Can only come from BookshelfInteract
+                await SetHeightMount(0, 0.75f);
+                _ = SetRackDistance(CollapsedRackDistance, 1f);
+                await SetClawOpen(false);
+                await SetBaseRotation(0.5f, 1.25f);
+                PlayArmMovingSound();
                 await DOCollapseArm();
                 break;
             case ClawState.BookDisplay: // Can only come from BookshelfInteract 
@@ -134,6 +144,7 @@ public class BookholderAnimator : MonoBehaviour
                 TargetHeight = 0;
                 TargetDepth = 0.5f;
                 BaseRotation = 1;
+                PlayArmMovingSound();
                 await AsyncBookDisplayUpdate();
                 break;
             default:
@@ -141,6 +152,11 @@ public class BookholderAnimator : MonoBehaviour
         }
 
         CurrentState = newState;
+    }
+
+    public void PlayArmMovingSound()
+    {
+        FMODUnity.RuntimeManager.PlayOneShotAttached(armGeneralAdjustmentSound, PivotArm2.gameObject);
     }
 
     [Button("Play interact animation")]
@@ -163,16 +179,19 @@ public class BookholderAnimator : MonoBehaviour
 
     async private Task SetBaseRotation(float val, float time)
     {
+        FMODUnity.RuntimeManager.PlayOneShotAttached(armBaseRotationSound, PivotCeilMount.gameObject);
         await DOTween.To(() => BaseRotation, x => BaseRotation = x, val, time).AsyncWaitForCompletion();
     }
 
     async private Task SetHeightMount(float val, float time)
     {
+        FMODUnity.RuntimeManager.PlayOneShotAttached(armHeightSound, PivotHeightHinge.gameObject);
         await DOTween.To(() => ArmHeightMount, x => ArmHeightMount = x, val, time).AsyncWaitForCompletion();
     }
 
     async private Task SetRackDistance(float val, float time)
     {
+        FMODUnity.RuntimeManager.PlayOneShotAttached(armBaseDistanceSound, PivotCeilMount.gameObject);
         await DOTween.To(() => BaseRackDistance, x => BaseRackDistance = x, val, time).AsyncWaitForCompletion();
     }
 
@@ -188,11 +207,6 @@ public class BookholderAnimator : MonoBehaviour
 
     async private Task DOCollapseArm()
     {
-        await SetHeightMount(0, 0.75f);
-        _ = SetRackDistance(CollapsedRackDistance, 1f);
-        await SetClawOpen(false);
-        await SetBaseRotation(0.5f, 1.25f);
-
         var tasks = new Task[3];
         tasks[0] = IK_target.DOLocalMove(IK_RIG.InverseTransformPoint(CollapsedTarget.position), CollapseTime).AsyncWaitForCompletion();
         tasks[1] = IK_hint.DOLocalMove(IK_RIG.InverseTransformPoint(CollapsedHint.position), CollapseTime).AsyncWaitForCompletion();
@@ -275,6 +289,8 @@ public class BookholderAnimator : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        if (TargetBookSlot == null) return;
+
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(TargetBookSlot.position, TargetBookSlot.position + TargetBookSlot.up * 0.25f);
         Gizmos.color = Color.red;

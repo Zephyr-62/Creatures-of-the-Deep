@@ -101,6 +101,7 @@ public class Bookshelf : MonoBehaviour
         // Grab a book
         else
         {
+            Bookholder.PlayArmMovingSound();
             // Return first if already grabbing one
             if (CurrentBookId >= 0)
                 await ReturnBook();
