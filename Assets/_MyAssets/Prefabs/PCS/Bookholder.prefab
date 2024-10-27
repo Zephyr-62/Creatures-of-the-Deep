@@ -2008,24 +2008,24 @@ MonoBehaviour:
   TargetHeight: 0.5
   BaseRackDistance: 0.5
   ArmHeightMount: 0
-  ControlsEnabled: 0
   BaseRackDistRange: {x: 0, y: -0.5}
   ArmHeightMountRange: {x: 0, y: -0.25}
   BaseRotationRange: {x: 50, y: -50}
   TargetHeightRange: {x: -0.85, y: -0.4}
   DepthMinRange: {x: 0, y: -0.25}
   DepthMaxRange: {x: -0.4, y: -0.35}
+  displayUpDisplacement: 0.1
   CollapseTime: 2.5
   ClawOpenTime: 0.75
   SwitchToBookDisplayTime: 1.5
   BookselfInteractionDurationMS: 150
-  OpenedClawsAngle: {x: -80, y: -80}
+  OpenedClawsAngle: {x: -80, y: -60}
   CollapsedClawsAngle: {x: -30, y: -130}
   CollapsedRackDistance: 0.5
   BookSelectionBaseRotation: 0.85
   BookSelectionTargetDistanceToInteract: -0.2
   BookSelectionInteractionDistance: 0.15
-  BookSelectionTargetInteractionRotation: {x: 90, y: 0, z: 0}
+  BookXDisplacement: 0.025
   IK_RIG: {fileID: 8964801374781261763}
   IK_hint: {fileID: 3889266165255940687}
   IK_target: {fileID: 4144667548047881493}
@@ -2122,13 +2122,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4186510389272465668}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: -0.70710677, z: -0.70710677, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8016567153997326605}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: -90, z: -90}
 --- !u!1 &4274688474292034952
 GameObject:
   m_ObjectHideFlags: 0

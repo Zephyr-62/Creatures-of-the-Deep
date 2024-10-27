@@ -3,14 +3,13 @@
 
 
 # Post delivery
-- Fix book PCS
 - Add sounds to bookholder
 - Elevation + Pitch indicators + distance to target --> Add labels to sonar zoom
-- Add boids to scene
 - Monster drawings + Empty drawing slot (scratched)?
 - Main menu music
 - Fix endgame quest
 - Boids + swinging lamp
+- Checkpoints on keyboard buttons
 
 # Post course end
 - Bookarm PCS

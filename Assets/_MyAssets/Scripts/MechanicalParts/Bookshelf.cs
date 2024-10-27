@@ -61,6 +61,7 @@ public class Bookshelf : MonoBehaviour
             bookSlot.id = id;
             id++;
             SetSlotActive(bookSlot, bookSlot.active);
+            bookSlot.book.GetComponent<BookPCS>().Block();
         }
     }
 
@@ -119,13 +120,13 @@ public class Bookshelf : MonoBehaviour
         await Bookholder.InteractWithBookshelf(() =>
         {
             book.transform.SetParent(BookHolderParent, false);
+            book.transform.localRotation = Quaternion.AngleAxis(90, Vector3.forward);
             bookSlot.SetLight(true);
         });
 
         await Bookholder.ChangeToState(BookholderAnimator.ClawState.BookDisplay);
 
-        // book.SetState(EndlessBook.StateEnum.OpenMiddle, animationTime: 0);
-        book.GetComponent<BookPCS>().Unblock();
+        OpenBook(book);
     }
 
     async private Task ReturnBook(bool triggerCollapse=false)
@@ -140,23 +141,36 @@ public class Bookshelf : MonoBehaviour
 
         var bookSlot = BookSlots[CurrentBookId];
         var book = bookSlot.book;
-        book.GetComponent<BookPCS>().Block();
+        CloseBook(book);
 
         await Bookholder.DOTweenToBookSlot();
-
-
-        book.SetState(EndlessBook.StateEnum.ClosedFront, animationTime: 0);
 
         // Reparent book while claw interacts
         await Bookholder.InteractWithBookshelf(() =>
         {
             book.transform.SetParent(bookSlot.slot, false);
+            book.transform.localRotation = Quaternion.identity;
+
             bookSlot.SetLight(false);
         });
 
         CurrentBookId = -1;
         if (triggerCollapse)
             await Bookholder.ChangeToState(BookholderAnimator.ClawState.Collapsed);
+    }
+
+    private void OpenBook(EndlessBook book)
+    {
+        book.GetComponent<BookPCS>().Unblock();
+        book.SetState(EndlessBook.StateEnum.OpenFront, animationTime: 0);
+        book.transform.localRotation = Quaternion.identity;
+    }
+
+    private void CloseBook(EndlessBook book)
+    {
+        book.GetComponent<BookPCS>().Block();
+        book.SetState(EndlessBook.StateEnum.ClosedFront, animationTime: 0);
+        book.transform.localRotation = Quaternion.AngleAxis(90, Vector3.forward);
     }
 
 }

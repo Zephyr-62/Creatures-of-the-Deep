@@ -20,9 +20,9 @@ public class BookPCS : PhysicalControlSurface
     [SerializeField] private Transform rotatePoint;
     [SerializeField] private float minAngle, maxAngle;
     [SerializeField] private float range = 1f;
-    [SerializeField] private float animationDuration = 0.1f;
-    [SerializeField] private Ease animationEase = Ease.Linear;
-    [SerializeField] private float switchAngle = 0f;
+    //[SerializeField] private float animationDuration = 0.1f;
+    //[SerializeField] private Ease animationEase = Ease.Linear;
+    //[SerializeField] private float switchAngle = 0f;
 
     [Header("Extra events")]
     [SerializeField] private UnityEvent onSwitchedOn;
@@ -49,6 +49,7 @@ public class BookPCS : PhysicalControlSurface
             // exit if already turning
             return;
         }
+
         var plane = new Plane(transform.forward, grabPoint);
         var ray = FirstPersonCamera.GetRay();
 
@@ -88,12 +89,13 @@ public class BookPCS : PhysicalControlSurface
 
     internal override void Grab(FirstPersonCamera firstPersonCamera, Vector3 grabPoint, bool fireEvent = true)
     {
-        base.Grab(firstPersonCamera, grabPoint, fireEvent);
+        if (blocked) return;
         if (book.IsTurningPages || book.IsDraggingPage)
         {
             // exit if already turning
             return;
         }
+        base.Grab(firstPersonCamera, grabPoint, fireEvent);
         var plane = new Plane(transform.forward, grabPoint);
         var ray = FirstPersonCamera.GetRay();
 
@@ -104,10 +106,12 @@ public class BookPCS : PhysicalControlSurface
             var angle = Vector3.SignedAngle(Vector3.up, transform.InverseTransformDirection(dir), Vector3.forward);
             if (angle < 0)
             {
-                book.TurnPageDragStart(Page.TurnDirectionEnum.TurnForward);
+                if(book.CurrentState != EndlessBook.StateEnum.OpenBack)
+                    book.TurnPageDragStart(Page.TurnDirectionEnum.TurnForward);
             }
             else
             {
+                if(book.CurrentState != EndlessBook.StateEnum.OpenFront)
                 book.TurnPageDragStart(Page.TurnDirectionEnum.TurnBackward);
             }
         }
@@ -167,5 +171,17 @@ public class BookPCS : PhysicalControlSurface
 
     public override void Set01FloatValue(float value)
     {
+    }
+
+    public override void Block()
+    {
+        base.Block();
+        this.GetComponent<Collider>().enabled = false;
+    }
+
+    public override void Unblock()
+    {
+        base.Unblock();
+        this.GetComponent<Collider>().enabled = true;
     }
 }

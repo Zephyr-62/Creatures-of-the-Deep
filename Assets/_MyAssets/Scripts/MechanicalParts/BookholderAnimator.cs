@@ -21,8 +21,6 @@ public class BookholderAnimator : MonoBehaviour
     [SerializeField] private float BaseRackDistance = 0f;
     [Range(0f, 1f)]
     [SerializeField] private float ArmHeightMount = 0f;
-    [Space(10)]
-    public bool ControlsEnabled = false;
     [EndFoldout]
 
 
@@ -35,6 +33,7 @@ public class BookholderAnimator : MonoBehaviour
     [SerializeField] private Vector2 TargetHeightRange = new(-0.85f, -0.4f);
     [SerializeField] private Vector2 DepthMinRange = new(0, -0.25f);
     [SerializeField] private Vector2 DepthMaxRange = new(-0.6f, -0.5f);
+    [SerializeField] private float displayUpDisplacement = 1;
     [Header("Animation Times")]
     [SerializeField] private float CollapseTime = 1.5f;        
     [SerializeField] private float ClawOpenTime = 0.35f;        
@@ -49,7 +48,7 @@ public class BookholderAnimator : MonoBehaviour
     [SerializeField] private float BookSelectionBaseRotation = 0.75f;
     [SerializeField] private float BookSelectionTargetDistanceToInteract = -0.2f;    // Right axis
     [SerializeField] private float BookSelectionInteractionDistance = 0.4f;
-    [SerializeField] private Vector3 BookSelectionTargetInteractionRotation = new(0, -65, 0);
+    [SerializeField] private float BookXDisplacement = -0.025f;
 
 
     private const float DepthRotationCompensation = 1 - 2/Mathf.PI; 
@@ -113,8 +112,6 @@ public class BookholderAnimator : MonoBehaviour
         switch (newState)
         {
             case ClawState.BookshelfInteract:
-                if (CurrentState == ClawState.BookDisplay)
-                    ControlsEnabled = false;
                 await SetBaseRotation(BookSelectionBaseRotation, 0.5f);
                 await Task.Delay(250);
                 await SetRackDistance(1, 0.75f);
@@ -134,8 +131,10 @@ public class BookholderAnimator : MonoBehaviour
                 await Task.Delay(250);
                 await SetRackDistance(0, 0.75f);
                 await Task.Delay(150);
+                TargetHeight = 0;
+                TargetDepth = 0.5f;
+                BaseRotation = 1;
                 await AsyncBookDisplayUpdate();
-                ControlsEnabled = true;
                 break;
             default:
                 break;
@@ -144,15 +143,21 @@ public class BookholderAnimator : MonoBehaviour
         CurrentState = newState;
     }
 
+    [Button("Play interact animation")]
+    private async void InteractWithBookshelfButton()
+    {
+        await InteractWithBookshelf(() => { });
+    }
+
     async public Task InteractWithBookshelf(TweenCallback duringInteraction)
     {
         await IK_target.DOLocalMove(
-            IK_RIG.InverseTransformPoint(IK_target.position + TargetBookSlot.up * BookSelectionInteractionDistance), 0.5f)
+            IK_RIG.InverseTransformPoint(IK_target.position + TargetBookSlot.right * BookSelectionInteractionDistance), 0.5f)
             .OnComplete(duringInteraction)
             .AsyncWaitForCompletion();
         await Task.Delay(BookselfInteractionDurationMS);
         await IK_target.DOLocalMove(
-            IK_RIG.InverseTransformPoint(IK_target.position - TargetBookSlot.up * BookSelectionInteractionDistance), 0.5f)
+            IK_RIG.InverseTransformPoint(IK_target.position - TargetBookSlot.right * BookSelectionInteractionDistance), 0.5f)
             .AsyncWaitForCompletion();
     }
 
@@ -198,13 +203,14 @@ public class BookholderAnimator : MonoBehaviour
     [Button("Tween To Book Slot")]
     async public Task DOTweenToBookSlot()
     {
-        var targetPos = TargetBookSlot.position + BookSelectionTargetDistanceToInteract * TargetBookSlot.up;
-        var hintPos = TargetBookSlot.position - 2 * TargetBookSlot.up;
+        var correctedBookSlotPos = TargetBookSlot.position + BookXDisplacement * TargetBookSlot.up;
+        var targetPos = correctedBookSlotPos + BookSelectionTargetDistanceToInteract * TargetBookSlot.right;
+        var hintPos = correctedBookSlotPos - 2 * TargetBookSlot.right;
 
         var tasks = new Task[3];
         tasks[0] = IK_target.DOLocalMove(IK_RIG.InverseTransformPoint(targetPos), SwitchToBookDisplayTime).AsyncWaitForCompletion();
         tasks[1] = IK_hint.DOLocalMove(IK_RIG.InverseTransformPoint(hintPos), SwitchToBookDisplayTime).AsyncWaitForCompletion();
-        tasks[2] = IK_target.DORotate(Quaternion.LookRotation(TargetBookSlot.up, TargetBookSlot.forward).eulerAngles, SwitchToBookDisplayTime).AsyncWaitForCompletion();
+        tasks[2] = IK_target.DORotate(Quaternion.LookRotation(TargetBookSlot.right, TargetBookSlot.forward).eulerAngles, SwitchToBookDisplayTime).AsyncWaitForCompletion();
         await Task.WhenAll(tasks);
         // await IK_target.DOLookAt(TargetBookSlot.position, 0.5f, up: Submarine.up).AsyncWaitForCompletion();
     }
@@ -242,7 +248,7 @@ public class BookholderAnimator : MonoBehaviour
         var depthVal = Mathf.Lerp(depthMin, depthMax, TargetDepth) + Mathf.Sin(BaseRotation * Mathf.PI) * DepthRotationCompensation;
 
         IK_target.position = PivotArm1.position + PivotCeilMount.up * heightVal + ArmDir * depthVal;
-        IK_target.LookAt(PlayerPOV, Submarine.up);
+        IK_target.LookAt(PlayerPOV.position + Submarine.up * displayUpDisplacement, Submarine.up);
         IK_hint.position = PivotArm1.position + ArmDir;
     }
 
@@ -263,7 +269,7 @@ public class BookholderAnimator : MonoBehaviour
         var tasks = new Task[3];
         tasks[0] = IK_target.DOLocalMove(IK_RIG.InverseTransformPoint(targetPos), SwitchToBookDisplayTime).AsyncWaitForCompletion();
         tasks[1] = IK_hint.DOLocalMove(IK_RIG.InverseTransformPoint(hintPos), SwitchToBookDisplayTime).AsyncWaitForCompletion();
-        tasks[2] = IK_target.DORotate(Quaternion.LookRotation(PlayerPOV.position - targetPos, Submarine.up).eulerAngles, 0.5f).AsyncWaitForCompletion();
+        tasks[2] = IK_target.DORotate(Quaternion.LookRotation(PlayerPOV.position - targetPos + Submarine.up * displayUpDisplacement, Submarine.up).eulerAngles, 0.5f).AsyncWaitForCompletion();
         await Task.WhenAll(tasks);
     }
 

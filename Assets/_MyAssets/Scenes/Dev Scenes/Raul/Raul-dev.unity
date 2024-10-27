@@ -1113,6 +1113,26 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 110419968}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &110850389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34b4b0fd2cb21744884b0d449ed4c9fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SerializedField:
+    fieldName: title
+    fieldType: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+    isUsingRealContainer: 0
+    isUsingRealTarget: 0
+    target: {fileID: 110850389}
+    containerTarget: {fileID: 110850389}
+  value: 
 --- !u!1 &135543988
 GameObject:
   m_ObjectHideFlags: 1
@@ -1149,14 +1169,7 @@ MonoBehaviour:
     - {fileID: 4837256936048348392}
     - {fileID: 633978164}
     - {fileID: 633978158}
-    - {fileID: 4910242696621233960, guid: 5e52606effa64e94f9c6001b6213356b, type: 3}
-    - {fileID: 5760236286119211721, guid: f9248945e85f73b4bb3456cef3b34eea, type: 3}
-    - {fileID: 1575563252642690973, guid: 8e82b62386572724c8559c005f440e5e, type: 3}
     - {fileID: 633978159}
-    - {fileID: 2551686363481697399, guid: eaf9d5d00b2b5524398d914dad94f156, type: 3}
-    - {fileID: 2366902182855713186, guid: 7cbb432ede71039628c4b778d623e8f5, type: 3}
-    - {fileID: 7965120399694092792, guid: 916c60ae00dfc9893a6a32b38e8646a1, type: 3}
-    - {fileID: 1925686450}
     - {fileID: 3246810717960937717, guid: aafa381a1a349e043b60e92a983dc4dc, type: 3}
     - {fileID: 605176521412514415, guid: aafa381a1a349e043b60e92a983dc4dc, type: 3}
     - {fileID: 2940692500949693560, guid: aafa381a1a349e043b60e92a983dc4dc, type: 3}
@@ -1165,21 +1178,24 @@ MonoBehaviour:
     - {fileID: 927420207}
     - {fileID: 927420206}
     - {fileID: 321042060}
-    - {fileID: 0}
+    - {fileID: 3695993004184174346, guid: 7b9baaccbdb17d024b0e2b6a97699850, type: 3}
+    - {fileID: 1395389973}
+    - {fileID: 606267161}
+    - {fileID: 1961581655}
+    - {fileID: 1961581656}
+    - {fileID: 486059663}
+    - {fileID: 1784423089}
+    - {fileID: 260002094}
+    - {fileID: 250326817}
+    - {fileID: 1064353934281510125, guid: 18e532391cd4a0e42b039495051ea7cd, type: 3}
+    - {fileID: 4196712106930436942, guid: 18e532391cd4a0e42b039495051ea7cd, type: 3}
     m_values:
     - {fileID: 1016739987}
     - {fileID: 245942075}
     - {fileID: 303432975}
     - {fileID: 206158966}
     - {fileID: 247109998}
-    - {fileID: 830921365}
-    - {fileID: 179520176}
-    - {fileID: 1792873866}
     - {fileID: 49790621}
-    - {fileID: 305477476}
-    - {fileID: 535821365}
-    - {fileID: 923531568}
-    - {fileID: 509892503}
     - {fileID: 846461097}
     - {fileID: 1578329608}
     - {fileID: 1714697279}
@@ -1188,7 +1204,17 @@ MonoBehaviour:
     - {fileID: 1035898675}
     - {fileID: 1795222421}
     - {fileID: 870175672}
-    - {fileID: 2069536806}
+    - {fileID: 255391599}
+    - {fileID: 169934334}
+    - {fileID: 1508613843}
+    - {fileID: 755063764}
+    - {fileID: 1515476108}
+    - {fileID: 421539658}
+    - {fileID: 780683662}
+    - {fileID: 1259837092}
+    - {fileID: 378189757}
+    - {fileID: 1641762665}
+    - {fileID: 1101475290}
   extensionEnabled: 1
   debugMode: 0
 --- !u!4 &135543990
@@ -1473,19 +1499,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1324306361}
   m_LocalEulerAnglesHint: {x: 2.208, y: 19.15, z: 0}
---- !u!114 &175764527 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5527880096799348920, guid: 18e532391cd4a0e42b039495051ea7cd,
-    type: 3}
-  m_PrefabInstance: {fileID: 633978157}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 756a75e669b1d054bb7a617931c941fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &179520176
+--- !u!114 &169934334
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1503,6 +1517,18 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &175764527 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5527880096799348920, guid: 18e532391cd4a0e42b039495051ea7cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 633978157}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 756a75e669b1d054bb7a617931c941fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &192774431
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1585,19 +1611,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseInspectorFoldout: 0
   layoutInfos:
-  - rid: 7396337239171793090
-  - rid: 7396337239171793091
-  - rid: 7396337239171793092
-  - rid: 7396337239171793093
-  - rid: 7396337239171793094
-  - rid: 7396337239171793095
-  - rid: 7396337239171793096
-  - rid: 7396337239171793097
+  - rid: 7396337276484583854
+  - rid: 7396337276484583855
+  - rid: 7396337276484583856
+  - rid: 7396337276484583857
+  - rid: 7396337276484583858
+  - rid: 7396337276484583859
+  - rid: 7396337276484583860
+  - rid: 7396337276484583861
   buttonMethods: []
   references:
     version: 2
     RefIds:
-    - rid: 7396337239171793090
+    - rid: 7396337276484583854
       type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: _throttleControl
@@ -1605,14 +1631,14 @@ MonoBehaviour:
           Culture=neutral, PublicKeyToken=null
         windowStyle: 13
         columnStyle: 1
-    - rid: 7396337239171793091
+    - rid: 7396337276484583855
       type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: BuoyancyStrength
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
         includeLast: 0
-    - rid: 7396337239171793092
+    - rid: 7396337276484583856
       type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: maxThrustSpeed
@@ -1620,20 +1646,20 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         windowStyle: 0
         columnStyle: 3
-    - rid: 7396337239171793093
+    - rid: 7396337276484583857
       type: {class: NewColumnInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: maxAngularVelocity
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-    - rid: 7396337239171793094
+    - rid: 7396337276484583858
       type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: pitchInputDelay
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
         includeLast: 0
-    - rid: 7396337239171793095
+    - rid: 7396337276484583859
       type: {class: BeginColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: pitchInputDelay
@@ -1641,13 +1667,13 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         windowStyle: 0
         columnStyle: 3
-    - rid: 7396337239171793096
+    - rid: 7396337276484583860
       type: {class: NewColumnInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: TargetRoll
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-    - rid: 7396337239171793097
+    - rid: 7396337276484583861
       type: {class: EndColumnAreaInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: minRelativeCollisionVelocityForThrustShutdown
@@ -2185,6 +2211,48 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 249899283}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &250326817 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6312486250916316669, guid: 18e532391cd4a0e42b039495051ea7cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 633978157}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c5fb24c1957fe3bb71f9b0927bd836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &255391599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseInspectorFoldout: 0
+  layoutInfos: []
+  buttonMethods: []
+  references:
+    version: 2
+    RefIds: []
+--- !u!114 &260002094 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8659700164929926596, guid: 18e532391cd4a0e42b039495051ea7cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 633978157}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c5fb24c1957fe3bb71f9b0927bd836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &264800945
 GameObject:
   m_ObjectHideFlags: 0
@@ -2674,24 +2742,6 @@ MonoBehaviour:
         fieldTypeName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
         includeLast: 1
---- !u!114 &305477476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseInspectorFoldout: 0
-  layoutInfos: []
-  buttonMethods: []
-  references:
-    version: 2
-    RefIds: []
 --- !u!1 &310166466
 GameObject:
   m_ObjectHideFlags: 0
@@ -3200,6 +3250,24 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &378189757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseInspectorFoldout: 0
+  layoutInfos: []
+  buttonMethods: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &385102783 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2148639887340886843, guid: 1f0c0db440967d349a835d6b7f457236,
@@ -3971,6 +4039,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 419229687}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &421539658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseInspectorFoldout: 0
+  layoutInfos: []
+  buttonMethods: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &425966704
 GameObject:
   m_ObjectHideFlags: 0
@@ -4636,6 +4722,24 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cec7628d9a4ebdc40b68d28ebd10e2b4, type: 3}
+--- !u!4 &486059661 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6151892242321715339, guid: 7b9baaccbdb17d024b0e2b6a97699850,
+    type: 3}
+  m_PrefabInstance: {fileID: 588341792}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &486059663 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3695993004184174346, guid: 7b9baaccbdb17d024b0e2b6a97699850,
+    type: 3}
+  m_PrefabInstance: {fileID: 588341792}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c5fb24c1957fe3bb71f9b0927bd836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &490671750
 GameObject:
   m_ObjectHideFlags: 0
@@ -4876,24 +4980,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 498304112}
   m_Mesh: {fileID: -7000061049813139380, guid: 85a9c0869486d8f4689b256a41527e4c, type: 3}
---- !u!114 &509892503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseInspectorFoldout: 0
-  layoutInfos: []
-  buttonMethods: []
-  references:
-    version: 2
-    RefIds: []
 --- !u!114 &512124977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5031,24 +5117,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527534425}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &535821365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseInspectorFoldout: 0
-  layoutInfos: []
-  buttonMethods: []
-  references:
-    version: 2
-    RefIds: []
 --- !u!1 &538642787
 GameObject:
   m_ObjectHideFlags: 0
@@ -5583,6 +5651,26 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 551724916}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &560157014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34b4b0fd2cb21744884b0d449ed4c9fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SerializedField:
+    fieldName: description
+    fieldType: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+    isUsingRealContainer: 0
+    isUsingRealTarget: 0
+    target: {fileID: 560157014}
+    containerTarget: {fileID: 560157014}
+  value: 
 --- !u!1001 &561534309
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5774,6 +5862,79 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1755425317}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &588341792
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 633978168}
+    m_Modifications:
+    - target: {fileID: 1480162258645884785, guid: 7b9baaccbdb17d024b0e2b6a97699850,
+        type: 3}
+      propertyPath: m_Name
+      value: BookMonster
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480162258645884785, guid: 7b9baaccbdb17d024b0e2b6a97699850,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6151892242321715339, guid: 7b9baaccbdb17d024b0e2b6a97699850,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.000000834465
+      objectReference: {fileID: 0}
+    - target: {fileID: 6151892242321715339, guid: 7b9baaccbdb17d024b0e2b6a97699850,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.000000074505806
+      objectReference: {fileID: 0}
+    - target: {fileID: 6151892242321715339, guid: 7b9baaccbdb17d024b0e2b6a97699850,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.4000036
+      objectReference: {fileID: 0}
+    - target: {fileID: 6151892242321715339, guid: 7b9baaccbdb17d024b0e2b6a97699850,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071069
+      objectReference: {fileID: 0}
+    - target: {fileID: 6151892242321715339, guid: 7b9baaccbdb17d024b0e2b6a97699850,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 6151892242321715339, guid: 7b9baaccbdb17d024b0e2b6a97699850,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.000000014901161
+      objectReference: {fileID: 0}
+    - target: {fileID: 6151892242321715339, guid: 7b9baaccbdb17d024b0e2b6a97699850,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.000000027008355
+      objectReference: {fileID: 0}
+    - target: {fileID: 6151892242321715339, guid: 7b9baaccbdb17d024b0e2b6a97699850,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6151892242321715339, guid: 7b9baaccbdb17d024b0e2b6a97699850,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6151892242321715339, guid: 7b9baaccbdb17d024b0e2b6a97699850,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7b9baaccbdb17d024b0e2b6a97699850, type: 3}
 --- !u!1 &588855996
 GameObject:
   m_ObjectHideFlags: 0
@@ -6402,6 +6563,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 606255139}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &606267161 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3120720799734536423, guid: 18e532391cd4a0e42b039495051ea7cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 633978157}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c5bd38d8c182546a9a436c836c2287, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &614445356
 GameObject:
   m_ObjectHideFlags: 0
@@ -6976,36 +7149,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1634552170224270576, guid: 18e532391cd4a0e42b039495051ea7cd,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1634552170224270576, guid: 18e532391cd4a0e42b039495051ea7cd,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1634552170224270576, guid: 18e532391cd4a0e42b039495051ea7cd,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1634552170224270576, guid: 18e532391cd4a0e42b039495051ea7cd,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1634552170224270576, guid: 18e532391cd4a0e42b039495051ea7cd,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 1634552170224270576, guid: 18e532391cd4a0e42b039495051ea7cd,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1910517431840226970, guid: 18e532391cd4a0e42b039495051ea7cd,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -7196,70 +7339,10 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 67.5
       objectReference: {fileID: 0}
-    - target: {fileID: 7467116085767670450, guid: 18e532391cd4a0e42b039495051ea7cd,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 7467116085767670450, guid: 18e532391cd4a0e42b039495051ea7cd,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 7467116085767670450, guid: 18e532391cd4a0e42b039495051ea7cd,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7467116085767670450, guid: 18e532391cd4a0e42b039495051ea7cd,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7467116085767670450, guid: 18e532391cd4a0e42b039495051ea7cd,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 7467116085767670450, guid: 18e532391cd4a0e42b039495051ea7cd,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7760468667717818536, guid: 18e532391cd4a0e42b039495051ea7cd,
         type: 3}
       propertyPath: m_fontSize
       value: 59.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8404256798612477725, guid: 18e532391cd4a0e42b039495051ea7cd,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 8404256798612477725, guid: 18e532391cd4a0e42b039495051ea7cd,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 8404256798612477725, guid: 18e532391cd4a0e42b039495051ea7cd,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8404256798612477725, guid: 18e532391cd4a0e42b039495051ea7cd,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8404256798612477725, guid: 18e532391cd4a0e42b039495051ea7cd,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 8404256798612477725, guid: 18e532391cd4a0e42b039495051ea7cd,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8560769722367360542, guid: 18e532391cd4a0e42b039495051ea7cd,
         type: 3}
@@ -7323,8 +7406,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3947993976909470247, guid: 18e532391cd4a0e42b039495051ea7cd, type: 3}
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1452564753480491432, guid: 18e532391cd4a0e42b039495051ea7cd, type: 3}
+    - {fileID: 5544404912988621231, guid: 18e532391cd4a0e42b039495051ea7cd, type: 3}
+    - {fileID: 4205373397034611999, guid: 18e532391cd4a0e42b039495051ea7cd, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 540248568467751865, guid: 18e532391cd4a0e42b039495051ea7cd,
+        type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 486059661}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6956591464403581254, guid: 18e532391cd4a0e42b039495051ea7cd,
         type: 3}
@@ -7527,6 +7617,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9904771256ffeed418c70bc391225c61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &633978168 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 540248568467751865, guid: 18e532391cd4a0e42b039495051ea7cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 633978157}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &641613507
 GameObject:
   m_ObjectHideFlags: 0
@@ -8626,6 +8722,119 @@ Transform:
   - {fileID: 588855997}
   m_Father: {fileID: 2140874556}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &755063764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseInspectorFoldout: 0
+  layoutInfos:
+  - rid: 7396337276484583844
+  - rid: 7396337276484583845
+  - rid: 7396337276484583846
+  - rid: 7396337276484583847
+  - rid: 7396337276484583848
+  - rid: 7396337276484583849
+  - rid: 7396337276484583850
+  buttonMethods:
+  - rid: 7396337276484583851
+  - rid: 7396337276484583852
+  - rid: 7396337276484583853
+  references:
+    version: 2
+    RefIds:
+    - rid: 7396337276484583844
+      type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: BaseRotation
+        fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+        label: Inputs
+        foldout: 1
+    - rid: 7396337276484583845
+      type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: BaseRackDistRange
+        fieldTypeName: UnityEngine.Vector2, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        includeLast: 0
+    - rid: 7396337276484583846
+      type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: BaseRackDistRange
+        fieldTypeName: UnityEngine.Vector2, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        label: Configs
+        foldout: 1
+    - rid: 7396337276484583847
+      type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: IK_RIG
+        fieldTypeName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        includeLast: 0
+    - rid: 7396337276484583848
+      type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: IK_RIG
+        fieldTypeName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        label: Transforms
+        foldout: 0
+    - rid: 7396337276484583849
+      type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: RotationMatchers
+        fieldTypeName: System.Collections.Generic.List`1[[BookholderAnimator+RotationMatcher,
+          Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+        includeLast: 0
+    - rid: 7396337276484583850
+      type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: RotationMatchers
+        fieldTypeName: System.Collections.Generic.List`1[[BookholderAnimator+RotationMatcher,
+          Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+        includeLast: 0
+    - rid: 7396337276484583851
+      type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        methodName: ChangeToState
+        buttonName: Change state
+        foldout: 1
+        buttonSize: 12
+        parameters:
+        - fieldName: newState
+          fieldType: BookholderAnimator+ClawState, Assembly-CSharp, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          isUsingRealContainer: 0
+          isUsingRealTarget: 0
+          target: {fileID: 1093247939}
+          containerTarget: {fileID: 1093247939}
+    - rid: 7396337276484583852
+      type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        methodName: InteractWithBookshelfButton
+        buttonName: Play interact animation
+        foldout: 1
+        buttonSize: 12
+        parameters: []
+    - rid: 7396337276484583853
+      type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        methodName: DOTweenToBookSlot
+        buttonName: Tween To Book Slot
+        foldout: 1
+        buttonSize: 12
+        parameters: []
 --- !u!1 &765547071
 GameObject:
   m_ObjectHideFlags: 0
@@ -8850,6 +9059,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 310166467}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &780683662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseInspectorFoldout: 0
+  layoutInfos: []
+  buttonMethods: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &782723546
 GameObject:
   m_ObjectHideFlags: 0
@@ -9293,24 +9520,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 814765016}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &830921365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseInspectorFoldout: 0
-  layoutInfos: []
-  buttonMethods: []
-  references:
-    version: 2
-    RefIds: []
 --- !u!4 &843861128 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9098869664868180158, guid: cec7628d9a4ebdc40b68d28ebd10e2b4,
@@ -9692,24 +9901,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 895083054}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &923531568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseInspectorFoldout: 0
-  layoutInfos: []
-  buttonMethods: []
-  references:
-    version: 2
-    RefIds: []
 --- !u!114 &927420206 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6985155402342057138, guid: 18e532391cd4a0e42b039495051ea7cd,
@@ -11185,6 +11376,36 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cec7628d9a4ebdc40b68d28ebd10e2b4, type: 3}
+--- !u!114 &1093247939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 078f6fd1e8f7e6646b6e0d4badef7f18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SerializedField:
+    fieldName: newState
+    fieldType: BookholderAnimator+ClawState, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    isUsingRealContainer: 0
+    isUsingRealTarget: 0
+    target: {fileID: 1093247939}
+    containerTarget: {fileID: 1093247939}
+  value:
+    rid: -2
+  typeName: BookholderAnimator+ClawState, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  enumVal: BookDisplay
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1 &1098590261
 GameObject:
   m_ObjectHideFlags: 0
@@ -11271,6 +11492,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1098590261}
   m_Mesh: {fileID: -7481045295689884865, guid: 8eee75b3b407dea449ba75a764f16165, type: 3}
+--- !u!114 &1101475290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseInspectorFoldout: 0
+  layoutInfos: []
+  buttonMethods: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1118102375
 GameObject:
   m_ObjectHideFlags: 0
@@ -11482,6 +11721,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1118182598}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1132755648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 078f6fd1e8f7e6646b6e0d4badef7f18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SerializedField:
+    fieldName: newState
+    fieldType: BookholderAnimator+ClawState, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    isUsingRealContainer: 0
+    isUsingRealTarget: 0
+    target: {fileID: 1132755648}
+    containerTarget: {fileID: 1132755648}
+  value:
+    rid: -2
+  typeName: BookholderAnimator+ClawState, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  enumVal: BookDisplay
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1 &1133846814
 GameObject:
   m_ObjectHideFlags: 0
@@ -12657,6 +12926,24 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1259837092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseInspectorFoldout: 0
+  layoutInfos: []
+  buttonMethods: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1264791265
 GameObject:
   m_ObjectHideFlags: 0
@@ -14000,6 +14287,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1393522180}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1395389973 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4196712106930436942, guid: 18e532391cd4a0e42b039495051ea7cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 633978157}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56bac4a565728de479f53757da77e0d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1398041402
 GameObject:
   m_ObjectHideFlags: 0
@@ -14666,6 +14965,54 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1508240661}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1508613843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseInspectorFoldout: 0
+  layoutInfos: []
+  buttonMethods:
+  - rid: 7396337276484583791
+  - rid: 7396337276484583792
+  references:
+    version: 2
+    RefIds:
+    - rid: 7396337276484583791
+      type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        methodName: Print
+        buttonName: Print
+        foldout: 1
+        buttonSize: 12
+        parameters:
+        - fieldName: title
+          fieldType: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+          isUsingRealContainer: 0
+          isUsingRealTarget: 0
+          target: {fileID: 110850389}
+          containerTarget: {fileID: 110850389}
+        - fieldName: description
+          fieldType: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+          isUsingRealContainer: 0
+          isUsingRealTarget: 0
+          target: {fileID: 560157014}
+          containerTarget: {fileID: 560157014}
+    - rid: 7396337276484583792
+      type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        methodName: Detach
+        buttonName: Detach
+        foldout: 1
+        buttonSize: 12
+        parameters: []
 --- !u!1 &1511864955
 GameObject:
   m_ObjectHideFlags: 0
@@ -14887,6 +15234,24 @@ MonoBehaviour:
     m_DampPosition: 0.5
     m_DampRotation: 0.5
     m_MaintainAim: 1
+--- !u!114 &1515476108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseInspectorFoldout: 0
+  layoutInfos: []
+  buttonMethods: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1529814613
 GameObject:
   m_ObjectHideFlags: 0
@@ -15419,20 +15784,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseInspectorFoldout: 0
   layoutInfos:
-  - rid: 7396337239171793048
-  - rid: 7396337239171793049
-  - rid: 7396337239171793050
-  - rid: 7396337239171793051
-  - rid: 7396337239171793052
-  - rid: 7396337239171793053
-  - rid: 7396337239171793054
+  - rid: 7396337276484583825
+  - rid: 7396337276484583826
+  - rid: 7396337276484583827
+  - rid: 7396337276484583828
+  - rid: 7396337276484583829
+  - rid: 7396337276484583830
+  - rid: 7396337276484583831
   buttonMethods:
-  - rid: 7396337239171793055
-  - rid: 7396337239171793056
+  - rid: 7396337276484583832
+  - rid: 7396337276484583833
   references:
     version: 2
     RefIds:
-    - rid: 7396337239171793048
+    - rid: 7396337276484583825
       type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: IdleChance
@@ -15440,14 +15805,14 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         label: Idle
         foldout: 0
-    - rid: 7396337239171793049
+    - rid: 7396337276484583826
       type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: RandomPatrol
         fieldTypeName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
         includeLast: 0
-    - rid: 7396337239171793050
+    - rid: 7396337276484583827
       type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: RandomPatrol
@@ -15455,14 +15820,14 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         label: Patrol
         foldout: 0
-    - rid: 7396337239171793051
+    - rid: 7396337276484583828
       type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: ChaseTarget
         fieldTypeName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
         includeLast: 0
-    - rid: 7396337239171793052
+    - rid: 7396337276484583829
       type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: ChaseTarget
@@ -15470,14 +15835,14 @@ MonoBehaviour:
           Culture=neutral, PublicKeyToken=null
         label: Chase
         foldout: 0
-    - rid: 7396337239171793053
+    - rid: 7396337276484583830
       type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: SearchTime
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
         includeLast: 0
-    - rid: 7396337239171793054
+    - rid: 7396337276484583831
       type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: SearchTime
@@ -15485,7 +15850,7 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         label: Search
         foldout: 0
-    - rid: 7396337239171793055
+    - rid: 7396337276484583832
       type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         methodName: SwitchToState
@@ -15500,7 +15865,7 @@ MonoBehaviour:
           isUsingRealTarget: 0
           target: {fileID: 1965142014}
           containerTarget: {fileID: 1965142014}
-    - rid: 7396337239171793056
+    - rid: 7396337276484583833
       type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         methodName: AutofillPatrolTargetsFromParent
@@ -16102,6 +16467,119 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1628421219}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1641762665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseInspectorFoldout: 0
+  layoutInfos:
+  - rid: 7396337276484583834
+  - rid: 7396337276484583835
+  - rid: 7396337276484583836
+  - rid: 7396337276484583837
+  - rid: 7396337276484583838
+  - rid: 7396337276484583839
+  - rid: 7396337276484583840
+  buttonMethods:
+  - rid: 7396337276484583841
+  - rid: 7396337276484583842
+  - rid: 7396337276484583843
+  references:
+    version: 2
+    RefIds:
+    - rid: 7396337276484583834
+      type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: BaseRotation
+        fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+        label: Inputs
+        foldout: 0
+    - rid: 7396337276484583835
+      type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: BaseRackDistRange
+        fieldTypeName: UnityEngine.Vector2, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        includeLast: 0
+    - rid: 7396337276484583836
+      type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: BaseRackDistRange
+        fieldTypeName: UnityEngine.Vector2, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        label: Configs
+        foldout: 0
+    - rid: 7396337276484583837
+      type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: IK_RIG
+        fieldTypeName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        includeLast: 0
+    - rid: 7396337276484583838
+      type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: IK_RIG
+        fieldTypeName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        label: Transforms
+        foldout: 0
+    - rid: 7396337276484583839
+      type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: RotationMatchers
+        fieldTypeName: System.Collections.Generic.List`1[[BookholderAnimator+RotationMatcher,
+          Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+        includeLast: 0
+    - rid: 7396337276484583840
+      type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        fieldName: RotationMatchers
+        fieldTypeName: System.Collections.Generic.List`1[[BookholderAnimator+RotationMatcher,
+          Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+          mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+        includeLast: 0
+    - rid: 7396337276484583841
+      type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        methodName: ChangeToState
+        buttonName: Change state
+        foldout: 1
+        buttonSize: 12
+        parameters:
+        - fieldName: newState
+          fieldType: BookholderAnimator+ClawState, Assembly-CSharp, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          isUsingRealContainer: 0
+          isUsingRealTarget: 0
+          target: {fileID: 1132755648}
+          containerTarget: {fileID: 1132755648}
+    - rid: 7396337276484583842
+      type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        methodName: InteractWithBookshelfButton
+        buttonName: Play interact animation
+        foldout: 1
+        buttonSize: 12
+        parameters: []
+    - rid: 7396337276484583843
+      type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
+      data:
+        methodName: DOTweenToBookSlot
+        buttonName: Tween To Book Slot
+        foldout: 1
+        buttonSize: 12
+        parameters: []
 --- !u!4 &1648876845 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9098869664868180158, guid: cec7628d9a4ebdc40b68d28ebd10e2b4,
@@ -17274,13 +17752,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseInspectorFoldout: 0
   layoutInfos:
-  - rid: 7396337239171793046
-  - rid: 7396337239171793047
+  - rid: 7396337276484583823
+  - rid: 7396337276484583824
   buttonMethods: []
   references:
     version: 2
     RefIds:
-    - rid: 7396337239171793046
+    - rid: 7396337276484583823
       type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: LegTargetHintRadius
@@ -17288,7 +17766,7 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         label: Gizmos
         foldout: 0
-    - rid: 7396337239171793047
+    - rid: 7396337276484583824
       type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: OnDrawSelected
@@ -18587,6 +19065,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1783533140}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1784423089 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4150876302996852208, guid: 18e532391cd4a0e42b039495051ea7cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 633978157}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c5fb24c1957fe3bb71f9b0927bd836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1792143398
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18666,24 +19156,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1792143398}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1792873866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseInspectorFoldout: 0
-  layoutInfos: []
-  buttonMethods: []
-  references:
-    version: 2
-    RefIds: []
 --- !u!1 &1794571897
 GameObject:
   m_ObjectHideFlags: 0
@@ -20656,18 +21128,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1920119380}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1925686450 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5915757463574329984, guid: 18e532391cd4a0e42b039495051ea7cd,
-    type: 3}
-  m_PrefabInstance: {fileID: 633978157}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15c5fb24c1957fe3bb71f9b0927bd836, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1937449340
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21021,6 +21481,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 468091963}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1961581655 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1064353934281510125, guid: 18e532391cd4a0e42b039495051ea7cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 633978157}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e43ecd687a4a8c747a1cb7b30a33c413, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1961581656 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8781237284760538441, guid: 18e532391cd4a0e42b039495051ea7cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 633978157}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f205512635f686741a93d9e5fecec9b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1963666542 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9098869664868180158, guid: cec7628d9a4ebdc40b68d28ebd10e2b4,
@@ -21853,24 +22337,6 @@ Transform:
   - {fileID: 1668131709}
   m_Father: {fileID: 1675057274}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2069536806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91035bcb2ca13824395c1c51b162bf3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseInspectorFoldout: 0
-  layoutInfos: []
-  buttonMethods: []
-  references:
-    version: 2
-    RefIds: []
 --- !u!1001 &2076249048
 PrefabInstance:
   m_ObjectHideFlags: 0
