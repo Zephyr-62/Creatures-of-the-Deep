@@ -195,10 +195,10 @@ MonoBehaviour:
   Path: Assets/_MyAssets/Audio/main_fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638654904984422783
+  lastModified: 638656557506926957
   FileSizes:
   - Name: Desktop
-    Value: 3638336
+    Value: 3758496
   Exists: 1
 --- !u!114 &-3170323082403319442
 MonoBehaviour:
@@ -254,6 +254,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 6000
+--- !u!114 &-1847226944638468393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Submarine/PCS/Bookholder/Moving
+  m_EditorClassIdentifier: 
+  Path: event:/Submarine/PCS/Bookholder/Moving
+  Guid:
+    Data1: 1637339005
+    Data2: 1252063789
+    Data3: -878214209
+    Data4: -2023210787
+  Banks:
+  - {fileID: -3412374948495567671}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-1362536992055633582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,6 +418,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 3343
+--- !u!114 &-38414714366406867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Submarine/PCS/Bookholder/CloseBook
+  m_EditorClassIdentifier: 
+  Path: event:/Submarine/PCS/Bookholder/CloseBook
+  Guid:
+    Data1: 1219810262
+    Data2: 1127723990
+    Data3: -2119541628
+    Data4: 2114114841
+  Banks:
+  - {fileID: -3412374948495567671}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 8.55
+  Length: 1700
 --- !u!114 &-21706825140149106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,12 +510,19 @@ MonoBehaviour:
   - {fileID: 3742339544018404683}
   - {fileID: -410921777581901952}
   - {fileID: -8156772014565782485}
+  - {fileID: 4040662605123111037}
+  - {fileID: 7641958797303325664}
+  - {fileID: -1847226944638468393}
+  - {fileID: -38414714366406867}
+  - {fileID: 6524022155133826560}
+  - {fileID: 9141948240829247677}
+  - {fileID: 6513444305436112970}
   EditorParameters: []
   MasterBanks:
   - {fileID: -3412374948495567671}
   StringsBanks:
   - {fileID: 3561581469223207880}
-  cacheTime: 638654904984422783
+  cacheTime: 638656557506992170
   cacheVersion: 131619
 --- !u!114 &595240047088548061
 MonoBehaviour:
@@ -607,10 +668,10 @@ MonoBehaviour:
   Path: Assets/_MyAssets/Audio/main_fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638654620257216527
+  lastModified: 638656557506992170
   FileSizes:
   - Name: Desktop
-    Value: 2020
+    Value: 2336
   Exists: 1
 --- !u!114 &3742339544018404683
 MonoBehaviour:
@@ -639,6 +700,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 308
+--- !u!114 &4040662605123111037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Submarine/PCS/Bookholder/PageFlipEnd
+  m_EditorClassIdentifier: 
+  Path: event:/Submarine/PCS/Bookholder/PageFlipEnd
+  Guid:
+    Data1: -1614552794
+    Data2: 1143297776
+    Data3: -1257878105
+    Data4: -1500619301
+  Banks:
+  - {fileID: -3412374948495567671}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 8.2
+  Length: 620
 --- !u!114 &4069511354846223289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -804,3 +892,111 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 3343
+--- !u!114 &6513444305436112970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Submarine/MissionCompleted
+  m_EditorClassIdentifier: 
+  Path: event:/Submarine/MissionCompleted
+  Guid:
+    Data1: -286810286
+    Data2: 1180028657
+    Data3: -1508775241
+    Data4: -1729791078
+  Banks:
+  - {fileID: -3412374948495567671}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1000
+--- !u!114 &6524022155133826560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Submarine/PCS/Bookholder/PageFlipStart
+  m_EditorClassIdentifier: 
+  Path: event:/Submarine/PCS/Bookholder/PageFlipStart
+  Guid:
+    Data1: -1354282779
+    Data2: 1171002464
+    Data3: 1208843161
+    Data4: -333932062
+  Banks:
+  - {fileID: -3412374948495567671}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 8.2
+  Length: 620
+--- !u!114 &7641958797303325664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Submarine/PCS/Bookholder/OpenBook
+  m_EditorClassIdentifier: 
+  Path: event:/Submarine/PCS/Bookholder/OpenBook
+  Guid:
+    Data1: 1779581997
+    Data2: 1080006056
+    Data3: 436276926
+    Data4: -1977731906
+  Banks:
+  - {fileID: -3412374948495567671}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 8.55
+  Length: 1600
+--- !u!114 &9141948240829247677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Submarine/PCS/Bookholder/PageFlip
+  m_EditorClassIdentifier: 
+  Path: event:/Submarine/PCS/Bookholder/PageFlip
+  Guid:
+    Data1: -1590509844
+    Data2: 1074965060
+    Data3: -1928124227
+    Data4: 2015484796
+  Banks:
+  - {fileID: -3412374948495567671}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 8.2
+  Length: 1320

@@ -3,8 +3,7 @@
 
 
 # Post delivery
-- Add sounds to bookholder
-- Elevation + Pitch indicators + distance to target --> Add labels to sonar zoom
+- Elevation + Pitch indicators + distance to target
 - Monster drawings + Empty drawing slot (scratched)?
 - Main menu music
 - Fix endgame quest

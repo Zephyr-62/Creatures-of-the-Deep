@@ -18,6 +18,8 @@ public class QuestSystem : MonoBehaviour
 
     [SerializeField] public UnityEvent questStarted;
     [SerializeField] public UnityEvent questCompleted;
+    [SerializeField] private FMODUnity.EventReference questCompletedChime;
+
 
     private float last;
 
@@ -34,16 +36,24 @@ public class QuestSystem : MonoBehaviour
         completeQuestButton.onValueChanged.RemoveListener(CompleteQuest);
     }
 
+    bool questHasBeenCompleted = false;
+
     private void Update()
     {
         if(currentQuest == null && quests.Count > 0 && last + quests[0].GetResponseTime() <= Time.time)
         {
             StartNewQuest();
+            questHasBeenCompleted = false;
         }
 
         if(currentQuest && currentQuest.IsCompleted(this))
         {
             completeQuestButton.Unblock();
+            if (!questHasBeenCompleted && currentQuest.GetPlayChimeOnCompleted())
+            {
+                FMODUnity.RuntimeManager.PlayOneShotAttached(questCompletedChime, newQuestButton.gameObject);
+                questHasBeenCompleted = true;
+            }
         } else
         {
             completeQuestButton.Block();
@@ -87,7 +97,7 @@ public class QuestSystem : MonoBehaviour
         {
             if (fax) fax.Detach();
 
-            questCompleted.Invoke();
+            questCompleted.Invoke();            
 
             currentQuest = null;
             last = Time.time;

@@ -7,10 +7,12 @@ public abstract class Quest : ScriptableObject
     [SerializeField] private string questName;
     [SerializeField] [TextArea(3, 20)] private string description;
     [SerializeField] private float responseTime;
+    [SerializeField] private bool playChimeOnCompleted = true;
 
     public string GetQuestName() => questName;
     public string GetDescription() => description;
     public float GetResponseTime() => responseTime;
+    public bool GetPlayChimeOnCompleted() => playChimeOnCompleted;
 
     public abstract void StartQuest(QuestSystem qs);
 

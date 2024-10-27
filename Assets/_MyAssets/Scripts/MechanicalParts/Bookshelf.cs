@@ -14,6 +14,11 @@ public class Bookshelf : MonoBehaviour
     public Material ActiveLightMat;
     public Material InactiveLightMat;
 
+    [SerializeField] private FMODUnity.EventReference openBookSound;
+    [SerializeField] private FMODUnity.EventReference closeBookSound;
+    [SerializeField] private FMODUnity.EventReference pageflipStartSound;
+    [SerializeField] private FMODUnity.EventReference pageflipEndSound;
+
     [System.Serializable]
     public class BookSlot
     {
@@ -61,7 +66,11 @@ public class Bookshelf : MonoBehaviour
             bookSlot.id = id;
             id++;
             SetSlotActive(bookSlot, bookSlot.active);
-            bookSlot.book.GetComponent<BookPCS>().Block();
+            var bookPCS = bookSlot.book.GetComponent<BookPCS>();
+            bookPCS.Block();
+            bookPCS.onGrabbed.AddListener(() => FMODUnity.RuntimeManager.PlayOneShotAttached(pageflipStartSound, bookSlot.book.gameObject));
+            bookPCS.onReleased.AddListener(() => FMODUnity.RuntimeManager.PlayOneShotAttached(pageflipEndSound, bookSlot.book.gameObject));
+
         }
     }
 
@@ -162,15 +171,17 @@ public class Bookshelf : MonoBehaviour
     private void OpenBook(EndlessBook book)
     {
         book.GetComponent<BookPCS>().Unblock();
-        book.SetState(EndlessBook.StateEnum.OpenFront, animationTime: 0);
+        book.SetState(EndlessBook.StateEnum.OpenFront, animationTime: 1);
         book.transform.localRotation = Quaternion.identity;
+        FMODUnity.RuntimeManager.PlayOneShotAttached(openBookSound, book.gameObject);
     }
 
     private void CloseBook(EndlessBook book)
     {
         book.GetComponent<BookPCS>().Block();
-        book.SetState(EndlessBook.StateEnum.ClosedFront, animationTime: 0);
+        book.SetState(EndlessBook.StateEnum.ClosedFront, animationTime: 0.5f);
         book.transform.localRotation = Quaternion.AngleAxis(90, Vector3.forward);
+        FMODUnity.RuntimeManager.PlayOneShotAttached(closeBookSound, book.gameObject);
     }
 
 }

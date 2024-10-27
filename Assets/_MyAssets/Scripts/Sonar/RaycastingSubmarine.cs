@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
+using TMPro;
 using UnityEngine;
-using UnityEngine.Polybrush;
+using static UnityEditor.PlayerSettings;
 using Quaternion = UnityEngine.Quaternion;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
@@ -17,6 +17,7 @@ public class RaycastingSubmarine : ElectricalDevice
     [SerializeField] private float _angleStep;
     [SerializeField, Range(0, 1)] private float zoom;
     [SerializeField] private PhysicalControlSurface pcs;
+    [SerializeField] private TMP_Text distanceLabel;
 
     private float _distance;
 
@@ -42,6 +43,7 @@ public class RaycastingSubmarine : ElectricalDevice
     private Quaternion lastRotation;
 
 	private Vector2 _artiPos;
+	private Vector3 _artiPos3D;
     private Vector2 _calculatedArtiPos;
 	private Vector2 _currentArtiPos;
     private Vector2 _artiArrowL;
@@ -123,8 +125,10 @@ public class RaycastingSubmarine : ElectricalDevice
                 blitMat.SetVector("_PointArrowR", _currentArtiPos);
 
             }
+            distanceLabel.text = $"Dist:\n{Mathf.RoundToInt((_artiPos3D - _submarine.transform.position).magnitude)} m";
+
         }
-        
+
 
         blitMat.SetVector("_Point", _hitpoint);
         blitMat.SetVector("_PointB", _linePoint);
@@ -210,13 +214,14 @@ public class RaycastingSubmarine : ElectricalDevice
         {
             blitMat.SetInt("_ArtefactActivate", 0);
             _artiPos = new Vector2(10000, 10000);
+            distanceLabel.text = "";
         }
         else
         {
             blitMat.SetInt("_ArtefactActivate", 1);
             _artiPos = new Vector2(pos.x,  pos.z);
-            
         }
+        _artiPos3D = pos;
         
 	}
 
