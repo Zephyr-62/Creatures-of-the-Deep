@@ -126,7 +126,7 @@ public class EnemyAIController : MonoBehaviour
                 else SwitchToState(State.Searching);
                 break;
             case State.Attacking:
-                Debug.Log("Attack!");
+                // Debug.Log("Attack!");
                 break;
             case State.Searching:
                 if(TryChaseTargetDetection(AggroRange, AggroViewAngle)) SwitchToState(State.Chasing);
@@ -143,7 +143,7 @@ public class EnemyAIController : MonoBehaviour
     [Button("Switch to state")]
     public void SwitchToState(State newState)
     {
-        Debug.Log($"Switch to state {newState} from {CurrentState}");
+        // Debug.Log($"Switch to state {newState} from {CurrentState}");
         switch (newState)
         {
             case State.Idle:
@@ -252,7 +252,7 @@ public class EnemyAIController : MonoBehaviour
                 return false; 
             if (hitInfo.collider.transform != ChaseTarget)
             {
-                Debug.Log("Chase raycast hit obstacle", hitInfo.collider.gameObject);
+                // Debug.Log("Chase raycast hit obstacle", hitInfo.collider.gameObject);
                 return false;
             }
         }

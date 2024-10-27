@@ -78,7 +78,7 @@ public class BookPCS : PhysicalControlSurface
             clampedAngle = Mathf.Clamp(angle, minAngle, maxAngle);
 
             var turningTime = Mathf.InverseLerp(minAngle, maxAngle, clampedAngle);
-            if (book.CurrentState == EndlessBook.StateEnum.OpenMiddle)
+            if (book.CurrentState == EndlessBook.StateEnum.OpenMiddle && book.IsDraggingPage)
             {
                 book.TurnPageDrag(1 - turningTime);
                 
@@ -112,7 +112,7 @@ public class BookPCS : PhysicalControlSurface
             else
             {
                 if(book.CurrentState != EndlessBook.StateEnum.OpenFront)
-                book.TurnPageDragStart(Page.TurnDirectionEnum.TurnBackward);
+                    book.TurnPageDragStart(Page.TurnDirectionEnum.TurnBackward);
             }
         }
     }
