@@ -42704,20 +42704,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseInspectorFoldout: 0
   layoutInfos:
-  - rid: 7396337285673779396
-  - rid: 7396337285673779397
-  - rid: 7396337285673779398
-  - rid: 7396337285673779399
-  - rid: 7396337285673779400
-  - rid: 7396337285673779401
-  - rid: 7396337285673779402
+  - rid: 7396337290843521112
+  - rid: 7396337290843521113
+  - rid: 7396337290843521114
+  - rid: 7396337290843521115
+  - rid: 7396337290843521116
+  - rid: 7396337290843521117
+  - rid: 7396337290843521118
   buttonMethods:
-  - rid: 7396337285673779403
-  - rid: 7396337285673779404
+  - rid: 7396337290843521119
+  - rid: 7396337290843521120
   references:
     version: 2
     RefIds:
-    - rid: 7396337285673779396
+    - rid: 7396337290843521112
       type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: IdleChance
@@ -42725,14 +42725,14 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         label: Idle
         foldout: 0
-    - rid: 7396337285673779397
+    - rid: 7396337290843521113
       type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: RandomPatrol
         fieldTypeName: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
         includeLast: 0
-    - rid: 7396337285673779398
+    - rid: 7396337290843521114
       type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: RandomPatrol
@@ -42740,14 +42740,14 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         label: Patrol
         foldout: 0
-    - rid: 7396337285673779399
+    - rid: 7396337290843521115
       type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: ChaseTarget
         fieldTypeName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
         includeLast: 0
-    - rid: 7396337285673779400
+    - rid: 7396337290843521116
       type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: ChaseTarget
@@ -42755,14 +42755,14 @@ MonoBehaviour:
           Culture=neutral, PublicKeyToken=null
         label: Chase
         foldout: 1
-    - rid: 7396337285673779401
+    - rid: 7396337290843521117
       type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: SearchTime
         fieldTypeName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
         includeLast: 0
-    - rid: 7396337285673779402
+    - rid: 7396337290843521118
       type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: SearchTime
@@ -42770,7 +42770,7 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         label: Search
         foldout: 0
-    - rid: 7396337285673779403
+    - rid: 7396337290843521119
       type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         methodName: SwitchToState
@@ -42785,7 +42785,7 @@ MonoBehaviour:
           isUsingRealTarget: 0
           target: {fileID: 1187042261}
           containerTarget: {fileID: 1187042261}
-    - rid: 7396337285673779404
+    - rid: 7396337290843521120
       type: {class: ButtonInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         methodName: AutofillPatrolTargetsFromParent
@@ -42814,13 +42814,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseInspectorFoldout: 0
   layoutInfos:
-  - rid: 7396337285673779394
-  - rid: 7396337285673779395
+  - rid: 7396337290843521110
+  - rid: 7396337290843521111
   buttonMethods: []
   references:
     version: 2
     RefIds:
-    - rid: 7396337285673779394
+    - rid: 7396337290843521110
       type: {class: BeginFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: LegTargetHintRadius
@@ -42828,7 +42828,7 @@ MonoBehaviour:
           PublicKeyToken=b77a5c561934e089
         label: Gizmos
         foldout: 0
-    - rid: 7396337285673779395
+    - rid: 7396337290843521111
       type: {class: EndFoldoutInfo, ns: AdvancedEditorTools, asm: Assembly-CSharp-firstpass}
       data:
         fieldName: OnDrawSelected
@@ -43665,7 +43665,7 @@ PrefabInstance:
     - target: {fileID: 605176521412514415, guid: aafa381a1a349e043b60e92a983dc4dc,
         type: 3}
       propertyPath: AggroRange
-      value: 200
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 605176521412514415, guid: aafa381a1a349e043b60e92a983dc4dc,
         type: 3}
@@ -43680,17 +43680,17 @@ PrefabInstance:
     - target: {fileID: 605176521412514415, guid: aafa381a1a349e043b60e92a983dc4dc,
         type: 3}
       propertyPath: AggroViewAngle
-      value: 150
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 605176521412514415, guid: aafa381a1a349e043b60e92a983dc4dc,
         type: 3}
       propertyPath: DetectionRange
-      value: 150
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 605176521412514415, guid: aafa381a1a349e043b60e92a983dc4dc,
         type: 3}
       propertyPath: DetectionViewAngle
-      value: 120
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 605176521412514415, guid: aafa381a1a349e043b60e92a983dc4dc,
         type: 3}
