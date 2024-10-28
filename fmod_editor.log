@@ -7,7 +7,7 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 0000014BAE422C28 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 0000014CEEB16B08 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -18,84 +18,4 @@
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
-[LOG] SystemI::createSound                     : filename = Assets/_MyAssets/Audio/main_fmod/Build/Desktop/Master.bank : mode 02010082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000014D25ACBCF8, queue head = 0000014BE46FCFB8, queue count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000014D25ACBCF8
-[LOG] SystemI::createSoundInternal             :     Create name='Assets/_MyAssets/Audio/main_fmod/Build/Desktop/Master.bank', mode=0x02010082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
-[LOG] SystemI::createSoundInternal             :     exinfo->length             = 5087104
-[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 73408
-[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014BD49BC040
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 680
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='MainMenuTheme_LOW', format=5, channels=2, frequency=48000, lengthbytes=1131040, lengthpcm=4499712, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.940491.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000014D25ACBCF8
-[LOG] SoundI::release                          : MainMenuTheme_LOW (0000014D25ACBCF8)
-[LOG] SoundI::release                          :     MainMenuTheme_LOW (0000014CC15B0368)
-[LOG] SoundI::release                          :     MainMenuTheme_LOW (0000014C51EF3AA8)
-[LOG] SystemI::createSound                     : filename = Assets/_MyAssets/Audio/main_fmod/Build/Desktop/Master.bank : mode 02010082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000014CC14DB868, queue head = 0000014BE46FCFB8, queue count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000014CC14DB868
-[LOG] SystemI::createSoundInternal             :     Create name='Assets/_MyAssets/Audio/main_fmod/Build/Desktop/Master.bank', mode=0x02010082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
-[LOG] SystemI::createSoundInternal             :     exinfo->length             = 5087104
-[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 73408
-[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014BAE5F8930
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='393819__kinoton__underwater-ambience', format=5, channels=2, frequency=48000, lengthbytes=2482528, lengthpcm=14936677, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.197221.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000014CC14DB868
-[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
-[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
-[LOG] SystemI::createSoundInternal             : exinfo->length             = 5087104
-[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 73408
-[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000017BAF0F468
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFA933B4130
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFA933B40F0
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFA933B4210
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFA933B42D0
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000014CEEC9CB28
-[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
-[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
-[LOG] SystemI::createSoundInternal             : Sample 0/1: name='442161__steaq__enter-button-low-robotic', format=5, channels=2, frequency=48000, lengthbytes=4864, lengthpcm=34834, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.999969.
-[LOG] SoundI::release                          : 393819__kinoton__underwater-ambience (0000014CC8C1C058)
-[LOG] SoundI::release                          :     393819__kinoton__underwater-ambience (0000014C51D638A8)
-[LOG] SoundI::release                          :     393819__kinoton__underwater-ambience (0000014BD17B1BC8)
-[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000014BD17B5D98, queue head = 0000014BE46FCFB8, queue count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000014BD17B5D98
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000014BD17B5D98
-[LOG] SystemI::mixerSuspend                    : Suspending output.
-[LOG] SystemI::mixerResume                     : Resuming output.
-[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000014BD17B5D98, queue head = 0000014BE46FCFB8, queue count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000014BD17B5D98
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000014BD17B5D98
-[LOG] SystemI::mixerSuspend                    : Suspending output.
-[LOG] SystemI::mixerResume                     : Resuming output.
-[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000014BD17B5D98, queue head = 0000014BE46FCFB8, queue count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000014BD17B5D98
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000014BD17B5D98
-[LOG] SoundI::release                          : 393819__kinoton__underwater-ambience (0000014CC14DB868)
-[LOG] SoundI::release                          :     393819__kinoton__underwater-ambience (0000014C51B1C408)
-[LOG] SoundI::release                          :     393819__kinoton__underwater-ambience (0000014BD17B5D98)
-[LOG] SoundI::release                          :  (0000014D2F56E708)
-[LOG] SoundI::release                          :     442161__steaq__enter-button-low-robotic (0000014BD83A5C88)
-[LOG] Thread::callback                         : FMOD Studio update thread finished.
-[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
-[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
-[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
-[LOG] LiveUpdate::release                      : 
-[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
-[LOG] Thread::callback                         : FMOD stream thread finished.
-[LOG] Thread::callback                         : FMOD mixer thread finished.
-[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
-[LOG] SystemI::close                           : Closed.
+[ERR] assert                                   : assertion: 'gSystemInitCount == 0' failed
