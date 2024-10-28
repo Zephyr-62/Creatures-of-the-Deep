@@ -125,7 +125,10 @@ public class RaycastingSubmarine : ElectricalDevice
                 blitMat.SetVector("_PointArrowR", _currentArtiPos);
 
             }
-            distanceLabel.text = $"Dist:\n{Mathf.RoundToInt((_artiPos3D - _submarine.transform.position).magnitude)} m";
+            if(powered)
+                distanceLabel.text = $"Dist:\n{Mathf.RoundToInt((_artiPos3D - _submarine.transform.position).magnitude)} m";
+            else
+                distanceLabel.text = "";
 
         }
 
@@ -188,14 +191,18 @@ public class RaycastingSubmarine : ElectricalDevice
 
     }
 
+    bool powered = true;
+
     protected override void OnPowerGained()
     {
         renderer.material.SetInt("_On", 1);
+        powered = true;
     }
 
     protected override void OnPowerLost()
     {
         renderer.material.SetInt("_On", 0);
+        powered = false;
 
         var wipe = new Texture2D(sonar1.width, sonar1.height);
 

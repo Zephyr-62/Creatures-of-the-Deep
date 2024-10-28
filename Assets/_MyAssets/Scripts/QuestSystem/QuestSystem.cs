@@ -1,3 +1,4 @@
+using AdvancedEditorTools.Attributes;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -20,6 +21,9 @@ public class QuestSystem : MonoBehaviour
     [SerializeField] public UnityEvent questCompleted;
     [SerializeField] private FMODUnity.EventReference questCompletedChime;
 
+    [SerializeField] private ClickySwitch DebugSwitch;
+    [SerializeField] private Button SkipQuestButton;
+
 
     private float last;
 
@@ -27,6 +31,8 @@ public class QuestSystem : MonoBehaviour
     {
         newQuestButton.onValueChanged.AddListener(StartNewQuest);
         completeQuestButton.onValueChanged.AddListener(CompleteQuest);
+        DebugSwitch.onValueChanged.AddListener(ToggleDebugMode);
+        SkipQuestButton.onReleased.AddListener(ForceCompleteQuest);
         last = Time.time;
     }
 
@@ -34,9 +40,16 @@ public class QuestSystem : MonoBehaviour
     {
         newQuestButton.onValueChanged.RemoveListener(StartNewQuest);
         completeQuestButton.onValueChanged.RemoveListener(CompleteQuest);
+        DebugSwitch.onValueChanged.RemoveListener(ToggleDebugMode);
+        SkipQuestButton.onReleased.RemoveListener(ForceCompleteQuest);
     }
 
     bool questHasBeenCompleted = false;
+
+    private void Start()
+    {
+        SkipQuestButton.Block();
+    }
 
     private void Update()
     {
@@ -89,6 +102,33 @@ public class QuestSystem : MonoBehaviour
                 sonar.ArtifactLocation(currentQuest.GetWaypoint());
             }
         }
+    }
+
+    public void ToggleDebugMode()
+    {
+        if (DebugSwitch.GetBoolValue())
+        {
+            SkipQuestButton.Unblock();
+        }
+        else
+        {
+            SkipQuestButton.Block();
+        }
+    }
+
+    [Button("Force complete quest")]
+    public void ForceCompleteQuest()
+    {
+        if (currentQuest is LocationQuest)
+            submarineTransform.position = (currentQuest as LocationQuest).GetWaypoint();
+
+        if (fax) fax.Detach();
+
+        questCompleted.Invoke();
+
+        currentQuest = null;
+        last = Time.time;
+        StartNewQuest();
     }
 
     public void CompleteQuest()

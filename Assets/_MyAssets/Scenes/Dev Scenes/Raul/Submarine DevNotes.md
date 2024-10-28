@@ -5,7 +5,6 @@
 # Post delivery
 - Elevation + Pitch indicators
 - Monster drawings + Empty drawing slot (scratched)?
-- Fix endgame quest
 - Boids + swinging lamp
 - Checkpoints on keyboard buttons
 
