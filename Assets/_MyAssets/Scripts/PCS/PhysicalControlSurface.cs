@@ -22,7 +22,7 @@ public abstract class PhysicalControlSurface : Measureable
 
     protected FirstPersonCamera FirstPersonCamera => firstPersonCamera;
 
-    protected bool blocked = false;
+    [SerializeField] [ReadOnly] protected bool blocked = false;
     protected Vector3 grabPoint => transform.TransformPoint(_grabPoint);
     private Vector3 _grabPoint;
 

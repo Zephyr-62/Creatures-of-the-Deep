@@ -9,6 +9,7 @@ public class Lightbulb : ElectricalDevice
     [SerializeField] private Renderer renderer;
     [SerializeField] private Light light;
     [SerializeField] private ClickySwitch clickySwitch;
+    [SerializeField] private bool IsAreaLight = false;
 
     private string COLOR_KEYWORD = "_Intensity";
     private string SURGE_KEYWORD = "_Interference";
@@ -37,7 +38,7 @@ public class Lightbulb : ElectricalDevice
     {
         if (!isPowered) return;
 
-        if (state != true)
+        if (state != true && IsAreaLight)
         {
             state = true;
             count++;
@@ -58,7 +59,7 @@ public class Lightbulb : ElectricalDevice
 
     public void TurnOff()
     {
-        if(state != false)
+        if(state != false && IsAreaLight)
         {
             state = false;
             count--;

@@ -172,7 +172,7 @@ public class Bookshelf : MonoBehaviour
     private void OpenBook(EndlessBook book)
     {
         book.GetComponent<BookPCS>().Unblock();
-        book.SetState(EndlessBook.StateEnum.OpenFront, animationTime: 1);
+        book.SetState(EndlessBook.StateEnum.OpenMiddle, animationTime: 1);
         book.transform.localRotation = Quaternion.identity;
         FMODUnity.RuntimeManager.PlayOneShotAttached(openBookSound, book.gameObject);
     }

@@ -85,6 +85,12 @@ public class MalfunctionSystem : ElectricalDevice
         malfunction.Enter(trigger);
     }
 
+    public void FixAllMalfunctions()
+    {
+        foreach (var malfunc in allMalfunctions)
+            malfunc.Exit();
+    }
+
     IEnumerator ErrorCodeLoop()
     {
         var index = 0;

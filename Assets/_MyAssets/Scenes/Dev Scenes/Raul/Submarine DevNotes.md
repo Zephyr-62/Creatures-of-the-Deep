@@ -1,14 +1,8 @@
 
 # TODO
-
-- Build on laptop
-- Upload new build + project files
-
-# Post delivery
 - Elevation + Pitch indicators
 - Monster drawings + Empty drawing slot (scratched)?
 - Boids + swinging lamp
-
 
 
 # Post course end
